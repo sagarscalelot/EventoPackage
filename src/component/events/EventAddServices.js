@@ -10,13 +10,12 @@ import { useDispatch } from 'react-redux';
 import { decrement, increment } from '../../redux/stepProgressCount';
 import { toast, ToastContainer } from 'react-toastify';
 import { MoonLoader } from 'react-spinners';
-import { getEventType } from '../../shared/helper';
 
 function EventAddServices() {
 	const displayName = localStorage.getItem("displayName");
 	const navigate = useNavigate();
 	const params = useParams();
-	const eventType = getEventType(params.eventType);
+	const eventType = params.eventType;
 	const eventId = localStorage.getItem("eventId");
 	const dispatch = useDispatch();
 	const [isAddServicesPopUpOpen, setIsAddServicesPopUpOpen] = useState(false);
@@ -32,12 +31,12 @@ function EventAddServices() {
 	const getServiceList = async() => {
 		try {
 			const response = await axios.get(`${baseUrl}/organizer/events/listservice`, {headers: header});
-			console.log("services >> ",response);
+			console.log("services >>",response);
 			if(response.data.Data) {
 				setServiceList(response.data.Data);
 				setLoading(false);
 				const responseActive = await axios.get(`${baseUrl}/organizer/events/getselectservice?eventid=${eventId}`, {headers: header});
-				console.log("Active services >> ",responseActive);
+				console.log("Active services>> ",responseActive);
 				if(responseActive.data.Data.services) {
 					const temp = responseActive.data.Data.services.map(e => {
 						return e._id
@@ -105,7 +104,7 @@ function EventAddServices() {
 	   </div>
 	 </div>
 	 <Modal isOpen={isAddServicesPopUpOpen}>
-		<EventPopUpAddService isItem={eventType === "hvp" ? false:true} handleClose={setIsAddServicesPopUpOpen} setReload={setReload} edit={false} />
+		<EventPopUpAddService isItem={eventType === "hyp" ? false:true} handleClose={setIsAddServicesPopUpOpen} setReload={setReload} edit={false} />
 	 </Modal>
 	 <ToastContainer
 			  position="bottom-right"
