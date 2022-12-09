@@ -112,7 +112,7 @@ function EventTermsAndConditions() {
             <div className="space-y-8 h-full">
               {/* <!-- title-holder  --> */}
               <div className="flex justify-between items-center">
-                <div className="flex items-center"><i className="icon-back-arrow mr-4 text-2xl"></i><h1>{displayName}</h1></div>
+                <div className="flex items-center"><i className="icon-back-arrow mr-4 text-2xl" onClick={clickBackHandler}></i><h1>{displayName}</h1></div>
               </div>
               {/* <!-- step-progress-bar  --> */}
               <StepProgressBar eventType={eventType} />

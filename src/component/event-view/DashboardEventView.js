@@ -19,7 +19,6 @@ function DashboardEventView() {
   const navigate = useNavigate();
 	const params = useParams();
 	const token = localStorage.getItem("Token");
-	const eventId = params.eventId;
 	const header = {
 		'Authorization': `Token ${token}`
 	}

@@ -19,7 +19,7 @@ function EventDiscounts() {
 	const [allDiscount, setAllDiscount] = useState([]);
 	console.log(allDiscount);
 	const params = useParams();
-	const eventId = params.eventId;
+	const eventId = localStorage.getItem("eventId");
 	const eventType = params.eventType;
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
@@ -36,9 +36,10 @@ function EventDiscounts() {
 	const getDiscount = async() => {
 		try {	
 			const response = await axios.get(`${baseUrl}/organizer/discount/list`,{headers: header});
-			console.log(response);
+			console.log('esdeeeeeeeeeeeeeeeeeee',response);
 			if(response.data.IsSuccess) {
 				const res = await axios.get(`${baseUrl}/organizer/events/discount?eventid=${eventId}`,{headers: header});
+				console.log('hgefugeruigftier',res);
 				setAllDiscount([...res.data.Data.discounts,...response.data.Data]);
 			}
 		} catch (error) {
@@ -51,8 +52,10 @@ function EventDiscounts() {
 
 
 	const createActiveDiscount = async() => {
+		console.log("ActiveList", activeList)
 		try {	
 			const response = await axios.post(`${baseUrl}/organizer/events/discount`,{eventid: eventId, discounts: activeList},{headers: header});
+
 			console.log(response);
 		} catch (error) {
 			console.log(error);
@@ -127,7 +130,7 @@ function EventDiscounts() {
 		   {/* <!-- title-holder  --> */}
 		   <div className="flex justify-between items-center">
 			 <div className="flex items-center">
-			   <i className="icon-back-arrow mr-4 text-2xl"></i>
+			   <i className="icon-back-arrow mr-4 text-2xl" onClick={clickBackHandler}></i>
 			   <h1>{displayName}</h1>
 			 </div>
 		   </div>

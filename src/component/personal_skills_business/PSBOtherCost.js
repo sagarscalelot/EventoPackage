@@ -14,7 +14,7 @@ function PSBOtherCost() {
   const navigate = useNavigate();
 	const params = useParams();
 	const eventType = params.eventType;
-	const eventId = params.eventId;
+	const eventId = localStorage.getItem("eventId");
 	const dispatch = useDispatch(); 
   const token = localStorage.getItem("Token");
 	const header = {

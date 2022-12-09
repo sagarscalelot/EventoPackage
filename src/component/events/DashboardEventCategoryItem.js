@@ -2,26 +2,30 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import sweetLoveCatering from "../../assest/images/sweet-love-catering.png";
-import { baseUrl } from '../../config';
+import { baseUrl,s3Url } from '../../config';
 import { useDispatch } from 'react-redux';
 import { increment } from '../../redux/stepProgressCount';
-import bannerPreview from "../../assest/images/banner-preview.png"
+import bannerPreview from "../../assest/images/banner-preview.png";
+import myImg from '../../assest/images/big-dish.png';
 
 function DashboardEventCategoryItem({data}) {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
+	const eventId = localStorage.getItem("eventId");
+	const [category, setCategory] = useState([]);
 	// const [isLive, setIsLive] = useState(false);
 	// const [category, setCategory] = useState({});
 	const token = localStorage.getItem("Token");
 	const header = {
 		'Authorization': `Token ${token}`,
 	}
-
+	// console.log("Hello",s3Url+"/"+data.aboutplace.banner)
 	// const getCategory = async()=> {
 	// 	try {
-	// 		const response = await axios.get(`${baseUrl}/api/event_category/${data.category_id}`,{headers: header});
-	// 		console.log(response);
-	// 		setCategory(response.data.data[0]);
+	// 		const response = await axios.get(`${baseUrl}/organizer/events/getone?eventid=${eventId}`,{headers: header});
+	// 		console.log("GetOne Category>>>>>>>>>>>>>>>>>>",response);
+	// 		console.log("IMAGE",s3Url+"/"+response.data?.Data.aboutplace.banner)
+	// 		setCategory(s3Url+"/"+response.data.Data.aboutplace.banner);
 	// 	} catch (error) {	
 	// 		 console.log(error);
 	// 	}
@@ -29,6 +33,7 @@ function DashboardEventCategoryItem({data}) {
 	// useEffect(() => {
 	// 	getCategory();
 	// },[]);
+	// console.log("Image>>>>>>>>>>>>>",data?.aboutplace.banner);
 
   return (
     <div className="w-full flex items-center">
@@ -43,7 +48,7 @@ function DashboardEventCategoryItem({data}) {
 			  <div className="max-w-xs h-[200px] w-full">
 				{/* {data?.place_event[0]?.place_banner && <img className="object-cover w-full h-full" src={baseUrl+"/api"+data?.place_event[0]?.place_banner || bannerPreview} />} */}
 				{/* {!data?.place_event[0]?.place_banner && <img className="object-cover w-full h-full" src={bannerPreview} />} */}
-				<img className="object-cover w-full h-full" src={bannerPreview} />
+				<img className="object-cover w-full h-full" src={bannerPreview } />
 				</div>
 				<div className="w-full">
 				  <div className="flex justify-between border-b-2 pb-4">

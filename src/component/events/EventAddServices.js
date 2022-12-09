@@ -77,7 +77,7 @@ function EventAddServices() {
 	   <div className="space-y-8">
 		 <div className="flex justify-between items-center">
 		   <div className="flex items-center">
-			 <i className="icon-back-arrow mr-4 text-2xl"></i>
+			 <i className="icon-back-arrow mr-4 text-2xl" onClick={clickBackHander}></i>
 			 <h1>{displayName}</h1>
 		   </div>
 		   <button onClick={()=>setIsAddServicesPopUpOpen(true)} className="btn-primary flex items-center"><i className="icon-plus mr-3"></i><span>{eventType === "hyp" ? "Add Service" : "Add Item"}</span></button>

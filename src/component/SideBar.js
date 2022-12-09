@@ -59,6 +59,12 @@ function SideBar() {
       localStorage.clear();
   }
 
+  const removeId =()=>{
+    localStorage.removeItem('eventId');
+    localStorage.removeItem('displayName');
+    localStorage.removeItem('stepCount');
+  }
+
   return (
     <div className="main flex min-h-screen">
       {/* <!-- Left Panel --> */}
@@ -73,7 +79,7 @@ function SideBar() {
           </Link>
         </div>
         <div className="nav">
-          <Link to="../dashboard" className="active" title="Dashboard">
+          <Link to="../dashboard" className="active" title="Dashboard" onClick={removeId}>
             <span>
               <i className="w-6 block text-center text-lg icon-deshbord"></i>
             </span>

@@ -13,7 +13,7 @@ function EventAboutPlace() {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const params = useParams();
-	const [banner, setBanner] = useState(null);
+	const [banner, setBanner] = useState("");
 	const [price, setPrice] = useState("");
 	const [priceType, setPriceType] = useState("per_hour");
 	const [about, setAbout] = useState("");
@@ -125,7 +125,7 @@ function EventAboutPlace() {
 	   <div className="space-y-8 h-full">
 		 {/* <!-- title-holder  -->/ */}
 		 <div className="flex justify-between items-center">
-		   <div className="flex items-center"><i className="icon-back-arrow mr-4 text-2xl"></i>
+		   <div className="flex items-center"><i className="icon-back-arrow mr-4 text-2xl" onClick={clickBackHander}></i>
 			 <h1>{displayName}</h1>
 		   </div>
 		 </div>

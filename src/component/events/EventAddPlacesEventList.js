@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { baseUrl } from '../../config';
 import Modal from "../modal/Modal";
@@ -9,17 +9,24 @@ import EventPopUpCreateNew from './popups/EventPopUpCreateNew';
 function EventAddPlacesEventList({ displayName, categoryName, eventId }) {
     const [isCreateNewPopUpOpen, setIsCreateNewPopUpOpen] = useState(false);
     const navigate = useNavigate();
-    const token = localStorage.getItem("Token");;
+    const token = localStorage.getItem("Token");
+    const params = useParams();
+    const eventType = params.eventType;
+    const event = localStorage.getItem("eventId");
     const header = {
         'Authorization': `Token ${token}`
     }
     const deleteClickHandler = async() => {
         try {
-			const response = await axios.delete(`${baseUrl}/api/event/type?id=${eventId}`,{headers: header});
-			// console.log("deleted event >> ",response.data);
+			const response = await axios.post(`${baseUrl}/organizer/events/remove`,{eventid:event},{headers: header});
+			console.log("deleted event >> ",response.data);
             if(response.data.isSuccess === true) {
-                navigate("../");
-            }
+                localStorage.removeItem('eventId');
+                localStorage.removeItem('displayName');
+                localStorage.removeItem('stepCount');
+                navigate('../')
+                alert("Deleted")
+                }
 		} catch (error) {
 			console.log(error);
         }

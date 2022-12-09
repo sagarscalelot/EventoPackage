@@ -55,7 +55,7 @@ const removeImageClick = async(index) => {
 	}
 	try{
 		const res = await axios.post(`${baseUrl}/organizer/events/media`, reqObj, {headers: header});
-		// console.log(res);
+		console.log("Image>>",res);
 		if(res.data.IsSuccess) {
 			toast.success("Image removed Successfully.");
 			getMedia();
@@ -80,7 +80,7 @@ const removeVideoClick = async(index) => {
 	}
 	try{
 		const res = await axios.post(`${baseUrl}/organizer/events/media`, reqObj, {headers: header});
-		console.log(res);
+		console.log("Video>>",res);
 		if(res.data.IsSuccess) {
 			toast.success("Video removed Successfully.");
 			getMedia();
@@ -94,7 +94,7 @@ const removeVideoClick = async(index) => {
 const clickNextHandler = () => {
 	toast.success("Data saved successfully.");
 	dispatch(increment());
-	if(eventType === "group_skills") navigate(`../additem`);
+	if(eventType === "gsb") navigate(`../additem`);
 	else navigate(`../addservices`);
 }
 
@@ -111,7 +111,7 @@ const clickBackHander = () => {
 	   <div className="space-y-8 h-full">
 		 {/* <!-- title-holder  --> */}
 		 <div className="flex justify-between items-center">
-		   <div className="flex items-center"><i className="icon-back-arrow mr-4 text-2xl"></i><h1>{displayName}</h1></div>
+		   <div className="flex items-center"><i className="icon-back-arrow mr-4 text-2xl" onClick={clickBackHander}></i><h1>{displayName}</h1></div>
 		 </div>
 		 {/* <!-- step-progress-bar  --> */}
 		 <StepProgressBar eventType={eventType} />
