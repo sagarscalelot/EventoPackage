@@ -11,7 +11,7 @@ import myImg from '../../assest/images/big-dish.png';
 function DashboardEventCategoryItem({data}) {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
-	const eventId = localStorage.getItem("eventId");
+	var eventId = localStorage.getItem("eventId");
 	const [category, setCategory] = useState([]);
 	// const [isLive, setIsLive] = useState(false);
 	// const [category, setCategory] = useState({});
@@ -48,7 +48,7 @@ function DashboardEventCategoryItem({data}) {
 			  <div className="max-w-xs h-[200px] w-full">
 				{/* {data?.place_event[0]?.place_banner && <img className="object-cover w-full h-full" src={baseUrl+"/api"+data?.place_event[0]?.place_banner || bannerPreview} />} */}
 				{/* {!data?.place_event[0]?.place_banner && <img className="object-cover w-full h-full" src={bannerPreview} />} */}
-				<img className="object-cover w-full h-full" src={bannerPreview } />
+				<img className="object-cover w-full h-full" src={(data && data.aboutplace && data.aboutplace.banner && data.aboutplace.banner != '') ? (s3Url+"/"+data.aboutplace.banner) :  bannerPreview } />
 				</div>
 				<div className="w-full">
 				  <div className="flex justify-between border-b-2 pb-4">

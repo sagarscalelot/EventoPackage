@@ -20,13 +20,11 @@ function EventAddPlacesEventList({ displayName, categoryName, eventId }) {
         try {
 			const response = await axios.post(`${baseUrl}/organizer/events/remove`,{eventid:event},{headers: header});
 			console.log("deleted event >> ",response.data);
-            if(response.data.isSuccess === true) {
                 localStorage.removeItem('eventId');
                 localStorage.removeItem('displayName');
                 localStorage.removeItem('stepCount');
-                navigate('../')
-                alert("Deleted")
-                }
+                navigate(-1);
+                
 		} catch (error) {
 			console.log(error);
         }
