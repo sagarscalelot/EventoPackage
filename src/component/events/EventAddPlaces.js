@@ -49,7 +49,7 @@ function EventAddPlaces() {
 		toast.success("Data Saved Successfully.");
 		dispatch(increment());
 		if(eventType === "hyp" ) navigate(`../aboutplace`);
-		else navigate(`../personaldetails/`);
+		else navigate(`../personalinfo`);
 	};
 
 	const clickBackHander = () => {

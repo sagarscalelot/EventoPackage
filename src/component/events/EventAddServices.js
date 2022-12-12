@@ -29,6 +29,7 @@ function EventAddServices() {
 		'Authorization': `Token ${token}`
 	}
 	const getServiceList = async() => {
+		if(eventType === "hyp")
 		try {
 			const response = await axios.get(`${baseUrl}/organizer/events/listservice`, {headers: header});
 			console.log("services >>",response);
@@ -51,6 +52,30 @@ function EventAddServices() {
 			toast.error("Something Went wrong.");
 			console.log(error);
 		}
+		else
+		 try {
+			const response = await axios.get(`${baseUrl}/organizer/events/listequipment`, {headers: header});
+			console.log("services >>",response);
+			if(response.data.Data) {
+				setServiceList(response.data.Data);
+				setLoading(false);
+				const responseActive = await axios.get(`${baseUrl}/organizer/events/getselectequipment?eventid=${eventId}`, {headers: header});
+				console.log("Active services>> ",responseActive);
+				if(responseActive.data.Data.services) {
+					const temp = responseActive.data.Data.services.map(e => {
+						return e._id
+					})
+					setActiveList(temp);
+				}
+			}
+			if(!response.data.IsSuccess) {
+				toast.error("Enable To Fetch Data.");
+			}
+		} catch (error) {
+			toast.error("Something Went wrong.");
+			console.log(error);
+		};
+		
 	}
 	console.log(serviceList);
 
@@ -93,6 +118,7 @@ function EventAddServices() {
 			data-testid="loader"
 		/>
 		 <div className="pt-5 space-y-3">
+		 
 		   { serviceList?.map(element => <EventAddServicesListItem data={element} key={element._id} eventId={eventId} edit={true} setReload={setReload} activeList={activeList} setActiveList={setActiveList} /> )}
 		   
 		 </div>

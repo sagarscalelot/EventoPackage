@@ -41,10 +41,10 @@ function EventAddServiceListItem({data, edit, eventId, setReload, setActiveList,
 		try {
 			if(e.target.checked) {
 				serviceList = [...activeList, data._id];
-				// console.log("Checked");
+				console.log("Checked");
 			} else {
 				serviceList = [...activeList.filter(e => e !== data._id)];
-				// console.log("Not Checked");
+				console.log("Not Checked");
 			}
 			console.log(serviceList);
 			const response = await axios.post(`${baseUrl}/organizer/events/selectservice`, {eventid: eventId, services: serviceList}, {headers: header});

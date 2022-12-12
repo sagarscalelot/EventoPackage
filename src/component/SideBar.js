@@ -10,6 +10,7 @@ import EventCalender from "./events/EventCalender";
 import EventAddPlaces from "./events/EventAddPlaces";
 import EventAboutPlace from "./events/EventAboutPlace";
 import EventPersonalDetails from "./events/EventPersonalDetails";
+import EventPSB from './events/EventPSB'
 import EventPhotosAndVideos from "./events/EventPhotosAndVideos";
 import EventAddServices from "./events/EventAddServices";
 import EventCapacity from "./events/EventCapacity";
@@ -244,6 +245,7 @@ function SideBar() {
                     <Route path="addplaces" element={<EventAddPlaces />} />
                     <Route path="aboutplace" element={<EventAboutPlace />} />
                     <Route path="personaldetails" element={<EventPersonalDetails />} />
+                    <Route path="personalinfo" element={<EventPSB />} />
                     <Route path="photosandvideos" element={<EventPhotosAndVideos />} />
                     <Route path="addservices" element={<EventAddServices />} />
                     <Route path="capacity" element={<EventCapacity />} />
