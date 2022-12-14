@@ -95,7 +95,8 @@ const clickNextHandler = () => {
 	toast.success("Data saved successfully.");
 	dispatch(increment());
 	if(eventType === "gsb") navigate(`../additem`);
-	else navigate(`../addservices`);
+	else if(eventType === "psb") navigate(`../addequipments`);
+	else navigate(`../addservices`)
 }
 
 const clickBackHander = () => {

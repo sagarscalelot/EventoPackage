@@ -31,6 +31,7 @@ import Notification from "./Notification/Notification";
 import Profile from "./other/Profile";
 import { toast, ToastContainer } from "react-toastify";
 import OurProducts from "./other/OurProducts";
+import EventAddEquipments from "./events/EventAddEquipments";
 
 function SideBar() {
 
@@ -238,7 +239,7 @@ function SideBar() {
           <Routes>
             <Route index element={<SelectWhoYouAre />} />
             <Route path="event">
-              <Route path="event-view/:eventId" element={<DashboardEventView /> } />
+              <Route path="event-view/:eventType" element={<DashboardEventView /> } />
               <Route path=":eventType" >
                 <Route index element={<DashboardEvent />} />
                   {/* <Route path=":eventId"> */}
@@ -248,6 +249,7 @@ function SideBar() {
                     <Route path="personalinfo" element={<EventPSB />} />
                     <Route path="photosandvideos" element={<EventPhotosAndVideos />} />
                     <Route path="addservices" element={<EventAddServices />} />
+                    <Route path="addequipments" element={<EventAddEquipments />} />
                     <Route path="capacity" element={<EventCapacity />} />
                     <Route path="companydetails" element={<EventCompanyDetails />} />
                     <Route path="termsandconditions" element={<EventTermsAndConditions />} />

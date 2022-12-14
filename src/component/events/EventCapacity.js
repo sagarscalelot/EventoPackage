@@ -30,7 +30,10 @@ function EventCapacity() {
     address: "",
     location: {
       type: "Point",
-      coordinates: []
+      coordinates: [
+        72.807623,
+        21.221723
+      ]
     }
 	}
   

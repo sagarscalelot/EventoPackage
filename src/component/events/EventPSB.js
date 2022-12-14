@@ -18,6 +18,8 @@ function EventPersonalDetails() {
 	const dispatch = useDispatch();
 	const eventType = params.eventType;
   const [imageList, setImageList] = useState([]);
+	const [price, setPrice] = useState("");
+	const [priceType, setPriceType] = useState("per_hour");
 	const eventId = localStorage.getItem("eventId");
 
   const [banner, setBanner] = useState("");
@@ -59,12 +61,8 @@ function EventPersonalDetails() {
 	}
 	const [mobileNoHidden, setMobileNoHidden] = useState(false);
 	const [emailHidden, setEmailHidden] = useState(false);
-
 	const clickNextHandler = async (values) => {
-		const requestObj = { ...values, is_mobile_no_hidden: mobileNoHidden, is_email_hidden: emailHidden, banner: banner,  eventid: eventId };
-    console.log("requestObj", requestObj);
-		console.log("values >> ",requestObj);
-		// console.log(requestObj);
+		const requestObj = { ...values, is_mobile_no_hidden: mobileNoHidden, is_email_hidden: emailHidden,price: price, price_type: priceType, banner: banner,  eventid: eventId };
 		try {
 			const response = await axios.post(`${baseUrl}/organizer/events/personaldetail`, requestObj, {headers: header});
 			console.log("Personal details > ", response);		
@@ -95,7 +93,7 @@ function EventPersonalDetails() {
         const response = await axios.post(`${baseUrl}/organizer/events/banner`, formData, {headers: imageHeader});
         if(response.data.IsSuccess) {
     setBanner(response.data.Data.url);
-            console.log(response)
+            console.log(response.data.Data.url)
             toast.success(response.data.Message);
         } else {
             toast.error(response.data.Message);
@@ -142,7 +140,9 @@ try {
 			console.log("Get Personal details > ", response);
 			if(response.data.Data.personaldetail) {
 				formik.setValues(response.data.Data.personaldetail);
-        setBanner(response.data.Data.personaldetail.banner[0].url);
+        setBanner(response.data.Data.personaldetail.banner);
+				setPrice(response.data.Data.personaldetail.price);
+				setPriceType(response.data.Data.personaldetail.price_type);
 			}
 			if(!response.data.IsSuccess) {
 				toast.error("Error occured while fetching data.");
@@ -223,6 +223,38 @@ try {
 				 <span className="input-titel mt-1"><i className="icon-image mr-2"></i>Upload Images</span>
 			   </label>
 				<span className="input-titel ml-2">{banner ? (banner.name || banner) : "Please select Images"}</span>
+		   </div>
+			 <div className="w-full">
+			 <span className="input-titel">Price</span>
+			 <label htmlFor="" className="flex items-center w-full bg-white p-2 px-3.5 rounded-md">
+			   <div className="w-full px-3.5">
+				 <input type="text" className="w-full outline-none text-spiroDiscoBall font-bold text-base"
+				   value={price} onChange={(e) => setPrice(e.target.value)} />
+			   </div>
+			   <div className="selectPrice flex items-center space-x-3">
+				 <label className="block cursor-pointer">
+				   <input type="radio" name="price" value="per_day" checked={priceType === "per_day" && true} className="hidden" onChange={(e) => setPriceType("per_day")} />
+				   <span
+					 className="text-sm text-quicksilver py-2 px-3 bg-white shadow-lg whitespace-nowrap font-bold rounded block">
+					 Per / Day
+				   </span>
+				 </label>
+				 <label className="block cursor-pointer">
+				   <input type="radio" name="price" value="per_hour" className="hidden" defaultChecked onChange={(e) => setPriceType("per_hour")} />
+				   <span
+					 className="text-sm text-quicksilver py-2 px-3 bg-white shadow-lg whitespace-nowrap font-bold rounded block">
+					 Per / Hour
+				   </span>
+				 </label>
+				 <label className="block cursor-pointer">
+				   <input type="radio" name="price" value="per_event" className="hidden" checked={priceType === "per_event" && true} onChange={(e) => setPriceType("per_event")} />
+				   <span
+					 className="text-sm text-quicksilver py-2 px-3 bg-white shadow-lg whitespace-nowrap font-bold rounded block">
+					 Per / Event
+				   </span>
+				 </label>
+			   </div>
+			 </label>
 		   </div>
                 <div className="space-y-5">
                     <h3 className="px-2">Address</h3>
