@@ -31,7 +31,7 @@ function EventAddServices() {
 	const getServiceList = async() => {
 		try {
 			const response = await axios.get(`${baseUrl}/organizer/events/listservice?eventid=${eventId}`, {headers: header});
-			console.log("services >>",response);
+			console.log("services >>",response.data);
 			if(response.data.Data) {
 				setServiceList(response.data.Data);
 				setLoading(false);

@@ -41,12 +41,12 @@ function EventAddServiceListItem({data, edit, eventId, setReload, setActiveList,
 		try {
 			if(e.target.checked) {
 				equipmentList = [...activeList, data._id];
-				console.log("Checked");
+				console.log("Checked",equipmentList );
 			} else {
 				equipmentList = [...activeList.filter(e => e !== data._id)];
-				console.log("Not Checked");
+				console.log("Not Checked", equipmentList);
 			}
-			console.log(equipmentList);
+			console.log("activeList>>>>>>",equipmentList);
 			const response = await axios.post(`${baseUrl}/organizer/events/selectequipment`, {eventid: eventId, equipments: equipmentList}, {headers: header});
 			setReload(current => !current);
 			console.log("Equipment active>> ",response);
@@ -80,11 +80,6 @@ function EventAddServiceListItem({data, edit, eventId, setReload, setActiveList,
 				   </div>
 				 </div>
 				<p className="text-quicksilver text-sm font-normal leading-6 pt-3 xl:max-w-[90%]"> {data.description} </p>
-				 {/* <p className="text-quicksilver text-sm font-normal leading-6 pt-3 xl:max-w-[90%]">Lorem Ipsum is simply dummy text of the
-				   printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever
-				   since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
-				   specimen book 
-				 </p> */}
 				 <h3 className="text-right">{data.price} INR</h3>
 			   </div>
 			 </div>

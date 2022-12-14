@@ -138,7 +138,7 @@ function EventPopUpAddService({isItem, handleClose, data, setReload, edit}) {
       //   }
       // });
       // console.log(requestObj);
-      const res = await axios.post(`${baseUrl}/organizer/events/addequipment`, requestObj, { headers: header });
+      const res = await axios.post(`${baseUrl}/organizer/events/addservice`, requestObj, { headers: header });
       console.log(res);
       setReload(current => !current);
       if(res.data.IsSuccess) {

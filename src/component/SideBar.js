@@ -257,21 +257,6 @@ function SideBar() {
                     <Route path="calender" element={<EventCalender />} />
                     <Route path="othercost" element={<PSBOtherCost />} />
                     <Route path="additem" element={<EventAddServices />} />
-                  {/* </Route> */}
-
-                {/* <Route path="addplaces/:eventId/:placeId" element={<EventAddPlaces />} />
-                <Route path="aboutplace/:eventId/:placeId" element={<EventAboutPlace />} />
-                <Route path="personaldetails/:eventId/:userId" element={<EventPersonalDetails />} />
-                <Route path="photosandvideos/:eventId/:userId" element={<EventPhotosAndVideos />} />
-                <Route path="addservices/:eventId/:userId" element={<EventAddServices />} />
-                <Route path="capacity/:eventId/:userId" element={<EventCapacity />} />
-                <Route path="companydetails/:eventId/:userId" element={<EventCompanyDetails />} />
-                <Route path="termsandconditions/:eventId/:userId" element={<EventTermsAndConditions />} />
-                <Route path="discounts/:eventId/:userId" element={<EventDiscounts />} />
-                <Route path="calender/:eventId/:userId" element={<EventCalender />} />
-                
-                <Route path="othercost/:eventId/:userId" element={<PSBOtherCost />} />
-                <Route path="additem/:eventId/:userId" element={<AddItem />} /> */}
               </Route>
             </Route>
 

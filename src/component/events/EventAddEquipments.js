@@ -36,9 +36,9 @@ function EventAddEquipments() {
 				setEquipmentList(response.data.Data);
 				setLoading(false);
 				const responseActive = await axios.get(`${baseUrl}/organizer/events/getselectequipment?eventid=${eventId}`, {headers: header});
-				console.log("Active services>> ",responseActive);
-				if(responseActive.data.Data.services) {
-					const temp = responseActive.data.Data.services.map(e => {
+				console.log("Active equipments >> ",responseActive);
+				if(responseActive.data.Data.equipments) {
+					const temp = responseActive.data.Data.equipments.map(e => {
 						return e._id
 					})
 					setActiveList(temp);
@@ -59,7 +59,7 @@ function EventAddEquipments() {
 	},[isAddServicesPopUpOpen, reload]);
 
 	const clickNextHandler = () => {
-		toast.success("Services saved Successfully.");
+		toast.success("Equipment saved Successfully.");
 		dispatch(increment());
 		if(eventType === "hyp") navigate(`../capacity`);
 		else navigate(`../othercost`);
