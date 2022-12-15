@@ -33,7 +33,7 @@ import { toast, ToastContainer } from "react-toastify";
 import OurProducts from "./other/OurProducts";
 import NotificationDetails from "./Notification/NotificationDetails";
 import SelectBusiness from './Notification/SelectBusiness'
-import SelectBusinessPromote from "./Notification/SelectBusinessPromote"
+import SelectBusinessPromote from "./Notification/PersonalSkillBusinessPromote"
 
 function SideBar() {
 
@@ -288,6 +288,7 @@ function SideBar() {
 
             {/* header link */}
             <Route path="chatbot" element={<Chatbot />} />
+            <Route path="notification" element={<Notification />} />
             <Route path="notification">
               <Route index element={<Notification />} />
               <Route path="details" element={<NotificationDetails />} />
@@ -295,9 +296,8 @@ function SideBar() {
                 <Route index element={<SelectBusiness />} />
                 <Route path="selectbusinesspromot" element={<SelectBusinessPromote />} />
               </Route>
+
             </Route>
-
-
           </Routes>
         </div>
       </div>
