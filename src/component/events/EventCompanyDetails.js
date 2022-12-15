@@ -319,7 +319,7 @@ function EventCompanyDetails() {
                     <div className="w-full flex flex-wrap">
                       <div className="w-full md:w-1/3 px-2 inputHolder">
                           <span className="input-titel">Flat No.</span>
-                          <input type="text" className="input" name="area" value={formik.values?.area} onChange={(e) => setInputValue("area", e.target.value)} />
+                          <input type="text" className="input" name="flat_no" value={formik.values?.flat_no} onChange={(e) => setInputValue("flat_no", e.target.value)} />
 						  <small className="text-red-500 text-xs">{formik.errors.area}</small>
 						  <br/>
                       </div>

@@ -132,12 +132,6 @@ function EventPopUpAddService({isItem, handleClose, data, setReload, edit}) {
         }
       }
       requestObj.photos.push({url: url || image});
-      // Object.keys(requestObj).forEach(key => {
-      //   if (requestObj[key] === null) {
-      //     delete requestObj[key];
-      //   }
-      // });
-      // console.log(requestObj);
       const res = await axios.post(`${baseUrl}/organizer/events/addservice`, requestObj, { headers: header });
       console.log(res);
       setReload(current => !current);

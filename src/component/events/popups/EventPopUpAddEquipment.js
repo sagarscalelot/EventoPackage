@@ -32,8 +32,8 @@ function EventPopUpAddEquipment({isItem, handleClose, data, setReload, edit}) {
       setDescription(data.description);
       setPriceType(data.price_type);
       setQuantity(data.quantity);
-      setImage(data.photos[0].url)
-      setVideo(data.videos[0].url)
+      setImage(data.photos[0]?.url)
+      setVideo(data.videos[0]?.url)
     }
   },[handleClose, data, edit]);
 
@@ -146,6 +146,7 @@ function EventPopUpAddEquipment({isItem, handleClose, data, setReload, edit}) {
     photos: [],
     videos:[]
 }
+if(edit) requestObj.equipmentid = data._id;
   const addServices = async() => {
 
     if(name.trim() === "" || price.trim() === "" || quantity.trim() === ""){
