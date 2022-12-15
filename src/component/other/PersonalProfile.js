@@ -95,6 +95,11 @@ function PersonalProfile({type, token, details}) {
         }
     }
 
+    useEffect(() => {
+        addProfilePic()
+    }, [])
+    
+
     const photoChangeHandler = (event) => {
 		const types = ['image/png', 'image/jpeg', 'image/jpg'];
 		let selected = event.target.files[0];

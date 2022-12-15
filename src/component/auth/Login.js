@@ -39,7 +39,7 @@ function Login() {
 				// console.log("Token", response.data.data.token);
 				setTimeout(() => {
 					navigate("/dashboard")
-				}, 500);
+				}, 200);
 			} else {
 				toast.error(response.data?.Message);
 			}

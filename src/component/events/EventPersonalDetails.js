@@ -6,7 +6,7 @@ import { useDispatch} from 'react-redux';
 import { decrement, increment } from '../../redux/stepProgressCount';
 import { baseUrl } from '../../config';
 import axios from 'axios';
-import { Formik, Form, Field, ErrorMessage, useFormik, validateYupSchema } from 'formik';
+import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { toast } from 'react-toastify';
 

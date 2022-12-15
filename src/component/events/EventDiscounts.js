@@ -11,7 +11,6 @@ import { decrement, increment } from '../../redux/stepProgressCount';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import { useRef } from 'react';
-import { current } from '@reduxjs/toolkit';
 
 function EventDiscounts() {
 	const displayName = localStorage.getItem("displayName");

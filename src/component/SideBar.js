@@ -31,16 +31,34 @@ import Notification from "./Notification/Notification";
 import Profile from "./other/Profile";
 import { toast, ToastContainer } from "react-toastify";
 import OurProducts from "./other/OurProducts";
+import {baseUrl, s3Url} from "../config";
+import axios from 'axios';
 import EventAddEquipments from "./events/EventAddEquipments";
 
 function SideBar() {
 
   const [languagePopup, setLanguagePopup] = useState(false);
+  const [profilepic, setProfilepic] = useState({});
+
   const navigate = useNavigate();
   const token = localStorage.getItem("Token") || null;
 	const header = {
 		'Authorization': `Token ${token}`
 	}
+
+  const getProfile = async() => {
+		try {
+			const response = await axios.get(`${baseUrl}/organizer/profile`, {headers: header});
+			// console.log("response.data.Data",response.data.Data);
+     setProfilepic(response.data.Data.profile_pic)
+		} catch (error) {
+			console.log(error);
+		}
+	}
+
+    useEffect(() => {
+        getProfile();
+    },[]);
 
   useEffect(() => {
     if (token == null) return navigate("../auth/login")
@@ -57,7 +75,7 @@ function SideBar() {
       toast.success("Logout successfully.")
     setTimeout(() => {
       navigate("../auth/login");
-    }, 500);
+    }, 200);
       localStorage.clear();
   }
 
@@ -211,7 +229,7 @@ function SideBar() {
               </Link>
               <div className="block por">
                 <img
-                  src={userImage}
+                  src={profilepic ? (s3Url+'/'+profilepic) :Profile}
                   alt="user name"
                   className="w-12 h-12 object-cover rounded-2xl relative"
                 />
@@ -279,7 +297,7 @@ function SideBar() {
       </div>
       <ToastContainer
 					position="bottom-right"
-					autoClose={5000}
+					autoClose={2000}
 					hideProgressBar={false}
 					newestOnTop={false}
 					closeOnClick

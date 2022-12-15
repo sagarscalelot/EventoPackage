@@ -10,7 +10,6 @@ import { baseUrl, s3Url } from "../../config";
 import { decrement, increment } from '../../redux/stepProgressCount';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
-import { current } from '@reduxjs/toolkit';
 
 function EventPhotosAndVideos() {
 	const displayName = localStorage.getItem("displayName");

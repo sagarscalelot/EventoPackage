@@ -31,12 +31,12 @@ function EventAddServices() {
 	const getServiceList = async() => {
 		try {
 			const response = await axios.get(`${baseUrl}/organizer/events/listservice?eventid=${eventId}`, {headers: header});
-			console.log("services >>",response.data);
+			console.log("services >>",response.data.Data);
 			if(response.data.Data) {
 				setServiceList(response.data.Data);
 				setLoading(false);
 				const responseActive = await axios.get(`${baseUrl}/organizer/events/getselectservice?eventid=${eventId}`, {headers: header});
-				console.log("Active services>> ",responseActive);
+				console.log("Active services>> ",responseActive.data.Data.services);
 				if(responseActive.data.Data.services) {
 					const temp = responseActive.data.Data.services.map(e => {
 						return e._id

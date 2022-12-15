@@ -21,7 +21,7 @@ function ForgatePassword() {
                     // false for navigating to new password page
                     setTimeout(() => {
                         navigate(`../verify/${phoneNo}/false`);
-                    }, 500);
+                    }, 200);
                 }
                 else {
                     toast.warn(response.data?.Message);

@@ -4,10 +4,9 @@ import Advertisement from '../Advertisement';
 import StepProgressBar from './StepProgressBar';
 import { useDispatch} from 'react-redux';
 import { decrement, increment } from '../../redux/stepProgressCount';
-import { baseUrl,s3Url } from '../../config';
+import { baseUrl } from '../../config';
 import axios from 'axios';
-import { Formik, Form, Field, ErrorMessage, useFormik, validateYupSchema } from 'formik';
-import { imageType, videoType } from '../../shared/constants';
+import { useFormik} from 'formik';
 import * as Yup from 'yup';
 import { toast } from 'react-toastify';
 
@@ -17,13 +16,11 @@ function EventPersonalDetails() {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const eventType = params.eventType;
-  const [imageList, setImageList] = useState([]);
 	const [price, setPrice] = useState("");
 	const [priceType, setPriceType] = useState("per_hour");
 	const eventId = localStorage.getItem("eventId");
 
   const [banner, setBanner] = useState("");
-	const [errorMessage, setErrorMessage] = useState("");	
 	const displayName = localStorage.getItem("displayName");
 	const token = localStorage.getItem("Token");
 	const header = {
