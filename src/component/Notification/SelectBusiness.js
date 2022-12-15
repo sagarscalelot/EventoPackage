@@ -8,17 +8,13 @@ import SelectBusinessCard from "./SelectBusinessCard";
 import { decrement, increment } from '../../redux/stepProgressCount'
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDispatch } from 'react-redux';
-import StepPogressBarNotification from "./StepPogressBarNotification";
-import { getNotificationType } from "../../shared/helper";
-import StepProgressBar from "../events/StepProgressBar";
+import Advertisement from "../Advertisement";
 
 function SelectBusiness() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const params = useParams();
-  const eventType = params.eventType;
 
-  const notificationType = getNotificationType(params.notificationType);
 
   const clickBackHander = () => {
     dispatch(decrement());
@@ -32,9 +28,7 @@ function SelectBusiness() {
           <h1>Promot</h1>
         </div>
       </div>
-      {/* <!-- step-progress-bar  --> */}
-      <StepProgressBar eventType={eventType} />
-      <StepPogressBarNotification notificationType={notificationType} />
+
       <h3>Select Business</h3>
       <div className="flex flex-wrap justify-center pt-4 -mx-4">
         {/* Have you Places */}
@@ -113,6 +107,9 @@ function SelectBusiness() {
           </div>
         </Link>
       </div>
+
+      {/* Advertisement */}
+      <Advertisement className="mt-auto" />
     </div>
   );
 }
