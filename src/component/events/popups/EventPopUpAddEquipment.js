@@ -6,7 +6,7 @@ import { baseUrl, s3Url } from '../../../config';
 import { useNavigate, useParams } from 'react-router-dom';
 import { imageType, onlyDigits,videoType } from '../../../shared/constants';
 
-function EventPopUpAddService({isItem, handleClose, data, setReload, edit}) {
+function EventPopUpAddEquipment({isItem, handleClose, data, setReload, edit}) {
 
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
@@ -261,4 +261,4 @@ function EventPopUpAddService({isItem, handleClose, data, setReload, edit}) {
   )
 }
 
-export default EventPopUpAddService
+export default EventPopUpAddEquipment

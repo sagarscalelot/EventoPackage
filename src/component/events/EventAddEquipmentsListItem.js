@@ -6,7 +6,7 @@ import Modal from '../modal/Modal';
 import EventPopUpAddEquipment from './popups/EventPopUpAddEquipment';
 import imagePreview from "../../assest/images/image-preview.png";
 
-function EventAddServiceListItem({data, edit, eventId, setReload, setActiveList, activeList}) {
+function EventAddEquipmentsListItem({data, edit, eventId, setReload, setActiveList, activeList}) {
 	
 	const [isAddServicesPopUpOpen, setIsAddServicesPopUpOpen] = useState(false);
 	const [isLive, setIsLive] = useState(false);
@@ -90,4 +90,4 @@ function EventAddServiceListItem({data, edit, eventId, setReload, setActiveList,
   )
 }
 
-export default EventAddServiceListItem;
+export default EventAddEquipmentsListItem;
