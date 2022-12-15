@@ -1,9 +1,7 @@
 import axios from 'axios';
-import { event } from 'jquery';
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { baseUrl, s3Url } from '../../../config';
-import { useNavigate, useParams } from 'react-router-dom';
 import { imageType, onlyDigits,videoType } from '../../../shared/constants';
 
 function EventPopUpAddEquipment({isItem, handleClose, data, setReload, edit}) {
@@ -22,8 +20,7 @@ function EventPopUpAddEquipment({isItem, handleClose, data, setReload, edit}) {
   const eventId = localStorage.getItem("eventId");
 	const [errorMessage, setErrorMessage] = useState("");
   const [errorMessage2, setErrorMessage2] = useState("");
-  const params = useParams();
-  const eventType = params.eventType;
+
 
   useEffect(()=> {
     if(data && edit) {

@@ -1,6 +1,5 @@
-import { current } from '@reduxjs/toolkit';
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, {  useState } from 'react';
 import { baseUrl, s3Url } from '../../config';
 import Modal from '../modal/Modal';
 import EventPopUpAddEquipment from './popups/EventPopUpAddEquipment';

@@ -50,8 +50,6 @@ function EventTermsAndConditions() {
         [name]: value,
       });
   };
-	// console.log(values);
-  // console.log(acceptTerm);
 
   const saveData = async() => {
     if(!acceptTerm) {

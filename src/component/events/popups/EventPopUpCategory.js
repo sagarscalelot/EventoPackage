@@ -46,7 +46,6 @@ function EventPopUpCategory({handleClose}) {
 			 </div>
 		   </form>
 		   <div className="btn-primary w-full uppercase" onClick={addCategory}>Submit</div>
-		   {/* <Link to="/" className="btn-primary w-full uppercase" onClick={addCategory}>Submit</Link> */}
 		 </div>
 	   </div>
 	 </div>

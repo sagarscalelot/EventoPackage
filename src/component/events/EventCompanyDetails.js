@@ -182,13 +182,11 @@ function EventCompanyDetails() {
 						console.log(error);
 					}
 				}
-				else {
-					// console.log("file size is greater than 3MB. File size is ", selected.size);
+				else {		
 					setErrorMessage("file size is greater than "+size+" MB");
 					setError(true);
 				}
 			} else {
-				// console.log("please select valid image file. File type is ", selected.type);
 				setErrorMessage("please select valid image file.");
 				setError(true);
 			}
@@ -243,11 +241,9 @@ function EventCompanyDetails() {
 	}  
 
 	const removeImageClick = async(index) => {
-		// console.log(index)
 		const tmpList = imageList;
 		tmpList.splice(index, 1);
 		setImageList([...tmpList]);
-		// console.log(tmpList);
 	}
 	
 	const removeVideoClick = async(index) => {
