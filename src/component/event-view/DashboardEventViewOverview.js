@@ -20,12 +20,16 @@ import dish2Video from "../../assest/images/dish-video-2.png";
 import dish3Video from "../../assest/images/dish-video-3.png";
 import dish4Video from "../../assest/images/dish-video-4.png";
 import dish5Video from "../../assest/images/dish-video-5.png";
-import { baseUrl,s3Url } from '../../config';
+import { baseUrl, s3Url } from '../../config';
 
 
-function DashboardEventViewOverview({data, capacity, socials, company, service}) {
+function DashboardEventViewOverview({ data, capacity, socials, company, service }) {
     const [preview, setPreview] = useState(false);
-    console.log(service)
+    console.log("data  : ", data)
+    // console.log(" capacity: ", capacity)
+    // console.log(" socials: ", socials)
+    // console.log(" company: ", company)
+    // console.log(" service: ", service)
     return (
         <div className="pt-7 lg:pt-10">
             {/* <!--overview-tab-contents --> */}
@@ -34,8 +38,8 @@ function DashboardEventViewOverview({data, capacity, socials, company, service})
                     {/* <!-- left-bar --> */}
                     <div className="w-full lg:w-8/12 lg:pr-5 space-y-7">
                         <div className="p-7 bg-white rounded-md space-y-1">
-                            <h3>Farm Area</h3>
-                            <p className="text-quicksilver text-sm font-normal">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                            <h3>---Farm Area---</h3>
+                            <p className="text-quicksilver text-sm font-normal">{data.aboutplace.details}</p>
                         </div>
                         {/* <!-- Photo-holder --> */}
                         {data?.photos?.length > 0 && <div className="media-upload-holder">
@@ -48,7 +52,7 @@ function DashboardEventViewOverview({data, capacity, socials, company, service})
                             <div className="w-full">
                                 <div className="flex flex-wrap -mx-2" onClick={() => setPreview(true)} >
                                     {data?.photos?.map(e => (
-                                        <DashboardEventViewOverviewPhoto key={e.id} alt={e.description} imageUrl={s3Url+"/"+e.photos} />
+                                        <DashboardEventViewOverviewPhoto key={e.id} alt={e.description} imageUrl={s3Url + "/" + e.photos} />
                                     ))}
                                 </div>
                             </div>
@@ -64,7 +68,7 @@ function DashboardEventViewOverview({data, capacity, socials, company, service})
                             <div className="w-full">
                                 <div className="flex flex-wrap -mx-2">
                                     {data?.video?.map(e => (
-                                        <DashboardEventViewOverviewVideo key={e.id} videoUrl={baseUrl+"/api"+e.thumbnail} />
+                                        <DashboardEventViewOverviewVideo key={e.id} videoUrl={baseUrl + "/api" + e.thumbnail} />
                                     ))}
                                 </div>
                             </div>
@@ -73,30 +77,30 @@ function DashboardEventViewOverview({data, capacity, socials, company, service})
                         <div className="space-y-1.5">
                             <h3 className="text-lg">Service</h3>
                             {
-                                service?.map(e => 
+                                service?.map(e =>
                                     <div className="flex justify-between bg-white rounderd px-7 py-4">
                                         <div className="">
                                             <div className="w-28 h-28 border-2 border-brightGray rounded-md">
-                                                <img src={(e && e.aboutplace && e.aboutplace.banner && e.aboutplace.banner != '') ? (s3Url+"/"+e.aboutplace.banner) :  bigDishImage } alt="cutting-board" className="w-full h-full object-cover" />
+                                                <img src={(e && e.aboutplace && e.aboutplace.banner && e.aboutplace.banner != '') ? (s3Url + "/" + e.aboutplace.banner) : bigDishImage} alt="cutting-board" className="w-full h-full object-cover" />
                                             </div>
                                         </div>
                                         <div className="w-full pl-5">
                                             <div className="flex justify-between">
-                                                <h3>{e?.selected_service[0]?.service_name }</h3>
+                                                <h3>{e?.selected_service[0]?.service_name}</h3>
                                                 {/* <h3>Cutting board</h3> */}
                                                 <div className="flex items-center space-x-1">
-                                                    <h3>{e?.selected_service[0]?.service_price } INR P/P</h3>
-                                                    <h3 className="text-spiroDiscoBall">{e?.selected_service[0]?.service_quantity } Qty</h3>
+                                                    <h3>{e?.selected_service[0]?.service_price} INR P/P</h3>
+                                                    <h3 className="text-spiroDiscoBall">{e?.selected_service[0]?.service_quantity} Qty</h3>
                                                 </div>
                                             </div>
                                             <p className="text-quicksilver text-sm font-normal leading-6 pt-3">
-                                            {e?.selected_service[0]?.service_desc}</p>
-                                                {/* <p className="text-quicksilver text-sm font-normal leading-6 pt-3">Lorem Ipsum is simply dummy text of the
+                                                {e?.selected_service[0]?.service_desc}</p>
+                                            {/* <p className="text-quicksilver text-sm font-normal leading-6 pt-3">Lorem Ipsum is simply dummy text of the
                                                 printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever
                                                 since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
                                                 specimen book </p> */}
                                         </div>
-                                    </div>    
+                                    </div>
                                 )
                             }
                         </div>
@@ -141,32 +145,32 @@ function DashboardEventViewOverview({data, capacity, socials, company, service})
                         {/* <!-- Photo-holder --> */}
                         <div className="media-upload-holder">
                             {/* <!-- media titel  --> */}
-                           {company?.image?.length > 0 && <div className="flex justify-between items-center">
+                            {company?.image?.length > 0 && <div className="flex justify-between items-center">
                                 <h3 className="text-lg">Photo</h3>
                                 <a href="#" className="text-spiroDiscoBall text-sm font-bold">View All</a>
                             </div>}
                             {/* <!-- photo-holder --> */}
                             <div className="w-full">
                                 <div className="flex flex-wrap -mx-2">
-                                {company?.image?.map(e =>
-                                    <DashboardEventViewOverviewPhoto imageUrl={baseUrl+"/api"+e?.image} />
-                                )}
+                                    {company?.image?.map(e =>
+                                        <DashboardEventViewOverviewPhoto imageUrl={baseUrl + "/api" + e?.image} />
+                                    )}
                                 </div>
                             </div>
                         </div>
                         {/* <!-- videos-holder --> */}
                         <div className="media-upload-holder">
                             {/* <!-- media titel  --> */}
-                            {company?.video?.length > 0 &&<div className="flex justify-between items-center">
+                            {company?.video?.length > 0 && <div className="flex justify-between items-center">
                                 <h3 className="text-lg">Videos</h3>
                                 <a href="#" className="text-spiroDiscoBall text-sm font-bold">View All</a>
                             </div>}
                             {/* <!-- media-holder --> */}
                             <div className="w-full">
                                 <div className="flex flex-wrap -mx-2">
-                                {company?.video?.map(e => 
-                                    <DashboardEventViewOverviewVideo videoUrl={dish2Video} />
-                                )}
+                                    {company?.video?.map(e =>
+                                        <DashboardEventViewOverviewVideo videoUrl={dish2Video} />
+                                    )}
                                 </div>
                             </div>
                         </div>
