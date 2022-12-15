@@ -51,6 +51,7 @@ function PSBOtherCost() {
       const response = await axios.post(`${baseUrl}/organizer/events/othercost`, reqObj, { headers: header });
       if (response.data.IsSuccess) {
         toast.success(response.data.Message);
+        console.log("OtherCode",response);
         dispatch(increment());
         navigate(`../companydetails`);
       } else {
@@ -120,10 +121,10 @@ function PSBOtherCost() {
                       onChange={() => setTravelCostOn(!travelCostOn)}
                     />
                     <span className="off text-base font-bold anim order-1 text-caribbeanGreen">
-                      Include
+                      Exclude
                     </span>
                     <span className="on text-base font-bold anim order-3">
-                      Exclude
+                      Include
                     </span>
                   </div>
                   <div className="w-full px-8 py-5">
@@ -151,10 +152,10 @@ function PSBOtherCost() {
                       onChange={() => setAccommodationOn(!accommodationOn)}
                     />
                     <span className="off text-base font-bold anim order-1 text-caribbeanGreen">
-                      Include
+                      Exclude
                     </span>
                     <span className="on text-base font-bold anim order-3">
-                      Exclude
+                    Include
                     </span>
                   </div>
                   <div className="w-full px-8 py-5">
@@ -182,10 +183,10 @@ function PSBOtherCost() {
                       onChange={() => setFoodOn(!foodOn)}
                     />
                     <span className="off text-base font-bold anim order-1 text-caribbeanGreen">
-                      Include
+                      Exclude
                     </span>
                     <span className="on text-base font-bold anim order-3">
-                      Exclude
+                    Include
                     </span>
                   </div>
                   <div className="w-full px-8 py-5">

@@ -3,12 +3,12 @@ import Modal from "../../modal/Modal.js"
 import EventPopUpCategory from './EventPopUpCategory.js'
 import axios from "axios";
 import { baseUrl } from '../../../config.js';
-import { useNavigate, useParams } from 'react-router-dom';
+import {  useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { increment } from '../../../redux/stepProgressCount.js';
 import { toast } from 'react-toastify';
 import { getEventType } from '../../../shared/helper.js';
-import { WindowScrollController } from '@fullcalendar/core/internal.js';
+
 
 function EventPopUpCreateNew({ handleClose, selectedCategory, displayName, edit, eventId }) {
 
@@ -17,7 +17,7 @@ function EventPopUpCreateNew({ handleClose, selectedCategory, displayName, edit,
 	const [newCategoryId, setNewCategoryId] = useState(0);
 	const [newCategoryDisplayName, setNewCategoryDisplayName] = useState("");
 	const dispatch = useDispatch();
-	const navigate = useNavigate();
+
 	const params = useParams();
 	const eventType = getEventType(params.eventType);
 

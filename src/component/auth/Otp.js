@@ -74,7 +74,7 @@ function Otp() {
             } else {
               navigate(`../new-password/${username}`);
             }
-          }, 500);
+          }, 200);
         } else {
           toast.warn(response.data?.Message);
           localStorage.removeItem("key");

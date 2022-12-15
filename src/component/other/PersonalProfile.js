@@ -23,10 +23,12 @@ function PersonalProfile({type, token, details}) {
         address: "",
         country : "",
         about : "",
+        country_code:"",
+        phone_no:""
+
     }
 
     const [values, setValues] = useState(initalState);
-    console.log(values)
     const changeHandler = (e) => {
         const { name, value } = e.target;
         setValues({
@@ -43,7 +45,9 @@ function PersonalProfile({type, token, details}) {
             dob: details?.dob,
             address: details?.address,
             country: details?.country,
-            about: details?.about
+            about: details?.about,
+            country_code:details?.country_code,
+            phone_no:details?.phone_no
         })
     }, [details])
 
@@ -91,6 +95,11 @@ function PersonalProfile({type, token, details}) {
         }
     }
 
+    useEffect(() => {
+        addProfilePic()
+    }, [])
+    
+
     const photoChangeHandler = (event) => {
 		const types = ['image/png', 'image/jpeg', 'image/jpg'];
 		let selected = event.target.files[0];
@@ -112,7 +121,7 @@ function PersonalProfile({type, token, details}) {
             toast.error("Error while Selecting Image.");
 		}
 	}  
-
+    console.log('details for personal', details);
   return (
     <>
       {/* <!-- title-holder  --> */}
@@ -128,7 +137,7 @@ function PersonalProfile({type, token, details}) {
                 <div className="flex items-center">
                     <div className="">
                         <div className="w-44 h-44 rounded-full border-8 border-spiroDiscoBall relative mr-9">
-                            <img src={profileImage ? URL.createObjectURL(profileImage) : details?.profile_pic ? details?.s3Url+details?.profile_pic : previewImage} alt="" className="w-full h-full object-cover rounded-full overflow-hidden" />
+                            <img src={profileImage ? URL.createObjectURL(profileImage) : details?.profile_pic ? details?.s3Url+details?.profile_pic : previewImage} alt="pictures" className="w-full h-full object-cover rounded-full overflow-hidden" />
                             <div className="absolute bottom-0 right-0 flex justify-center items-center w-10 h-10 rounded-full bg-spiroDiscoBall z-10">
                                 <i className="icon-camera"></i>
                                 <input type="file" onChange={(e) => photoChangeHandler(e)}  className="opacity-0 absolute inset-0"/>
@@ -139,7 +148,7 @@ function PersonalProfile({type, token, details}) {
                     </div>
                     <div className="">
                         <h2>{details?.name}</h2>
-                        <p className="text-xl font-bold text-japaneseIndigo pt-2.5">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                        <p className="text-xl font-bold text-japaneseIndigo pt-2.5">{details?.about}</p>
                     </div>
                 </div>
                 {/* <!-- form Edit  --> */}
@@ -164,10 +173,10 @@ function PersonalProfile({type, token, details}) {
                                         <option>+625</option>
                                         <option>+001</option>
                                     </select> */}
-                                     <input type="text" className="text-base text-japaneseIndigo bg-white rounded-md flex space-x-3 profile-arrow outline-0 whitespace-nowrap pl-5 pr-10 py-3.5 relative w-28 font-bold" value={details?.country_code} disabled />
+                                     <input type="text" className="text-base text-japaneseIndigo bg-white rounded-md flex space-x-3 profile-arrow outline-0 whitespace-nowrap pl-5 pr-10 py-3.5 relative w-28 font-bold" value={values?.country_code} onChange={changeHandler} disabled={isDisable} />
                                 </div>
                                 <div className="max-w-full w-full inputHolder">
-                                    <input type="text" className="input font-bold" value={details?.phone_no} disabled />
+                                    <input type="text" className="input font-bold" value={values?.phone_no} disonChange={changeHandler} disabled={isDisable}abled />
                                 </div>
                             </div>
                         </div>

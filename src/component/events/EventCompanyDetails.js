@@ -182,13 +182,11 @@ function EventCompanyDetails() {
 						console.log(error);
 					}
 				}
-				else {
-					// console.log("file size is greater than 3MB. File size is ", selected.size);
+				else {		
 					setErrorMessage("file size is greater than "+size+" MB");
 					setError(true);
 				}
 			} else {
-				// console.log("please select valid image file. File type is ", selected.type);
 				setErrorMessage("please select valid image file.");
 				setError(true);
 			}
@@ -243,11 +241,9 @@ function EventCompanyDetails() {
 	}  
 
 	const removeImageClick = async(index) => {
-		// console.log(index)
 		const tmpList = imageList;
 		tmpList.splice(index, 1);
 		setImageList([...tmpList]);
-		// console.log(tmpList);
 	}
 	
 	const removeVideoClick = async(index) => {
@@ -319,7 +315,7 @@ function EventCompanyDetails() {
                     <div className="w-full flex flex-wrap">
                       <div className="w-full md:w-1/3 px-2 inputHolder">
                           <span className="input-titel">Flat No.</span>
-                          <input type="text" className="input" name="area" value={formik.values?.area} onChange={(e) => setInputValue("area", e.target.value)} />
+                          <input type="text" className="input" name="flat_no" value={formik.values?.flat_no} onChange={(e) => setInputValue("flat_no", e.target.value)} />
 						  <small className="text-red-500 text-xs">{formik.errors.area}</small>
 						  <br/>
                       </div>

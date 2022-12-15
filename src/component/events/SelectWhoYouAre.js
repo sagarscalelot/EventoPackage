@@ -2,10 +2,10 @@ import React from 'react'
 import haveYouPlacesSvg from "../../assest/svg/have-you-places.svg";
 import personalSkillBuisnesSvg from "../../assest/svg/personal-skills-business.svg";
 import groupSkillBuisnessSsvg from "../../assest/svg/group-skils-business.svg";
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function SelectWhoYouAre() {
-const navigate = useNavigate()
+
 
   return (
     <div className="wrapper">

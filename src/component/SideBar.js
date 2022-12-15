@@ -33,16 +33,36 @@ import { toast, ToastContainer } from "react-toastify";
 import OurProducts from "./other/OurProducts";
 import NotificationDetails from "./Notification/NotificationDetails";
 import SelectBusiness from './Notification/SelectBusiness'
-import SelectBusinessPromote from "./Notification/PersonalSkillBusinessPromote"
+import SelectBusinessPromote from "./Notification/SelectBusinessPromote"
+import { baseUrl, s3Url } from "../config";
+import axios from 'axios';
+import EventAddEquipments from "./events/EventAddEquipments";
+
 
 function SideBar() {
 
   const [languagePopup, setLanguagePopup] = useState(false);
+  const [profilepic, setProfilepic] = useState({});
+
   const navigate = useNavigate();
   const token = localStorage.getItem("Token") || null;
   const header = {
     'Authorization': `Token ${token}`
   }
+
+  const getProfile = async () => {
+    try {
+      const response = await axios.get(`${baseUrl}/organizer/profile`, { headers: header });
+      // console.log("response.data.Data",response.data.Data);
+      setProfilepic(response.data.Data.profile_pic)
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    getProfile();
+  }, []);
 
   useEffect(() => {
     if (token == null) return navigate("../auth/login")
@@ -59,8 +79,9 @@ function SideBar() {
     toast.success("Logout successfully.")
     setTimeout(() => {
       navigate("../auth/login");
-    }, 500);
+    }, 200);
     localStorage.clear();
+
   }
 
   const removeId = () => {
@@ -213,7 +234,7 @@ function SideBar() {
               </Link>
               <div className="block por">
                 <img
-                  src={userImage}
+                  src={profilepic ? (s3Url + '/' + profilepic) : Profile}
                   alt="user name"
                   className="w-12 h-12 object-cover rounded-2xl relative"
                 />
@@ -241,7 +262,7 @@ function SideBar() {
           <Routes>
             <Route index element={<SelectWhoYouAre />} />
             <Route path="event">
-              <Route path="event-view/:eventId" element={<DashboardEventView />} />
+              <Route path="event-view/:eventType" element={<DashboardEventView />} />
               <Route path=":eventType" >
                 <Route index element={<DashboardEvent />} />
                 {/* <Route path=":eventId"> */}
@@ -251,6 +272,7 @@ function SideBar() {
                 <Route path="personalinfo" element={<EventPSB />} />
                 <Route path="photosandvideos" element={<EventPhotosAndVideos />} />
                 <Route path="addservices" element={<EventAddServices />} />
+                <Route path="addequipments" element={<EventAddEquipments />} />
                 <Route path="capacity" element={<EventCapacity />} />
                 <Route path="companydetails" element={<EventCompanyDetails />} />
                 <Route path="termsandconditions" element={<EventTermsAndConditions />} />
@@ -258,21 +280,6 @@ function SideBar() {
                 <Route path="calender" element={<EventCalender />} />
                 <Route path="othercost" element={<PSBOtherCost />} />
                 <Route path="additem" element={<EventAddServices />} />
-                {/* </Route> */}
-
-                {/* <Route path="addplaces/:eventId/:placeId" element={<EventAddPlaces />} />
-                <Route path="aboutplace/:eventId/:placeId" element={<EventAboutPlace />} />
-                <Route path="personaldetails/:eventId/:userId" element={<EventPersonalDetails />} />
-                <Route path="photosandvideos/:eventId/:userId" element={<EventPhotosAndVideos />} />
-                <Route path="addservices/:eventId/:userId" element={<EventAddServices />} />
-                <Route path="capacity/:eventId/:userId" element={<EventCapacity />} />
-                <Route path="companydetails/:eventId/:userId" element={<EventCompanyDetails />} />
-                <Route path="termsandconditions/:eventId/:userId" element={<EventTermsAndConditions />} />
-                <Route path="discounts/:eventId/:userId" element={<EventDiscounts />} />
-                <Route path="calender/:eventId/:userId" element={<EventCalender />} />
-                
-                <Route path="othercost/:eventId/:userId" element={<PSBOtherCost />} />
-                <Route path="additem/:eventId/:userId" element={<AddItem />} /> */}
               </Route>
             </Route>
 
@@ -303,7 +310,7 @@ function SideBar() {
       </div>
       <ToastContainer
         position="bottom-right"
-        autoClose={5000}
+        autoClose={2000}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick
@@ -313,7 +320,7 @@ function SideBar() {
         pauseOnHover
         theme="colored"
       />
-    </div >
+    </div>
   );
 }
 

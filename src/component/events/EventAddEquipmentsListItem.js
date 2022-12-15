@@ -1,12 +1,11 @@
-
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, {  useState } from 'react';
 import { baseUrl, s3Url } from '../../config';
 import Modal from '../modal/Modal';
-import EventPopUpAddService from './popups/EventPopUpAddService';
+import EventPopUpAddEquipment from './popups/EventPopUpAddEquipment';
 import imagePreview from "../../assest/images/image-preview.png";
 
-function EventAddServiceListItem({data, edit, eventId, setReload, setActiveList, activeList}) {
+function EventAddEquipmentsListItem({data, edit, eventId, setReload, setActiveList, activeList}) {
 	
 	const [isAddServicesPopUpOpen, setIsAddServicesPopUpOpen] = useState(false);
 	const [isLive, setIsLive] = useState(false);
@@ -17,8 +16,8 @@ function EventAddServiceListItem({data, edit, eventId, setReload, setActiveList,
 	const deleteHandler = async() =>{
 		console.log(data._id);
 		try {
-			const response = await axios.post(`${baseUrl}/organizer/events/removeservice`, {serviceid: data._id}, {headers: header});
-			console.log("services Deleted >> ",response);
+			const response = await axios.post(`${baseUrl}/organizer/events/removeequipment`, {equipmentid: data._id}, {headers: header});
+			console.log("Equipment Deleted >> ",response);
 			setReload(current => !current);
 		} catch (error) {
 			console.log(error);
@@ -37,19 +36,19 @@ function EventAddServiceListItem({data, edit, eventId, setReload, setActiveList,
 	}
 
 	const toggleService = async(e) => {
-		let serviceList = [];
+		let equipmentList = [];
 		try {
 			if(e.target.checked) {
-				serviceList = [...activeList, data._id];
-				console.log("Checked");
+				equipmentList = [...activeList, data._id];
+				console.log("Checked",equipmentList );
 			} else {
-				serviceList = [...activeList.filter(e => e !== data._id)];
-				console.log("Not Checked");
+				equipmentList = [...activeList.filter(e => e !== data._id)];
+				console.log("Not Checked", equipmentList);
 			}
-			console.log(serviceList);
-			const response = await axios.post(`${baseUrl}/organizer/events/selectservice`, {eventid: eventId, services: serviceList}, {headers: header});
+			console.log("activeList>>>>>>",equipmentList);
+			const response = await axios.post(`${baseUrl}/organizer/events/selectequipment`, {eventid: eventId, equipments: equipmentList}, {headers: header});
 			setReload(current => !current);
-			console.log("services active>> ",response);
+			console.log("Equipment active>> ",response);
 		} catch (error) {
 			console.log("Something went Wrong.");
 			console.log(error);
@@ -61,7 +60,7 @@ function EventAddServiceListItem({data, edit, eventId, setReload, setActiveList,
 			 <div className="flex justify-between">
 			   <div className="">
 				 <div className="w-28 h-28 border-2 border-brightGray rounded-md">
-				   <img src={data?.photos[0].url ? s3Url+"/"+data.photos[0]?.url : imagePreview} alt="" className="w-full h-full object-cover"/>
+				   <img src={data?.photos[0]?.url ? s3Url+"/"+data.photos[0]?.url : imagePreview} alt="" className="w-full h-full object-cover"/>
 				 </div>
 			   </div>
 			   <div className="w-full pl-5">
@@ -80,19 +79,14 @@ function EventAddServiceListItem({data, edit, eventId, setReload, setActiveList,
 				   </div>
 				 </div>
 				<p className="text-quicksilver text-sm font-normal leading-6 pt-3 xl:max-w-[90%]"> {data.description} </p>
-				 {/* <p className="text-quicksilver text-sm font-normal leading-6 pt-3 xl:max-w-[90%]">Lorem Ipsum is simply dummy text of the
-				   printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever
-				   since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
-				   specimen book 
-				 </p> */}
 				 <h3 className="text-right">{data.price} INR</h3>
 			   </div>
 			 </div>
 			 <Modal isOpen={isAddServicesPopUpOpen}>
-				<EventPopUpAddService handleClose={setIsAddServicesPopUpOpen} data={data} edit={edit} setReload={setReload} />
+				<EventPopUpAddEquipment handleClose={setIsAddServicesPopUpOpen} data={data} edit={edit} setReload={setReload} />
 	 		</Modal>
 		   </div>
   )
 }
 
-export default EventAddServiceListItem;
+export default EventAddEquipmentsListItem;

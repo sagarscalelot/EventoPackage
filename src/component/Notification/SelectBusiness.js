@@ -30,13 +30,10 @@ function SelectBusiness() {
         </div>
       </div>
 
-      {/* <!-- step-progress-bar  --> */}
-      <div className="w-full overflow-hidden">
-        <StepProgressBar eventType={eventType} />
-      </div>
+
 
       <div className="">
-        <h3>Select Business</h3>
+        <h3>Select Business2</h3>
         <div className="flex flex-wrap justify-center pt-4 -mx-4">
           {/* Have you Places */}
           <Link to="nhyp" className="w-1/2 lg:w-1/3 xl:w-1/5 px-2 xl:px-2.5 pb-4 xl:pb-0 group">

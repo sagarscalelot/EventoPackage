@@ -1,40 +1,24 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import sweetLoveCatering from "../../assest/images/sweet-love-catering.png";
-import { baseUrl,s3Url } from '../../config';
+
+import React from 'react';
+import { Link, useParams } from 'react-router-dom';
+import { s3Url } from '../../config';
 import { useDispatch } from 'react-redux';
 import { increment } from '../../redux/stepProgressCount';
 import bannerPreview from "../../assest/images/banner-preview.png";
-import myImg from '../../assest/images/big-dish.png';
+
 
 function DashboardEventCategoryItem({data}) {
-	const navigate = useNavigate();
+
 	const dispatch = useDispatch();
-	var eventId = localStorage.getItem("eventId");
-	const [category, setCategory] = useState([]);
-	// const [isLive, setIsLive] = useState(false);
-	// const [category, setCategory] = useState({});
+
+	const params = useParams();
+	const eventType = params.eventType;
+
 	const token = localStorage.getItem("Token");
 	const header = {
 		'Authorization': `Token ${token}`,
 	}
-	// console.log("Hello",s3Url+"/"+data.aboutplace.banner)
-	// const getCategory = async()=> {
-	// 	try {
-	// 		const response = await axios.get(`${baseUrl}/organizer/events/getone?eventid=${eventId}`,{headers: header});
-	// 		console.log("GetOne Category>>>>>>>>>>>>>>>>>>",response);
-	// 		console.log("IMAGE",s3Url+"/"+response.data?.Data.aboutplace.banner)
-	// 		setCategory(s3Url+"/"+response.data.Data.aboutplace.banner);
-	// 	} catch (error) {	
-	// 		 console.log(error);
-	// 	}
-	// }
-	// useEffect(() => {
-	// 	getCategory();
-	// },[]);
-	// console.log("Image>>>>>>>>>>>>>",data?.aboutplace.banner);
-
+	
   return (
     <div className="w-full flex items-center">
 			<div>
@@ -43,12 +27,10 @@ function DashboardEventCategoryItem({data}) {
 			  <i className="icon-right"></i>
 			  </label>
 			</div>
-			<Link to={`../../event-view`} className="w-full p-4 pr-7 bg-white rounded">
+			<Link to={`../../event-view/${eventType}`} className="w-full p-4 pr-7 bg-white rounded" onClick={()=> {localStorage.setItem("eventId",data?._id)}} >
 			  <div className="flex space-x-5">
 			  <div className="max-w-xs h-[200px] w-full">
-				{/* {data?.place_event[0]?.place_banner && <img className="object-cover w-full h-full" src={baseUrl+"/api"+data?.place_event[0]?.place_banner || bannerPreview} />} */}
-				{/* {!data?.place_event[0]?.place_banner && <img className="object-cover w-full h-full" src={bannerPreview} />} */}
-				<img className="object-cover w-full h-full" src={(data && data.aboutplace && data.aboutplace.banner && data.aboutplace.banner != '') ? (s3Url+"/"+data.aboutplace.banner) :  bannerPreview } />
+				<img className="object-cover w-full h-full" src={(data && data.aboutplace && data.aboutplace.banner && data.aboutplace.banner != '') ? (s3Url+"/"+data.aboutplace.banner) : (data && data.personaldetail && data.personaldetail.banner && data.personaldetail.banner !== '') ? (s3Url+"/"+data.personaldetail.banner) : bannerPreview } alt="images" />
 				</div>
 				<div className="w-full">
 				  <div className="flex justify-between border-b-2 pb-4">
@@ -79,7 +61,6 @@ function DashboardEventCategoryItem({data}) {
 					</div>
 					<div className="flex space-x-2">
 					  <Link to={`../addplaces`} onClick={()=> {localStorage.setItem("eventId",data?._id); dispatch(increment())}} className="bg-brightGray px-2 py-1 text-center rounded"><i className="text-base edit text-black icon-edit" style={{color: "#000"}}></i></Link>
-					  {/* <Link to="#" className="bg-brightGray px-2 py-1 text-center rounded"><i className="text-base edit text-black icon-edit" style={{color: "#000"}}></i></Link> */}
 						<Link to="/" className="bg-brightGray px-2 py-1 text-center rounded"><i
 						className="icon-fill-megaphone text-base text-black"></i></Link>
 					  <Link to={`/dashboard/event/calender`} className="bg-brightGray px-2 py-1 text-center rounded"><i

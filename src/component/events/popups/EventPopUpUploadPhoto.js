@@ -6,7 +6,7 @@ import { imageType } from '../../../shared/constants';
 
 function EventPopUpUploadPhoto({handleClose, eventId, imageList}) {
 	const [image, setImage] = useState("");
-	const [currentImageList, setCurrentImageList] = useState(imageList);
+	//const [currentImageList, setCurrentImageList] = useState(imageList);
 	const [details, setDetails] = useState("");
 	const [error, setError] = useState(false);
 	const [errorMessage, setErrorMessage] = useState("");

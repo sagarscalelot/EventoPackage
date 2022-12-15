@@ -14,13 +14,9 @@ function EventAddPlaces() {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const params = useParams();
-	// const eventId = params.eventId;
 	const eventType = params.eventType;
-	// const placeId = params.placeId;
-	// console.log(eventType);
 	const [newEvent, setNewEvent] = useState([]);
 	const [categoryName, setCategoryName] = useState("");
-	// console.log("new event", newEvent);
 	const token = localStorage.getItem("Token");
 	const eventId = localStorage.getItem("eventId");
 	const header = {
@@ -29,7 +25,6 @@ function EventAddPlaces() {
 	const getAddedEvent = async () => {
 		try {
 			const response = await axios.get(`${baseUrl}/organizer/events?eventid=${eventId}`, { headers: header });
-			// console.log("New created event >> ", response.data.data);
 			if (!response.data.IsSuccess) {
 				toast.error("Error occured while fetching data.")
 			}

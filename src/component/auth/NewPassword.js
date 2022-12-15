@@ -31,7 +31,7 @@ function NewPassword() {
 				toast.success(response.data?.Message);
 				setTimeout(() => {
 					navigate("../login");
-				}, 500);
+				}, 200);
 			} else {
 				toast.error(response.data?.Message);
 			}

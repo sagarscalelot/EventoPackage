@@ -4,6 +4,7 @@ import DashboardEventViewOverviewPhoto from './DashboardEventViewOverviewPhoto';
 import DashboardEventViewOverviewVideo from './DashboardEventViewOverviewVideo';
 import Modal from '../modal/Modal';
 import ImageAndVideoPreview from './modal/ImageAndVideoPreview';
+// import bannerPreview from "../../assest/images/banner-preview.png";
 
 import celebrationSvg from "../../assest/svg/celebration.svg";
 
@@ -19,7 +20,7 @@ import dish2Video from "../../assest/images/dish-video-2.png";
 import dish3Video from "../../assest/images/dish-video-3.png";
 import dish4Video from "../../assest/images/dish-video-4.png";
 import dish5Video from "../../assest/images/dish-video-5.png";
-import { baseUrl } from '../../config';
+import { baseUrl,s3Url } from '../../config';
 
 
 function DashboardEventViewOverview({data, capacity, socials, company, service}) {
@@ -37,7 +38,7 @@ function DashboardEventViewOverview({data, capacity, socials, company, service})
                             <p className="text-quicksilver text-sm font-normal">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
                         </div>
                         {/* <!-- Photo-holder --> */}
-                        {data?.image?.length > 0 && <div className="media-upload-holder">
+                        {data?.photos?.length > 0 && <div className="media-upload-holder">
                             {/* <!-- media title  --> */}
                             <div className="flex justify-between items-center">
                                 <h3 className="text-lg">Photo</h3>
@@ -46,8 +47,8 @@ function DashboardEventViewOverview({data, capacity, socials, company, service})
                             {/* <!-- photo-holder --> */}
                             <div className="w-full">
                                 <div className="flex flex-wrap -mx-2" onClick={() => setPreview(true)} >
-                                    {data?.image?.map(e => (
-                                        <DashboardEventViewOverviewPhoto key={e.id} alt={e.image_details} imageUrl={baseUrl+"/api"+e.image} />
+                                    {data?.photos?.map(e => (
+                                        <DashboardEventViewOverviewPhoto key={e.id} alt={e.description} imageUrl={s3Url+"/"+e.photos} />
                                     ))}
                                 </div>
                             </div>
@@ -76,7 +77,7 @@ function DashboardEventViewOverview({data, capacity, socials, company, service})
                                     <div className="flex justify-between bg-white rounderd px-7 py-4">
                                         <div className="">
                                             <div className="w-28 h-28 border-2 border-brightGray rounded-md">
-                                                <img src={baseUrl+"/api"+e?.selected_service[0]?.image[0]?.image} alt="cutting-board" className="w-full h-full object-cover" />
+                                                <img src={(e && e.aboutplace && e.aboutplace.banner && e.aboutplace.banner != '') ? (s3Url+"/"+e.aboutplace.banner) :  bigDishImage } alt="cutting-board" className="w-full h-full object-cover" />
                                             </div>
                                         </div>
                                         <div className="w-full pl-5">

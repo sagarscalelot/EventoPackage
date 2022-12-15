@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Modal from '../modal/Modal';
 import EventPopUpCreateNew from './popups/EventPopUpCreateNew';
 import axios from 'axios';
-import { baseUrl,s3Url } from '../../config';
+import { baseUrl } from '../../config';
 import DashboardEventCategoryItem from './DashboardEventCategoryItem';
 import { useParams } from 'react-router-dom';
 import Advertisement from "../Advertisement";
@@ -21,7 +21,6 @@ function DashboardEvent() {
 	const [category, setCategory] = useState([]);
 	const [pageNo, setPageNo] = useState(1);
 	const token = localStorage.getItem("Token");
-	const eventId = localStorage.getItem("eventId");
 	const eventType = getEventType(params.eventType);
 	const limit = 3;
 	const header = {
@@ -35,7 +34,6 @@ function DashboardEvent() {
 		}
 		try {
 			const response = await axios.post(`${baseUrl}/organizer/events/list`,requestObj, { headers: header });
-			// console.log("events >>>>>>> ", response.data.Data.aboutplace.banner);
 			setAllEvents(response.data.Data);
 			setLoading(false);
 		} catch (error) {
