@@ -31,15 +31,18 @@ import Notification from "./Notification/Notification";
 import Profile from "./other/Profile";
 import { toast, ToastContainer } from "react-toastify";
 import OurProducts from "./other/OurProducts";
+import NotificationDetails from "./Notification/NotificationDetails";
+import SelectBusiness from './Notification/SelectBusiness'
+import SelectBusinessPromote from "./Notification/SelectBusinessPromote"
 
 function SideBar() {
 
   const [languagePopup, setLanguagePopup] = useState(false);
   const navigate = useNavigate();
   const token = localStorage.getItem("Token") || null;
-	const header = {
-		'Authorization': `Token ${token}`
-	}
+  const header = {
+    'Authorization': `Token ${token}`
+  }
 
   useEffect(() => {
     if (token == null) return navigate("../auth/login")
@@ -47,20 +50,20 @@ function SideBar() {
 
   const handleLogout = async () => {
     // try {
-				// const response = await axios.post(`${baseUrl}/api/logout`, {}, {headers: header});
-				// console.log("Logout",response);
-      // } catch (error) {
-        // console.log(error);
-        // toast.error("something Went wrong.");
-      // }
-      toast.success("Logout successfully.")
+    // const response = await axios.post(`${baseUrl}/api/logout`, {}, {headers: header});
+    // console.log("Logout",response);
+    // } catch (error) {
+    // console.log(error);
+    // toast.error("something Went wrong.");
+    // }
+    toast.success("Logout successfully.")
     setTimeout(() => {
       navigate("../auth/login");
     }, 500);
-      localStorage.clear();
+    localStorage.clear();
   }
 
-  const removeId =()=>{
+  const removeId = () => {
     localStorage.removeItem('eventId');
     localStorage.removeItem('displayName');
     localStorage.removeItem('stepCount');
@@ -225,7 +228,7 @@ function SideBar() {
                       <span className="font-bold font-primary leading-4">Sign Out</span>
                     </div>
                   </div>
-                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -238,24 +241,24 @@ function SideBar() {
           <Routes>
             <Route index element={<SelectWhoYouAre />} />
             <Route path="event">
-              <Route path="event-view/:eventId" element={<DashboardEventView /> } />
+              <Route path="event-view/:eventId" element={<DashboardEventView />} />
               <Route path=":eventType" >
                 <Route index element={<DashboardEvent />} />
-                  {/* <Route path=":eventId"> */}
-                    <Route path="addplaces" element={<EventAddPlaces />} />
-                    <Route path="aboutplace" element={<EventAboutPlace />} />
-                    <Route path="personaldetails" element={<EventPersonalDetails />} />
-                    <Route path="personalinfo" element={<EventPSB />} />
-                    <Route path="photosandvideos" element={<EventPhotosAndVideos />} />
-                    <Route path="addservices" element={<EventAddServices />} />
-                    <Route path="capacity" element={<EventCapacity />} />
-                    <Route path="companydetails" element={<EventCompanyDetails />} />
-                    <Route path="termsandconditions" element={<EventTermsAndConditions />} />
-                    <Route path="discounts" element={<EventDiscounts />} />
-                    <Route path="calender" element={<EventCalender />} />
-                    <Route path="othercost" element={<PSBOtherCost />} />
-                    <Route path="additem" element={<EventAddServices />} />
-                  {/* </Route> */}
+                {/* <Route path=":eventId"> */}
+                <Route path="addplaces" element={<EventAddPlaces />} />
+                <Route path="aboutplace" element={<EventAboutPlace />} />
+                <Route path="personaldetails" element={<EventPersonalDetails />} />
+                <Route path="personalinfo" element={<EventPSB />} />
+                <Route path="photosandvideos" element={<EventPhotosAndVideos />} />
+                <Route path="addservices" element={<EventAddServices />} />
+                <Route path="capacity" element={<EventCapacity />} />
+                <Route path="companydetails" element={<EventCompanyDetails />} />
+                <Route path="termsandconditions" element={<EventTermsAndConditions />} />
+                <Route path="discounts" element={<EventDiscounts />} />
+                <Route path="calender" element={<EventCalender />} />
+                <Route path="othercost" element={<PSBOtherCost />} />
+                <Route path="additem" element={<EventAddServices />} />
+                {/* </Route> */}
 
                 {/* <Route path="addplaces/:eventId/:placeId" element={<EventAddPlaces />} />
                 <Route path="aboutplace/:eventId/:placeId" element={<EventAboutPlace />} />
@@ -285,24 +288,32 @@ function SideBar() {
 
             {/* header link */}
             <Route path="chatbot" element={<Chatbot />} />
-            <Route path="notification" element={<Notification />} />
+            <Route path="notification">
+              <Route index element={<Notification />} />
+              <Route path="details" element={<NotificationDetails />} />
+              <Route path="selectbusiness">
+                <Route index element={<SelectBusiness />} />
+                <Route path="selectbusinesspromot" element={<SelectBusinessPromote />} />
+              </Route>
+            </Route>
+
 
           </Routes>
         </div>
       </div>
       <ToastContainer
-					position="bottom-right"
-					autoClose={5000}
-					hideProgressBar={false}
-					newestOnTop={false}
-					closeOnClick
-					rtl={false}
-					pauseOnFocusLoss
-					draggable
-					pauseOnHover
-					theme="colored"
-				/>
-    </div>
+        position="bottom-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
+    </div >
   );
 }
 
