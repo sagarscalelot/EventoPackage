@@ -18,7 +18,7 @@ function Profile() {
 	const getProfile = async() => {
 		try {
 			const response = await axios.get(`${baseUrl}/organizer/profile`, {headers: header});
-			console.log(response);
+			console.log("response.data.Data",response.data.Data);
             setDetails(response.data.Data)
 		} catch (error) {
 			console.log(error);
@@ -38,7 +38,7 @@ function Profile() {
                 <Advertisement />
                 
                 {/* <!-- profile 2 --> */}
-                <BusinessProfile type="Business" token={token} s3Url={details?.s3Url} details={details?.businessProfile}/>
+                <BusinessProfile type="Business" token={token}  details={details}/>
             </div>
         </div>
     )

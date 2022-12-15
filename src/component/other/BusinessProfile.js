@@ -85,7 +85,6 @@ function BusinessProfile({type, token, details, s3Url}) {
             const response = await axios.post(`${baseUrl}/organizer/profile/businessprofilepic`, formData, {headers: imageHeader});
             if(response.data.IsSuccess) {
                 console.log(response)
-                setProfileImage(null);
                 toast.success(response.data.Message);
             } else {
                 toast.error(response.data.Message);
@@ -117,6 +116,7 @@ function BusinessProfile({type, token, details, s3Url}) {
             toast.error("Error while Selecting Image.");
 		}
 	}  
+    console.log('details for business', details);
   return (
     <>
     {/* <!-- title-holder  --> */}
@@ -132,7 +132,7 @@ function BusinessProfile({type, token, details, s3Url}) {
               <div className="flex items-center">
                   <div className="">
                       <div className="w-44 h-44 rounded-full border-8 border-spiroDiscoBall relative mr-9">
-                          <img src={profileImage ? URL.createObjectURL(profileImage) : details?.profile_pic ? s3Url+details?.profile_pic : previewImage} alt="" className="w-full h-full object-cover rounded-full overflow-hidden" />
+                          <img src={profileImage ? URL.createObjectURL(profileImage) : (details && details.businessProfile && details.businessProfile.profile_pic) ? details.s3Url+details.businessProfile.profile_pic : previewImage} alt="" className="w-full h-full object-cover rounded-full overflow-hidden" />
                           <div className="absolute bottom-0 right-0 flex justify-center items-center w-10 h-10 rounded-full bg-spiroDiscoBall z-10">
                               <i className="icon-camera"></i>
                               <input type="file" onChange={(e) => photoChangeHandler(e)}  className="opacity-0 absolute inset-0"/>

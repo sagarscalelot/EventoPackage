@@ -11,7 +11,6 @@ import { decrement, increment } from '../../redux/stepProgressCount';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import { useRef } from 'react';
-import { current } from '@reduxjs/toolkit';
 
 function EventDiscounts() {
 	const displayName = localStorage.getItem("displayName");
@@ -36,10 +35,8 @@ function EventDiscounts() {
 	const getDiscount = async() => {
 		try {	
 			const response = await axios.get(`${baseUrl}/organizer/discount/list`,{headers: header});
-			console.log('esdeeeeeeeeeeeeeeeeeee',response);
 			if(response.data.IsSuccess) {
 				const res = await axios.get(`${baseUrl}/organizer/events/discount?eventid=${eventId}`,{headers: header});
-				console.log('hgefugeruigftier',res);
 				setAllDiscount([...res.data.Data.discounts,...response.data.Data]);
 			}
 		} catch (error) {

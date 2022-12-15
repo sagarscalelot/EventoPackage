@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import { useNavigate,useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { baseUrl } from '../../config';
 import Modal from "../modal/Modal";
@@ -10,8 +10,6 @@ function EventAddPlacesEventList({ displayName, categoryName, eventId }) {
     const [isCreateNewPopUpOpen, setIsCreateNewPopUpOpen] = useState(false);
     const navigate = useNavigate();
     const token = localStorage.getItem("Token");
-    const params = useParams();
-    const eventType = params.eventType;
     const event = localStorage.getItem("eventId");
     const header = {
         'Authorization': `Token ${token}`

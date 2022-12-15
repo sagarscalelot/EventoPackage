@@ -11,7 +11,6 @@ function StepProgressBar({ eventType }) {
 
 
     const count = useSelector(state => state.StepProgressCount.count);
-    // console.log("Count", count);
 
     return (
         <div className="w-full overflow-hidden">

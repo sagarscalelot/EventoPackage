@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import dashboardBgImage from "../../assest/images/dashboard-bg.png";
-import { baseUrl } from '../../config';
+import { baseUrl,s3Url } from '../../config';
 import DashboardEventAttendee from './DashboardEventAttendee';
 import DashboardEventReview from './DashboardEventReview';
 import DashboardEventViewOverview from './DashboardEventViewOverview';
@@ -16,37 +16,51 @@ function DashboardEventView() {
   const [socials, setsocials] = useState({});
   const [company, setCompany] = useState({});
   const [service, setService] = useState([]);
+  const eventId = localStorage.getItem("eventId");
   const navigate = useNavigate();
 	const params = useParams();
 	const token = localStorage.getItem("Token");
+
 	const header = {
 		'Authorization': `Token ${token}`
 	}
 	const getEventById = async () => {
 		try {
-			const response = await axios.get(`${baseUrl}/api/events_get_list`, { headers: header });
-			console.log("get event by id >> ", response.data.data);
-			setEvent(response.data.data[0]);
-			setCapacity(response.data.data[0].capacity[0]);
-			setsocials(response.data.data[0].social[0]);
-			setCompany(response.data.data[0].company_details[0]);
-      setService(response.data.data[0].selected_service);
+			const response = await axios.get(`${baseUrl}/organizer/events/getone?eventid=${eventId}`, { headers: header });
+			console.log("Full Event",response.data.Data);
+      setEvent(response.data.Data);
+      setCapacity(response.data.Data.capacity);
+	    // setsocials(response.data.Data);
+		  // setCompany(response.data.Data);
+      setService(response.data.Data.services);
 		} catch (error) {
 			console.log(error);
 		}
 	}
+  // const getEventById = async () => {
+	// 	try {
+	// 		const response = await axios.get(`${baseUrl}/api/events_get_list`, { headers: header });
+	// 		console.log("get event by id >> ", response.data.data);
+	// 		setEvent(response.data.data[0]);
+	// 		setCapacity(response.data.data[0].capacity[0]);
+	// 		setsocials(response.data.data[0].social[0]);
+	// 		setCompany(response.data.data[0].company_details[0]);
+  //     setService(response.data.data[0].selected_service);
+	// 	} catch (error) {
+	// 		console.log(error);
+	// 	}
+	// }
 
 	useEffect(() => {
 		getEventById();
 	}, []);
-  console.log(event)
   return (
     <>
       <div className="-mt-12 relative -z-10">
       <div className="-mt-12 relative -z-10 h-[300px] xl:h-[400px]">
-            {event?.place_event?.length > 0 ?
-            <img src={baseUrl+"/api"+event?.place_event[0].place_banner} alt="dashboard-bg" className="w-full h-full object-cover"/> :
-            <img src={bannerPreview} alt="dashboard-bg" className="w-full object-cover"/>}
+            
+            <img src={(event && event.aboutplace && event.aboutplace.banner && event.aboutplace.banner != '') ? (s3Url+"/"+event.aboutplace.banner) :  bannerPreview } alt="dashboard-bg" className="w-full h-full object-cover"/> :
+      
           </div>
           </div>
           <div className="wrapper min-h-full -mt-14 z-10">

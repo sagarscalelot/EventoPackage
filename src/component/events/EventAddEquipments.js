@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import Modal from "../modal/Modal";
-import EventPopUpAddService from './popups/EventPopUpAddService';
-import EventAddServicesListItem from './EventAddServiceListItem';
+import EventPopUpAddEquipment from './popups/EventPopUpAddEquipment';
+import EventAddEquipmentsListItem from './EventAddEquipmentsListItem';
 import StepProgressBar from './StepProgressBar';
 import axios from 'axios';
 import { baseUrl } from '../../config';
@@ -11,7 +11,8 @@ import { decrement, increment } from '../../redux/stepProgressCount';
 import { toast, ToastContainer } from 'react-toastify';
 import { MoonLoader } from 'react-spinners';
 
-function EventAddServices() {
+function EventAddEquipments() {
+
 	const displayName = localStorage.getItem("displayName");
 	const navigate = useNavigate();
 	const params = useParams();
@@ -19,26 +20,25 @@ function EventAddServices() {
 	const eventId = localStorage.getItem("eventId");
 	const dispatch = useDispatch();
 	const [isAddServicesPopUpOpen, setIsAddServicesPopUpOpen] = useState(false);
-	const [serviceList, setServiceList] = useState([]);
+	const [equipmentList, setEquipmentList] = useState([]);
 	const [activeList, setActiveList] = useState([]);
-	// console.log(activeList);
 	const [reload, setReload] = useState(false);
 	const [loading, setLoading] = useState(true);
 	const token = localStorage.getItem("Token");
 	const header = {
 		'Authorization': `Token ${token}`
 	}
-	const getServiceList = async() => {
+	const getequipmentList = async() => {
 		try {
-			const response = await axios.get(`${baseUrl}/organizer/events/listservice?eventid=${eventId}`, {headers: header});
-			console.log("services >>",response.data.Data);
+			const response = await axios.get(`${baseUrl}/organizer/events/listequipment?eventid=${eventId}`, {headers: header});
+			console.log("listequipment >>",response);
 			if(response.data.Data) {
-				setServiceList(response.data.Data);
+				setEquipmentList(response.data.Data);
 				setLoading(false);
-				const responseActive = await axios.get(`${baseUrl}/organizer/events/getselectservice?eventid=${eventId}`, {headers: header});
-				console.log("Active services>> ",responseActive.data.Data.services);
-				if(responseActive.data.Data.services) {
-					const temp = responseActive.data.Data.services.map(e => {
+				const responseActive = await axios.get(`${baseUrl}/organizer/events/getselectequipment?eventid=${eventId}`, {headers: header});
+				console.log("Active equipments >> ",responseActive);
+				if(responseActive.data.Data.equipments) {
+					const temp = responseActive.data.Data.equipments.map(e => {
 						return e._id
 					})
 					setActiveList(temp);
@@ -51,20 +51,16 @@ function EventAddServices() {
 			toast.error("Something Went wrong.");
 			console.log(error);
 		}
-		
-		
-		
 	}
 
 	useEffect(() => {
-		getServiceList();
+		getequipmentList();
 	},[isAddServicesPopUpOpen, reload]);
 
 	const clickNextHandler = () => {
-		toast.success("Services saved Successfully.");
+		toast.success("Equipment saved Successfully.");
 		dispatch(increment());
 		if(eventType === "hyp") navigate(`../capacity`);
-		else if (eventType === "gsb") navigate(`../addequipments`)
 		else navigate(`../othercost`);
 	};
 
@@ -83,7 +79,7 @@ function EventAddServices() {
 			 <i className="icon-back-arrow mr-4 text-2xl" onClick={clickBackHander}></i>
 			 <h1>{displayName}</h1>
 		   </div>
-		   <button onClick={()=>setIsAddServicesPopUpOpen(true)} className="btn-primary flex items-center"><i className="icon-plus mr-3"></i><span>{eventType === "hyp" ? "Add Service" : "Add Item"}</span></button>
+		   <button onClick={()=>setIsAddServicesPopUpOpen(true)} className="btn-primary flex items-center"><i className="icon-plus mr-3"></i><span>{eventType === "gsb" ? "Add Equiupment" : "Add Equiupment"}</span></button>
 		 </div>
 		  {/* <!-- step-progress-bar  --> */}
 		 <StepProgressBar eventType={eventType}/>
@@ -97,7 +93,7 @@ function EventAddServices() {
 		/>
 		 <div className="pt-5 space-y-3">
 		 
-		   { serviceList?.map(element => <EventAddServicesListItem data={element} key={element._id} eventId={eventId} edit={true} setReload={setReload} activeList={activeList} setActiveList={setActiveList} /> )}
+		   { equipmentList?.map(element => <EventAddEquipmentsListItem data={element} key={element._id} eventId={eventId} edit={true} setReload={setReload} activeList={activeList} setActiveList={setActiveList} /> )}
 		   
 		 </div>
 	   </div>
@@ -108,7 +104,7 @@ function EventAddServices() {
 	   </div>
 	 </div>
 	 <Modal isOpen={isAddServicesPopUpOpen}>
-		<EventPopUpAddService isItem={eventType === "hyp" ? false:true} handleClose={setIsAddServicesPopUpOpen} setReload={setReload} edit={false} />
+		<EventPopUpAddEquipment isItem={eventType === "gsb" ? false:true} handleClose={setIsAddServicesPopUpOpen} setReload={setReload} edit={false} />
 	 </Modal>
 	 <ToastContainer
 			  position="bottom-right"
@@ -126,4 +122,4 @@ function EventAddServices() {
   )
 }
 
-export default EventAddServices
+export default EventAddEquipments;

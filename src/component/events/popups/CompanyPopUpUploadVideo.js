@@ -64,10 +64,6 @@ function CompanyPopUpUploadVideo({handleClose, setVideoList}) {
                 </label>
                 {error ? <span className="mt-1" style={{color: "red", fontSize: "14px"}}>{errorMessage} </span> : <span className="mt-1" style={{fontSize: "14px"}}>{video.name}</span>}
               </div>
-              {/* <div className="w-full">
-                <span className="input-titel">Details</span>
-                <textarea name="" id="" cols="30" rows="5" className="outline-none flex items-center w-full bg-white p-2 px-3.5 rounded-md" onChange={(e) => setDetails(e.target.value)}></textarea>
-              </div> */}
             </form>
             <div className="btn-primary w-full uppercase cursor-pointer" onClick={submitHandler}>Submit</div>
           </div>

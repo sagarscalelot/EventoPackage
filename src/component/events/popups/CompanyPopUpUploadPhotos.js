@@ -1,11 +1,10 @@
-import { current } from '@reduxjs/toolkit';
+
 import React, { useState } from 'react'
 
 function CompanyPopUpUploadPhotos({handleClose, setImageList}) {
 
     const [image, setImage] = useState("");
 	const [imagePreview, setImagePreview] = useState("");
-	const [details, setDetails] = useState("");
 	const [error, setError] = useState(false);
 	const [errorMessage, setErrorMessage] = useState("");
 

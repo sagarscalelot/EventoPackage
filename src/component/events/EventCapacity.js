@@ -30,7 +30,10 @@ function EventCapacity() {
     address: "",
     location: {
       type: "Point",
-      coordinates: []
+      coordinates: [
+        72.807623,
+        21.221723
+      ]
     }
 	}
   
@@ -137,8 +140,6 @@ function EventCapacity() {
                     <span className="input-titel">Address</span>
                     <div className="w-full flex flex-wrap bg-white p-2 rounded-md">
                     <iframe className="min-h-[170px] xl:min-h-[220px]" src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d14875.88775631223!2d72.81608609999999!3d21.2329613!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1655442825672!5m2!1sen!2sin" width="100%" height="100%" style={{ border: 0 }} allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade" title='google-map'></iframe>
-                      {/* <textarea id="" cols="30" rows="5" className="outline-none w-full" name="address" value={values.address} onChange={handleInputChange} ></textarea> */}
-                      {/* <a href={`https://www.google.com/maps/place/${values.address?.replaceAll(" ","+")}`} target="blank" className="title-btn ml-auto uppercase">Location from Google map</a> */}
                     </div>                    
                 </div>
               </div>

@@ -6,7 +6,7 @@ import { videoType } from '../../../shared/constants';
 
 function EventPopUpUploadVideo({handleClose, eventId, videoList}) {
   const [video, setVideo] = useState("");
-  const [currentVideoList, setCurrentVideoList] = useState(videoList);
+  //const [currentVideoList, setCurrentVideoList] = useState(videoList);
   const [details, setDetails] = useState("");
   const [error, setError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
