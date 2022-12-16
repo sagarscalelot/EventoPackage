@@ -20,16 +20,27 @@ import dish2Video from "../../assest/images/dish-video-2.png";
 import dish3Video from "../../assest/images/dish-video-3.png";
 import dish4Video from "../../assest/images/dish-video-4.png";
 import dish5Video from "../../assest/images/dish-video-5.png";
+import GoogleMap from '../GoogleMap';
+
 import { baseUrl, s3Url } from '../../config';
 
 
 function DashboardEventViewOverview({ data, capacity, socials, company, service }) {
     const [preview, setPreview] = useState(false);
-    console.log("data  : ", data)
-    // console.log(" capacity: ", capacity)
+    // const dataProps = { data };
+    // console.log("dataProps  : ", s3Url + "/" + data?.videos?.url)
+    // console.log(" capacity: ", capacity?.location?.coordinates)
     // console.log(" socials: ", socials)
-    // console.log(" company: ", company)
-    // console.log(" service: ", service)
+    // console.log(" company: ", data.discounts)
+    // console.log(" service: ", service[0]?.name)
+
+    const convert = (s) => {
+        const regex = /(<([^>]+)>)/gi;
+        const newString = s.replace(regex, "");
+        return newString;
+    }
+
+    const regex = /(<([^>]+)>)/ig;
     return (
         <div className="pt-7 lg:pt-10">
             {/* <!--overview-tab-contents --> */}
@@ -39,7 +50,7 @@ function DashboardEventViewOverview({ data, capacity, socials, company, service 
                     <div className="w-full lg:w-8/12 lg:pr-5 space-y-7">
                         <div className="p-7 bg-white rounded-md space-y-1">
                             <h3>---Farm Area---</h3>
-                            <p className="text-quicksilver text-sm font-normal">{data.aboutplace.details}</p>
+                            <p className="text-quicksilver text-sm font-normal">{data?.aboutplace?.details}</p>
                         </div>
                         {/* <!-- Photo-holder --> */}
                         {data?.photos?.length > 0 && <div className="media-upload-holder">
@@ -52,23 +63,23 @@ function DashboardEventViewOverview({ data, capacity, socials, company, service 
                             <div className="w-full">
                                 <div className="flex flex-wrap -mx-2" onClick={() => setPreview(true)} >
                                     {data?.photos?.map(e => (
-                                        <DashboardEventViewOverviewPhoto key={e.id} alt={e.description} imageUrl={s3Url + "/" + e.photos} />
+                                        <DashboardEventViewOverviewPhoto key={e.id} alt={e.description} imageUrl={s3Url + "/" + e?.url} />
                                     ))}
                                 </div>
                             </div>
                         </div>}
                         {/* <!-- videos-holder --> */}
-                        {data?.video?.length > 0 && <div className="media-upload-holder">
+                        {data?.videos?.length > 0 && <div className="media-upload-holder">
                             {/* <!-- media title  --> */}
                             <div className="flex justify-between items-center">
-                                <h3 className="text-lg">Videos</h3>
+                                <h3 className="text-lg">---Videos---</h3>
                                 <a href="#" className="text-spiroDiscoBall text-sm font-bold">View All</a>
                             </div>
                             {/* <!-- media-holder --> */}
                             <div className="w-full">
                                 <div className="flex flex-wrap -mx-2">
-                                    {data?.video?.map(e => (
-                                        <DashboardEventViewOverviewVideo key={e.id} videoUrl={baseUrl + "/api" + e.thumbnail} />
+                                    {data?.videos?.map(e => (
+                                        <DashboardEventViewOverviewVideo key={e.id} alt={e?.description} videoUrl={s3Url + "/" + e?.url} />
                                     ))}
                                 </div>
                             </div>
@@ -81,20 +92,21 @@ function DashboardEventViewOverview({ data, capacity, socials, company, service 
                                     <div className="flex justify-between bg-white rounderd px-7 py-4">
                                         <div className="">
                                             <div className="w-28 h-28 border-2 border-brightGray rounded-md">
-                                                <img src={(e && e.aboutplace && e.aboutplace.banner && e.aboutplace.banner != '') ? (s3Url + "/" + e.aboutplace.banner) : bigDishImage} alt="cutting-board" className="w-full h-full object-cover" />
+                                                <img key={e.id} src={e?.photos[0]?.url ? (s3Url + "/" + e?.photos[0]?.url) : bigDishImage} alt="cutting-board" className="w-full h-full object-cover" />
                                             </div>
                                         </div>
                                         <div className="w-full pl-5">
                                             <div className="flex justify-between">
-                                                <h3>{e?.selected_service[0]?.service_name}</h3>
+                                                <h3>{e.name}</h3>
                                                 {/* <h3>Cutting board</h3> */}
                                                 <div className="flex items-center space-x-1">
-                                                    <h3>{e?.selected_service[0]?.service_price} INR P/P</h3>
-                                                    <h3 className="text-spiroDiscoBall">{e?.selected_service[0]?.service_quantity} Qty</h3>
+                                                    <h3>{e.price} INR </h3>
+                                                    {e.price_type === "per_day" ? <h3>P/D</h3> : (e.price_type === "per_person" ? <h3>P/P</h3> : <h3>P/E</h3>)}
+                                                    <h3 className="text-spiroDiscoBall">{e.quantity} Qty</h3>
                                                 </div>
                                             </div>
                                             <p className="text-quicksilver text-sm font-normal leading-6 pt-3">
-                                                {e?.selected_service[0]?.service_desc}</p>
+                                                {e?.description}</p>
                                             {/* <p className="text-quicksilver text-sm font-normal leading-6 pt-3">Lorem Ipsum is simply dummy text of the
                                                 printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever
                                                 since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
@@ -145,15 +157,15 @@ function DashboardEventViewOverview({ data, capacity, socials, company, service 
                         {/* <!-- Photo-holder --> */}
                         <div className="media-upload-holder">
                             {/* <!-- media titel  --> */}
-                            {company?.image?.length > 0 && <div className="flex justify-between items-center">
+                            {company?.photos?.length > 0 && <div className="flex justify-between items-center">
                                 <h3 className="text-lg">Photo</h3>
                                 <a href="#" className="text-spiroDiscoBall text-sm font-bold">View All</a>
                             </div>}
                             {/* <!-- photo-holder --> */}
                             <div className="w-full">
                                 <div className="flex flex-wrap -mx-2">
-                                    {company?.image?.map(e =>
-                                        <DashboardEventViewOverviewPhoto imageUrl={baseUrl + "/api" + e?.image} />
+                                    {company?.photos?.map(e =>
+                                        <DashboardEventViewOverviewPhoto key={e.id} imageUrl={s3Url + "/" + e?.url} />
                                     )}
                                 </div>
                             </div>
@@ -161,15 +173,15 @@ function DashboardEventViewOverview({ data, capacity, socials, company, service 
                         {/* <!-- videos-holder --> */}
                         <div className="media-upload-holder">
                             {/* <!-- media titel  --> */}
-                            {company?.video?.length > 0 && <div className="flex justify-between items-center">
+                            {company?.videos?.length > 0 && <div className="flex justify-between items-center">
                                 <h3 className="text-lg">Videos</h3>
                                 <a href="#" className="text-spiroDiscoBall text-sm font-bold">View All</a>
                             </div>}
                             {/* <!-- media-holder --> */}
                             <div className="w-full">
                                 <div className="flex flex-wrap -mx-2">
-                                    {company?.video?.map(e =>
-                                        <DashboardEventViewOverviewVideo videoUrl={dish2Video} />
+                                    {company?.videos?.map(e =>
+                                        <DashboardEventViewOverviewVideo key={e.id} alt="No Viedo" videoUrl={s3Url + "/" + e?.url} />
                                     )}
                                 </div>
                             </div>
@@ -314,20 +326,45 @@ function DashboardEventViewOverview({ data, capacity, socials, company, service 
 
                     </div>
                     {/* <!-- right-bar  --> */}
+
                     <div className="w-full lg:w-4/12 lg:pl-5 space-y-7 sticky top-0">
                         {/* <!-- map-content  --> */}
-                        <div className="w-full p-2.5 bg-white rounded-md">
-                            <div>
-                                <iframe className="min-h-[170px] xl:min-h-[220px]" src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d14875.88775631223!2d72.81608609999999!3d21.2329613!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1655442825672!5m2!1sen!2sin" width="100%" height="100%" style={{ border: 0 }} allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade" title='google-map'></iframe>
+                        <div className="w-full relative min-h-[170px] xl:min-h-[220px] p-2.5 bg-white rounded-md">
+                            <div className='w-full'>
+                                <GoogleMap
+                                    // handleClick={handleClick}
+                                    coordinates={{
+                                        type: "Point",
+                                        coordinates: [capacity?.location?.coordinates[0], capacity?.location?.coordinates[1]]
+                                    }}
+                                />
                             </div>
                             <div className="p-3.5 xl:p-5">
                                 <span className="input-titel"><i className="icon-fill-location mr-1"></i> Location</span>
-                                <h3 className="text-sm xl:text-base">309 Ridgeview St. Carleton Place, ON K7C 3Y6</h3>
+                                <h3 className="text-sm xl:text-base">{capacity?.address}</h3>
                             </div>
                         </div>
+
+
                         {/* <!-- Discount On Total Bill  --> */}
                         <div className="bg-gradient-to-r from-[#13e1b094] to-[#13E1B0] p-3.5 xl:p-5 rounded-lg relative">
-                            <div className="text-center">
+
+                            {data?.discounts?.map(e => (
+
+                                // <DashboardEventViewOverviewPhoto key={e.id} alt={e.description} imageUrl={s3Url + "/" + e?.url} />
+                                <div className="text-center">
+                                    <h1 className="text-white">{e?.discountname}</h1>
+                                    <div className="text-[40px] text-black font-bold">{e?.discount}</div>
+                                    <div className="space-y-2">
+                                        <span className="text-xs text-white font-normal block">{e.description}</span>
+
+                                        <span className="text-xs text-white font-normal block">{e.tandc}</span>
+                                    </div>
+                                    <img src={celebrationSvg} alt="celebration" className="absolute -right-2 -bottom-2 -rotate-90 opacity-80" />
+                                </div>
+
+                            ))}
+                            {/* <div className="text-center">
                                 <h1 className="text-white">Discount On Total Bill</h1>
                                 <div className="text-[40px] text-black font-bold">10%</div>
                                 <div className="space-y-2">
@@ -335,7 +372,7 @@ function DashboardEventViewOverview({ data, capacity, socials, company, service 
                                     <span className="text-xs text-white font-normal block">4 Event can be posted or one event with max 30 day</span>
                                 </div>
                                 <img src={celebrationSvg} alt="celebration" className="absolute -right-2 -bottom-2 -rotate-90 opacity-80" />
-                            </div>
+                            </div> */}
                         </div>
                         {/* <!-- Calander  --> */}
                         <div className="calendar inline-block justify-center items-center rounded-md drop-shadow-one bg-white w-full my-10 pb-5">
@@ -351,7 +388,7 @@ function DashboardEventViewOverview({ data, capacity, socials, company, service 
                 </div>
             </div>
             <Modal isOpen={preview}>
-                <ImageAndVideoPreview handleClose={setPreview} />
+                <ImageAndVideoPreview handleClose={setPreview} data={data} />
             </Modal>
         </div>
     )

@@ -27,11 +27,11 @@ function DashboardEventView() {
   const getEventById = async () => {
     try {
       const response = await axios.get(`${baseUrl}/organizer/events/getone?eventid=${eventId}`, { headers: header });
-      console.log("Full Event", response.data.Data);
+      // console.log("Full Event", response.data.Data);
       setEvent(response.data.Data);
       setCapacity(response.data.Data.capacity);
-      // setsocials(response.data.Data);
-      // setCompany(response.data.Data);
+      setsocials(response.data.Data.tandc);
+      setCompany(response.data.Data.companydetail);
       setService(response.data.Data.services);
     } catch (error) {
       console.log(error);

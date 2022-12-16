@@ -8,7 +8,7 @@ import { toast, ToastContainer } from 'react-toastify';
 import { baseUrl } from '../../config';
 import axios from 'axios';
 import { onlyDigits } from "../../shared/constants";
-import GoogleMap from "../GoogleMap";
+import AutoPlaceSearch from "../AutoPlaceSearch";
 
 function EventCapacity() {
   const displayName = localStorage.getItem("displayName");
@@ -125,44 +125,17 @@ function EventCapacity() {
                   <h3 className="text-base">Romantic Stay</h3>
                 </label>
               </div>
-              {/* <!-- step-progress-bar  --> */}
-              <StepProgressBar eventType={eventType}/>
-              {/* <!-- main-content  --> */}
-              <div className="space-y-5">
-                <div className="flex items-end -mx-3.5">
-                  <div className="w-full lg:w-1/3 px-3.5">
-                      <label htmlfor="selact" className="p-5 py-4 bg-white rounded-md flex space-x-3 cursor-pointer">
-                        <input type="radio" name="type" id="select" className="w-6 h-6 rounded-full bg-brightGray appearance-none cursor-pointer" checked={type === "romantic_stay" && true} onChange={(e) => setType("romantic_stay")}/>
-                        <h3 className="text-base">Romantic Stay</h3>
-                      </label>
-                  </div>
-                  <div className="w-full lg:w-1/3 px-3.5">
-                      <label htmlfor="selact1" className="p-5 py-4 bg-white rounded-md flex space-x-3 cursor-pointer">
-                        <input type="radio" name="type" id="select1" className="w-6 h-6 rounded-full bg-brightGray appearance-none cursor-pointer" checked={type === "romantic_lunch_dinner" && true} onChange={(e) => setType('romantic_lunch_dinner')} />
-                        <h3 className="text-base">Romantic Lunch / Dinner</h3>
-                      </label>
-                  </div>
-                  <div className="w-full lg:w-1/3 px-3.5">
-                    <label htmlfor="selact2" className="p-5 py-4 bg-white rounded-md flex space-x-3 cursor-pointer">
-                      <input type="radio" name="type" id="select2" className="w-6 h-6 rounded-full bg-brightGray appearance-none cursor-pointer" checked={type === "romantic_candlelight_dinner" && true} onChange={(e) => setType('romantic_candlelight_dinner')} />
-                      <h3 className="text-base">Romantic Candlelight Dinner</h3>
-                    </label>
-                  </div>
-                </div>
-                <div className="w-full inputHolder">
-                    <span className="input-titel">person capacity</span>
-                    <input type="text" className="input font-bold" name="person_capacity" value={values.person_capacity} onChange={handleInputChange} />
-                </div>
-                <div className="w-full inputHolder">
-                    <span className="input-titel">Parking Capacity</span>
-                    <input type="text" className="input font-bold" name="parking_capacity" value={values.parking_capacity} onChange={handleInputChange} /> 
-                </div>
-                <div className="w-full relative">
-                    <span className="input-titel">Address</span>
-                    <div className="w-full flex flex-wrap bg-white p-2 rounded-md">
-                    <iframe className="min-h-[170px] xl:min-h-[220px]" src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d14875.88775631223!2d72.81608609999999!3d21.2329613!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1655442825672!5m2!1sen!2sin" width="100%" height="100%" style={{ border: 0 }} allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade" title='google-map'></iframe>
-                    </div>                    
-                </div>
+              <div className="w-full lg:w-1/3 px-3.5">
+                <label htmlfor="selact1" className="p-5 py-4 bg-white rounded-md flex space-x-3 cursor-pointer">
+                  <input type="radio" name="type" id="select1" className="w-6 h-6 rounded-full bg-brightGray appearance-none cursor-pointer" checked={type === "romantic_lunch_dinner" && true} onChange={(e) => setType('romantic_lunch_dinner')} />
+                  <h3 className="text-base">Romantic Lunch / Dinner</h3>
+                </label>
+              </div>
+              <div className="w-full lg:w-1/3 px-3.5">
+                <label htmlfor="selact2" className="p-5 py-4 bg-white rounded-md flex space-x-3 cursor-pointer">
+                  <input type="radio" name="type" id="select2" className="w-6 h-6 rounded-full bg-brightGray appearance-none cursor-pointer" checked={type === "romantic_candlelight_dinner" && true} onChange={(e) => setType('romantic_candlelight_dinner')} />
+                  <h3 className="text-base">Romantic Candlelight Dinner</h3>
+                </label>
               </div>
             </div>
             <div className="w-full inputHolder">
@@ -181,7 +154,7 @@ function EventCapacity() {
                   {console.log("add : ", values.location.coordinates)}
                   {Object.keys(values.location).length === 0 ? (
                     <>
-                      <GoogleMap
+                      <AutoPlaceSearch
                         handleClick={handleClick}
                         coordinates={{
                           type: "Point",
@@ -191,7 +164,7 @@ function EventCapacity() {
                     </>
                   ) : (
                     <>
-                      <GoogleMap
+                      <AutoPlaceSearch
                         handleClick={handleClick}
                         coordinates={values.location}
                         add={values.address}
