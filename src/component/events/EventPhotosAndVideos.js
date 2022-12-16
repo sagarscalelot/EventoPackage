@@ -32,7 +32,6 @@ const token = localStorage.getItem("Token");
 			const response = await axios.get(`${baseUrl}/organizer/events/media?eventid=${eventId}`, {headers: header});
 			if(response.data.Data.photos) setImageList(response.data?.Data?.photos);
 			if(response.data.Data.videos) setVideoList(response.data?.Data?.videos);
-			// console.log("Media response >> ",response);
 		} catch (error) {
 			console.log(error);
 		}
@@ -43,11 +42,9 @@ const token = localStorage.getItem("Token");
 	},[isUploadPhotoPopUpOpen, isUploadVideoPopUpOpen]);
 
 const removeImageClick = async(index) => {
-	// console.log(index)
 	const tmpList = imageList;
 	if(index === 0) tmpList.shift();
 	else if(tmpList.length > 1) tmpList.splice(index, 1);
-	// console.log(tmpList);
 	const reqObj = {
 		eventid: eventId,
 		photos: tmpList
@@ -164,7 +161,6 @@ const clickBackHander = () => {
 			   </div>
 		   </div>
 		   <div className="w-full inline-block">
-			 {/* <a href="#" className="float-right btn-primary small leading-10" onClick={() => navigate("/dashboard/event/buy-space-plan")}>Buy Space</a> */}
 			 <span className="float-left input-titel text-sm lg:leading-10">Disclaimer - These images and videos will first be verified by the admin and then given the authority.</span>
 		   </div>
 		 </div>

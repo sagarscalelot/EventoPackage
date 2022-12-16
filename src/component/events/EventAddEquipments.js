@@ -52,7 +52,6 @@ function EventAddEquipments() {
 			console.log(error);
 		}
 	}
-	// console.log(equipmentList);
 
 	useEffect(() => {
 		getequipmentList();

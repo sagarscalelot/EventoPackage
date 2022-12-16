@@ -1,9 +1,8 @@
 import axios from 'axios';
-import { event } from 'jquery';
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { baseUrl, s3Url } from '../../../config';
-import { useNavigate, useParams } from 'react-router-dom';
+import {  useParams } from 'react-router-dom';
 import { imageType, onlyDigits } from '../../../shared/constants';
 
 function EventPopUpAddService({isItem, handleClose, data, setReload, edit}) {

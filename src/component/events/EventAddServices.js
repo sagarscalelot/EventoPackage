@@ -55,7 +55,6 @@ function EventAddServices() {
 
 
 	}
-	// console.log(serviceList);
 
 	useEffect(() => {
 		getServiceList();

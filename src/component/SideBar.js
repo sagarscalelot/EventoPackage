@@ -31,9 +31,13 @@ import Notification from "./Notification/Notification";
 import Profile from "./other/Profile";
 import { toast, ToastContainer } from "react-toastify";
 import OurProducts from "./other/OurProducts";
+import NotificationDetails from "./Notification/NotificationDetails";
+import SelectBusiness from './Notification/SelectBusiness'
+import SelectBusinessPromote from "./Notification/SelectBusinessPromote"
 import {baseUrl, s3Url} from "../config";
 import axios from 'axios';
 import EventAddEquipments from "./events/EventAddEquipments";
+
 
 function SideBar() {
 
@@ -42,9 +46,9 @@ function SideBar() {
 
   const navigate = useNavigate();
   const token = localStorage.getItem("Token") || null;
-	const header = {
-		'Authorization': `Token ${token}`
-	}
+  const header = {
+    'Authorization': `Token ${token}`
+  }
 
   const getProfile = async() => {
 		try {
@@ -66,20 +70,21 @@ function SideBar() {
 
   const handleLogout = async () => {
     // try {
-				// const response = await axios.post(`${baseUrl}/api/logout`, {}, {headers: header});
-				// console.log("Logout",response);
-      // } catch (error) {
-        // console.log(error);
-        // toast.error("something Went wrong.");
-      // }
-      toast.success("Logout successfully.")
+    // const response = await axios.post(`${baseUrl}/api/logout`, {}, {headers: header});
+    // console.log("Logout",response);
+    // } catch (error) {
+    // console.log(error);
+    // toast.error("something Went wrong.");
+    // }
+    toast.success("Logout successfully.")
     setTimeout(() => {
       navigate("../auth/login");
     }, 200);
       localStorage.clear();
+
   }
 
-  const removeId =()=>{
+  const removeId = () => {
     localStorage.removeItem('eventId');
     localStorage.removeItem('displayName');
     localStorage.removeItem('stepCount');
@@ -244,7 +249,7 @@ function SideBar() {
                       <span className="font-bold font-primary leading-4">Sign Out</span>
                     </div>
                   </div>
-                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -290,7 +295,15 @@ function SideBar() {
 
             {/* header link */}
             <Route path="chatbot" element={<Chatbot />} />
-            <Route path="notification" element={<Notification />} />
+            <Route path="notification">
+              <Route index element={<Notification />} />
+              <Route path="details" element={<NotificationDetails />} />
+              <Route path="selectbusiness">
+                <Route index element={<SelectBusiness />} />
+                <Route path="selectbusinesspromot" element={<SelectBusinessPromote />} />
+              </Route>
+            </Route>
+
 
           </Routes>
         </div>
