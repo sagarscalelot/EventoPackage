@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import EventAddPlacesEventList from './EventAddPlacesEventList';
 import { useNavigate, useParams } from 'react-router-dom';
 import Advertisement from '../Advertisement';
@@ -22,10 +22,10 @@ function EventAddPlaces() {
 	const header = {
 		'Authorization': `Token ${token}`
 	}
-	const getAddedEvent = async() => {
+	const getAddedEvent = async () => {
 		try {
-			const response = await axios.get(`${baseUrl}/organizer/events?eventid=${eventId}`,{headers: header});
-			if(!response.data.IsSuccess) {
+			const response = await axios.get(`${baseUrl}/organizer/events?eventid=${eventId}`, { headers: header });
+			if (!response.data.IsSuccess) {
 				toast.error("Error occured while fetching data.")
 			}
 			localStorage.setItem("displayName", response.data.Data?.display_name);
@@ -35,15 +35,15 @@ function EventAddPlaces() {
 			console.log(error);
 		}
 	}
-	
-	useEffect(()=> {
+
+	useEffect(() => {
 		getAddedEvent();
-	},[]);
+	}, []);
 
 	const clickNextHandler = () => {
 		toast.success("Data Saved Successfully.");
 		dispatch(increment());
-		if(eventType === "hyp" ) navigate(`../aboutplace`);
+		if (eventType === "hyp") navigate(`../aboutplace`);
 		else navigate(`../personalinfo`);
 	};
 
@@ -52,44 +52,44 @@ function EventAddPlaces() {
 		navigate(-1);
 	}
 
-  return (
-	//  <!-- Content In -->
-	 <>
-	 <div className="wrapper min-h-full flex flex-col">
-	   <div className="space-y-8 h-full">
-		 {/* <!-- title-holder  --> */}
-		 <div className="flex justify-between items-center">
-			 <div className="flex items-center"><i className="icon-back-arrow mr-4 text-2xl" onClick={clickBackHander}></i><h1>Create New</h1></div>
-		 </div>
-		 {/* <!-- step-progress-bar  --> */}
-		<StepProgressBar eventType={eventType} />
-		 {/* <!-- main-content  --> */}
-		 <div className=" space-y-3">
-		   <EventAddPlacesEventList displayName={newEvent?.display_name} categoryName={categoryName} eventId={newEvent?._id} />
-		 </div>
-		 {/* <!-- advisement --> */}
-		 <Advertisement />
-	   </div>
-	   <div className="prw-next-btn mt-auto">
-		 <button type="button" className="flex items-center" onClick={clickBackHander}><i className="icon-back-arrow mr-3"></i><h3>Back</h3></button>
-		 <button type="button" className="flex items-center active" onClick={clickNextHandler}><h3>Next</h3><i className="icon-next-arrow ml-3"></i></button>
-	   </div>
-	 </div>
-		  <ToastContainer
-			  position="bottom-right"
-			  autoClose={5000}
-			  hideProgressBar={false}
-			  newestOnTop={false}
-			  closeOnClick
-			  rtl={false}
-			  pauseOnFocusLoss
-			  draggable
-			  pauseOnHover
-			  theme="colored"
-		  />
-   </>
+	return (
+		//  <!-- Content In -->
+		<>
+			<div className="wrapper min-h-full flex flex-col">
+				<div className="space-y-8 h-full">
+					{/* <!-- title-holder  --> */}
+					<div className="flex justify-between items-center">
+						<div className="flex items-center"><i className="icon-back-arrow mr-4 text-2xl" onClick={clickBackHander}></i><h1>Create New</h1></div>
+					</div>
+					{/* <!-- step-progress-bar  --> */}
+					<StepProgressBar eventType={eventType} />
+					{/* <!-- main-content  --> */}
+					<div className=" space-y-3">
+						<EventAddPlacesEventList displayName={newEvent?.display_name} categoryName={categoryName} eventId={newEvent?._id} />
+					</div>
+					{/* <!-- advisement --> */}
+					<Advertisement />
+				</div>
+				<div className="prw-next-btn mt-auto">
+					<button type="button" className="flex items-center" onClick={clickBackHander}><i className="icon-back-arrow mr-3"></i><h3>Back</h3></button>
+					<button type="button" className="flex items-center active" onClick={clickNextHandler}><h3>Next</h3><i className="icon-next-arrow ml-3"></i></button>
+				</div>
+			</div>
+			<ToastContainer
+				position="bottom-right"
+				autoClose={5000}
+				hideProgressBar={false}
+				newestOnTop={false}
+				closeOnClick
+				rtl={false}
+				pauseOnFocusLoss
+				draggable
+				pauseOnHover
+				theme="colored"
+			/>
+		</>
 
-  )
+	)
 }
 
 export default EventAddPlaces;
