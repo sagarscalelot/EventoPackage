@@ -7,8 +7,8 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
-import { s3Url } from '../../../config';
-function ImageAndVideoPreview({ handleClose, data }) {
+
+function ImageAndVideoPreview({ handleClose }) {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   return (
     <div className="fixed inset-0 w-full h-full bg-[rgba(0,0,0,0.6)] flex z-50">
@@ -26,14 +26,18 @@ function ImageAndVideoPreview({ handleClose, data }) {
             modules={[Navigation, Thumbs]}
             thumbs={{ swiper: thumbsSwiper }}
           >
-            {data?.photos?.map(e => (
-              <SwiperSlide>
-
-                <ImageAndVideoPreviewMainSlide link={e.url} desc={e.description} />
-              </SwiperSlide>
-
-            ))}
-            {/* <div className="rounded-md overflow-hidden"><img src={dish1Image} alt="/dish-1" width={100} height={100} /> </div> */}
+            <SwiperSlide>
+              <ImageAndVideoPreviewMainSlide />
+            </SwiperSlide>
+            <SwiperSlide>
+              <ImageAndVideoPreviewMainSlide />
+            </SwiperSlide>
+            <SwiperSlide>
+              <ImageAndVideoPreviewMainSlide />
+            </SwiperSlide>
+            <SwiperSlide>
+              <ImageAndVideoPreviewMainSlide />
+            </SwiperSlide>
           </Swiper>
 
         </div>
@@ -49,13 +53,18 @@ function ImageAndVideoPreview({ handleClose, data }) {
             modules={[Navigation, Thumbs]}
           // onSwiper={setThumbsSwiper}
           >
-            {data?.photos?.map(e => (
-              <SwiperSlide>
-
-                <ImageAndVideoPreviewMainSlide link={e.url} desc={e.description} />
-              </SwiperSlide>
-
-            ))}
+            <SwiperSlide>
+              <div className="rounded-md overflow-hidden"><img src={dish1Image} alt="/dish-1" /> </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="rounded-md overflow-hidden"><img src={dish1Image} alt="/dish-1" /> </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="rounded-md overflow-hidden"><img src={dish1Image} alt="/dish-1" /> </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="rounded-md overflow-hidden"><img src={dish1Image} alt="/dish-1" /> </div>
+            </SwiperSlide>
           </Swiper>
         </div>
       </div>
