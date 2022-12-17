@@ -1,10 +1,37 @@
 import React from "react";
 import celebrationSvg from "../../assest/svg/celebration.svg";
 import UserPlanCard from "./UserPlanCard";
+import NotificationProgressBar from '../Notification/NotificationProgressBar';
+import { decrement, increment } from '../../redux/stepProgressNotification';
+import {  useNavigate } from "react-router-dom";
+import { useDispatch } from 'react-redux';
 
 function AllUserSelectPlan() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+
+const clickNextHandler =()=>{
+  dispatch(increment());
+  navigate("../publishdatetime");
+}
+
+  const clickBackHander = () => {
+    dispatch(decrement());
+    navigate(-1);
+  }
   return (
     <div>
+    <div className="wrapper min-h-full">
+    {/* <!-- title-holder  -->/ */}
+    <div className="flex justify-between items-center">
+      <div className="flex items-center cursor-pointer" onClick={clickBackHander}><i className="icon-back-arrow mr-4 text-2xl"></i>
+        <h1>Promote</h1>
+      </div>
+    </div>
+    <br/>
+    <NotificationProgressBar/>
+    <br/>
       {/* <!-- select user card  --> */}
       <div className="">
         <h3>Select User Plan</h3>
@@ -152,6 +179,12 @@ function AllUserSelectPlan() {
           </div>
         </div>
       </div>
+      <div className="prw-next-btn mt-auto">
+		 <button type="button" className="flex items-center" onClick={clickBackHander}><i className="icon-back-arrow mr-3"></i><h3>Back</h3></button>
+		 <button type="button" className="flex items-center active" onClick={clickNextHandler}><h3>Next</h3><i className="icon-next-arrow ml-3"></i></button>
+	   </div>
+      </div>
+
     </div>
   );
 }

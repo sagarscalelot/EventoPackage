@@ -1,9 +1,37 @@
 import React from "react";
+import NotificationProgressBar from './NotificationProgressBar';
+import { decrement, increment } from '../../redux/stepProgressNotification';
+import {  useNavigate } from "react-router-dom";
+import { useDispatch } from 'react-redux';
 
 function NotificationMode() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+
+const clickNextHandler =()=>{
+  dispatch(increment());
+  navigate("../notificationpayment");
+}
+
+  const clickBackHander = () => {
+    dispatch(decrement());
+    navigate(-1);
+  }
   return (
     <>
+    
       <div className="">
+      <div className="wrapper min-h-full">
+    {/* <!-- title-holder  -->/ */}
+    <div className="flex justify-between items-center">
+      <div className="flex items-center cursor-pointer" onClick={clickBackHander}><i className="icon-back-arrow mr-4 text-2xl"></i>
+        <h1>Promote</h1>
+      </div>
+    </div>
+    <br/>
+    <NotificationProgressBar/>
+    <br/>
         <h3>Bill Details</h3>
         <div className="bg-white rounded p-8 mt-6 space-y-5">
           <div className="flex items-start">
@@ -56,7 +84,7 @@ function NotificationMode() {
             </h2>
           </div>
         </div>
-      </div>
+      
       <div className="">
         <h3>Discount Coupon</h3>
         <div className="flex justify-between -mx-1">
@@ -75,10 +103,16 @@ function NotificationMode() {
           </div>
         </div>
       </div>
-
+      <br/>
       <button type="button" className="btn-primary w-full uppercase">
         <h3>Pay NOW</h3>
       </button>
+      <div className="prw-next-btn mt-auto">
+		 <button type="button" className="flex items-center" onClick={clickBackHander}><i className="icon-back-arrow mr-3"></i><h3>Back</h3></button>
+		 <button type="button" className="flex items-center active" onClick={clickNextHandler}><h3>Next</h3><i className="icon-next-arrow ml-3"></i></button>
+	   </div>
+    </div>
+    </div>
     </>
   );
 }

@@ -31,13 +31,11 @@ function EventPopUpUploadPhoto({handleClose, eventId, imageList}) {
 					setErrorMessage(null);
 					setError(false);
 				}
-				else {
-					// console.log("file size is greater than 3MB. File size is ", selected.size);
+				else {	
 					setErrorMessage("file size is greater than "+size+" MB");
 					setError(true);
 				}
 			} else {
-				// console.log("please select valid image file. File type is ", selected.type);
 				setErrorMessage("please select valid image file.");
 				setError(true);
 			}

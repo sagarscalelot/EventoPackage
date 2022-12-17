@@ -5,7 +5,8 @@ import { toast } from 'react-toastify';
 import previewImage from "../../assest/images/image-preview.png"
 import { baseUrl } from '../../config';
 
-function PersonalProfile({type, token, details}) {
+function PersonalProfile() {
+    const token = localStorage.getItem("Token");
     const header = {
 		'Authorization': `Token ${token}`,
 	}
@@ -15,6 +16,22 @@ function PersonalProfile({type, token, details}) {
 	}
     const [isDisable, setIsDisable] = useState(true);
     const [profileImage, setProfileImage] = useState(null);
+    const [details, setDetails] = useState({});
+
+	const getProfile = async() => {
+		try {
+			const response = await axios.get(`${baseUrl}/organizer/profile`, {headers: header});
+			console.log("response.data.Data",response.data.Data);
+            setDetails(response.data.Data)
+		} catch (error) {
+			console.log(error);
+		}
+	}
+
+    useEffect(() => {
+        getProfile();
+    },[]);
+
     // console.log(profileImage);
     const initalState = {
         name : "",
@@ -27,6 +44,8 @@ function PersonalProfile({type, token, details}) {
         phone_no:""
 
     }
+
+
 
     const [values, setValues] = useState(initalState);
     const changeHandler = (e) => {
@@ -95,10 +114,6 @@ function PersonalProfile({type, token, details}) {
         }
     }
 
-    useEffect(() => {
-        addProfilePic()
-    }, [])
-    
 
     const photoChangeHandler = (event) => {
 		const types = ['image/png', 'image/jpeg', 'image/jpg'];
@@ -126,7 +141,7 @@ function PersonalProfile({type, token, details}) {
     <>
       {/* <!-- title-holder  --> */}
       <div className="flex justify-between items-center pt-4">
-                    <h1>{type} profile</h1>
+                    <h1>Personal profile</h1>
                     {isDisable && <button className="btn-primary small" onClick={() => setIsDisable(false) }>Edit Profile</button>}
                     {!isDisable && <div className='flex'>
                         <button className="btn-primary small mr-3" onClick={() => {addPersonalDetails();setIsDisable(true) }  }>Save</button>
@@ -160,7 +175,7 @@ function PersonalProfile({type, token, details}) {
                         </div>
                         <div className="w-full md:w-1/2 px-2 inputHolder">
                             <span className="input-titel">Email</span>
-                            <input type="text" className="input font-bold" name="email" value={values?.email} onChange={changeHandler} disabled={isDisable} />
+                            <input type="text" className="input font-bold"  value={values?.email} onChange={changeHandler} disabled={isDisable} />
                         </div>
                     </div>
                     <div className="flex justify-between space-x-5 pt-3 -mx-2">
