@@ -4,8 +4,8 @@ const initialState = {
   count: JSON.parse(localStorage.getItem("stepCount")) || 0
 }
 
-export const stepProgressNotification  = createSlice({
-    name: 'stepProgressNotification',
+export const StepProgressNotification  = createSlice({
+    name: 'StepProgressNotification',
     initialState,
     reducers: {
         increment: (state) => {
@@ -29,6 +29,6 @@ export const stepProgressNotification  = createSlice({
     },
   })
   
-  export const { increment, decrement, setNumber, reset } = stepProgressNotification.actions;
+  export const { increment, decrement, setNumber, reset } = StepProgressNotification.actions;
   
-  export default stepProgressNotification.reducer
+  export default StepProgressNotification.reducer
