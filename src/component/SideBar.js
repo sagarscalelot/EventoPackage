@@ -34,20 +34,15 @@ import OurProducts from "./other/OurProducts";
 import NotificationDetails from "./Notification/NotificationDetails";
 import SelectBusiness from './Notification/SelectBusiness'
 import SelectBusinessPromote from "./Notification/SelectBusinessPromote"
-import {baseUrl, s3Url} from "../config";
+import { baseUrl, s3Url } from "../config";
 import axios from 'axios';
 import EventAddEquipments from "./events/EventAddEquipments";
-import AllUserSelectPlan from "./Notification/AllUserSelectPlan";
-import ExistingUserPromote from "./Notification/ExistingUserPromote";
-import PublishDateTime from "./Notification/PublishDateTime";
-import NotificationMode from "./Notification/NotificationMode";
-import NotificationPayment from "./Notification/NotificationPayment";
 
 
 function SideBar() {
 
   const [languagePopup, setLanguagePopup] = useState(false);
-  const [profilepic, setProfilepic] = useState("");
+  const [profilepic, setProfilepic] = useState({});
 
   const navigate = useNavigate();
   const token = localStorage.getItem("Token") || null;
@@ -55,19 +50,19 @@ function SideBar() {
     'Authorization': `Token ${token}`
   }
 
-  const getProfile = async() => {
-		try {
-			const response = await axios.get(`${baseUrl}/organizer/profile`, {headers: header});
-			// console.log("response.data.Data",response.data.Data);
-     setProfilepic(response.data.Data.profile_pic)
-		} catch (error) {
-			console.log(error);
-		}
-	}
+  const getProfile = async () => {
+    try {
+      const response = await axios.get(`${baseUrl}/organizer/profile`, { headers: header });
+      // console.log("response.data.Data",response.data.Data);
+      setProfilepic(response.data.Data.profile_pic)
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
-    useEffect(() => {
-        getProfile();
-    },[]);
+  useEffect(() => {
+    getProfile();
+  }, []);
 
   useEffect(() => {
     if (token == null) return navigate("../auth/login")
@@ -85,7 +80,7 @@ function SideBar() {
     setTimeout(() => {
       navigate("../auth/login");
     }, 200);
-      localStorage.clear();
+    localStorage.clear();
 
   }
 
@@ -239,7 +234,7 @@ function SideBar() {
               </Link>
               <div className="block por">
                 <img
-                  src={(profilepic && profilepic !=="") ? (s3Url+'/'+profilepic) :userImage}
+                  src={profilepic ? (s3Url + '/' + profilepic) : Profile}
                   alt="user name"
                   className="w-12 h-12 object-cover rounded-2xl relative"
                 />
@@ -267,24 +262,24 @@ function SideBar() {
           <Routes>
             <Route index element={<SelectWhoYouAre />} />
             <Route path="event">
-              <Route path="event-view/:eventType" element={<DashboardEventView /> } />
+              <Route path="event-view/:eventType" element={<DashboardEventView />} />
               <Route path=":eventType" >
                 <Route index element={<DashboardEvent />} />
-                  {/* <Route path=":eventId"> */}
-                    <Route path="addplaces" element={<EventAddPlaces />} />
-                    <Route path="aboutplace" element={<EventAboutPlace />} />
-                    <Route path="personaldetails" element={<EventPersonalDetails />} />
-                    <Route path="personalinfo" element={<EventPSB />} />
-                    <Route path="photosandvideos" element={<EventPhotosAndVideos />} />
-                    <Route path="addservices" element={<EventAddServices />} />
-                    <Route path="addequipments" element={<EventAddEquipments />} />
-                    <Route path="capacity" element={<EventCapacity />} />
-                    <Route path="companydetails" element={<EventCompanyDetails />} />
-                    <Route path="termsandconditions" element={<EventTermsAndConditions />} />
-                    <Route path="discounts" element={<EventDiscounts />} />
-                    <Route path="calender" element={<EventCalender />} />
-                    <Route path="othercost" element={<PSBOtherCost />} />
-                    <Route path="additem" element={<EventAddServices />} />
+                {/* <Route path=":eventId"> */}
+                <Route path="addplaces" element={<EventAddPlaces />} />
+                <Route path="aboutplace" element={<EventAboutPlace />} />
+                <Route path="personaldetails" element={<EventPersonalDetails />} />
+                <Route path="personalinfo" element={<EventPSB />} />
+                <Route path="photosandvideos" element={<EventPhotosAndVideos />} />
+                <Route path="addservices" element={<EventAddServices />} />
+                <Route path="addequipments" element={<EventAddEquipments />} />
+                <Route path="capacity" element={<EventCapacity />} />
+                <Route path="companydetails" element={<EventCompanyDetails />} />
+                <Route path="termsandconditions" element={<EventTermsAndConditions />} />
+                <Route path="discounts" element={<EventDiscounts />} />
+                <Route path="calender" element={<EventCalender />} />
+                <Route path="othercost" element={<PSBOtherCost />} />
+                <Route path="additem" element={<EventAddServices />} />
               </Route>
             </Route>
 
@@ -305,12 +300,8 @@ function SideBar() {
               <Route path="details" element={<NotificationDetails />} />
               <Route path="selectbusiness">
                 <Route index element={<SelectBusiness />} />
-                <Route path="selectbusinesspromot" element={<SelectBusinessPromote />} />
-                <Route path="alluserpalns" element={<AllUserSelectPlan />} />
-                <Route path="publishdatetime" element={<PublishDateTime />} />
-                <Route path="existinguserpromote" element={<ExistingUserPromote />} />
-                <Route path="notificationmode" element={<NotificationMode />} />
-                <Route path="notificationpayment" element={<NotificationPayment />} />
+                <Route path="selectbusinesspromote" element={<SelectBusinessPromote />} />
+                <Route path="nhyp" element={<SelectBusinessPromote />} />
               </Route>
             </Route>
 
@@ -319,17 +310,17 @@ function SideBar() {
         </div>
       </div>
       <ToastContainer
-					position="bottom-right"
-					autoClose={2000}
-					hideProgressBar={false}
-					newestOnTop={false}
-					closeOnClick
-					rtl={false}
-					pauseOnFocusLoss
-					draggable
-					pauseOnHover
-					theme="colored"
-				/>
+        position="bottom-right"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
     </div>
   );
 }
