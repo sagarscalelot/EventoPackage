@@ -12,109 +12,109 @@ function AllUserSelectPlan() {
           {/* <UserPlanCard totalUser={999} notificationCount={69} smsCount={399} emailCount={89} allCount={475} colorFrom={"#13e1b094"} colorTo={"#13E1B0"} />
           <UserPlanCard totalUser={9999} notificationCount={69} smsCount={399} emailCount={89} allCount={475} />
           <UserPlanCard totalUser={99999} notificationCount={69} smsCount={399} emailCount={89} allCount={475} /> */}
-          
+
           <div className="w-1/3">
-                  <div className="bg-gradient-to-r from-[#13e1b094] to-[#13E1B0] p-5 rounded-xl relative overflow-hidden">
-                    <div className="absolute -left-3 -bottom-3">
-                      <img src={celebrationSvg} alt="celebration" />
-                    </div>
-                    <label htmlFor="user-999" className="relative">
-                      <div className="flex items-center">
-                        <div className="radio">
-                          <input className="radio" type="radio" name="radio-card" id="user-999" />
-                          <i className="icon-right"></i>
-                        </div>
-                        <span className="text-xl font-normal text-white ml-5">FOR 999 USERS </span>
-                      </div>
-                      <div className="pt-7 space-y-3">
-                        <div className="flex w-full justify-between items-center">
-                          <span className="text-sm text-japaneseIndigo font-bold">Notification</span>
-                          <span className="text-sm text-japaneseIndigo font-bold">69 FOR 999 USERS</span>
-                        </div>
-                        <div className="flex w-full justify-between items-center">
-                          <span className="text-sm text-japaneseIndigo font-bold">SMS</span>
-                          <span className="text-sm text-japaneseIndigo font-bold">399 FOR 999 USERS</span>
-                        </div>
-                        <div className="flex w-full justify-between items-center">
-                          <span className="text-sm text-japaneseIndigo font-bold">Email</span>
-                          <span className="text-sm text-japaneseIndigo font-bold">89 FOR 999 USERS</span>
-                        </div>
-                        <div className="flex w-full justify-between items-center">
-                          <span className="text-sm text-japaneseIndigo font-bold">All</span>
-                          <span className="text-sm text-japaneseIndigo font-bold">475 FOR 999 USERS</span>
-                        </div>
-                      </div>
-                    </label>
+            <div className="bg-gradient-to-r from-[#13e1b094] to-[#13E1B0] p-5 rounded-xl relative overflow-hidden">
+              <div className="absolute -left-3 -bottom-3">
+                <img src={celebrationSvg} alt="celebration" />
+              </div>
+              <label htmlFor="user-999" className="relative">
+                <div className="flex items-center">
+                  <div className="radio">
+                    <input className="radio" type="radio" name="radio-card" id="user-999" />
+                    <i className="icon-right"></i>
+                  </div>
+                  <span className="text-xl font-normal text-white ml-5">FOR 999 USERS </span>
+                </div>
+                <div className="pt-7 space-y-3">
+                  <div className="flex w-full justify-between items-center">
+                    <span className="text-sm text-japaneseIndigo font-bold">Notification</span>
+                    <span className="text-sm text-japaneseIndigo font-bold">69 FOR 999 USERS</span>
+                  </div>
+                  <div className="flex w-full justify-between items-center">
+                    <span className="text-sm text-japaneseIndigo font-bold">SMS</span>
+                    <span className="text-sm text-japaneseIndigo font-bold">399 FOR 999 USERS</span>
+                  </div>
+                  <div className="flex w-full justify-between items-center">
+                    <span className="text-sm text-japaneseIndigo font-bold">Email</span>
+                    <span className="text-sm text-japaneseIndigo font-bold">89 FOR 999 USERS</span>
+                  </div>
+                  <div className="flex w-full justify-between items-center">
+                    <span className="text-sm text-japaneseIndigo font-bold">All</span>
+                    <span className="text-sm text-japaneseIndigo font-bold">475 FOR 999 USERS</span>
                   </div>
                 </div>
-                <div className="w-1/3">
-                  <div className="bg-gradient-to-r from-[#20c0e878] to-[#20C0E8] p-5 rounded-xl relative overflow-hidden">
-                    <div className="absolute -left-3 -bottom-3">
-                      <img src={celebrationSvg} alt="celebration" />
-                    </div>
-                    <label htmlFor="user-9999" className="relative">
-                      <div className="flex items-center">
-                        <div className="radio">
-                          <input className="radio" type="radio" name="radio-card" id="user-9999" checked />
-                          <i className="icon-right"></i>
-                        </div>
-                        <span className="text-xl font-normal text-white ml-5">FOR 9999 USERS </span>
-                      </div>
-                      <div className="pt-7 space-y-3">
-                        <div className="flex w-full justify-between items-center">
-                          <span className="text-sm text-japaneseIndigo font-bold">Notification</span>
-                          <span className="text-sm text-japaneseIndigo font-bold">299 FOR 9999 USERS</span>
-                        </div>
-                        <div className="flex w-full justify-between items-center">
-                          <span className="text-sm text-japaneseIndigo font-bold">SMS</span>
-                          <span className="text-sm text-japaneseIndigo font-bold">1999 FOR 9999 USERS</span>
-                        </div>
-                        <div className="flex w-full justify-between items-center">
-                          <span className="text-sm text-japaneseIndigo font-bold">Email</span>
-                          <span className="text-sm text-japaneseIndigo font-bold">8399 FOR 9999 USERS</span>
-                        </div>
-                        <div className="flex w-full justify-between items-center">
-                          <span className="text-sm text-japaneseIndigo font-bold">All</span>
-                          <span className="text-sm text-japaneseIndigo font-bold">2299 FOR 9999 USERS</span>
-                        </div>
-                      </div>
-                    </label>
+              </label>
+            </div>
+          </div>
+          <div className="w-1/3">
+            <div className="bg-gradient-to-r from-[#20c0e878] to-[#20C0E8] p-5 rounded-xl relative overflow-hidden">
+              <div className="absolute -left-3 -bottom-3">
+                <img src={celebrationSvg} alt="celebration" />
+              </div>
+              <label htmlFor="user-9999" className="relative">
+                <div className="flex items-center">
+                  <div className="radio">
+                    <input className="radio" type="radio" name="radio-card" id="user-9999" checked />
+                    <i className="icon-right"></i>
+                  </div>
+                  <span className="text-xl font-normal text-white ml-5">FOR 9999 USERS </span>
+                </div>
+                <div className="pt-7 space-y-3">
+                  <div className="flex w-full justify-between items-center">
+                    <span className="text-sm text-japaneseIndigo font-bold">Notification</span>
+                    <span className="text-sm text-japaneseIndigo font-bold">299 FOR 9999 USERS</span>
+                  </div>
+                  <div className="flex w-full justify-between items-center">
+                    <span className="text-sm text-japaneseIndigo font-bold">SMS</span>
+                    <span className="text-sm text-japaneseIndigo font-bold">1999 FOR 9999 USERS</span>
+                  </div>
+                  <div className="flex w-full justify-between items-center">
+                    <span className="text-sm text-japaneseIndigo font-bold">Email</span>
+                    <span className="text-sm text-japaneseIndigo font-bold">8399 FOR 9999 USERS</span>
+                  </div>
+                  <div className="flex w-full justify-between items-center">
+                    <span className="text-sm text-japaneseIndigo font-bold">All</span>
+                    <span className="text-sm text-japaneseIndigo font-bold">2299 FOR 9999 USERS</span>
                   </div>
                 </div>
-                <div className="w-1/3">
-                  <div className="bg-gradient-to-r from-[#faba1585] to-[#FABA15] p-5 rounded-xl relative overflow-hidden">
-                    <div className="absolute -left-3 -bottom-3">
-                      <img src={celebrationSvg} alt="celebration" />
-                    </div>
-                    <label htmlFor="user-99999" className="relative">
-                      <div className="flex items-center">
-                        <div className="radio">
-                          <input className="radio" type="radio" name="radio-card" id="user-99999"/>
-                          <i className="icon-right"></i>
-                        </div>
-                        <span className="text-xl font-normal text-white ml-5">FOR 99999 USERS </span>
-                      </div>
-                      <div className="card-content pt-7 space-y-3">
-                        <div className="flex w-full justify-between items-center">
-                          <span className="text-sm text-japaneseIndigo font-bold">Notification</span>
-                          <span className="text-sm text-japaneseIndigo font-bold">1799 FOR 99999 USERS</span>
-                        </div>
-                        <div className="flex w-full justify-between items-center">
-                          <span className="text-sm text-japaneseIndigo font-bold">SMS</span>
-                          <span className="text-sm text-japaneseIndigo font-bold">16999 FOR 99999 USERS</span>
-                        </div>
-                        <div className="flex w-full justify-between items-center">
-                          <span className="text-sm text-japaneseIndigo font-bold">Email</span>
-                          <span className="text-sm text-japaneseIndigo font-bold">3399 FOR 99999 USERS</span>
-                        </div>
-                        <div className="flex w-full justify-between items-center">
-                          <span className="text-sm text-japaneseIndigo font-bold">All</span>
-                          <span className="text-sm text-japaneseIndigo font-bold">475 FOR 99999 USERS</span>
-                        </div>
-                      </div>
-                    </label>
+              </label>
+            </div>
+          </div>
+          <div className="w-1/3">
+            <div className="bg-gradient-to-r from-[#faba1585] to-[#FABA15] p-5 rounded-xl relative overflow-hidden">
+              <div className="absolute -left-3 -bottom-3">
+                <img src={celebrationSvg} alt="celebration" />
+              </div>
+              <label htmlFor="user-99999" className="relative">
+                <div className="flex items-center">
+                  <div className="radio">
+                    <input className="radio" type="radio" name="radio-card" id="user-99999" />
+                    <i className="icon-right"></i>
+                  </div>
+                  <span className="text-xl font-normal text-white ml-5">FOR 99999 USERS </span>
+                </div>
+                <div className="card-content pt-7 space-y-3">
+                  <div className="flex w-full justify-between items-center">
+                    <span className="text-sm text-japaneseIndigo font-bold">Notification</span>
+                    <span className="text-sm text-japaneseIndigo font-bold">1799 FOR 99999 USERS</span>
+                  </div>
+                  <div className="flex w-full justify-between items-center">
+                    <span className="text-sm text-japaneseIndigo font-bold">SMS</span>
+                    <span className="text-sm text-japaneseIndigo font-bold">16999 FOR 99999 USERS</span>
+                  </div>
+                  <div className="flex w-full justify-between items-center">
+                    <span className="text-sm text-japaneseIndigo font-bold">Email</span>
+                    <span className="text-sm text-japaneseIndigo font-bold">3399 FOR 99999 USERS</span>
+                  </div>
+                  <div className="flex w-full justify-between items-center">
+                    <span className="text-sm text-japaneseIndigo font-bold">All</span>
+                    <span className="text-sm text-japaneseIndigo font-bold">475 FOR 99999 USERS</span>
                   </div>
                 </div>
+              </label>
+            </div>
+          </div>
 
         </div>
       </div>

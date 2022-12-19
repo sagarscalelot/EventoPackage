@@ -1,7 +1,7 @@
 import "./assest/css/fonts.css";
 import "./assest/css/moon-icon.css";
 import './App.css';
-import { Routes, Route} from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import SideBar from './component/SideBar';
 import Login from "./component/auth/Login";
 import Register from "./component/auth/Register";
@@ -24,11 +24,11 @@ function App() {
             <Route path="forgot-password" element={<ForgotPassword />} />
             <Route path="new-password/:username" element={<NewPassword />} />
           </Route>
-          <Route path="dashboard/*" element={<SideBar/>} />
-          <Route path="*" element={<h1 style={{color: "red", margin: "50px"}}>404 | PAGE NOT FOUND</h1>} />
+          <Route path="dashboard/*" element={<SideBar />} />
+          <Route path="*" element={<h1 style={{ color: "red", margin: "50px" }}>404 | PAGE NOT FOUND</h1>} />
         </Route>
       </Routes>
-    
+
     </div>
   );
 }

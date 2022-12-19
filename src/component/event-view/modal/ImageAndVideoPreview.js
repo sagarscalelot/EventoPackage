@@ -7,8 +7,8 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
-
-function ImageAndVideoPreview({ handleClose }) {
+import { s3Url } from '../../../config';
+function ImageAndVideoPreview({ handleClose, data }) {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   return (
     <div className="fixed inset-0 w-full h-full bg-[rgba(0,0,0,0.6)] flex z-50">
@@ -26,18 +26,14 @@ function ImageAndVideoPreview({ handleClose }) {
             modules={[Navigation, Thumbs]}
             thumbs={{ swiper: thumbsSwiper }}
           >
-            <SwiperSlide>
-              <ImageAndVideoPreviewMainSlide />
-            </SwiperSlide>
-            <SwiperSlide>
-              <ImageAndVideoPreviewMainSlide />
-            </SwiperSlide>
-            <SwiperSlide>
-              <ImageAndVideoPreviewMainSlide />
-            </SwiperSlide>
-            <SwiperSlide>
-              <ImageAndVideoPreviewMainSlide />
-            </SwiperSlide>
+            {data?.photos?.map(e => (
+              <SwiperSlide>
+
+                <ImageAndVideoPreviewMainSlide link={e.url} desc={e.description} />
+              </SwiperSlide>
+
+            ))}
+            {/* <div className="rounded-md overflow-hidden"><img src={dish1Image} alt="/dish-1" width={100} height={100} /> </div> */}
           </Swiper>
 
         </div>
@@ -53,18 +49,13 @@ function ImageAndVideoPreview({ handleClose }) {
             modules={[Navigation, Thumbs]}
           // onSwiper={setThumbsSwiper}
           >
-            <SwiperSlide>
-              <div className="rounded-md overflow-hidden"><img src={dish1Image} alt="/dish-1" /> </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="rounded-md overflow-hidden"><img src={dish1Image} alt="/dish-1" /> </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="rounded-md overflow-hidden"><img src={dish1Image} alt="/dish-1" /> </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="rounded-md overflow-hidden"><img src={dish1Image} alt="/dish-1" /> </div>
-            </SwiperSlide>
+            {data?.photos?.map(e => (
+              <SwiperSlide>
+
+                <ImageAndVideoPreviewMainSlide link={e.url} desc={e.description} />
+              </SwiperSlide>
+
+            ))}
           </Swiper>
         </div>
       </div>

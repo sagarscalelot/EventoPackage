@@ -30,10 +30,10 @@ function DashboardEvent() {
 		const requestObj = {
 			page: pageNo,
 			limit: limit,
-			search: eventType
+			event_type: eventType
 		}
 		try {
-			const response = await axios.post(`${baseUrl}/organizer/events/list`,requestObj, { headers: header });
+			const response = await axios.post(`${baseUrl}/organizer/events/list`, requestObj, { headers: header });
 			setAllEvents(response.data.Data);
 			setLoading(false);
 		} catch (error) {
@@ -53,7 +53,7 @@ function DashboardEvent() {
 	useEffect(() => {
 		getAllEvents();
 	}, [pageNo]);
-	
+
 	useEffect(() => {
 		getCategory();
 		dispatch(reset());
@@ -87,10 +87,10 @@ function DashboardEvent() {
 					data-testid="loader"
 				/>
 				{allEvents.docs?.map(ele => (
-					<DashboardEventCategoryItem key={ele._id}  data={ele} />
+					<DashboardEventCategoryItem key={ele._id} data={ele} />
 				))}
-				
-				{!loading && ((allEvents?.totalPages > 0) ? <Paggination allEvents={allEvents} limit={limit} setPageNo={setPageNo} pageNo={pageNo} /> : <h1 style={{margin: "100px 0"}}>No Event Found</h1>)}
+
+				{!loading && ((allEvents?.totalPages > 0) ? <Paggination allEvents={allEvents} limit={limit} setPageNo={setPageNo} pageNo={pageNo} /> : <h1 style={{ margin: "100px 0" }}>No Event Found</h1>)}
 
 				<Modal isOpen={isCreateNewPopUpOpen} >
 					<EventPopUpCreateNew handleClose={setIsCreateNewPopUpOpen} eventType={eventType} edit={false} />
@@ -101,5 +101,6 @@ function DashboardEvent() {
 		</div>
 	)
 }
+
 
 export default DashboardEvent;
