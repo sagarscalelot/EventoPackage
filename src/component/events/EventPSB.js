@@ -1,6 +1,6 @@
 import React, {  useCallback, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import Advertisement from '../Advertisement';
+// import Advertisement from '../Advertisement';
 import StepProgressBar from './StepProgressBar';
 import { useDispatch} from 'react-redux';
 import { decrement, increment } from '../../redux/stepProgressCount';
@@ -298,7 +298,7 @@ try {
                 </div>
               </div>
               {/* <!-- advisement --> */}
-				<Advertisement />
+				{/* <Advertisement /> */}
             </div>
             <div className="prw-next-btn">
               <button type="button" className="flex items-center" onClick={clickBackHander}><i className="icon-back-arrow mr-3"></i><h3>Back</h3></button>

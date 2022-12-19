@@ -5,7 +5,7 @@ import axios from 'axios';
 import { baseUrl } from '../../config';
 import DashboardEventCategoryItem from './DashboardEventCategoryItem';
 import { useParams } from 'react-router-dom';
-import Advertisement from "../Advertisement";
+// import Advertisement from "../Advertisement";
 import { useDispatch } from 'react-redux';
 import { reset } from '../../redux/stepProgressCount';
 import { MoonLoader } from 'react-spinners';
@@ -30,11 +30,12 @@ function DashboardEvent() {
 		const requestObj = {
 			page: pageNo,
 			limit: limit,
-			search: eventType
+			event_type: eventType 
 		}
 		try {
 			const response = await axios.post(`${baseUrl}/organizer/events/list`, requestObj, { headers: header });
 			setAllEvents(response.data.Data);
+			console.log(response.data.Data.docs);
 			setLoading(false);
 		} catch (error) {
 			console.log(error);
@@ -97,7 +98,7 @@ function DashboardEvent() {
 				</Modal>
 			</div>
 			{/* <!-- advisement --> */}
-			{!loading && <Advertisement />}
+			{/* {!loading && <Advertisement />} */}
 		</div>
 	)
 }

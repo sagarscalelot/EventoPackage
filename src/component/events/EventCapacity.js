@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import Advertisement from '../Advertisement';
+// import Advertisement from '../Advertisement';
 import StepProgressBar from './StepProgressBar';
 import { decrement, increment } from '../../redux/stepProgressCount';
 import { toast, ToastContainer } from 'react-toastify';
@@ -176,7 +176,7 @@ function EventCapacity() {
             </div>
           </div>
           {/* <!-- advisement --> */}
-          <Advertisement />
+          {/* <Advertisement /> */}
         </div>
         <div className="prw-next-btn">
           <button type="button" className="flex items-center" onClick={clickBackHander}><i className="icon-back-arrow mr-3"></i><h3>Back</h3></button>

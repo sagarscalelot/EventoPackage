@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
-import Advertisement from "../Advertisement";
+// import Advertisement from "../Advertisement";
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
 import { baseUrl } from '../../config';
@@ -180,7 +180,7 @@ function EventAboutPlace() {
 						</div>
 					</div>
 					{/* <!-- advisement --> */}
-					<Advertisement />
+					{/* <Advertisement /> */}
 				</div>
 				<div className="prw-next-btn mt-auto">
 					<button type="button" className="flex items-center" onClick={clickBackHander}><i className="icon-back-arrow mr-3"></i><h3>Back</h3></button>

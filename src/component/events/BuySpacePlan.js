@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import Advertisement from '../Advertisement';
+// import Advertisement from '../Advertisement';
 
 function BuySpacePlan() {
     const navigate = useNavigate();
@@ -64,7 +64,7 @@ function BuySpacePlan() {
                 </div>
               </div>
             </div>
-          <Advertisement />
+          {/* <Advertisement /> */}
           </div>
 
         </div>

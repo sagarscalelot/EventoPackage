@@ -34,11 +34,11 @@ function Profile() {
             <div className="space-y-8 h-full">
                 {/* <!-- advisement --> */}
                 {/* <!-- profile 1 --> */}
-                <PersonalProfile type="Personal" token={token} details={details} />
+                <PersonalProfile  token={token} details={details} />
                 <Advertisement />
 
                 {/* <!-- profile 2 --> */}
-                <BusinessProfile type="Business" token={token} details={details} />
+                <BusinessProfile  token={token} details={details} />
             </div>
         </div>
     )
