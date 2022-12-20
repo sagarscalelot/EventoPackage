@@ -72,28 +72,6 @@ function Notification() {
             aria-label="Loading Spinner"
             data-testid="loader"
           />
-          <div className="bg-white p-7 rounded-md">
-            <div className="flex justify-between items-center">
-              <div className="w-2/12">
-                <img
-                  src={notificationSvg1}
-                  alt=""
-                  className="h-full object-cover"
-                />
-              </div>
-              <div className="w-10/12">
-                <div className="flex justify-between">
-                  <h2>Create an notification as you want!</h2>
-                </div>
-                <p className="text-gray-400 text-base pt-3 font-medium">
-                  Simply dummy text of the printing and typesetting industry.
-                  Lorem Ipsum has been the industry's standard dummy text ever
-                  since the 1500s, Simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the{" "}
-                </p>
-              </div>
-            </div>
-          </div>
           {allNotifications.docs?.map(ele => (
             <NotificationLIstItem key={ele._id} data={ele} />
           ))}
