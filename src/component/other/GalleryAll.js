@@ -9,9 +9,12 @@ import gallery6Image from "../../assest/images/gallery-6.png";
 import GalleryImageAndVideoPreview from './modal/GalleryImageAndVideoPreview';
 import Modal from '../modal/Modal';
 import { baseUrl, s3Url } from '../../config';
-
+import VideoPlayer from '../landing_page/popup/VideoPlayer'
 
 function GalleryAll() {
+	const [isVideoPlayerPopUpOpen, setIsVideoPlayerPopUpOpen] = useState(false);
+	const [videoUrl, setVideoUrl] = useState("");
+
 	const [preview, setPreview] = useState(false);
 
 	const [gallery, setGallery] = useState([]);
@@ -23,7 +26,7 @@ function GalleryAll() {
 	const getGallery = async () => {
 		try {
 			const response = await axios.get(`${baseUrl}/organizer/gallery`, { headers: header });
-			console.log("Full Gallery : ", response.data.Data);
+			// console.log("Full Gallery : ", response.data.Data);
 			setGallery(response.data.Data);
 		} catch (error) {
 			console.log(error);
@@ -49,24 +52,35 @@ function GalleryAll() {
 										</div>
 									</li>
 									:
-									<li className="image-card" onClick={() => setPreview(true)}>
-										<div>
+									<li id="video-card" className="text-sm leading-6">
+										<div className="bg-white rounded-md relative overflow-hidden w-full h-full">
+											<a href="#" className="relative inset-0 w-full h-full opacity-100 pointer-events-auto" onClick={() => setPreview(true)}>
 
-											<video loop src={s3Url + "/" + e?.url} alt="no video" type="video/mp4"></video>
+												<iframe width="100%" src={s3Url + "/" + e?.url} title="YouTube video player" frameBorder="0" allow="accelerometer;  clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+											</a>
+											<button onClick={() => {
+												setIsVideoPlayerPopUpOpen(true)
+												setVideoUrl(s3Url + "/" + e?.url);
+											}}
+												className="w-10 h-10 flex justify-center items-center bg-black rounded-full anim absolute bottom-0 right-0 hover:opacity-75">
+												<i className='icon-play text-2xl'></i>
+											</button>
 										</div>
 									</li>
-							}                    </ul>
-
+							}
+						</ul>
 					)
-				}
-				)
-				}
-				<img src={gallery2Image} alt="gallery-2" className="w-full" />
-
+				})}
 
 			</div>
 			<Modal isOpen={preview} >
-				<GalleryImageAndVideoPreview handleClose={setPreview} />
+				<GalleryImageAndVideoPreview handleClose={setPreview} data={gallery} />
+
+			</Modal>
+			<Modal isOpen={isVideoPlayerPopUpOpen} >
+
+				<VideoPlayer handleClose={setIsVideoPlayerPopUpOpen} videoUrl={videoUrl} />
+
 			</Modal>
 		</div >
 	)
