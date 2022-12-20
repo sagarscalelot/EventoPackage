@@ -20,7 +20,7 @@ function GalleryAll() {
                                 <img src={gallery1Image} alt="gallery-1" className="w-full" />
                                 <a href="#" className="absolute bottom-3 right-3 text-4xl"><i className="icon-play"></i></a>
                             </div>
-                            <a href="#" className="absolute inset-0 w-full h-full opacity-100 pointer-events-auto" onclick="addActive('#video-card','active')">
+                            <a href="#" className="absolute inset-0 w-full h-full opacity-100 pointer-events-auto" onClick="addActive('#video-card','active')">
                                 <iframe width="100%" height="100%" src="https://www.youtube.com/embed/oYRda7UtuhA" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                             </a>
                         </div>
@@ -38,7 +38,7 @@ function GalleryAll() {
                                 <img src={gallery3Image} alt="galrry-1" className="w-full" />
                                 <a href="#" className="absolute bottom-3 right-3 text-4xl"><i className="icon-play"></i></a>
                             </div>
-                            <a href="#" className="absolute inset-0 w-full h-full opacity-100 pointer-events-auto" onclick="addActive('#video-card','active')">
+                            <a href="#" className="absolute inset-0 w-full h-full opacity-100 pointer-events-auto" onClick="addActive('#video-card','active')">
                                 <iframe width="100%" height="100%" src="https://www.youtube.com/embed/oYRda7UtuhA" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                             </a>
                         </div>
@@ -56,7 +56,7 @@ function GalleryAll() {
                                 <img src={gallery5Image} alt="galrry-1" className="w-full" />
                                 <a href="#" className="absolute bottom-3 right-3 text-4xl"><i className="icon-play"></i></a>
                             </div>
-                            <a href="#" className="absolute inset-0 w-full h-full opacity-100 pointer-events-auto" onclick="addActive('#video-card','active')">
+                            <a href="#" className="absolute inset-0 w-full h-full opacity-100 pointer-events-auto" onClick="addActive('#video-card','active')">
                                 <iframe width="100%" height="100%" src="https://www.youtube.com/embed/oYRda7UtuhA" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                             </a>
                         </div>
@@ -74,7 +74,7 @@ function GalleryAll() {
                                 <img src={gallery2Image} alt="galrry-1" className="w-full" />
                                 <a href="#" className="absolute bottom-3 right-3 text-4xl"><i className="icon-play"></i></a>
                             </div>
-                            <a href="#" className="absolute inset-0 w-full h-full opacity-100 pointer-events-auto" onclick="addActive('#video-card','active')">
+                            <a href="#" className="absolute inset-0 w-full h-full opacity-100 pointer-events-auto" onClick="addActive('#video-card','active')">
                                 <iframe width="100%" height="100%" src="https://www.youtube.com/embed/oYRda7UtuhA" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                             </a>
                         </div>
