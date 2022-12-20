@@ -44,7 +44,7 @@ function GalleryVideos() {
                     <li id="video-card" className="text-sm leading-6">
                         <div className="bg-white rounded-md relative overflow-hidden w-full h-full">
                         {/* <div className="absolute inset-0 w-full h-full opacity-100 pointer-events-auto" onclick={() => setPreview(true)}> */}
-                                <iframe width="100%" height="100%" src={s3Url + "/" + e?.url} title="YouTube video player" frameBorder="0" allow="accelerometer;  clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                        <video width="100%" src={s3Url + "/" + e?.url} alt="no video" controls allowFullScreen></video>
                                 <button onClick={()=> {
                     setIsVideoPlayerPopUpOpen(true)
                     setVideoUrl(s3Url + "/" + e?.url);

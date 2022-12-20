@@ -28,7 +28,7 @@ import { baseUrl, s3Url } from '../../config';
 function DashboardEventViewOverview({ data, capacity, socials, company, service }) {
     const [preview, setPreview] = useState(false);
     // const dataProps = { data };
-    // console.log("dataProps  : ", s3Url + "/" + data?.videos?.url)
+    // console.log("dataProps  : ", data.display_name)
     // console.log(" capacity: ", capacity?.location?.coordinates)
     // console.log(" socials: ", socials)
     // console.log(" company: ", data.discounts)
@@ -49,7 +49,7 @@ function DashboardEventViewOverview({ data, capacity, socials, company, service 
                     {/* <!-- left-bar --> */}
                     <div className="w-full lg:w-8/12 lg:pr-5 space-y-7">
                         <div className="p-7 bg-white rounded-md space-y-1">
-                            <h3>---Farm Area---</h3>
+                            <h3>{data?.display_name}</h3>
                             <p className="text-quicksilver text-sm font-normal">{data?.aboutplace?.details}</p>
                         </div>
                         {/* <!-- Photo-holder --> */}
