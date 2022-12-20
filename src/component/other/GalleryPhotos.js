@@ -22,8 +22,8 @@ function GalleryPhotos() {
     const getGallery = async () => {
         try {
             const response = await axios.get(`${baseUrl}/organizer/gallery`, { headers: header });
-            console.log("Full Gallery : ", response.data.Data);
-            setGallery(response.data.Data);
+            // console.log("Full Gallery : ", response.data.Data.filter(photo => (photo.type === "photo")));
+            setGallery(response.data.Data.filter(photo => (photo.type === "photo")));
         } catch (error) {
             console.log(error);
         }
@@ -37,29 +37,18 @@ function GalleryPhotos() {
         <div className="w-full relative" id="photo">
             <div className="grid grid-cols-1 gap-6 lg:gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
 
-                {gallery.filter(photo => (photo.type === "photo")).map(e => {
-                    return (
-                        <ul className="space-y-8">
-
-                            {(e.type === "photo") ?
-                                <li className="image-card" onClick={() => setPreview(true)}>
-                                    <div>
-
-                                        <img key={e.id} src={s3Url + "/" + e?.url} alt="gallery-2" />
-                                    </div>
-                                </li>
-                                :
-                                <></>}
-                        </ul>
-
-                    )
-                }
-                )}
-                <img src={gallery2Image} alt="gallery-2" className="w-full" />
-
+                {gallery.map(e => (
+                    <ul className="space-y-8">
+                        <li className="image-card" onClick={() => setPreview(true)}>
+                            <div>
+                                <img key={e.id} src={s3Url + "/" + e?.url} alt="gallery-2" />
+                            </div>
+                        </li>
+                    </ul>
+                ))}
             </div>
             <Modal isOpen={preview} >
-                <GalleryImageAndVideoPreview handleClose={setPreview} />
+                <GalleryImageAndVideoPreview handleClose={setPreview} data={gallery} />
             </Modal>
         </div>
     )

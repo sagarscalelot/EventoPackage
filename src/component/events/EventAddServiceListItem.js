@@ -60,7 +60,7 @@ function EventAddServiceListItem({ data, edit, eventId, setReload, setActiveList
 			<div className="flex justify-between">
 				<div className="">
 					<div className="w-28 h-28 border-2 border-brightGray rounded-md">
-						<img src={data?.photos[0].url ? s3Url + "/" + data.photos[0]?.url : imagePreview} alt="" className="w-full h-full object-cover" />
+						<img src={data?.photos[0]?.url ? s3Url + "/" + data?.photos[0]?.url : imagePreview} alt="" className="w-full h-full object-cover" />
 					</div>
 				</div>
 				<div className="w-full pl-5">
