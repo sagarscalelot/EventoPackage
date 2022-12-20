@@ -10,8 +10,8 @@ export class GoogleMap extends Component {
             activeMarker: {},
             selectedPlace: {},
             mapCenter: {
-                lat: this.props.coordinates.coordinates[1],
-                lng: this.props.coordinates.coordinates[0],
+                lat: parseFloat(this.props.coordinates.coordinates[1]),
+                lng: parseFloat(this.props.coordinates.coordinates[0]),
             },
         };
     }
@@ -30,14 +30,14 @@ export class GoogleMap extends Component {
                     lng: parseFloat(this.state.mapCenter.lng),
                 }}
                 center={{
-                    lat: this.props.coordinates.coordinates[1],
-                    lng: this.props.coordinates.coordinates[0],
+                    lat: parseFloat(this.props.coordinates.coordinates[1]),
+                    lng: parseFloat(this.props.coordinates.coordinates[0]),
                 }}
             >
                 <Marker
                     position={{
-                        lat: this.props.coordinates.coordinates[1],
-                        lng: this.props.coordinates.coordinates[0],
+                        lat: parseFloat(this.props.coordinates.coordinates[1]),
+                        lng: parseFloat(this.props.coordinates.coordinates[0]),
                     }}
                 />
             </Map>

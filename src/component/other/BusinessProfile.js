@@ -5,7 +5,8 @@ import { toast } from 'react-toastify';
 import previewImage from "../../assest/images/image-preview.png"
 import { baseUrl } from '../../config';
 
-function BusinessProfile({ type, token, details, s3Url }) {
+function BusinessProfile() {
+    const token = localStorage.getItem("Token");
     const header = {
         'Authorization': `Token ${token}`,
     }
@@ -15,6 +16,21 @@ function BusinessProfile({ type, token, details, s3Url }) {
     }
     const [isDisable, setIsDisable] = useState(true);
     const [profileImage, setProfileImage] = useState(null);
+    const [details, setDetails] = useState({});
+
+    const getProfile = async () => {
+        try {
+            const response = await axios.get(`${baseUrl}/organizer/profile`, { headers: header });
+            console.log("response.data.Data", response.data.Data);
+            setDetails(response.data.Data)
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    useEffect(() => {
+        getProfile();
+    }, []);
     // console.log(profileImage);
     const initalState = {
         name: "",
@@ -40,17 +56,21 @@ function BusinessProfile({ type, token, details, s3Url }) {
     useEffect(() => {
         //    setValues(details)
         setValues({
-            name: details?.name,
-            email: details?.email,
-            phone_no: details?.phone_no,
-            country_code: details?.country_code,
-            dob: details?.dob,
-            address: details?.address,
-            country: details?.country,
-            about: details?.about
+            name: details.businessProfile.name,
+            email: details.businessProfile.email,
+            phone_no: details.businessProfile.phone_no,
+            country_code: details.businessProfile.country_code,
+            dob: details.businessProfile.dob,
+            address: details.businessProfile.address,
+            country: details.businessProfile.country,
+            about: details.businessProfile.about
         })
     }, [details])
 
+
+
+
+    console.log("Business", details.businessProfile);
     let initialRender = true;
     useEffect(() => {
         if (initialRender) {
@@ -116,12 +136,12 @@ function BusinessProfile({ type, token, details, s3Url }) {
             toast.error("Error while Selecting Image.");
         }
     }
-    console.log('details for business', details);
+
     return (
         <>
             {/* <!-- title-holder  --> */}
             <div className="flex justify-between items-center pt-4">
-                <h1>{type} profile</h1>
+                <h1>Business profile</h1>
                 {isDisable && <button className="btn-primary small" onClick={() => setIsDisable(false)}>Edit Profile</button>}
                 {!isDisable && <div className='flex'>
                     <button className="btn-primary small mr-3" onClick={() => { addBusinessDetails(); setIsDisable(true) }}>Save</button>
@@ -132,7 +152,7 @@ function BusinessProfile({ type, token, details, s3Url }) {
             <div className="flex items-center">
                 <div className="">
                     <div className="w-44 h-44 rounded-full border-8 border-spiroDiscoBall relative mr-9">
-                        <img src={profileImage ? URL.createObjectURL(profileImage) : (details && details.businessProfile && details.businessProfile.profile_pic) ? details.s3Url + details.businessProfile.profile_pic : previewImage} alt="" className="w-full h-full object-cover rounded-full overflow-hidden" />
+                        <img src={profileImage ? URL.createObjectURL(profileImage) : (details && details.businessProfile && details.businessProfile.profile_pic) ? details.s3Url + details.businessProfile.profile_pic : previewImage} alt="pictures" className="w-full h-full object-cover rounded-full overflow-hidden" />
                         <div className="absolute bottom-0 right-0 flex justify-center items-center w-10 h-10 rounded-full bg-spiroDiscoBall z-10">
                             <i className="icon-camera"></i>
                             <input type="file" onChange={(e) => photoChangeHandler(e)} className="opacity-0 absolute inset-0" />
@@ -142,8 +162,8 @@ function BusinessProfile({ type, token, details, s3Url }) {
                     </div>
                 </div>
                 <div className="">
-                    <h2>{details?.name}</h2>
-                    <p className="text-xl font-bold text-japaneseIndigo pt-2.5">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                    <h2>{details.businessProfile && details.businessProfile.name ? details.businessProfile.name : "Business Name"}</h2>
+                    <p className="text-xl font-bold text-japaneseIndigo pt-2.5">{details.businessProfile && details.businessProfile.about ? details.businessProfile.about : "About me"}</p>
                 </div>
             </div>
             {/* <!-- form Edit  --> */}
@@ -151,11 +171,11 @@ function BusinessProfile({ type, token, details, s3Url }) {
                 <div className="flex justify-between space-x-5 -mx-2">
                     <div className="w-full md:w-1/2 px-2 inputHolder">
                         <span className="input-titel">Name</span>
-                        <input type="text" className="input font-bold" name="name" value={values?.name} onChange={changeHandler} disabled={isDisable} />
+                        <input type="text" className="input font-bold" name="name" value={values?.name || ""} onChange={changeHandler} disabled={isDisable} />
                     </div>
                     <div className="w-full md:w-1/2 px-2 inputHolder">
                         <span className="input-titel">Email</span>
-                        <input type="text" className="input font-bold" name="email" value={values?.email} onChange={changeHandler} disabled={isDisable} />
+                        <input type="text" className="input font-bold" name="email" value={values?.email || ""} onChange={changeHandler} disabled={isDisable} />
                     </div>
                 </div>
                 <div className="flex justify-between space-x-5 pt-3 -mx-2">
@@ -168,32 +188,32 @@ function BusinessProfile({ type, token, details, s3Url }) {
                                       <option>+625</option>
                                       <option>+001</option>
                                   </select> */}
-                                <input type="text" name="country_code" value={details?.country_code} onChange={changeHandler} disabled={isDisable}
+                                <input type="text" name="country_code" value={details?.country_code || ""} onChange={changeHandler} disabled={isDisable}
                                     className="text-base text-japaneseIndigo bg-white rounded-md flex space-x-3 profile-arrow outline-0 whitespace-nowrap pl-5 pr-10 py-3.5 relative w-28 font-bold" />
                             </div>
                             <div className="max-w-full w-full inputHolder">
-                                <input type="text" className="input font-bold" name='phone_no' value={details?.phone_no} onChange={changeHandler} disabled={isDisable} />
+                                <input type="text" className="input font-bold" name='phone_no' value={details?.phone_no || ""} onChange={changeHandler} disabled={isDisable} />
                             </div>
                         </div>
                     </div>
                     <div className="w-full md:w-1/2 px-2 inputHolder">
                         <span className="input-titel">Address</span>
-                        <input type="text" className="input font-bold" name="address" value={values?.address} onChange={changeHandler} disabled={isDisable} />
+                        <input type="text" className="input font-bold" name="address" value={values?.address || ""} onChange={changeHandler} disabled={isDisable} />
                     </div>
                 </div>
                 <div className="flex justify-between space-x-5 pt-3 -mx-2">
                     <div className="w-full md:w-1/2 px-2 inputHolder">
                         <span className="input-titel">Date Of Birth</span>
-                        <input type="text" className="input font-bold" name="dob" placeholder='dd-mm-yyyy' value={values?.dob} onChange={changeHandler} disabled={isDisable} />
+                        <input type="text" className="input font-bold" name="dob" placeholder='dd-mm-yyyy' value={values?.dob || ""} onChange={changeHandler} disabled={isDisable} />
                     </div>
                     <div className="w-full md:w-1/2 px-2 inputHolder">
                         <span className="input-titel">Country</span>
-                        <input type="text" className="input font-bold" name="country" value={values?.country} onChange={changeHandler} disabled={isDisable} />
+                        <input type="text" className="input font-bold" name="country" value={values?.country || ""} onChange={changeHandler} disabled={isDisable} />
                     </div>
                 </div>
                 <div className="w-full pt-3">
                     <span className="input-titel">About Me</span>
-                    <textarea name="about" id="" cols="30" rows="5" value={values?.about} disabled={isDisable} onChange={changeHandler}
+                    <textarea name="about" id="" cols="30" rows="5" value={values?.about || ""} disabled={isDisable} onChange={changeHandler}
                         className="font-bold outline-none flex items-center w-full bg-white resize-none p-2 px-3.5 rounded-md placeholder:font-bold placeholder:text-japaneseIndigo" ></textarea>
                 </div>
             </div>

@@ -85,6 +85,9 @@ function DashboardEventViewOverview({ data, capacity, socials, company, service 
                             </div>
                         </div>}
                         {/* <!-- Service --> */}
+                        {
+
+                        }
                         <div className="space-y-1.5">
                             <h3 className="text-lg">Service</h3>
                             {

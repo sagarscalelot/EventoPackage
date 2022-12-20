@@ -221,6 +221,7 @@ function NotificationDetails() {
       <Modal isOpen={isNotificationDetailPreviewPopupOpen}>
         <NotificationDetailsPreviewPopup
           handleClose={setIsNotificationDetailPreviewPopupOpen}
+          notification_title={title} link={link} banner={banner} description={description}
         />
       </Modal>
     </div>

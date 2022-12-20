@@ -121,6 +121,9 @@ input:checked + i {
   @apply duration-300 transition-all;
 }
 
+/* gallery swippers */
+.gallery-swippers .swiper-wrapper{@apply items-center justify-center}
+
 /* arrow icon  */
 /* .arrow{@apply appearance-none w-full;background-image: url('../svg/arrow.svg');background-repeat: no-repeat;background-position: calc(100% - 17px) center;cursor: pointer;}
 .profile-arrow{@apply appearance-none w-full;background-image: url('../svg/arrow.svg');background-repeat: no-repeat;background-position: calc(100% - 10px) center;cursor: pointer;} */
