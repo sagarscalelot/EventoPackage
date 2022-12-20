@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import Advertisement from '../Advertisement';
+// import Advertisement from '../Advertisement';
 import celebration from "../../assest/svg/celebration.svg";
 import Modal from "../modal/Modal";
 import EventPopUpDiscount from "./popups/EventPopUpDiscount";
@@ -162,7 +162,7 @@ function EventDiscounts() {
 		   )}
 		   </div>
 		   {/* <!-- advisement --> */}
-		   <Advertisement />
+		   {/* <Advertisement /> */}
 		   {/* <!-- next preview button --> */}
 		   <div className="prw-next-btn">               
 			 <button type="button" className="flex items-center" onClick={clickBackHandler}><i className="icon-back-arrow mr-3"></i><h3>Back</h3></button>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import EventAddPlacesEventList from './EventAddPlacesEventList';
 import { useNavigate, useParams } from 'react-router-dom';
-import Advertisement from '../Advertisement';
+// import Advertisement from '../Advertisement';
 import StepProgressBar from './StepProgressBar';
 import { useDispatch } from 'react-redux';
 import { decrement, increment } from '../../redux/stepProgressCount';
@@ -68,7 +68,7 @@ function EventAddPlaces() {
 						<EventAddPlacesEventList displayName={newEvent?.display_name} categoryName={categoryName} eventId={newEvent?._id} />
 					</div>
 					{/* <!-- advisement --> */}
-					<Advertisement />
+					{/* <Advertisement /> */}
 				</div>
 				<div className="prw-next-btn mt-auto">
 					<button type="button" className="flex items-center" onClick={clickBackHander}><i className="icon-back-arrow mr-3"></i><h3>Back</h3></button>

@@ -95,10 +95,6 @@ function PersonalProfile({ type, token, details }) {
         }
     }
 
-    useEffect(() => {
-        addProfilePic()
-    }, [])
-
 
     const photoChangeHandler = (event) => {
         const types = ['image/png', 'image/jpeg', 'image/jpg'];
@@ -126,7 +122,7 @@ function PersonalProfile({ type, token, details }) {
         <>
             {/* <!-- title-holder  --> */}
             <div className="flex justify-between items-center pt-4">
-                <h1>{type} profile</h1>
+                <h1>Personal profile</h1>
                 {isDisable && <button className="btn-primary small" onClick={() => setIsDisable(false)}>Edit Profile</button>}
                 {!isDisable && <div className='flex'>
                     <button className="btn-primary small mr-3" onClick={() => { addPersonalDetails(); setIsDisable(true) }}>Save</button>

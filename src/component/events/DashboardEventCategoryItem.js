@@ -17,19 +17,21 @@ function DashboardEventCategoryItem({ data }) {
 	const header = {
 		'Authorization': `Token ${token}`,
 	}
-	console.log("banner : ,", data?.personaldetail?.banner);
+	console.log("banner : ", data?.personaldetail?.banner);
+	console.log("Display name>>> : ", data?.display_name);
 	return (
-		<div className="w-full flex items-center">
+		<div className="w-full flex items-center ">
 			<div>
 				<label className="checkbox w-16">
 					<input type="checkbox" className="bg-white" />
 					<i className="icon-right"></i>
 				</label>
 			</div>
-			<Link to={`../../event-view/${eventType}`} className="w-full p-4 pr-7 bg-white rounded" onClick={() => { localStorage.setItem("eventId", data?._id) }} >
-				<div className="flex space-x-5">
+			
+				<div className="flex space-x-5 w-full p-4 pr-7 bg-white rounded">
 					<div className="max-w-xs h-[200px] w-full">
-						<img className="object-cover w-full h-full" src={(data && data.aboutplace && data.aboutplace.banner && data.aboutplace.banner != '') ? (s3Url + "/" + data.aboutplace.banner) : (data && data.personaldetail && data.personaldetail.banner && data.personaldetail.banner !== '') ? (s3Url + "/" + data.personaldetail.banner) : bannerPreview} alt="images" />
+					<Link to={`../../event-view/${eventType}`} className="" onClick={() => { localStorage.setItem("eventId", data?._id) }} >
+						<img className="object-cover w-full h-full" src={(data && data.aboutplace && data.aboutplace.banner && data.aboutplace.banner != '') ? (s3Url + "/" + data.aboutplace.banner) : (data && data.personaldetail && data.personaldetail.banner && data.personaldetail.banner !== '') ? (s3Url + "/" + data.personaldetail.banner) : bannerPreview} alt="images" /></Link>
 					</div>
 					<div className="w-full">
 						<div className="flex justify-between border-b-2 pb-4">
@@ -72,7 +74,7 @@ function DashboardEventCategoryItem({ data }) {
 						</div>
 					</div>
 				</div>
-			</Link>
+			
 		</div>
 	)
 }

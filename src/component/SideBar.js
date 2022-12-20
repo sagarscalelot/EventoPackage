@@ -28,7 +28,7 @@ import Invoice from "./other/Invoice";
 import FAQ from "./other/FAQ";
 import Chatbot from "./other/Chatbot";
 import Notification from "./Notification/Notification";
-import Profile from "./other/Profile";
+
 import { toast, ToastContainer } from "react-toastify";
 import OurProducts from "./other/OurProducts";
 import NotificationDetails from "./Notification/NotificationDetails";
@@ -37,6 +37,8 @@ import SelectBusinessPromote from "./Notification/SelectBusinessPromote"
 import { baseUrl, s3Url } from "../config";
 import axios from 'axios';
 import EventAddEquipments from "./events/EventAddEquipments";
+import ProfilePic from '../assest/images/user-3.png'
+import Profile from "./other/Profile";
 
 
 function SideBar() {
@@ -53,8 +55,8 @@ function SideBar() {
   const getProfile = async () => {
     try {
       const response = await axios.get(`${baseUrl}/organizer/profile`, { headers: header });
-      // console.log("response.data.Data",response.data.Data);
-      setProfilepic(response.data.Data.profile_pic)
+      // console.log("response.data.Data",response.data.Data.profile_pic);
+      setProfilepic(response.data.Data)
     } catch (error) {
       console.log(error);
     }
@@ -234,8 +236,8 @@ function SideBar() {
               </Link>
               <div className="block por">
                 <img
-                  src={profilepic ? (s3Url + '/' + profilepic) : Profile}
-                  alt="user name"
+                  src={profilepic && profilepic.profilepic && profilepic.profilepic !=="" ? (s3Url + '/' + profilepic) : ProfilePic}
+                  alt="userPic"
                   className="w-12 h-12 object-cover rounded-2xl relative"
                 />
                 <div className="dropprofile absolute pt-2.5 right-12 translate-y-5 opacity-0 anim invisible ">
