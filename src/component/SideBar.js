@@ -13,6 +13,7 @@ import EventPersonalDetails from "./events/EventPersonalDetails";
 import EventPSB from './events/EventPSB'
 import EventPhotosAndVideos from "./events/EventPhotosAndVideos";
 import EventAddServices from "./events/EventAddServices";
+import EventAddItems from './events/EventAddItems'
 import EventCapacity from "./events/EventCapacity";
 import EventCompanyDetails from "./events/EventCompanyDetails";
 import EventTermsAndConditions from "./events/EventTermsAndConditions";
@@ -281,7 +282,7 @@ function SideBar() {
                 <Route path="discounts" element={<EventDiscounts />} />
                 <Route path="calender" element={<EventCalender />} />
                 <Route path="othercost" element={<PSBOtherCost />} />
-                <Route path="additem" element={<EventAddServices />} />
+                <Route path="additem" element={<EventAddItems />} />
               </Route>
             </Route>
 
