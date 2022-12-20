@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import Advertisement from '../Advertisement';
+// import Advertisement from '../Advertisement';
 import StepProgressBar from './StepProgressBar';
 import { decrement, reset } from '../../redux/stepProgressCount';
 import { useDispatch } from 'react-redux';
@@ -162,7 +162,7 @@ function EventCalender() {
 					/>
 				</div>
 			  {/* <!-- calendar end --> */}
-			  <Advertisement />
+			  {/* <Advertisement /> */}
 			  <div className="prw-next-btn">
 				<button type="button" className="flex items-center" onClick={clickBackHander}><i className="icon-back-arrow mr-3"></i><h3>Back</h3></button>
 				<button className="btn-primary" onClick={clickNextHandler}>Done</button>

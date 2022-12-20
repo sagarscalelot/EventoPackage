@@ -3,7 +3,7 @@ import Modal from "../modal/Modal";
 import EventPopUpUploadPhoto from './popups/EventPopUpUploadPhoto';
 import EventPopUpUploadVideo from "./popups/EventPopUpUploadVideo";
 import { useNavigate, useParams } from 'react-router-dom';
-import Advertisement from '../Advertisement';
+// import Advertisement from '../Advertisement';
 import StepProgressBar from './StepProgressBar';
 import axios from 'axios';
 import { baseUrl, s3Url } from "../../config";
@@ -165,7 +165,7 @@ const clickBackHander = () => {
 		   </div>
 		 </div>
 		 {/* <!-- advisement --> */}
-		 <Advertisement />
+		 {/* <Advertisement /> */}
 	   </div>
 	   <div className="prw-next-btn">
 		 <button type="button" className="flex items-center" onClick={clickBackHander}><i className="icon-back-arrow mr-3"></i><h3>Back</h3></button>

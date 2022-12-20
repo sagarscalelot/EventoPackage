@@ -37,12 +37,17 @@ import SelectBusinessPromote from "./Notification/SelectBusinessPromote"
 import { baseUrl, s3Url } from "../config";
 import axios from 'axios';
 import EventAddEquipments from "./events/EventAddEquipments";
+import AllUserSelectPlan from "./Notification/AllUserSelectPlan";
+import ExistingUserPromote from "./Notification/ExistingUserPromote";
+import PublishDateTime from "./Notification/PublishDateTime";
+import NotificationMode from "./Notification/NotificationMode";
+import NotificationPayment from "./Notification/NotificationPayment";
 
 
 function SideBar() {
 
   const [languagePopup, setLanguagePopup] = useState(false);
-  const [profilepic, setProfilepic] = useState({});
+  const [profilepic, setProfilepic] = useState("");
 
   const navigate = useNavigate();
   const token = localStorage.getItem("Token") || null;
@@ -234,7 +239,7 @@ function SideBar() {
               </Link>
               <div className="block por">
                 <img
-                  src={profilepic ? (s3Url + '/' + profilepic) : Profile}
+                  src={(profilepic && profilepic !== "") ? (s3Url + '/' + profilepic) : userImage}
                   alt="user name"
                   className="w-12 h-12 object-cover rounded-2xl relative"
                 />
@@ -302,6 +307,11 @@ function SideBar() {
               <Route path="selectbusiness">
                 <Route index element={<SelectBusiness />} />
                 <Route path="selectbusinesspromot" element={<SelectBusinessPromote />} />
+                <Route path="alluserpalns" element={<AllUserSelectPlan />} />
+                <Route path="publishdatetime" element={<PublishDateTime />} />
+                <Route path="existinguserpromote" element={<ExistingUserPromote />} />
+                <Route path="notificationmode" element={<NotificationMode />} />
+                <Route path="notificationpayment" element={<NotificationPayment />} />
               </Route>
 
             </Route>

@@ -2,10 +2,11 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import Advertisement from '../Advertisement';
 import BottomNavigation from '../BottomNavigation';
+import StepProgressBar from './StepProgressBar';
 
-function Promote({children}) {
+function Promote({ children }) {
   return (
-        <div className="wrapper min-h-full flex flex-col">
+    <div className="wrapper min-h-full flex flex-col">
       <div className="space-y-8 h-full">
         {/* <!-- title-holder  --> */}
         <div className="flex justify-between items-center">
@@ -23,6 +24,7 @@ function Promote({children}) {
               </div>
               <h3>Select Business</h3>
             </li>
+            
             <li>
               <div>
                 <span>02</span>
@@ -51,13 +53,13 @@ function Promote({children}) {
         </div>
 
         {children}
-        
+
       </div>
       <div className="mt-auto">
         {/* <!-- advisement --> */}
         <Advertisement />
       </div>
-      
+
       <BottomNavigation />
     </div>
   )
