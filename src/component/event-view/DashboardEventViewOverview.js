@@ -91,7 +91,7 @@ function DashboardEventViewOverview({ data, capacity, socials, company, service 
                         {
 
                         }
-                        { (service && (service?.length > 0)) &&
+                        { service && 
                         <div className="space-y-1.5">
                             <h3 className="text-lg">Service</h3>
                             
@@ -125,7 +125,7 @@ function DashboardEventViewOverview({ data, capacity, socials, company, service 
                             }
                         
                         {/* <!-- Equipments --> */}
-                        { (data?.equipments && data?.equipments?.length > 0) && 
+                        { data?.equipments && 
                         <div className="space-y-1.5">
                             <h3 className="text-lg">Equipment</h3>
                             
@@ -158,7 +158,7 @@ function DashboardEventViewOverview({ data, capacity, socials, company, service 
                         </div>
                             }
 
-                        { (data?.items && data?.items?.length > 0) &&
+                        { data?.items && 
                         <div className="space-y-1.5">
                             <h3 className="text-lg">Item</h3>
                             

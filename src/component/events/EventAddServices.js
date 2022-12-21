@@ -17,6 +17,7 @@ function EventAddServices() {
 	const params = useParams();
 	const eventType = params.eventType;
 	const eventId = localStorage.getItem("eventId");
+	const event_type = localStorage.getItem("event_type");
 	const dispatch = useDispatch();
 	const [isAddServicesPopUpOpen, setIsAddServicesPopUpOpen] = useState(false);
 	const [serviceList, setServiceList] = useState([]);
@@ -30,7 +31,7 @@ function EventAddServices() {
 	}
 	const getServiceList = async () => {
 		try {
-			const response = await axios.get(`${baseUrl}/organizer/events/listservice?eventid=${eventId}`, { headers: header });
+			const response = await axios.get(`${baseUrl}/organizer/events/listservice?eventType=${event_type}`, { headers: header });
 			console.log("services >>", response.data.Data);
 			if (response.data.Data) {
 				setServiceList(response.data.Data);

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import cardImage1 from "../../assest/svg/have-you-places.svg";
 import cardImage2 from "../../assest/svg/personal-skills-business.svg";
 import cardImage3 from "../../assest/svg/group-skils-business.svg";
@@ -11,18 +11,25 @@ import { useDispatch } from 'react-redux';
 import Advertisement from "../Advertisement";
 import NotificationProgressBar from '../Notification/NotificationProgressBar'
 import { data } from "jquery";
-import {getNotificationType} from '../../shared/helper'
+import { getNotificationType } from '../../shared/helper'
+import { baseUrl } from "../../config";
+import { useState } from "react";
+import axios from "axios";
 
 function SelectBusiness() {
+  const token = localStorage.getItem("Token");
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const params = useParams();
- 
+  const notificationType = getNotificationType(params.notificationType);
   const clickBackHander = () => {
     dispatch(decrement());
     navigate(-1);
   }
-
+  const header = {
+    'Authorization': `Token ${token}`
+  }
 
   const clickNextHander = () => {
     dispatch(increment());
@@ -41,7 +48,8 @@ function SelectBusiness() {
       <br />
       <div className="flex flex-wrap justify-center pt-4 -mx-4">
         {/* Have you Places */}
-        <Link to={`../selectbusinesspromot`} className="w-1/2 lg:w-1/3 xl:w-1/5 px-2 xl:px-2.5 pb-4 xl:pb-0 group">
+        {/* <Link to={`../${notificationType}/selectbusinesspromot`} className="w-1/2 lg:w-1/3 xl:w-1/5 px-2 xl:px-2.5 pb-4 xl:pb-0 group"> */}
+        <Link to="nhyp" className="w-1/2 lg:w-1/3 xl:w-1/5 px-2 xl:px-2.5 pb-4 xl:pb-0 group">
           <div className="text-center bg-white rounded flex flex-col justify-between items-center h-full px-5 py-7 border-2 border-transparent group-hover:border-2 group-hover:border-spiroDiscoBall" onClick={clickNextHander}>
             <div className="w-32 h-32">
               <img
@@ -56,7 +64,8 @@ function SelectBusiness() {
           </div>
         </Link >
         {/* Personal Skills Business */}
-        <Link to={`../selectbusinesspromot`} className="w-1/2 lg:w-1/3 xl:w-1/5 px-2 xl:px-2.5 pb-4 xl:pb-0 group">
+        {/* <Link to={`../${notificationType}/selectbusinesspromot`} className="w-1/2 lg:w-1/3 xl:w-1/5 px-2 xl:px-2.5 pb-4 xl:pb-0 group"> */}
+        <Link to="npsb" className="w-1/2 lg:w-1/3 xl:w-1/5 px-2 xl:px-2.5 pb-4 xl:pb-0 group">
           <div className="text-center bg-white rounded flex flex-col justify-between items-center h-full px-5 py-7 border-2 border-transparent group-hover:border-2 group-hover:border-spiroDiscoBall">
             <div className="w-32 h-32">
               <img
@@ -71,7 +80,8 @@ function SelectBusiness() {
           </div>
         </Link >
         {/* Group Skils Business */}
-        <Link to={`../selectbusinesspromot`} className="w-1/2 lg:w-1/3 xl:w-1/5 px-2 xl:px-2.5 pb-4 xl:pb-0 group">
+        {/* <Link to={`../${notificationType}/selectbusinesspromot`} className="w-1/2 lg:w-1/3 xl:w-1/5 px-2 xl:px-2.5 pb-4 xl:pb-0 group"> */}
+        <Link to="ngsb" className="w-1/2 lg:w-1/3 xl:w-1/5 px-2 xl:px-2.5 pb-4 xl:pb-0 group">
           <div className="text-center bg-white rounded flex flex-col justify-between items-center h-full px-5 py-7 border-2 border-transparent group-hover:border-2 group-hover:border-spiroDiscoBall">
             <div className="w-32 h-32">
               <img
@@ -86,7 +96,8 @@ function SelectBusiness() {
           </div>
         </Link >
         {/* All User */}
-        <Link to={`../alluserpalns`} className="w-1/2 lg:w-1/3 xl:w-1/5 px-2 xl:px-2.5 pb-4 xl:pb-0 group">
+        {/* <Link to={`../${notificationType}/alluserpalns`} className="w-1/2 lg:w-1/3 xl:w-1/5 px-2 xl:px-2.5 pb-4 xl:pb-0 group"> */}
+        <Link to="nalluser" className="w-1/2 lg:w-1/3 xl:w-1/5 px-2 xl:px-2.5 pb-4 xl:pb-0 group">
           <div className="text-center bg-white rounded flex flex-col justify-between items-center h-full px-5 py-7 border-2 border-transparent group-hover:border-2 group-hover:border-spiroDiscoBall">
             <div className="w-32 h-32">
               <img
@@ -101,7 +112,8 @@ function SelectBusiness() {
           </div>
         </Link >
         {/* Existing User */}
-        <Link to={`../existinguserpromote`} className="w-1/2 lg:w-1/3 xl:w-1/5 px-2 xl:px-2.5 pb-4 xl:pb-0 group">
+        {/* <Link to={`../${notificationType}/existinguserpromote`} className="w-1/2 lg:w-1/3 xl:w-1/5 px-2 xl:px-2.5 pb-4 xl:pb-0 group"> */}
+        <Link to="nexistinguser" className="w-1/2 lg:w-1/3 xl:w-1/5 px-2 xl:px-2.5 pb-4 xl:pb-0 group">
           <div className="text-center bg-white rounded flex flex-col justify-between items-center h-full px-5 py-7 border-2 border-transparent group-hover:border-2 group-hover:border-spiroDiscoBall">
             <div className="w-32 h-32">
               <img
