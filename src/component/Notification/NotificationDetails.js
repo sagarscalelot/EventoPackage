@@ -6,6 +6,7 @@ import BottomNavigation from "../BottomNavigation";
 import Modal from "../modal/Modal";
 import { toast } from 'react-toastify';
 import NotificationDetailsPreviewPopup from "./popups/NotificationDetailsPreviewPopup";
+import { param } from "jquery";
 
 function NotificationDetails() {
   const navigate = useNavigate();

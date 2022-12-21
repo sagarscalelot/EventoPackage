@@ -8,6 +8,12 @@ import { useDispatch } from 'react-redux';
 
 function NotificationLIstItem({ data }) {
   const dispatch = useDispatch();
+
+  const promotehandler = () => {
+    dispatch(increment());
+    localStorage.setItem("notificationid", data?._id);
+
+  }
   return (
 
     <div className="bg-white p-5 rounded-md">
@@ -28,7 +34,7 @@ function NotificationLIstItem({ data }) {
           <div className="flex justify-end">
             <button className="btn-primary small flex items-center">
               <i className="icon-fill-megaphone mr-2"></i>
-              <Link to="selectbusiness" onClick={dispatch(increment())} >Promote</Link>
+              <Link to="selectbusiness" onClick={promotehandler} >Promote</Link>
             </button>
           </div>
         </div>

@@ -10,7 +10,7 @@ import { useDispatch } from 'react-redux';
 import { reset } from '../../redux/stepProgressCount';
 import { MoonLoader } from 'react-spinners';
 import Paggination from '../Paggination';
-import { getEventType } from '../../shared/helper';
+import { getEventType } from '../../shared/helper'; 
 
 function DashboardEvent() {
 	const params = useParams();
@@ -30,7 +30,7 @@ function DashboardEvent() {
 		const requestObj = {
 			page: pageNo,
 			limit: limit,
-			event_type: eventType 
+			event_type: eventType
 		}
 		try {
 			const response = await axios.post(`${baseUrl}/organizer/events/list`, requestObj, { headers: header });

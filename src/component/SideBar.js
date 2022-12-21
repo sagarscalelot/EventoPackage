@@ -313,7 +313,6 @@ function SideBar() {
                 <Route path="notificationmode" element={<NotificationMode />} />
                 <Route path="notificationpayment" element={<NotificationPayment />} />
               </Route>
-
             </Route>
           </Routes>
         </div>
