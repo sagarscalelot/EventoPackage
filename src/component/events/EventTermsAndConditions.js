@@ -141,7 +141,6 @@ function EventTermsAndConditions() {
                 />
 
                 </div>
-                {terms}
                 <div className="w-full">
                   <h3>Social Media</h3>
                   <div className="-mx-2">

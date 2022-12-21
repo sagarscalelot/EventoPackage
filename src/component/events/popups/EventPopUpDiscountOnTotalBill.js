@@ -2,12 +2,12 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { baseUrl } from '../../../config';
 
-function EventPopUpDiscountOnTotalBill({handleClose, eventId, totalDiscountId, advanceDiscountId}) {
-  // console.log(discountId);
+function EventPopUpDiscountOnTotalBill({handleClose, eventId, setSelectedDiscount, selectedDiscount, serviceOn}) {
+  console.log("hi : ", selectedDiscount);
   const [value, setValue] = useState("");
   const token = localStorage.getItem("Token");
   const [error, setError] = useState("");
-  let discountId = totalDiscountId || advanceDiscountId;
+  // let discountId = totalDiscountId || advanceDiscountId;
 	const header = {
 		'Authorization': `Token ${token}`
 	}
@@ -23,9 +23,9 @@ function EventPopUpDiscountOnTotalBill({handleClose, eventId, totalDiscountId, a
 
 	const handleSubmit = async() => {
 		try {	
-			const response = await axios.put(`${baseUrl}/api/org/discount/${discountId}?event_id=${eventId}`,{equipment_id: [], discount: value+"%"},{headers: header});
-			console.log(response);
-      handleClose(false);
+			// const response = await axios.put(`${baseUrl}/api/org/discount/${discountId}?event_id=${eventId}`,{equipment_id: [], discount: value+"%"},{headers: header});
+			// console.log(response);
+      // handleClose(false);
 		} catch (error) {
 			console.log(error);
 		}
@@ -40,7 +40,7 @@ function EventPopUpDiscountOnTotalBill({handleClose, eventId, totalDiscountId, a
             <h2 className="h1 w-full max-w-xs text-center mx-auto"> Discount On Total Bill </h2>
             <form>
               <div className="w-full inputHolder">
-                <label className="input-titel">{totalDiscountId ? "Discount On Total Bill" : "Advance and Discount Confirmation"}</label>
+                {/* <label className="input-titel">{totalDiscountId ? "Discount On Total Bill" : "Advance and Discount Confirmation"}</label> */}
                 <input className="input option" type="text" onChange={validateDiscount}/>
                 <span className="mt-1" style={{color: "red", fontSize: "14px"}}>{error} </span>
               </div>
@@ -52,7 +52,7 @@ function EventPopUpDiscountOnTotalBill({handleClose, eventId, totalDiscountId, a
             </ul>
             <div className="flex items-center space-x-5">
 			      <button onClick={()=>handleClose(false)} className="btn-primary btn-cancel w-full">CANCEL</button>
-            <button onClick={handleSubmit} className="btn-primary w-full">APPLY</button>
+            {/* <button onClick={handleSubmit} className="btn-primary w-full">APPLY</button> */}
             </div>
           </div>
         </div>

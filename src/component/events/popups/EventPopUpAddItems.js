@@ -151,7 +151,7 @@ function EventPopUpAddItems({isItem, handleClose, data, setReload, edit}) {
 	//   <!-- Add Service  -->
 	  <div className="popup table fixed w-full inset-0 z-40 bg-black bg-opacity-75 h-screen">
       <div className="table-cell align-middle">
-        <div className="popin max-w-2xl w-full mx-auto max-h-[calc(100vh-55px)] overflow-y-auto lg:px-9">
+        <div className="popin max-w-2xl w-full mx-auto max-h-[calc(100vh-45px)] overflow-y-auto lg:px-9">
           <div className="bg-brightGray p-12">
             <div className="flex justify-between items-center">
               <h1 className="h1">Add Item</h1>
@@ -205,7 +205,7 @@ function EventPopUpAddItems({isItem, handleClose, data, setReload, edit}) {
                   <input type="file" name="images" id="upload" className="appearance-none hidden" onChange={photoChangeHandler} />
                   <span className="input-titel mt-1"><i className="icon-image mr-2"></i>Choose Images</span>
                 </label>
-                {error ? <span className="mt-1" style={{color: "red", fontSize: "14px"}}>{errorMessage} </span> : <span className="mt-1" style={{fontSize: "14px"}}>{image?.name || (image && <a target="blank" href={s3Url+"/"+image}>image link</a>)}</span>}
+                {error ? <span className="mt-1" style={{color: "red", fontSize: "14px"}}>{errorMessage} </span> : <span className="mt-1" style={{fontSize: "14px"}}>{image?.name || (image && <a className="text-10 " target="blank" href={s3Url+"/"+image}>image link</a>)}</span>}
               </div>
               <div className="w-full">
                 <span className="input-titel">Description</span>
