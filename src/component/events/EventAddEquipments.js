@@ -18,6 +18,7 @@ function EventAddEquipments() {
 	const params = useParams();
 	const eventType = params.eventType;
 	const eventId = localStorage.getItem("eventId");
+	const event_type = localStorage.getItem("event_type");
 	const dispatch = useDispatch();
 	const [isAddServicesPopUpOpen, setIsAddServicesPopUpOpen] = useState(false);
 	const [equipmentList, setEquipmentList] = useState([]);
@@ -30,7 +31,7 @@ function EventAddEquipments() {
 	}
 	const getequipmentList = async() => {
 		try {
-			const response = await axios.get(`${baseUrl}/organizer/events/listequipment?eventid=${eventId}`, {headers: header});
+			const response = await axios.get(`${baseUrl}/organizer/events/listequipment?eventType=${event_type}`, {headers: header});
 			console.log("listequipment >>",response);
 			if(response.data.Data) {
 				setEquipmentList(response.data.Data);
@@ -79,7 +80,7 @@ function EventAddEquipments() {
 			 <i className="icon-back-arrow mr-4 text-2xl" onClick={clickBackHander}></i>
 			 <h1>{displayName}</h1>
 		   </div>
-		   <button onClick={()=>setIsAddServicesPopUpOpen(true)} className="btn-primary flex items-center"><i className="icon-plus mr-3"></i><span>{eventType === "gsb" ? "Add Equiupment" : "Add Equiupment"}</span></button>
+		   <button onClick={()=>setIsAddServicesPopUpOpen(true)} className="btn-primary flex items-center"><i className="icon-plus mr-3"></i><span>Add Equiupment</span></button>
 		 </div>
 		  {/* <!-- step-progress-bar  --> */}
 		 <StepProgressBar eventType={eventType}/>

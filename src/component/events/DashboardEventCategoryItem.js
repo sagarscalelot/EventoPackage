@@ -41,12 +41,25 @@ function DashboardEventCategoryItem({ data }) {
 							<div className="text-sm text-quicksilver pt-3"><i className="icon-fill-location mr-3"></i>{data?.capacity?.address}
 							</div>
 						</div>
-						<div className="">
-							<div className="flex items-center">
-								<input type="checkbox" className="switch mr-3" defaultChecked={data?.is_active} />
-								<label htmlFor="">
-									<h3>Live</h3>
-								</label>
+						<div className="flex justify-between pt-4">
+							<div className="flex items-center space-x-1">
+								<i className="icon-fillStar text-sm"></i>
+								<i className="icon-fillStar text-sm"></i>
+								<i className="icon-fillStar text-sm"></i>
+								<i className="icon-star text-sm"></i>
+								<i className="icon-star text-sm"></i>
+								<span className="text-quicksilver text-xs font-bold pl-2"> 19,981 ratings</span>
+							</div>
+							<div className="flex space-x-2">
+								<Link to={`../addplaces`} onClick={() => { localStorage.setItem("eventId", data?._id); localStorage.setItem("event_type", data?.event_type); dispatch(increment()) }} className="bg-brightGray px-2 py-1 text-center rounded"><i className="text-base edit text-black icon-edit" style={{ color: "#000" }}></i></Link>
+								<Link to="/" className="bg-brightGray px-2 py-1 text-center rounded"><i
+									className="icon-fill-megaphone text-base text-black"></i></Link>
+								<Link to={`/dashboard/event/calender`} className="bg-brightGray px-2 py-1 text-center rounded"><i
+									className="icon-calendar1 text-base text-black"></i></Link>
+								<Link to="/" className="bg-brightGray px-2 py-1 text-center rounded"><i
+									className="icon-percentage text-base text-black"></i></Link>
+								<Link to="/" className="bg-brightGray px-2 py-1 text-center rounded"><i
+									className="icon-share text-base text-black"></i></Link>
 							</div>
 							<h1 className="pt-7">{data?.aboutplace?.place_price} INR</h1>
 						</div>
