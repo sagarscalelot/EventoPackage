@@ -11,12 +11,16 @@ import { decrement, increment } from '../../redux/stepProgressCount';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import { useRef } from 'react';
+import EventPopUpDiscountOnEquipmentOrItem from './popups/EventPopUpDiscountOnEquipmentOrItem';
+// import EventPopUpDiscountOnTotalBill from './'
+// import EventPopUpDiscountOnEquipmentOrItem from '../personal_skills_business/popups/PSBPopUpDiscountOnEquipmentOrItem';
+import EventPopUpDiscountOnTotalBill from './popups/EventPopUpDiscountOnTotalBill';
 
 function EventDiscounts() {
 	const displayName = localStorage.getItem("displayName");
 	const [isDiscountPopUpOpen, setIsDiscountPopUpOpen] = useState(false);
 	const [allDiscount, setAllDiscount] = useState([]);
-	console.log(allDiscount);
+	// console.log(allDiscount);
 	const params = useParams();
 	const eventId = localStorage.getItem("eventId");
 	const eventType = params.eventType;
@@ -27,7 +31,7 @@ function EventDiscounts() {
 
 	const [activeList, setActiveList] = useState([]);
 	const [selectedDiscount, setSelectedDiscount] = useState({});
-	console.log(activeList)
+	console.log("active : ", activeList)
 	const token = localStorage.getItem("Token");
 	const header = {
 		'Authorization': `Token ${token}`
@@ -110,14 +114,15 @@ function EventDiscounts() {
 	}
 
 	const editButtonHandler = (ele) => {
+		console.log("ele : ", ele);
 		setSelectedDiscount(ele);
 		if(ele.discounttype === "discount_on_total_bill") setServiceOn(false);
 		if(ele.discounttype === "discount_on_equipment_or_item") setServiceOn(true);
-		if(ele.discounttype === "advance_and_discount_confirmation") setServiceOn(false);
+		// if(ele.discounttype === "advance_and_discount_confirmation") setServiceOn(false);
 		return setIsDiscountPopUpOpen(!isDiscountPopUpOpen);
 	}
-	console.log("selected discount >> ", selectedDiscount);
-	console.log("active >> ", activeList);
+	// console.log("selected discount >> ", selectedDiscount);
+	// console.log("active >> ", activeList);
 
 	return (
 	//    <!-- Content In -->
@@ -171,8 +176,13 @@ function EventDiscounts() {
 		 </div>
 	   </div>
 
-	 <Modal isOpen={isDiscountPopUpOpen}>
-		<EventPopUpDiscount handleClose={setIsDiscountPopUpOpen} eventId={eventId} setSelectedDiscount={setSelectedDiscount} selectedDiscount={selectedDiscount} serviceOn={serviceOn} />
+	   <Modal isOpen={isDiscountPopUpOpen}>
+			{console.log("selected dis : ", selectedDiscount.discounttype )}
+			{ selectedDiscount.discounttype === "discount_on_total_bill" ? 
+			<EventPopUpDiscountOnTotalBill handleClose={setIsDiscountPopUpOpen} eventId={eventId} setSelectedDiscount={setSelectedDiscount} selectedDiscount={selectedDiscount} serviceOn={serviceOn} /> 
+			: 
+			<EventPopUpDiscountOnEquipmentOrItem handleClose={setIsDiscountPopUpOpen} eventId={eventId} setSelectedDiscount={setSelectedDiscount} selectedDiscount={selectedDiscount} serviceOn={serviceOn} />}
+		{/* <EventPopUpDiscount handleClose={setIsDiscountPopUpOpen} eventId={eventId} setSelectedDiscount={setSelectedDiscount} selectedDiscount={selectedDiscount} serviceOn={serviceOn} /> */}
 	 </Modal>
 	 </div>
   )

@@ -9,7 +9,7 @@ function EventPopUpDiscount({handleClose, eventId, setSelectedDiscount, selected
   const [serviceList, setServiceList] = useState([]);
   const [selecetdServiceId, setSelectedServiceId] = useState([]);
   const [error, setError] = useState("");
-  console.log(serviceList);
+//   console.log(serviceList);
   const token = localStorage.getItem("Token");
 	const header = {
 		'Authorization': `Token ${token}`

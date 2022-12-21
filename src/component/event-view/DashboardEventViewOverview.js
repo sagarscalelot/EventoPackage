@@ -24,15 +24,22 @@ import GoogleMap from '../GoogleMap';
 import parse from 'html-react-parser';
 
 import { baseUrl, s3Url } from '../../config';
-
+import VideoPreview from './modal/VideoPreview';
+import ImagePreview from './modal/ImagePreview';
+import ImageCompanyPreview from './modal/ImageCompanyPreview';
+import VideoCompanyPreview from './modal/VideoCompanyPreview';
 
 function DashboardEventViewOverview({ data, capacity, socials, company, service }) {
     const [preview, setPreview] = useState(false);
+    const [previewPhoto, setPreviewPhoto] = useState(false);
+    const [previewVideo, setPreviewVideo] = useState(false);
+    const [previewCompanyVideo, setPreviewCompanyVideo] = useState(false);
+    const [previewCompanyPhoto, setPreviewcompanyPhoto] = useState(false);
     // const dataProps = { data };
     // console.log("dataProps  : ", data)
     // console.log(" capacity: ", capacity?.location?.coordinates)
     // console.log(" socials: ", socials)
-    console.log(" company: ", company)
+    // console.log(" jus create : ", data)
     // console.log(" service: ", service[0]?.name)
 
     // const convert = (s) => {
@@ -58,12 +65,12 @@ function DashboardEventViewOverview({ data, capacity, socials, company, service 
                             {/* <!-- media title  --> */}
                             <div className="flex justify-between items-center">
                                 <h3 className="text-lg">Photos</h3>
-                                <a href="#" className="text-spiroDiscoBall text-sm font-bold">View All</a>
+                                <a href="#" className="text-spiroDiscoBall text-sm font-bold" onClick={() => setPreviewPhoto(true)}>View All</a>
                             </div>
                             {data?.photos?.length > 0 && <div className="media-upload-holder">
                             {/* <!-- photo-holder --> */}
                             <div className="w-full">
-                                <div className="flex flex-wrap -mx-2" onClick={() => setPreview(true)} >
+                                <div className="flex flex-wrap -mx-2" >
                                     {data?.photos?.map((e,i) => (
                                         <DashboardEventViewOverviewPhoto key={i} alt={e.description} imageUrl={s3Url + "/" + e?.url} />
                                     ))}
@@ -75,7 +82,7 @@ function DashboardEventViewOverview({ data, capacity, socials, company, service 
                             {/* <!-- media title  --> */}
                             <div className="flex justify-between items-center">
                                 <h3 className="text-lg">Videos</h3>
-                                <a href="#" className="text-spiroDiscoBall text-sm font-bold">View All</a>
+                                <a href="#" className="text-spiroDiscoBall text-sm font-bold" onClick={() => setPreviewVideo(true)}>View All</a>
                             </div>
                             {data?.videos?.length > 0 && <div className="media-upload-holder">
                             {/* <!-- media-holder --> */}
@@ -91,7 +98,7 @@ function DashboardEventViewOverview({ data, capacity, socials, company, service 
                         {
 
                         }
-                        { service && 
+                        { (service && (service?.length > 0)) &&
                         <div className="space-y-1.5">
                             <h3 className="text-lg">Service</h3>
                             
@@ -125,7 +132,7 @@ function DashboardEventViewOverview({ data, capacity, socials, company, service 
                             }
                         
                         {/* <!-- Equipments --> */}
-                        { data?.equipments && 
+                        { (data?.equipments && data?.equipments?.length > 0) && 
                         <div className="space-y-1.5">
                             <h3 className="text-lg">Equipment</h3>
                             
@@ -158,7 +165,7 @@ function DashboardEventViewOverview({ data, capacity, socials, company, service 
                         </div>
                             }
 
-                        { data?.items && 
+                        { (data?.items && data?.items?.length > 0) &&
                         <div className="space-y-1.5">
                             <h3 className="text-lg">Item</h3>
                             
@@ -209,12 +216,14 @@ function DashboardEventViewOverview({ data, capacity, socials, company, service 
                                 </div>
                             </div>
                         </div>
-                }
-                        {/* <!-- ADDRESS --> */}
+                          }                        {/* <!-- ADDRESS --> */}
                         <div className="space-y-1.5">
                             <h3 className="text-lg">Address</h3>
                             <div className="bg-white p-4 rounded-md">
-                                <h3>{company?.flat_no + ", " + company?.street + ", " + company?.area + ", " + company?.city + ", " + company?.state + "-" +  company?.pincode}</h3>
+                                {
+                                    data?.companydetail ?
+                                    <h3>{company?.flat_no + ", " + company?.street + ", " + company?.area + ", " + company?.city + ", " + company?.state + "-" +  company?.pincode}</h3> : ""
+                                }
                                 {/* <h3>Akshya Nagar 1st Block 1st Cross, Rammurthy nagar, Bangalore-560016</h3> */}
                             </div>
                         </div>
@@ -234,7 +243,7 @@ function DashboardEventViewOverview({ data, capacity, socials, company, service 
                             {/* <!-- media titel  --> */}
                             <div className="flex justify-between items-center">
                                 <h3 className="text-lg">Photos</h3>
-                                <a href="#" className="text-spiroDiscoBall text-sm font-bold">View All</a>
+                                <a href="#" className="text-spiroDiscoBall text-sm font-bold" onClick={() => setPreviewcompanyPhoto(true)}>View All</a>
                             </div>
                             {(company?.photos?.length > 0) && 
                            <>
@@ -255,7 +264,7 @@ function DashboardEventViewOverview({ data, capacity, socials, company, service 
                             {/* <!-- media titel  --> */}
                             <div className="flex justify-between items-center">
                                 <h3 className="text-lg">Videos</h3>
-                                <a href="#" className="text-spiroDiscoBall text-sm font-bold">View All</a>
+                                <a href="#" className="text-spiroDiscoBall text-sm font-bold" onClick={() => setPreviewCompanyVideo(true)}>View All</a>
                             </div>
                             
                             {(company?.videos?.length > 0) && 
@@ -426,7 +435,7 @@ function DashboardEventViewOverview({ data, capacity, socials, company, service 
                             </div>
                             <div className="p-3.5 xl:p-5">
                                 <span className="input-titel"><i className="icon-fill-location mr-1"></i> Location</span>
-                                <h3 className="text-sm xl:text-base">{capacity?.address}</h3>
+                                <h3 className="text-sm xl:text-base">{company?.flat_no + ", " + company?.street + ", " + company?.area + ", " + company?.city + ", " + company?.state + "-" +  company?.pincode}</h3>
                             </div>
                         </div>
                         }
@@ -481,6 +490,19 @@ function DashboardEventViewOverview({ data, capacity, socials, company, service 
             <Modal isOpen={preview}>
                 <ImageAndVideoPreview handleClose={setPreview} data={data} />
             </Modal>
+            <Modal isOpen={previewPhoto}>
+                <ImagePreview handleClose={setPreviewPhoto} data={data?.photos} />
+            </Modal>
+            <Modal isOpen={previewVideo}>
+                <VideoPreview handleClose={setPreviewVideo} data={data?.videos} />
+            </Modal>
+            <Modal isOpen={previewCompanyPhoto}>
+                <ImageCompanyPreview handleClose={setPreviewcompanyPhoto} data={company?.photos} />
+            </Modal>
+            <Modal isOpen={previewCompanyVideo}>
+                <VideoCompanyPreview handleClose={setPreviewCompanyVideo} data={company?.videos} />
+            </Modal>
+            
         </div>
     )
 }

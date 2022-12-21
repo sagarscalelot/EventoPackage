@@ -1,5 +1,3 @@
-
-
 import React, { useState } from "react";
 import bigDishImage from "../../../assest/images/big-dish.png";
 import dish1Image from "../../../assest/images/dish-1.png";
