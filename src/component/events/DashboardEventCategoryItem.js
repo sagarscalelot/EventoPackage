@@ -61,7 +61,7 @@ function DashboardEventCategoryItem({ data }) {
 								<span className="text-quicksilver text-xs font-bold pl-2"> 19,981 ratings</span>
 							</div>
 							<div className="flex space-x-2">
-								<Link to={`../addplaces`} onClick={() => { localStorage.setItem("eventId", data?._id); dispatch(increment()) }} className="bg-brightGray px-2 py-1 text-center rounded"><i className="text-base edit text-black icon-edit" style={{ color: "#000" }}></i></Link>
+								<Link to={`../addplaces`} onClick={() => { localStorage.setItem("eventId", data?._id); localStorage.setItem("event_type", data?.event_type); dispatch(increment()) }} className="bg-brightGray px-2 py-1 text-center rounded"><i className="text-base edit text-black icon-edit" style={{ color: "#000" }}></i></Link>
 								<Link to="/" className="bg-brightGray px-2 py-1 text-center rounded"><i
 									className="icon-fill-megaphone text-base text-black"></i></Link>
 								<Link to={`/dashboard/event/calender`} className="bg-brightGray px-2 py-1 text-center rounded"><i

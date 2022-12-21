@@ -15,6 +15,7 @@ function EventPopUpAddService({isItem, handleClose, data, setReload, edit}) {
   const [image, setImage] = useState("");
   const [error, setError] = useState(false);
   const eventId = localStorage.getItem("eventId");
+  const event_type = localStorage.getItem("event_type");
 	const [errorMessage, setErrorMessage] = useState("");
   const params = useParams();
   const eventType = params.eventType;
@@ -80,7 +81,7 @@ function EventPopUpAddService({isItem, handleClose, data, setReload, edit}) {
     }
     
     const requestObj = {
-        eventid : eventId,
+        eventType : event_type,
         name: name,
         price: price,
         price_type: priceType,
