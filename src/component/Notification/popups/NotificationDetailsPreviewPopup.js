@@ -19,7 +19,7 @@ function NotificationDetailsPreviewPopup({ handleClose, notification_title, bann
               <div className="flex justify-between items-center">
                 <h1 className="h1">Notification</h1>
                 <div className="flex items-center space-x-6" onClick={() => handleClose(false)}>
-                  <Link to="/" className="text-xl">
+                  <Link to="/dashboard/notification/details" className="text-xl">
                     <i className="icon-close"></i>
                   </Link>
                 </div>

@@ -5,7 +5,7 @@ import notificationSvg1 from "../../assest/svg/notification-1.svg";
 import notificationSvg2 from "../../assest/svg/notification-2.svg";
 
 import NotificationLIstItem from "./NotificationLIstItem";
-import Advertisement from "../Advertisement";
+// import Advertisement from "../Advertisement";
 import BottomNavigation from "../BottomNavigation";
 import { baseUrl } from "../../config";
 import axios from "axios";
@@ -76,7 +76,7 @@ function Notification() {
             <NotificationLIstItem key={ele._id} data={ele} />
           ))}
           {/* <!-- advisement --> */}
-          {!loading && <Advertisement />}
+          {/* {!loading && <Advertisement />} */}
           {/* <!-- next preview button  --> */}
         </div>
       </div>

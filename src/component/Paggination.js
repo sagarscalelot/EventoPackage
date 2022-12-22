@@ -27,7 +27,8 @@ function Paggination({ allEvents, limit, setPageNo, pageNo }) {
 
     return (
         <div className="pagination-festum">
-            <p className="show-text">Showing {(allEvents?.page -1)*limit} to {Math.min(allEvents?.page*limit, allEvents?.total)} Of {allEvents?.total} Events</p>
+            {/* <p className="show-text">Showing {(allEvents?.page -1)*limit} to {Math.min(allEvents?.page*limit, allEvents?.total)} Of {allEvents?.total} Events</p> */}
+            <p className="show-text">Showing All Events</p>
             <ul className="">
                 <li>
                     <button className="btns" style={allEvents?.page < 2 ? {cursor: "not-allowed"} : {}} disabled={allEvents.page > 1 ? false : true} onClick={() => setPageNo(current => current-1)}>

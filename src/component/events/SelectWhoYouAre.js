@@ -32,7 +32,7 @@ function SelectWhoYouAre() {
             <div>
               <img src={groupSkillBuisnessSsvg} alt="" className="" />
             </div>
-            <h2 className="pt-12 group-hover:text-spiroDiscoBall">Group Skils Business</h2>
+            <h2 className="pt-12 group-hover:text-spiroDiscoBall">Group Skills Business</h2>
           </div>
         </Link>
       </div>
