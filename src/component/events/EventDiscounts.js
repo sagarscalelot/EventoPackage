@@ -53,7 +53,7 @@ function EventDiscounts() {
 
 
 	const createActiveDiscount = async() => {
-		console.log("ActiveList", activeList)
+		// console.log("ActiveList", activeList)
 		try {	
 			const response = await axios.post(`${baseUrl}/organizer/events/discount`,{eventid: eventId, discounts: activeList},{headers: header});
 
@@ -114,7 +114,7 @@ function EventDiscounts() {
 	}
 
 	const editButtonHandler = (ele) => {
-		console.log("ele : ", ele);
+		// console.log("ele : ", ele);
 		setSelectedDiscount(ele);
 		if(ele.discounttype === "discount_on_total_bill") setServiceOn(false);
 		if(ele.discounttype === "discount_on_equipment_or_item") setServiceOn(true);
@@ -177,7 +177,7 @@ function EventDiscounts() {
 	   </div>
 
 	   <Modal isOpen={isDiscountPopUpOpen}>
-			{console.log("selected dis : ", selectedDiscount.discounttype )}
+			{/* {console.log("selected dis : ", selectedDiscount.discounttype )} */}
 			{ selectedDiscount.discounttype === "discount_on_total_bill" ? 
 			<EventPopUpDiscountOnTotalBill handleClose={setIsDiscountPopUpOpen} eventId={eventId} setSelectedDiscount={setSelectedDiscount} selectedDiscount={selectedDiscount} serviceOn={serviceOn} /> 
 			: 
