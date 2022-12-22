@@ -88,6 +88,7 @@ function EventPopUpAddService({ isItem, handleClose, data, setReload, edit }) {
       description: description,
       quantity: quantity,
       photos: []
+
     }
     if (edit) requestObj.serviceid = data._id;
 
