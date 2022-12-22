@@ -38,8 +38,7 @@ function DashboardEventCategoryItem({ data }) {
 							<div className="">
 								<span className="text-sm text-white bg-spiroDiscoBall px-3 py-1">{data?.event_category.category_name}</span>
 								<h2 className="text-japaneseIndigo pt-5">{data?.display_name}</h2>
-								<div className="text-sm text-quicksilver pt-3"><i className="icon-fill-location mr-3"></i>{data?.capacity?.address}
-								</div>
+								<div className="text-sm text-quicksilver pt-3"><i className="icon-fill-location mr-3"></i>{data?.capacity?.address}{data?.personaldetail?.area + ","+ data?.personaldetail?.city+"," +  data?.personaldetail?.state}</div>
 							</div>
 							<div className="">
 								<div className="flex items-center">
@@ -48,7 +47,7 @@ function DashboardEventCategoryItem({ data }) {
 										<h3>Live</h3>
 									</label>
 								</div>
-								<h1 className="pt-7">{data?.aboutplace?.place_price} INR</h1>
+								<h1 className="pt-7">{data?.totalPrice} INR</h1>
 							</div>
 						</div>
 						<div className="flex justify-between pt-4">

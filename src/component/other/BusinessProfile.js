@@ -25,7 +25,8 @@ function BusinessProfile({  business }) {
         country: "",
         about: "",
         country_code: "",
-        phone_no: ""
+        phone_no: "",
+        profile_pic:""
 
     }
 
@@ -48,7 +49,8 @@ function BusinessProfile({  business }) {
             country: business?.country,
             about: business?.about,
             country_code: business?.country_code,
-            phone_no: business?.phone_no
+            phone_no: business?.phone_no,
+            profile_pic:business?.profile_pic
         })
     }, [business])
 
@@ -85,7 +87,7 @@ function BusinessProfile({  business }) {
         try {
             const response = await axios.post(`${baseUrl}/organizer/profile/businessprofilepic`, formData, { headers: imageHeader });
             if (response.data.IsSuccess) {
-                console.log(response)
+                // console.log(response)
                 toast.success(response.data.Message);
             } else {
                 toast.error(response.data.Message);
@@ -100,7 +102,7 @@ function BusinessProfile({  business }) {
     const photoChangeHandler = (event) => {
         const types = ['image/png', 'image/jpeg', 'image/jpg'];
         let selected = event.target.files[0];
-        console.log("selected", selected);
+        // console.log("selected", selected);
         try {
             if (selected && types.includes(selected.type)) {
                 if (selected.size < (1 * 1024 * 1024)) {
@@ -118,7 +120,7 @@ function BusinessProfile({  business }) {
             toast.error("Error while Selecting Image.");
         }
     }
-    console.log('details for business', business);
+    // console.log('details for business', business);
     return (
         <>
             {/* <!-- title-holder  --> */}
@@ -134,7 +136,7 @@ function BusinessProfile({  business }) {
             <div className="flex items-center">
                 <div className="">
                     <div className="w-44 h-44 rounded-full border-8 border-spiroDiscoBall relative mr-9">
-                        <img src={profileImage ? URL.createObjectURL(profileImage) : business?.profile_pic ? s3Url + business?.profile_pic : previewImage} alt="pictures" className="w-full h-full object-cover rounded-full overflow-hidden" />
+                        <img src={profileImage ? URL.createObjectURL(profileImage) : values?.profile_pic ? s3Url +"/"+ values?.profile_pic : previewImage} alt="pictures" className="w-full h-full object-cover rounded-full overflow-hidden" />
                         <div className="absolute bottom-0 right-0 flex justify-center items-center w-10 h-10 rounded-full bg-spiroDiscoBall z-10">
                             <i className="icon-camera"></i>
                             <input type="file" onChange={(e) => photoChangeHandler(e)} className="opacity-0 absolute inset-0" />
