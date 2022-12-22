@@ -37,7 +37,7 @@ function NotificationDetails() {
       }
       const response = await axios.post(`${baseUrl}/organizer/notification/save`, requestObj, { headers: header });
       if (response.data.IsSuccess) {
-        navigate("../notification");
+        navigate(-1);
         toast.success(response.data.Message);
       } else {
         toast.error(response.data.Message);

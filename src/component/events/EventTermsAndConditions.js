@@ -50,7 +50,8 @@ function EventTermsAndConditions() {
         [name]: value,
       });
   };
-
+// https://m.media-amazon.com/images/I/516wEE7dasL.jpg
+// https://m.media-amazon.com/images/I/516wEE7dasL.jpg
   const saveData = async() => {
     if(!acceptTerm) {
       toast.warn("Pleace Accept the Terms and Condition.");
@@ -93,7 +94,7 @@ function EventTermsAndConditions() {
         setTerms(response.data.Data.tandc.t_and_c);
       }
     } catch (error) {
-      toast.error("Error Occured While Fetching Data.")
+      
       console.log(error);
     }
   }

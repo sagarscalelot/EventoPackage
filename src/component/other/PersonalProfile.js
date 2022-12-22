@@ -5,7 +5,8 @@ import { toast } from 'react-toastify';
 import previewImage from "../../assest/images/image-preview.png"
 import { baseUrl } from '../../config';
 
-function PersonalProfile({ type, token, details }) {
+function PersonalProfile({  details }) {
+    const token = localStorage.getItem("Token");
     const header = {
         'Authorization': `Token ${token}`,
     }
@@ -50,7 +51,7 @@ function PersonalProfile({ type, token, details }) {
             phone_no: details?.phone_no
         })
     }, [details])
-
+console.log("personal details", details)
     let initialRender = true;
     useEffect(() => {
         if (initialRender) {
