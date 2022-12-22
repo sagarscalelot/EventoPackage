@@ -58,37 +58,37 @@ function DashboardEventViewOverview({ data, capacity, socials, company, service 
                     <div className="w-full lg:w-8/12 lg:pr-5 space-y-7">
                         <div className="p-7 bg-white rounded-md space-y-1">
                             <h3>{data?.display_name}</h3>
-                            <p className="text-quicksilver text-sm font-normal">{(data?.aboutplace) ?  (data?.aboutplace?.details) : ""}</p>
+                            <p className="text-quicksilver text-sm font-normal">{(data?.aboutplace) ? (data?.aboutplace?.details) : ""}</p>
                         </div>
                         {/* <!-- Photo-holder --> */}
-                        
-                            {/* <!-- media title  --> */}
-                            <div className="flex justify-between items-center">
-                                <h3 className="text-lg">Photos</h3>
-                                <a href="#" className="text-spiroDiscoBall text-sm font-bold" onClick={() => setPreviewPhoto(true)}>View All</a>
-                            </div>
-                            {data?.photos?.length > 0 && <div className="media-upload-holder">
+
+                        {/* <!-- media title  --> */}
+                        <div className="flex justify-between items-center">
+                            <h3 className="text-lg">Photos</h3>
+                            <a href="#" className="text-spiroDiscoBall text-sm font-bold" onClick={() => setPreviewPhoto(true)}>View All</a>
+                        </div>
+                        {data?.photos?.length > 0 && <div className="media-upload-holder">
                             {/* <!-- photo-holder --> */}
                             <div className="w-full">
                                 <div className="flex flex-wrap -mx-2" >
-                                    {data?.photos?.map((e,i) => (
+                                    {data?.photos?.map((e, i) => (
                                         <DashboardEventViewOverviewPhoto key={i} alt={e.description} imageUrl={s3Url + "/" + e?.url} />
                                     ))}
                                 </div>
                             </div>
                         </div>}
                         {/* <!-- videos-holder --> */}
-                        
-                            {/* <!-- media title  --> */}
-                            <div className="flex justify-between items-center">
-                                <h3 className="text-lg">Videos</h3>
-                                <a href="#" className="text-spiroDiscoBall text-sm font-bold" onClick={() => setPreviewVideo(true)}>View All</a>
-                            </div>
-                            {data?.videos?.length > 0 && <div className="media-upload-holder">
+
+                        {/* <!-- media title  --> */}
+                        <div className="flex justify-between items-center">
+                            <h3 className="text-lg">Videos</h3>
+                            <a href="#" className="text-spiroDiscoBall text-sm font-bold" onClick={() => setPreviewVideo(true)}>View All</a>
+                        </div>
+                        {data?.videos?.length > 0 && <div className="media-upload-holder">
                             {/* <!-- media-holder --> */}
                             <div className="w-full">
                                 <div className="flex flex-wrap -mx-2">
-                                    {data?.videos?.map((e,i) => (
+                                    {data?.videos?.map((e, i) => (
                                         <DashboardEventViewOverviewVideo key={i} alt={e?.description} videoUrl={s3Url + "/" + e?.url} />
                                     ))}
                                 </div>
@@ -98,78 +98,11 @@ function DashboardEventViewOverview({ data, capacity, socials, company, service 
                         {
 
                         }
-                        { (service && (service?.length > 0)) &&
-                        <div className="space-y-1.5">
-                            <h3 className="text-lg">Service</h3>
-                            
-                                {service.map((e,i) =>
-                                    <div className="flex justify-between bg-white rounderd px-7 py-4">
-                                        <div className="">
-                                            <div className="w-28 h-28 border-2 border-brightGray rounded-md">
-                                                <img key={i} src={e?.photos[0]?.url ? (s3Url + "/" + e?.photos[0]?.url) : bigDishImage} alt="cutting-board" className="w-full h-full object-cover" />
-                                            </div>
-                                        </div>
-                                        <div className="w-full pl-5">
-                                            <div className="flex justify-between">
-                                                <h3>{e.name}</h3>
-                                                {/* <h3>Cutting board</h3> */}
-                                                <div className="flex items-center space-x-1">
-                                                    <h3>{e.price} INR </h3>
-                                                    {e.price_type === "per_day" ? <h3>P/D</h3> : (e.price_type === "per_person" ? <h3>P/P</h3> : <h3>P/E</h3>)}
-                                                    <h3 className="text-spiroDiscoBall">{e.quantity} Qty</h3>
-                                                </div>
-                                            </div>
-                                            <p className="text-quicksilver text-sm font-normal leading-6 pt-3">
-                                                {e?.description}</p>
-                                            {/* <p className="text-quicksilver text-sm font-normal leading-6 pt-3">Lorem Ipsum is simply dummy text of the
-                                                printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever
-                                                since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
-                                                specimen book </p> */}
-                                        </div>
-                                    </div>
-                                )}
-                        </div>
-                            }
-                        
-                        {/* <!-- Equipments --> */}
-                        { (data?.equipments && data?.equipments?.length > 0) && 
-                        <div className="space-y-1.5">
-                            <h3 className="text-lg">Equipment</h3>
-                            
-                                {data?.equipments.map((e,i) =>
-                                    <div className="flex justify-between bg-white rounderd px-7 py-4">
-                                        <div className="">
-                                            <div className="w-28 h-28 border-2 border-brightGray rounded-md">
-                                                <img key={i} src={e?.photos[0]?.url ? (s3Url + "/" + e?.photos[0]?.url) : bigDishImage} alt="cutting-board" className="w-full h-full object-cover" />
-                                            </div>
-                                        </div>
-                                        <div className="w-full pl-5">
-                                            <div className="flex justify-between">
-                                                <h3>{e.name}</h3>
-                                                {/* <h3>Cutting board</h3> */}
-                                                <div className="flex items-center space-x-1">
-                                                    <h3>{e.price} INR </h3>
-                                                    {e.price_type === "per_day" ? <h3>P/D</h3> : (e.price_type === "per_person" ? <h3>P/P</h3> : <h3>P/E</h3>)}
-                                                    <h3 className="text-spiroDiscoBall">{e.quantity} Qty</h3>
-                                                </div>
-                                            </div>
-                                            <p className="text-quicksilver text-sm font-normal leading-6 pt-3">
-                                                {e?.description}</p>
-                                            {/* <p className="text-quicksilver text-sm font-normal leading-6 pt-3">Lorem Ipsum is simply dummy text of the
-                                                printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever
-                                                since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
-                                                specimen book </p> */}
-                                        </div>
-                                    </div>
-                                )}
-                        </div>
-                            }
+                        {(service && (service?.length > 0)) &&
+                            <div className="space-y-1.5">
+                                <h3 className="text-lg">Service</h3>
 
-                        { (data?.items && data?.items?.length > 0) &&
-                        <div className="space-y-1.5">
-                            <h3 className="text-lg">Item</h3>
-                            
-                                {data?.items.map((e,i) =>
+                                {service.map((e, i) =>
                                     <div className="flex justify-between bg-white rounderd px-7 py-4">
                                         <div className="">
                                             <div className="w-28 h-28 border-2 border-brightGray rounded-md">
@@ -195,34 +128,101 @@ function DashboardEventViewOverview({ data, capacity, socials, company, service 
                                         </div>
                                     </div>
                                 )}
-                        </div>
-                            }
-                        {/* <!-- Person & Parking --> */}
-                        { capacity && 
-                        <div className="space-y-1.5">
-                            <h3 className="text-lg">Person & Parking</h3>
-                            <div className="flex items-center -mx-2.5">
-                                <div className="w-full lg:w-1/2 px-2.5">
-                                    <div className="flex items-center justify-between bg-white p-4 rounded-md">
-                                        <h3 className="text-quicksilver">No of person</h3>
-                                        <h2>{capacity?.person_capacity}</h2>
+                            </div>
+                        }
+
+                        {/* <!-- Equipments --> */}
+                        {(data?.equipments && data?.equipments?.length > 0) &&
+                            <div className="space-y-1.5">
+                                <h3 className="text-lg">Equipment</h3>
+
+                                {data?.equipments.map((e, i) =>
+                                    <div className="flex justify-between bg-white rounderd px-7 py-4">
+                                        <div className="">
+                                            <div className="w-28 h-28 border-2 border-brightGray rounded-md">
+                                                <img key={i} src={e?.photos[0]?.url ? (s3Url + "/" + e?.photos[0]?.url) : bigDishImage} alt="cutting-board" className="w-full h-full object-cover" />
+                                            </div>
+                                        </div>
+                                        <div className="w-full pl-5">
+                                            <div className="flex justify-between">
+                                                <h3>{e.name}</h3>
+                                                {/* <h3>Cutting board</h3> */}
+                                                <div className="flex items-center space-x-1">
+                                                    <h3>{e.price} INR </h3>
+                                                    {e.price_type === "per_day" ? <h3>P/D</h3> : (e.price_type === "per_person" ? <h3>P/P</h3> : <h3>P/E</h3>)}
+                                                    <h3 className="text-spiroDiscoBall">{e.quantity} Qty</h3>
+                                                </div>
+                                            </div>
+                                            <p className="text-quicksilver text-sm font-normal leading-6 pt-3">
+                                                {e?.description}</p>
+                                            {/* <p className="text-quicksilver text-sm font-normal leading-6 pt-3">Lorem Ipsum is simply dummy text of the
+                                                printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever
+                                                since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
+                                                specimen book </p> */}
+                                        </div>
                                     </div>
-                                </div>
-                                <div className="w-full lg:w-1/2 px-2.5">
-                                    <div className="flex items-center justify-between bg-white p-4 rounded-md">
-                                        <h3 className="text-quicksilver">Parking Capacity</h3>
-                                        <h2>{capacity?.parking_capacity}</h2>
+                                )}
+                            </div>
+                        }
+
+                        {(data?.items && data?.items?.length > 0) &&
+                            <div className="space-y-1.5">
+                                <h3 className="text-lg">Item</h3>
+
+                                {data?.items.map((e, i) =>
+                                    <div className="flex justify-between bg-white rounderd px-7 py-4">
+                                        <div className="">
+                                            <div className="w-28 h-28 border-2 border-brightGray rounded-md">
+                                                <img key={i} src={e?.photos[0]?.url ? (s3Url + "/" + e?.photos[0]?.url) : bigDishImage} alt="cutting-board" className="w-full h-full object-cover" />
+                                            </div>
+                                        </div>
+                                        <div className="w-full pl-5">
+                                            <div className="flex justify-between">
+                                                <h3>{e.name}</h3>
+                                                {/* <h3>Cutting board</h3> */}
+                                                <div className="flex items-center space-x-1">
+                                                    <h3>{e.price} INR </h3>
+                                                    {e.price_type === "per_day" ? <h3>P/D</h3> : (e.price_type === "per_person" ? <h3>P/P</h3> : <h3>P/E</h3>)}
+                                                    <h3 className="text-spiroDiscoBall">{e.quantity} Qty</h3>
+                                                </div>
+                                            </div>
+                                            <p className="text-quicksilver text-sm font-normal leading-6 pt-3">
+                                                {e?.description}</p>
+                                            {/* <p className="text-quicksilver text-sm font-normal leading-6 pt-3">Lorem Ipsum is simply dummy text of the
+                                                printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever
+                                                since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
+                                                specimen book </p> */}
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
+                        }
+                        {/* <!-- Person & Parking --> */}
+                        {capacity &&
+                            <div className="space-y-1.5">
+                                <h3 className="text-lg">Person & Parking</h3>
+                                <div className="flex items-center -mx-2.5">
+                                    <div className="w-full lg:w-1/2 px-2.5">
+                                        <div className="flex items-center justify-between bg-white p-4 rounded-md">
+                                            <h3 className="text-quicksilver">No of person</h3>
+                                            <h2>{capacity?.person_capacity}</h2>
+                                        </div>
+                                    </div>
+                                    <div className="w-full lg:w-1/2 px-2.5">
+                                        <div className="flex items-center justify-between bg-white p-4 rounded-md">
+                                            <h3 className="text-quicksilver">Parking Capacity</h3>
+                                            <h2>{capacity?.parking_capacity}</h2>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                          }                        {/* <!-- ADDRESS --> */}
+                        }                        {/* <!-- ADDRESS --> */}
                         <div className="space-y-1.5">
                             <h3 className="text-lg">Address</h3>
                             <div className="bg-white p-4 rounded-md">
                                 {
                                     data?.companydetail ?
-                                    <h3>{company?.flat_no + ", " + company?.street + ", " + company?.area + ", " + company?.city + ", " + company?.state + "-" +  company?.pincode}</h3> : ""
+                                        <h3>{company?.flat_no + ", " + company?.street + ", " + company?.area + ", " + company?.city + ", " + company?.state + "-" + company?.pincode}</h3> : ""
                                 }
                                 {/* <h3>Akshya Nagar 1st Block 1st Cross, Rammurthy nagar, Bangalore-560016</h3> */}
                             </div>
@@ -245,18 +245,18 @@ function DashboardEventViewOverview({ data, capacity, socials, company, service 
                                 <h3 className="text-lg">Photos</h3>
                                 <a href="#" className="text-spiroDiscoBall text-sm font-bold" onClick={() => setPreviewcompanyPhoto(true)}>View All</a>
                             </div>
-                            {(company?.photos?.length > 0) && 
-                           <>
-                           
-                            {/* <!-- photo-holder --> */}
-                            <div className="w-full">
-                                <div className="flex flex-wrap -mx-2">
-                                    {company?.photos?.map((e,i) =>
-                                        <DashboardEventViewOverviewPhoto key={i} imageUrl={s3Url + "/" + e?.url} />
-                                    )}
-                                </div>
-                            </div>
-                            </>
+                            {(company?.photos?.length > 0) &&
+                                <>
+
+                                    {/* <!-- photo-holder --> */}
+                                    <div className="w-full">
+                                        <div className="flex flex-wrap -mx-2">
+                                            {company?.photos?.map((e, i) =>
+                                                <DashboardEventViewOverviewPhoto key={i} imageUrl={s3Url + "/" + e?.url} />
+                                            )}
+                                        </div>
+                                    </div>
+                                </>
                             }
                         </div>
                         {/* <!-- videos-holder --> */}
@@ -266,18 +266,18 @@ function DashboardEventViewOverview({ data, capacity, socials, company, service 
                                 <h3 className="text-lg">Videos</h3>
                                 <a href="#" className="text-spiroDiscoBall text-sm font-bold" onClick={() => setPreviewCompanyVideo(true)}>View All</a>
                             </div>
-                            
-                            {(company?.videos?.length > 0) && 
-                            <>
-                            {/* <!-- media-holder --> */}
-                            <div className="w-full">
-                                <div className="flex flex-wrap -mx-2">
-                                    {company?.videos?.map((e,i) =>
-                                        <DashboardEventViewOverviewVideo key={i} alt="No Viedo" videoUrl={s3Url + "/" + e?.url} />
-                                    )}
-                                </div>
-                            </div>
-                            </>
+
+                            {(company?.videos?.length > 0) &&
+                                <>
+                                    {/* <!-- media-holder --> */}
+                                    <div className="w-full">
+                                        <div className="flex flex-wrap -mx-2">
+                                            {company?.videos?.map((e, i) =>
+                                                <DashboardEventViewOverviewVideo key={i} alt="No Viedo" videoUrl={s3Url + "/" + e?.url} />
+                                            )}
+                                        </div>
+                                    </div>
+                                </>
                             }
                         </div>
                         {/* <!-- Company Details --> */}
@@ -423,48 +423,48 @@ function DashboardEventViewOverview({ data, capacity, socials, company, service 
                     <div className="w-full lg:w-4/12 lg:pl-5 space-y-7 sticky top-0">
                         {/* <!-- map-content  --> */}
                         {capacity &&
-                        <div className="w-full relative min-h-[170px] xl:min-h-[220px] p-2.5 bg-white rounded-md">
-                            <div className='w-full'>
-                                <GoogleMap
-                                    // handleClick={handleClick}
-                                    coordinates={{
-                                        type: "Point",
-                                        coordinates: [capacity?.location?.coordinates[0], capacity?.location?.coordinates[1]]
-                                    }}
-                                />
+                            <div className="w-full relative min-h-[170px] xl:min-h-[220px] p-2.5 bg-white rounded-md">
+                                <div className='w-full min-h-[180px]' style={{ position: "inherit" }}>
+                                    <GoogleMap
+                                        // handleClick={handleClick}
+                                        coordinates={{
+                                            type: "Point",
+                                            coordinates: [capacity?.location?.coordinates[0], capacity?.location?.coordinates[1]]
+                                        }}
+                                    />
+                                </div>
+                                <div className="p-3.5 pt-0 xl:p-5 xl:pt-0">
+                                    <span className="input-titel"><i className="icon-fill-location mr-1"></i> Location</span>
+                                    <h3 className="text-sm xl:text-base">{company?.flat_no + ", " + company?.street + ", " + company?.area + ", " + company?.city + ", " + company?.state + "-" + company?.pincode}</h3>
+                                </div>
                             </div>
-                            <div className="p-3.5 xl:p-5">
-                                <span className="input-titel"><i className="icon-fill-location mr-1"></i> Location</span>
-                                <h3 className="text-sm xl:text-base">{company?.flat_no + ", " + company?.street + ", " + company?.area + ", " + company?.city + ", " + company?.state + "-" +  company?.pincode}</h3>
-                            </div>
-                        </div>
                         }
 
                         {/* <!-- Discount On Total Bill  --> */}
                         {/* <div className="bg-gradient-to-r from-[#13e1b094] to-[#13E1B0] p-3.5 xl:p-5 rounded-lg relative"> */}
-                            {(data?.discounts?.length > 0) && 
+                        {(data?.discounts?.length > 0) &&
                             <>
-                            <div className="bg-gradient-to-r from-[#13e1b094] to-[#13E1B0] p-3.5 xl:p-5 rounded-lg relative">
-                            {data?.discounts?.map(e => (
+                                <div className="bg-gradient-to-r from-[#13e1b094] to-[#13E1B0] p-3.5 xl:p-5 rounded-lg relative">
+                                    {data?.discounts?.map(e => (
 
-                                // <DashboardEventViewOverviewPhoto key={e.id} alt={e.description} imageUrl={s3Url + "/" + e?.url} />
-                                <div className="text-center">
-                                    <h1 className="text-white">{e?.discountname}</h1>
-                                    <div className="text-[40px] text-black font-bold">{e?.discount}</div>
-                                    <div className="space-y-2">
-                                        <span className="text-xs text-white font-normal block">{e.description}</span>
+                                        // <DashboardEventViewOverviewPhoto key={e.id} alt={e.description} imageUrl={s3Url + "/" + e?.url} />
+                                        <div className="text-center">
+                                            <h1 className="text-white">{e?.discountname}</h1>
+                                            <div className="text-[40px] text-black font-bold">{e?.discount}</div>
+                                            <div className="space-y-2">
+                                                <span className="text-xs text-white font-normal block">{e.description}</span>
 
-                                        <span className="text-xs text-white font-normal block">{e.tandc}</span>
-                                    </div>
-                                    <img src={celebrationSvg} alt="celebration" className="absolute -right-2 -bottom-2 -rotate-90 opacity-80" />
+                                                <span className="text-xs text-white font-normal block">{e.tandc}</span>
+                                            </div>
+                                            <img src={celebrationSvg} alt="celebration" className="absolute -right-2 -bottom-2 -rotate-90 opacity-80" />
+                                        </div>
+
+                                    ))}
                                 </div>
-
-                            ))}
-                        </div>
 
                             </>
                         }
-                            {/* <div className="text-center">
+                        {/* <div className="text-center">
                                 <h1 className="text-white">Discount On Total Bill</h1>
                                 <div className="text-[40px] text-black font-bold">10%</div>
                                 <div className="space-y-2">
@@ -502,7 +502,7 @@ function DashboardEventViewOverview({ data, capacity, socials, company, service 
             <Modal isOpen={previewCompanyVideo}>
                 <VideoCompanyPreview handleClose={setPreviewCompanyVideo} data={company?.videos} />
             </Modal>
-            
+
         </div>
     )
 }

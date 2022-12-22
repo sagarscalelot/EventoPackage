@@ -40,7 +40,7 @@ function GalleryAll() {
 	return (
 		<div className="w-full relative tab-main active" id="all">
 			<div className="grid grid-cols-1 gap-6 lg:gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-				{gallery.map(e => {
+				{/* {gallery.map(e => {
 					return (
 						<ul className="space-y-8">
 							{
@@ -70,7 +70,7 @@ function GalleryAll() {
 							}
 						</ul>
 					)
-				})}
+				})} */}
 
 			</div>
 			<Modal isOpen={preview} >
