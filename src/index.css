@@ -150,6 +150,27 @@ input:checked + i {
 	@apply items-center justify-center;
 }
 
+.container {
+	column-count: 4;
+	column-gap: 15px;
+}
+.container img {
+	max-width: 100%;
+	display: block;
+}
+.container figure {
+	margin: 0;
+	display: grid;
+	grid-template-rows: 1fr auto;
+	margin-bottom: 10px;
+	break-inside: avoid;
+}
+
+.container figure > img {
+  grid-row: 1 / -1;
+  grid-column: 1;
+}
+
 /* arrow icon  */
 /* .arrow{@apply appearance-none w-full;background-image: url('../svg/arrow.svg');background-repeat: no-repeat;background-position: calc(100% - 17px) center;cursor: pointer;}
 .profile-arrow{@apply appearance-none w-full;background-image: url('../svg/arrow.svg');background-repeat: no-repeat;background-position: calc(100% - 10px) center;cursor: pointer;} */

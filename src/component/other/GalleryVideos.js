@@ -36,91 +36,37 @@ function GalleryVideos() {
 
     return (
         <>
-        <div className="w-full relative" id="video">
-            <div className="grid grid-cols-1 gap-6 lg:gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            <div className="w-full relative" id="video">
+                <div className="container">
+                    {console.log(gallery)}
 
-            {gallery.map(e => (
+                    {gallery.map(e => (
+                        <figure>
+                            <div className="bg-white rounded-md relative overflow-hidden w-full h-full">
+                                <a href="#" className="relative inset-0 w-full h-full opacity-100 pointer-events-auto" onClick={() => setPreview(true)}>
 
-                    <li id="video-card" className="text-sm leading-6">
-                        <div className="bg-white rounded-md relative overflow-hidden w-full h-full">
-                        {/* <div className="absolute inset-0 w-full h-full opacity-100 pointer-events-auto" onclick={() => setPreview(true)}> */}
-                        <video width="100%" src={s3Url + "/" + e?.url} alt="no video" controls allowFullScreen></video>
-                                <button onClick={()=> {
-                    setIsVideoPlayerPopUpOpen(true)
-                    setVideoUrl(s3Url + "/" + e?.url);
-                  }} className="w-12 h-12 flex justify-center items-center bg-spiroDiscoBall anim absolute bottom-0 right-0 hover:opacity-75">
-                    <svg width="17" height="20" viewBox="0 0 17 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M0 0L17 10L0 20V0Z" fill="white" />
-                    </svg>
-                  </button>
-                            {/* </div> */}
-                         </div>
-                    </li>
-
-            ))}   
-
-                {/* <ul className="space-y-8">
-                    <li id="video-card" className="text-sm leading-6">
-                        <div className="bg-white rounded-md relative overflow-hidden w-full h-full">
-                            <div className="relative pointer-events-none video-cover anim z-10">
-                                <img src={gallery1Image} alt="galrry-1" className="w-full" />
-                                <a href="#" className="absolute bottom-3 right-3 text-4xl"><i className="icon-play"></i></a>
+                                    <iframe width="100%" src={s3Url + "/" + e?.url} title="YouTube video player" frameBorder="0" allow="accelerometer;  clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                                </a>
+                                <button onClick={() => {
+                                    setIsVideoPlayerPopUpOpen(true)
+                                    setVideoUrl(s3Url + "/" + e?.url);
+                                }}
+                                    className="w-10 h-10 flex justify-center items-center bg-black rounded-full anim absolute bottom-0 right-0 hover:opacity-75">
+                                    <i className='icon-play text-2xl'></i>
+                                </button>
                             </div>
-                            <a href="#" className="absolute inset-0 w-full h-full opacity-100 pointer-events-auto" onclick="addActive('#video-card','active')">
-                                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/oYRda7UtuhA" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
-                            </a>
-                        </div>
-                    </li>
-                </ul> */}
-                {/* <ul className="space-y-8">
-                    <li id="video-card" className="text-sm leading-6">
-                        <div className="bg-white rounded-md relative overflow-hidden w-full h-full">
-                            <div className="relative pointer-events-none video-cover anim z-10">
-                                <img src={gallery3Image} alt="galrry-1" className="w-full" />
-                                <a href="#" className="absolute bottom-3 right-3 text-4xl"><i className="icon-play"></i></a>
-                            </div>
-                            <a href="#" className="absolute inset-0 w-full h-full opacity-100 pointer-events-auto" onclick="addActive('#video-card','active')">
-                                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/oYRda7UtuhA" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
-                            </a>
-                        </div>
-                    </li>
-                </ul>
-                <ul className="space-y-8">
-                    <li id="video-card" className="text-sm leading-6">
-                        <div className="bg-white rounded-md relative overflow-hidden w-full h-full">
-                            <div className="relative pointer-events-none video-cover anim z-10">
-                                <img src={gallery5Image} alt="galrry-1" className="w-full" />
-                                <a href="#" className="absolute bottom-3 right-3 text-4xl"><i className="icon-play"></i></a>
-                            </div>
-                            <a href="#" className="absolute inset-0 w-full h-full opacity-100 pointer-events-auto" onclick="addActive('#video-card','active')">
-                                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/oYRda7UtuhA" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
-                            </a>
-                        </div>
-                    </li>
-                </ul>
-                <ul className="space-y-8">
-                    <li id="video-card" className="text-sm leading-6">
-                        <div className="bg-white rounded-md relative overflow-hidden w-full h-full">
-                            <div className="relative pointer-events-none video-cover anim z-10">
-                                <img src={gallery2Image} alt="galrry-1" className="w-full" />
-                                <a href="#" className="absolute bottom-3 right-3 text-4xl"><i className="icon-play"></i></a>
-                            </div>
-                            <a href="#" className="absolute inset-0 w-full h-full opacity-100 pointer-events-auto" onclick="addActive('#video-card','active')">
-                                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/oYRda7UtuhA" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
-                            </a>
-                        </div>
-                    </li>
-                </ul> */}
+                        </figure>
+                    ))}
+                </div>
             </div >
-        </div >
             <Modal isOpen={preview} >
                 <GalleryImageAndVideoPreview handleClose={setPreview} />
             </Modal>
             <Modal isOpen={isVideoPlayerPopUpOpen} >
-              
-              <VideoPlayer handleClose={setIsVideoPlayerPopUpOpen} videoUrl={videoUrl} />
 
-          </Modal>
+                <VideoPlayer handleClose={setIsVideoPlayerPopUpOpen} videoUrl={videoUrl} />
+
+            </Modal>
         </>
     )
 }
