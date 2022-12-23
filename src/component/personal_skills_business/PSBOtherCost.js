@@ -205,7 +205,7 @@ function PSBOtherCost() {
             </div>
           </div>
           {/* <!-- advisement --> */}
-          <Advertisement />
+          {/* <Advertisement /> */}
         </div>
         <div className="prw-next-btn mt-auto">
           <button type="button" className="flex items-center" onClick={clickBackHander}>

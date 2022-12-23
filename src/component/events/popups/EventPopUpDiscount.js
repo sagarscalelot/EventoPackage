@@ -50,6 +50,7 @@ function EventPopUpDiscount({handleClose, eventId, setSelectedDiscount, selected
 		}
 	}
 
+
 	const handleSubmit = async() => {
 		setSelectedDiscount({...selectedDiscount,services: selecetdServiceId, discount:value+"%" });
 		try {	
