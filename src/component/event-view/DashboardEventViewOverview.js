@@ -23,7 +23,9 @@ import dish5Video from "../../assest/images/dish-video-5.png";
 import GoogleMap from '../GoogleMap';
 import parse from 'html-react-parser';
 
-import { baseUrl, s3Url } from '../../config';
+
+import {  s3Url } from '../../config';
+
 import VideoPreview from './modal/VideoPreview';
 import ImagePreview from './modal/ImagePreview';
 import ImageCompanyPreview from './modal/ImageCompanyPreview';
