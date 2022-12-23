@@ -5,7 +5,8 @@ import { toast } from 'react-toastify';
 import previewImage from "../../assest/images/image-preview.png"
 import { baseUrl } from '../../config';
 
-function PersonalProfile({ type, token, details }) {
+function PersonalProfile({  details }) {
+    const token = localStorage.getItem("Token");
     const header = {
         'Authorization': `Token ${token}`,
     }
@@ -50,7 +51,7 @@ function PersonalProfile({ type, token, details }) {
             phone_no: details?.phone_no
         })
     }, [details])
-
+// console.log("personal details", details)
     let initialRender = true;
     useEffect(() => {
         if (initialRender) {
@@ -99,7 +100,7 @@ function PersonalProfile({ type, token, details }) {
     const photoChangeHandler = (event) => {
         const types = ['image/png', 'image/jpeg', 'image/jpg'];
         let selected = event.target.files[0];
-        console.log("selected", selected);
+        // console.log("selected", selected);
         try {
             if (selected && types.includes(selected.type)) {
                 if (selected.size < (1 * 1024 * 1024)) {
@@ -117,7 +118,7 @@ function PersonalProfile({ type, token, details }) {
             toast.error("Error while Selecting Image.");
         }
     }
-    console.log('details for personal', details);
+    // console.log('details for personal', details);
     return (
         <>
             {/* <!-- title-holder  --> */}
