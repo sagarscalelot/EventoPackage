@@ -30,7 +30,7 @@ function DashboardEvent() {
 		const requestObj = {
 			page: pageNo,
 			limit: limit,
-			event_type: eventType 
+			event_type: eventType
 		}
 		try {
 			const response = await axios.post(`${baseUrl}/organizer/events/list`, requestObj, { headers: header });
