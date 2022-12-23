@@ -13,10 +13,11 @@ import bigDishImage from "../../assest/images/big-dish.png";
 import GoogleMap from '../GoogleMap';
 import parse from 'html-react-parser';
 
-
 import {  s3Url } from '../../config';
-
-
+import VideoPreview from './modal/VideoPreview';
+import ImagePreview from './modal/ImagePreview';
+import ImageCompanyPreview from './modal/ImageCompanyPreview';
+import VideoCompanyPreview from './modal/VideoCompanyPreview';
 
 function DashboardEventViewOverview({ data, capacity, socials, company, service }) {
     const [preview, setPreview] = useState(false);

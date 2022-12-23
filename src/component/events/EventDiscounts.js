@@ -206,7 +206,11 @@ function EventDiscounts() {
 		} else {
 			ele.isAdded = false;
 			// setCheckBoxCheck(false)
-			setActiveList(current => current.filter(data => data._id !== ele._id))
+			if (ele.sid) {
+				setActiveList(current => current.filter(data => data.sid !== ele.sid))
+			} else {
+				setActiveList(current => current.filter(data => data._id !== ele._id))
+			}
 		}
 	}
 
