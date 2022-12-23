@@ -9,14 +9,25 @@ import ImageAndVideoPreview from './modal/ImageAndVideoPreview';
 import celebrationSvg from "../../assest/svg/celebration.svg";
 
 import bigDishImage from "../../assest/images/big-dish.png";
+import cuttingBoardImage from "../../assest/images/cutting-board.png";
+import dish1Image from "../../assest/images/dish-1.png";
+import dish2Image from "../../assest/images/dish-2.png";
+import dish3Image from "../../assest/images/dish-3.png";
+import dish4Image from "../../assest/images/dish-4.png";
 
+import dish1Video from "../../assest/images/dish-video-1.png";
+import dish2Video from "../../assest/images/dish-video-2.png";
+import dish3Video from "../../assest/images/dish-video-3.png";
+import dish4Video from "../../assest/images/dish-video-4.png";
+import dish5Video from "../../assest/images/dish-video-5.png";
 import GoogleMap from '../GoogleMap';
 import parse from 'html-react-parser';
 
-
-import {  s3Url } from '../../config';
-
-
+import { baseUrl, s3Url } from '../../config';
+import VideoPreview from './modal/VideoPreview';
+import ImagePreview from './modal/ImagePreview';
+import ImageCompanyPreview from './modal/ImageCompanyPreview';
+import VideoCompanyPreview from './modal/VideoCompanyPreview';
 
 function DashboardEventViewOverview({ data, capacity, socials, company, service }) {
     const [preview, setPreview] = useState(false);
