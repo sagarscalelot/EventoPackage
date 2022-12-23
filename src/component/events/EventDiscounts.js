@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
-// import Advertisement from '../Advertisement';
 import celebration from "../../assest/svg/celebration.svg";
 import Modal from "../modal/Modal";
-import EventPopUpDiscount from "./popups/EventPopUpDiscount";
 import axios from 'axios';
 import { baseUrl } from '../../config';
 import StepProgressBar from './StepProgressBar';
@@ -18,7 +16,6 @@ function EventDiscounts() {
 	const displayName = localStorage.getItem("displayName");
 	const [isDiscountPopUpOpen, setIsDiscountPopUpOpen] = useState(false);
 	const [allDiscount, setAllDiscount] = useState([]);
-	// console.log(allDiscount);
 	const params = useParams();
 	const eventId = localStorage.getItem("eventId");
 	const eventType = params.eventType;
@@ -37,11 +34,12 @@ function EventDiscounts() {
 	const getDiscount = async () => {
 		const displayDiscount = [];
 		try {
+
 			const response = await axios.get(`${baseUrl}/organizer/discount/list`, { headers: header });
-			console.log("admin dis : ", response.data.Data);
+			// console.log("admin dis : ", response.data.Data);
 			if (response.data.IsSuccess) {
 				const res = await axios.get(`${baseUrl}/organizer/events/discount?eventid=${eventId}`, { headers: header });
-				console.log("length : ", res.data.Data.discounts.length);
+				// console.log("length : ", res.data.Data.discounts.length);
 				// {
 				// 	res.data.Data.discounts.length === 0 ? setAllDiscount(response.data.Data) :   
 				// }
@@ -59,6 +57,7 @@ function EventDiscounts() {
 				// 	}
 				//   }
 				// }
+				// console.log("before ");
 				response.data.Data.map((element) => {
 					let isMatched = false;
 					res.data.Data.discounts.map(selement => {
@@ -66,7 +65,7 @@ function EventDiscounts() {
 							displayDiscount.push(selement);
 							isMatched = true;
 							console.log("matched");
-							setActiveList([]);
+							// setActiveList([]);
 							setActiveList(current => [...current, selement]);
 						}
 						
@@ -97,7 +96,7 @@ function EventDiscounts() {
 				// 		displayDiscount.push(dis);
 				// 	})
 				// })
-				console.log("Discounts : ", displayDiscount);
+				// console.log("Discounts : ", displayDiscount);
 				setAllDiscount(displayDiscount);
 				// setAllDiscount([...res.data.Data.discounts,...response.data.Data]);
 			}
@@ -196,19 +195,28 @@ function EventDiscounts() {
 		// console.log("ele for active list : ", ele.sid = ele._id);
 		if (e.target.checked) {
 			ele.isAdded = true;
+			console.log("in if");
 			// setCheckBoxCheck(true)
 			if (ele.sid) {
 				ele.sid = ele.sid
 			} else {
+
 			ele.sid = ele._id
 			}
 			setActiveList(current => [...current, ele]);
 		} else {
+			console.log("in else");
+
 			ele.isAdded = false;
 			// setCheckBoxCheck(false)
-			setActiveList(current => current.filter(data => data._id !== ele._id))
+			if (ele.sid) {
+				setActiveList(current => current.filter(data => data.sid !== ele.sid))
+			} else {
+				setActiveList(current => current.filter(data => data._id !== ele._id))
+			}
 		}
 	}
+	console.log("active list on click : ", activeList);
 
 	const editButtonHandler = (ele) => {
 		setSelectedDiscount(ele);
