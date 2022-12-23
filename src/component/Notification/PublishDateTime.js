@@ -1,6 +1,6 @@
 import React from "react";
 import NotificationProgressBar from './NotificationProgressBar';
-import { decrement, increment } from '../../redux/stepProgressNotification';
+import { decrements, increments } from '../../redux/stepProgressNotification';
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 
@@ -11,12 +11,12 @@ function PublishDateTime() {
 
 
   const clickNextHandler = () => {
-    dispatch(increment());
+    dispatch(increments());
     navigate("../notificationmode");
   }
 
   const clickBackHander = () => {
-    dispatch(decrement());
+    dispatch(decrements());
     navigate(-1);
   }
   return (

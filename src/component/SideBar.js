@@ -235,6 +235,7 @@ function SideBar() {
                 to="notification"
                 className="block hover:text-spiroDiscoBall anim"
                 title="Megaphone"
+                
               >
                 <span className="icon-megaphone text-2xl block"></span>
               </Link>
@@ -271,7 +272,6 @@ function SideBar() {
               <Route path="event-view/:eventType" element={<DashboardEventView />} />
               <Route path=":eventType" >
                 <Route index element={<DashboardEvent />} />
-                {/* <Route path=":eventId"> */}
                 <Route path="addplaces" element={<EventAddPlaces />} />
                 <Route path="aboutplace" element={<EventAboutPlace />} />
                 <Route path="personaldetails" element={<EventPersonalDetails />} />
@@ -306,12 +306,14 @@ function SideBar() {
               <Route path="details" element={<NotificationDetails />} />
               <Route path="selectbusiness">
                 <Route index element={<SelectBusiness />} />
-                <Route path="selectbusinesspromot" element={<SelectBusinessPromote />} />
+                <Route path=":notifivationType" >
+                <Route path="selectbusinesspromote" element={<SelectBusinessPromote />} />
                 <Route path="alluserpalns" element={<AllUserSelectPlan />} />
                 <Route path="publishdatetime" element={<PublishDateTime />} />
                 <Route path="existinguserpromote" element={<ExistingUserPromote />} />
                 <Route path="notificationmode" element={<NotificationMode />} />
                 <Route path="notificationpayment" element={<NotificationPayment />} />
+                </Route>
               </Route>
             </Route>
 

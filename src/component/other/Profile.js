@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React from 'react'
-import Advertisement from '../Advertisement';
+// import Advertisement from '../Advertisement';
 import PersonalProfile from './PersonalProfile';
 import BusinessProfile from './BusinessProfile';
 import { baseUrl } from "../../config";
@@ -10,6 +10,7 @@ import { useState } from 'react';
 function Profile() {
     const token = localStorage.getItem("Token");
     const [details, setDetails] = useState({});
+    const [business, setBusiness] = useState({})
 
     const header = {
         'Authorization': `Token ${token}`,
@@ -20,6 +21,7 @@ function Profile() {
             const response = await axios.get(`${baseUrl}/organizer/profile`, { headers: header });
             console.log("response.data.Data", response.data.Data);
             setDetails(response.data.Data)
+            setBusiness(response.data.Data.businessProfile)
         } catch (error) {
             console.log(error);
         }
@@ -35,10 +37,10 @@ function Profile() {
                 {/* <!-- advisement --> */}
                 {/* <!-- profile 1 --> */}
                 <PersonalProfile  token={token} details={details} />
-                <Advertisement />
+                {/* <Advertisement /> */}
 
                 {/* <!-- profile 2 --> */}
-                <BusinessProfile  token={token} details={details} />
+                <BusinessProfile  token={token} business={business} />
             </div>
         </div>
     )
