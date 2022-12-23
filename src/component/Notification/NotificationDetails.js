@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { baseUrl } from "../../config";
-import BottomNavigation from "../BottomNavigation";
+
 import Modal from "../modal/Modal";
 import { toast } from 'react-toastify';
 import NotificationDetailsPreviewPopup from "./popups/NotificationDetailsPreviewPopup";
@@ -12,7 +12,6 @@ function NotificationDetails() {
   const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [link, setLink] = useState("");
-  const [image, setImage] = useState("");
   const [description, setDescription] = useState("");
   const token = localStorage.getItem("Token");
   const [banner, setBanner] = useState("");

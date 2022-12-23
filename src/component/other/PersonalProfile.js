@@ -51,7 +51,7 @@ function PersonalProfile({  details }) {
             phone_no: details?.phone_no
         })
     }, [details])
-console.log("personal details", details)
+// console.log("personal details", details)
     let initialRender = true;
     useEffect(() => {
         if (initialRender) {
@@ -100,7 +100,7 @@ console.log("personal details", details)
     const photoChangeHandler = (event) => {
         const types = ['image/png', 'image/jpeg', 'image/jpg'];
         let selected = event.target.files[0];
-        console.log("selected", selected);
+        // console.log("selected", selected);
         try {
             if (selected && types.includes(selected.type)) {
                 if (selected.size < (1 * 1024 * 1024)) {
@@ -118,7 +118,7 @@ console.log("personal details", details)
             toast.error("Error while Selecting Image.");
         }
     }
-    console.log('details for personal', details);
+    // console.log('details for personal', details);
     return (
         <>
             {/* <!-- title-holder  --> */}
