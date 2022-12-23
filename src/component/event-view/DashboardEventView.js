@@ -60,7 +60,7 @@ function DashboardEventView() {
         <div className="-mt-12 relative -z-10 h-[300px] xl:h-[400px]">
 
           <img src={(event && event?.aboutplace && event?.aboutplace?.banner && event?.aboutplace?.banner != '') ? (s3Url + "/" + event?.aboutplace?.banner) : (
-            event && event?.personaldetail && event?.personaldetail?.banner && event?.personaldetail?.banner != '' ? (s3Url + "/" + event?.personaldetail?.banner) : (s3Url + "/" + event?.aboutplace?.banner)
+            event && event?.personaldetail && event?.personaldetail?.banner && event?.personaldetail?.banner != '' ? (s3Url + "/" + event?.personaldetail?.banner) : bannerPreview
           )} alt="dashboard-bg" className="w-full h-full object-cover" /> :
 
         </div>
@@ -75,7 +75,7 @@ function DashboardEventView() {
               <button type="button" className="w-8 h-8 bg-brightGray rounded-full flex items-center justify-center"><i className="icon-share text-sm"></i></button>
             </div>
             <div className="flex items-center text-base font-semibold text-ufoGreen space-x-1">
-              <a href="#">{capacity?.facilities?.replace("_", " ").replace("_", " / ").toUpperCase()}</a>
+              <a href="#">{(capacity?.facilities) ? (capacity?.facilities?.replace("_", " ").replace("_", " / ").toUpperCase()) : ""}</a>
               {/* <a href="#">Romantic Dinner</a>
                     <span>/</span>
                     <a href="#">Lunch</a> */}

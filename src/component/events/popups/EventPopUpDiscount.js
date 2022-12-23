@@ -7,9 +7,11 @@ import { current } from '@reduxjs/toolkit';
 function EventPopUpDiscount({handleClose, eventId, setSelectedDiscount, selectedDiscount, serviceOn}) {
   const [value, setValue] = useState("");
   const [serviceList, setServiceList] = useState([]);
+  const [equipmentList, setEquipmentList] = useState([]);
+  const [itemList, setItemList] = useState([]);
   const [selecetdServiceId, setSelectedServiceId] = useState([]);
   const [error, setError] = useState("");
-  console.log(serviceList);
+//   console.log(serviceList);
   const token = localStorage.getItem("Token");
 	const header = {
 		'Authorization': `Token ${token}`
@@ -47,6 +49,7 @@ function EventPopUpDiscount({handleClose, eventId, setSelectedDiscount, selected
 			setError("Enter Valid Discount value");
 		}
 	}
+
 
 	const handleSubmit = async() => {
 		setSelectedDiscount({...selectedDiscount,services: selecetdServiceId, discount:value+"%" });

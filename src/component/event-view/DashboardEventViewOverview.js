@@ -11,26 +11,33 @@ import celebrationSvg from "../../assest/svg/celebration.svg";
 import bigDishImage from "../../assest/images/big-dish.png";
 
 import GoogleMap from '../GoogleMap';
+import parse from 'html-react-parser';
+
 
 import {  s3Url } from '../../config';
 
 
+
 function DashboardEventViewOverview({ data, capacity, socials, company, service }) {
     const [preview, setPreview] = useState(false);
+    const [previewPhoto, setPreviewPhoto] = useState(false);
+    const [previewVideo, setPreviewVideo] = useState(false);
+    const [previewCompanyVideo, setPreviewCompanyVideo] = useState(false);
+    const [previewCompanyPhoto, setPreviewcompanyPhoto] = useState(false);
     // const dataProps = { data };
-    // console.log("dataProps  : ", s3Url + "/" + data?.videos?.url)
+    // console.log("dataProps  : ", data)
     // console.log(" capacity: ", capacity?.location?.coordinates)
     // console.log(" socials: ", socials)
-    // console.log(" company: ", data.discounts)
+    // console.log(" jus create : ", data)
     // console.log(" service: ", service[0]?.name)
 
-    const convert = (s) => {
-        const regex = /(<([^>]+)>)/gi;
-        const newString = s.replace(regex, "");
-        return newString;
-    }
+    // const convert = (s) => {
+    //     const regex = /(<([^>]+)>)/gi;
+    //     const newString = s.replace(regex, "");
+    //     return newString;
+    // }
 
-    const regex = /(<([^>]+)>)/ig;
+    // const regex = /(<([^>]+)>)/ig;
     return (
         <div className="pt-7 lg:pt-10">
             {/* <!--overview-tab-contents --> */}
@@ -39,37 +46,39 @@ function DashboardEventViewOverview({ data, capacity, socials, company, service 
                     {/* <!-- left-bar --> */}
                     <div className="w-full lg:w-8/12 lg:pr-5 space-y-7">
                         <div className="p-7 bg-white rounded-md space-y-1">
-                            <h3>---Farm Area---</h3>
-                            <p className="text-quicksilver text-sm font-normal">{data?.aboutplace?.details}</p>
+                            <h3>{data?.display_name}</h3>
+                            <p className="text-quicksilver text-sm font-normal">{(data?.aboutplace) ?  (data?.aboutplace?.details) : ""}</p>
                         </div>
                         {/* <!-- Photo-holder --> */}
-                        {data?.photos?.length > 0 && <div className="media-upload-holder">
+                        
                             {/* <!-- media title  --> */}
                             <div className="flex justify-between items-center">
-                                <h3 className="text-lg">Photo</h3>
-                                <a href="#" className="text-spiroDiscoBall text-sm font-bold">View All</a>
+                                <h3 className="text-lg">Photos</h3>
+                                <a href="#" className="text-spiroDiscoBall text-sm font-bold" onClick={() => setPreviewPhoto(true)}>View All</a>
                             </div>
+                            {data?.photos?.length > 0 && <div className="media-upload-holder">
                             {/* <!-- photo-holder --> */}
                             <div className="w-full">
-                                <div className="flex flex-wrap -mx-2" onClick={() => setPreview(true)} >
-                                    {data?.photos?.map(e => (
-                                        <DashboardEventViewOverviewPhoto key={e.id} alt={e.description} imageUrl={s3Url + "/" + e?.url} />
+                                <div className="flex flex-wrap -mx-2" >
+                                    {data?.photos?.map((e,i) => (
+                                        <DashboardEventViewOverviewPhoto key={i} alt={e.description} imageUrl={s3Url + "/" + e?.url} />
                                     ))}
                                 </div>
                             </div>
                         </div>}
                         {/* <!-- videos-holder --> */}
-                        {data?.videos?.length > 0 && <div className="media-upload-holder">
+                        
                             {/* <!-- media title  --> */}
                             <div className="flex justify-between items-center">
-                                <h3 className="text-lg">---Videos---</h3>
-                                <a href="#" className="text-spiroDiscoBall text-sm font-bold">View All</a>
+                                <h3 className="text-lg">Videos</h3>
+                                <a href="#" className="text-spiroDiscoBall text-sm font-bold" onClick={() => setPreviewVideo(true)}>View All</a>
                             </div>
+                            {data?.videos?.length > 0 && <div className="media-upload-holder">
                             {/* <!-- media-holder --> */}
                             <div className="w-full">
                                 <div className="flex flex-wrap -mx-2">
-                                    {data?.videos?.map(e => (
-                                        <DashboardEventViewOverviewVideo key={e.id} alt={e?.description} videoUrl={s3Url + "/" + e?.url} />
+                                    {data?.videos?.map((e,i) => (
+                                        <DashboardEventViewOverviewVideo key={i} alt={e?.description} videoUrl={s3Url + "/" + e?.url} />
                                     ))}
                                 </div>
                             </div>
@@ -78,14 +87,15 @@ function DashboardEventViewOverview({ data, capacity, socials, company, service 
                         {
 
                         }
+                        { (service && (service?.length > 0)) &&
                         <div className="space-y-1.5">
                             <h3 className="text-lg">Service</h3>
-                            {
-                                service?.map(e =>
+                            
+                                {service.map((e,i) =>
                                     <div className="flex justify-between bg-white rounderd px-7 py-4">
                                         <div className="">
                                             <div className="w-28 h-28 border-2 border-brightGray rounded-md">
-                                                <img key={e.id} src={e?.photos[0]?.url ? (s3Url + "/" + e?.photos[0]?.url) : bigDishImage} alt="cutting-board" className="w-full h-full object-cover" />
+                                                <img key={i} src={e?.photos[0]?.url ? (s3Url + "/" + e?.photos[0]?.url) : bigDishImage} alt="cutting-board" className="w-full h-full object-cover" />
                                             </div>
                                         </div>
                                         <div className="w-full pl-5">
@@ -106,10 +116,78 @@ function DashboardEventViewOverview({ data, capacity, socials, company, service 
                                                 specimen book </p> */}
                                         </div>
                                     </div>
-                                )
-                            }
+                                )}
                         </div>
+                            }
+                        
+                        {/* <!-- Equipments --> */}
+                        { (data?.equipments && data?.equipments?.length > 0) && 
+                        <div className="space-y-1.5">
+                            <h3 className="text-lg">Equipment</h3>
+                            
+                                {data?.equipments.map((e,i) =>
+                                    <div className="flex justify-between bg-white rounderd px-7 py-4">
+                                        <div className="">
+                                            <div className="w-28 h-28 border-2 border-brightGray rounded-md">
+                                                <img key={i} src={e?.photos[0]?.url ? (s3Url + "/" + e?.photos[0]?.url) : bigDishImage} alt="cutting-board" className="w-full h-full object-cover" />
+                                            </div>
+                                        </div>
+                                        <div className="w-full pl-5">
+                                            <div className="flex justify-between">
+                                                <h3>{e.name}</h3>
+                                                {/* <h3>Cutting board</h3> */}
+                                                <div className="flex items-center space-x-1">
+                                                    <h3>{e.price} INR </h3>
+                                                    {e.price_type === "per_day" ? <h3>P/D</h3> : (e.price_type === "per_person" ? <h3>P/P</h3> : <h3>P/E</h3>)}
+                                                    <h3 className="text-spiroDiscoBall">{e.quantity} Qty</h3>
+                                                </div>
+                                            </div>
+                                            <p className="text-quicksilver text-sm font-normal leading-6 pt-3">
+                                                {e?.description}</p>
+                                            {/* <p className="text-quicksilver text-sm font-normal leading-6 pt-3">Lorem Ipsum is simply dummy text of the
+                                                printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever
+                                                since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
+                                                specimen book </p> */}
+                                        </div>
+                                    </div>
+                                )}
+                        </div>
+                            }
+
+                        { (data?.items && data?.items?.length > 0) &&
+                        <div className="space-y-1.5">
+                            <h3 className="text-lg">Item</h3>
+                            
+                                {data?.items.map((e,i) =>
+                                    <div className="flex justify-between bg-white rounderd px-7 py-4">
+                                        <div className="">
+                                            <div className="w-28 h-28 border-2 border-brightGray rounded-md">
+                                                <img key={i} src={e?.photos[0]?.url ? (s3Url + "/" + e?.photos[0]?.url) : bigDishImage} alt="cutting-board" className="w-full h-full object-cover" />
+                                            </div>
+                                        </div>
+                                        <div className="w-full pl-5">
+                                            <div className="flex justify-between">
+                                                <h3>{e.name}</h3>
+                                                {/* <h3>Cutting board</h3> */}
+                                                <div className="flex items-center space-x-1">
+                                                    <h3>{e.price} INR </h3>
+                                                    {e.price_type === "per_day" ? <h3>P/D</h3> : (e.price_type === "per_person" ? <h3>P/P</h3> : <h3>P/E</h3>)}
+                                                    <h3 className="text-spiroDiscoBall">{e.quantity} Qty</h3>
+                                                </div>
+                                            </div>
+                                            <p className="text-quicksilver text-sm font-normal leading-6 pt-3">
+                                                {e?.description}</p>
+                                            {/* <p className="text-quicksilver text-sm font-normal leading-6 pt-3">Lorem Ipsum is simply dummy text of the
+                                                printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever
+                                                since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
+                                                specimen book </p> */}
+                                        </div>
+                                    </div>
+                                )}
+                        </div>
+                            }
                         {/* <!-- Person & Parking --> */}
+                        { capacity && 
                         <div className="space-y-1.5">
                             <h3 className="text-lg">Person & Parking</h3>
                             <div className="flex items-center -mx-2.5">
@@ -127,16 +205,18 @@ function DashboardEventViewOverview({ data, capacity, socials, company, service 
                                 </div>
                             </div>
                         </div>
-                        {/* <!-- ADDRESS --> */}
+                          }                        {/* <!-- ADDRESS --> */}
                         <div className="space-y-1.5">
                             <h3 className="text-lg">Address</h3>
                             <div className="bg-white p-4 rounded-md">
-                                <h3>{capacity?.address}</h3>
+                                {
+                                    data?.companydetail ?
+                                    <h3>{company?.flat_no + ", " + company?.street + ", " + company?.area + ", " + company?.city + ", " + company?.state + "-" +  company?.pincode}</h3> : ""
+                                }
                                 {/* <h3>Akshya Nagar 1st Block 1st Cross, Rammurthy nagar, Bangalore-560016</h3> */}
                             </div>
                         </div>
                         {/* <!-- calendar end --> */}
-                        <Advertisement />
                         {/* <!-- Company Details --> */}
                         <div className="space-y-1.5">
                             <h3 className="text-lg">Company Details</h3>
@@ -150,34 +230,44 @@ function DashboardEventViewOverview({ data, capacity, socials, company, service 
                         {/* <!-- Photo-holder --> */}
                         <div className="media-upload-holder">
                             {/* <!-- media titel  --> */}
-                            {company?.photos?.length > 0 && <div className="flex justify-between items-center">
-                                <h3 className="text-lg">Photo</h3>
-                                <a href="#" className="text-spiroDiscoBall text-sm font-bold">View All</a>
-                            </div>}
+                            <div className="flex justify-between items-center">
+                                <h3 className="text-lg">Photos</h3>
+                                <a href="#" className="text-spiroDiscoBall text-sm font-bold" onClick={() => setPreviewcompanyPhoto(true)}>View All</a>
+                            </div>
+                            {(company?.photos?.length > 0) && 
+                           <>
+                           
                             {/* <!-- photo-holder --> */}
                             <div className="w-full">
                                 <div className="flex flex-wrap -mx-2">
-                                    {company?.photos?.map(e =>
-                                        <DashboardEventViewOverviewPhoto key={e.id} imageUrl={s3Url + "/" + e?.url} />
+                                    {company?.photos?.map((e,i) =>
+                                        <DashboardEventViewOverviewPhoto key={i} imageUrl={s3Url + "/" + e?.url} />
                                     )}
                                 </div>
                             </div>
+                            </>
+                            }
                         </div>
                         {/* <!-- videos-holder --> */}
                         <div className="media-upload-holder">
                             {/* <!-- media titel  --> */}
-                            {company?.videos?.length > 0 && <div className="flex justify-between items-center">
+                            <div className="flex justify-between items-center">
                                 <h3 className="text-lg">Videos</h3>
-                                <a href="#" className="text-spiroDiscoBall text-sm font-bold">View All</a>
-                            </div>}
+                                <a href="#" className="text-spiroDiscoBall text-sm font-bold" onClick={() => setPreviewCompanyVideo(true)}>View All</a>
+                            </div>
+                            
+                            {(company?.videos?.length > 0) && 
+                            <>
                             {/* <!-- media-holder --> */}
                             <div className="w-full">
                                 <div className="flex flex-wrap -mx-2">
-                                    {company?.videos?.map(e =>
-                                        <DashboardEventViewOverviewVideo key={e.id} alt="No Viedo" videoUrl={s3Url + "/" + e?.url} />
+                                    {company?.videos?.map((e,i) =>
+                                        <DashboardEventViewOverviewVideo key={i} alt="No Viedo" videoUrl={s3Url + "/" + e?.url} />
                                     )}
                                 </div>
                             </div>
+                            </>
+                            }
                         </div>
                         {/* <!-- Company Details --> */}
                         <div className="space-y-1.5">
@@ -185,7 +275,7 @@ function DashboardEventViewOverview({ data, capacity, socials, company, service 
                             <div className="p-3.5 xl:p-5 bg-white rounded-md">
                                 <div className="flex items-start text-quicksilver font-normal">
                                     <div className="pt-0.5">*</div>
-                                    <p className="text-sm font-normal pl-3">{socials?.t_and_c}</p>
+                                    <p className="text-sm font-normal pl-3">{(socials?.t_and_c) ? parse((socials?.t_and_c)) : ""}</p>
                                 </div>
                                 {/* <div className="flex items-start text-quicksilver font-normal">
                                     <div className="pt-0.5">*</div>
@@ -319,9 +409,9 @@ function DashboardEventViewOverview({ data, capacity, socials, company, service 
 
                     </div>
                     {/* <!-- right-bar  --> */}
-
                     <div className="w-full lg:w-4/12 lg:pl-5 space-y-7 sticky top-0">
                         {/* <!-- map-content  --> */}
+                        {capacity &&
                         <div className="w-full relative min-h-[170px] xl:min-h-[220px] p-2.5 bg-white rounded-md">
                             <div className='w-full'>
                                 <GoogleMap
@@ -334,14 +424,16 @@ function DashboardEventViewOverview({ data, capacity, socials, company, service 
                             </div>
                             <div className="p-3.5 xl:p-5">
                                 <span className="input-titel"><i className="icon-fill-location mr-1"></i> Location</span>
-                                <h3 className="text-sm xl:text-base">{capacity?.address}</h3>
+                                <h3 className="text-sm xl:text-base">{company?.flat_no + ", " + company?.street + ", " + company?.area + ", " + company?.city + ", " + company?.state + "-" +  company?.pincode}</h3>
                             </div>
                         </div>
-
+                        }
 
                         {/* <!-- Discount On Total Bill  --> */}
-                        <div className="bg-gradient-to-r from-[#13e1b094] to-[#13E1B0] p-3.5 xl:p-5 rounded-lg relative">
-
+                        {/* <div className="bg-gradient-to-r from-[#13e1b094] to-[#13E1B0] p-3.5 xl:p-5 rounded-lg relative"> */}
+                            {(data?.discounts?.length > 0) && 
+                            <>
+                            <div className="bg-gradient-to-r from-[#13e1b094] to-[#13E1B0] p-3.5 xl:p-5 rounded-lg relative">
                             {data?.discounts?.map(e => (
 
                                 // <DashboardEventViewOverviewPhoto key={e.id} alt={e.description} imageUrl={s3Url + "/" + e?.url} />
@@ -357,6 +449,10 @@ function DashboardEventViewOverview({ data, capacity, socials, company, service 
                                 </div>
 
                             ))}
+                        </div>
+
+                            </>
+                        }
                             {/* <div className="text-center">
                                 <h1 className="text-white">Discount On Total Bill</h1>
                                 <div className="text-[40px] text-black font-bold">10%</div>
@@ -366,7 +462,7 @@ function DashboardEventViewOverview({ data, capacity, socials, company, service 
                                 </div>
                                 <img src={celebrationSvg} alt="celebration" className="absolute -right-2 -bottom-2 -rotate-90 opacity-80" />
                             </div> */}
-                        </div>
+                        {/* </div> */}
                         {/* <!-- Calander  --> */}
                         <div className="calendar inline-block justify-center items-center rounded-md drop-shadow-one bg-white w-full my-10 pb-5">
                             <div className="month flex justify-center items-center text-lg lg:text-xl font-semibold py-4 px-10 border-b border-opacity-20">
@@ -383,6 +479,19 @@ function DashboardEventViewOverview({ data, capacity, socials, company, service 
             <Modal isOpen={preview}>
                 <ImageAndVideoPreview handleClose={setPreview} data={data} />
             </Modal>
+            <Modal isOpen={previewPhoto}>
+                <ImagePreview handleClose={setPreviewPhoto} data={data?.photos} />
+            </Modal>
+            <Modal isOpen={previewVideo}>
+                <VideoPreview handleClose={setPreviewVideo} data={data?.videos} />
+            </Modal>
+            <Modal isOpen={previewCompanyPhoto}>
+                <ImageCompanyPreview handleClose={setPreviewcompanyPhoto} data={company?.photos} />
+            </Modal>
+            <Modal isOpen={previewCompanyVideo}>
+                <VideoCompanyPreview handleClose={setPreviewCompanyVideo} data={company?.videos} />
+            </Modal>
+            
         </div>
     )
 }

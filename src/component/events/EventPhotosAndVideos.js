@@ -33,7 +33,7 @@ const token = localStorage.getItem("Token");
 			if(response.data.Data.photos) setImageList(response.data?.Data?.photos);
 			if(response.data.Data.videos) setVideoList(response.data?.Data?.videos);
 		} catch (error) {
-			console.log(error);
+			console.log(error);	
 		}
 	}
 	

@@ -26,7 +26,7 @@ function GalleryAll() {
     const getGallery = async () => {
         try {
             const response = await axios.get(`${baseUrl}/organizer/gallery`, { headers: header });
-            // console.log("Full Gallery : ", response.data.Data);
+            console.log("Full Gallery : ", response.data.Data);
             setGallery(response.data.Data);
         } catch (error) {
             console.log(error);

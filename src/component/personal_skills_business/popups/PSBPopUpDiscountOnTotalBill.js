@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 function EventPopUpDiscountOnTotalBill({handleClose}) {
+  
   return (
 	//   <!--  Discount On Total Bill  -->
 	  <div className="popup table fixed w-full inset-0 z-40 bg-black bg-opacity-75 h-screen">
