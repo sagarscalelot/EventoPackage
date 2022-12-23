@@ -17,8 +17,6 @@ function DashboardEventCategoryItem({ data }) {
 	const header = {
 		'Authorization': `Token ${token}`,
 	}
-	console.log("banner : ", data?.personaldetail?.banner);
-	console.log("Display name>>> : ", data?.display_name);
 	return (
 		<div className="w-full flex items-center ">
 			<div>

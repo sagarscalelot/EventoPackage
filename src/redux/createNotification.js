@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  selectbusiness: JSON.parse(localStorage.getItem("category")) || null,
+  selectbusiness: JSON.parse(localStorage.getItem("allNotifications")) || null,
   user: null,
   publishDataTime: null,
   NotificationMode: null,
@@ -14,7 +14,7 @@ export const createNotification = createSlice({
   reducers: {
     addSelectbusiness: (state, action) => {
       state.selectbusiness = action.payload.selectbusiness
-      localStorage.setItem("selectbusiness", JSON.stringify(state.selectbusiness));
+      localStorage.setItem("allNotifications", JSON.stringify(state.selectbusiness));
     },
     addUser: (state, action) => {
       state.user = action.payload.user

@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { Link, Routes, Route, useNavigate } from "react-router-dom";
+import { Link,  useNavigate } from "react-router-dom";
 
-import notificationSvg1 from "../../assest/svg/notification-1.svg";
-import notificationSvg2 from "../../assest/svg/notification-2.svg";
+
 
 import NotificationLIstItem from "./NotificationLIstItem";
 // import Advertisement from "../Advertisement";
-import BottomNavigation from "../BottomNavigation";
 import { baseUrl } from "../../config";
 import axios from "axios";
 import { MoonLoader } from 'react-spinners';
-import Paggination from '../Paggination';
+
 
 function Notification() {
 

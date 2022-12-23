@@ -235,6 +235,7 @@ function SideBar() {
                 to="notification"
                 className="block hover:text-spiroDiscoBall anim"
                 title="Megaphone"
+                
               >
                 <span className="icon-megaphone text-2xl block"></span>
               </Link>

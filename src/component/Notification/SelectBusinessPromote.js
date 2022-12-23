@@ -1,6 +1,6 @@
 import React from "react";
 import NotificationProgressBar from '../Notification/NotificationProgressBar';
-import { decrement, increment } from '../../redux/stepProgressNotification';
+import { decrements, increments } from '../../redux/stepProgressNotification';
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 
@@ -11,12 +11,13 @@ function SelectBusinessPromote() {
 
 
   const clickNextHandler = () => {
-    dispatch(increment());
     navigate("../publishdatetime");
+    dispatch(increments());
+   
   }
 
   const clickBackHander = () => {
-    dispatch(decrement());
+    dispatch(decrements());
     navigate(-1);
   }
   return (
@@ -35,13 +36,13 @@ function SelectBusinessPromote() {
           <h3 className="pb-3">Select User</h3>
           <select className="bg-white rounded-md flex space-x-3 outline-0 px-6 py-[18px] relative arrow option">
             <option>Select All</option>
-            <option>1</option>
-            <option>2</option>
+            <option>100</option>
+            <option>200</option>
           </select>
         </div>
         <div className="bg-white p-[18px] rounded-md">
           <span className="text-base font-bold text-japaneseIndigo">
-            Total User : 10000
+            Total User : 500
           </span>
         </div>
       </div>

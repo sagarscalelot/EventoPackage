@@ -1,18 +1,15 @@
 import React from "react";
 import { s3Url } from "../../config"
-import { Link, Route, Routes } from "react-router-dom";
+import { Link } from "react-router-dom";
 import notificationSvg2 from "../../assest/svg/notification-2.svg";
-import SelectBusiness from "../Notification/SelectBusiness";
-import { decrement, increment } from '../../redux/stepProgressNotification';
+
+import {  increments } from '../../redux/stepProgressNotification';
 import { useDispatch } from 'react-redux';
 
 function NotificationLIstItem({ data }) {
   const dispatch = useDispatch();
 
-  const onClickHandler = ()=>{
-    localStorage.setItem("notificationid", data?._id);
-    dispatch(increment());
-  }
+
   return (
 
     <div className="bg-white p-5 rounded-md">
@@ -33,7 +30,7 @@ function NotificationLIstItem({ data }) {
           <div className="flex justify-end">
             <button className="btn-primary small flex items-center">
               <i className="icon-fill-megaphone mr-2"></i>
-              <Link to="selectbusiness" onClick={onClickHandler()} >Promote</Link>
+              <Link to="selectbusiness" onClick={ () => { localStorage.setItem("notificationid", data?._id);  dispatch(increments()) }} >Promote</Link>
             </button>
           </div>
         </div>

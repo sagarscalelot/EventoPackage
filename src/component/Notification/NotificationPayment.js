@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import NotificationProgressBar from './NotificationProgressBar';
-import { decrement, increment } from '../../redux/stepProgressNotification';
+import { decrements, increments } from '../../redux/stepProgressNotification';
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 
@@ -11,12 +11,12 @@ function NotificationPayment() {
 
 
   const clickNextHandler = () => {
-    dispatch(increment());
+    dispatch(increments());
     navigate("../notificationpayment");
   }
 
   const clickBackHander = () => {
-    dispatch(decrement());
+    dispatch(decrements());
     navigate(-1);
   }
   return (

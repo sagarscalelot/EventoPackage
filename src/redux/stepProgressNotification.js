@@ -1,34 +1,35 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  count: JSON.parse(localStorage.getItem("stepCount")) || 0
+  counts: JSON.parse(localStorage.getItem("stepCountNotification")) || 0
 }
 
 export const StepProgressNotification  = createSlice({
     name: 'StepProgressNotification',
     initialState,
     reducers: {
-        increment: (state) => {
-            state.count +=1
-            localStorage.setItem("stepCount",JSON.stringify(state.count))
+        increments: (state) => {
+            state.counts +=1
+            localStorage.setItem("stepCountNotification",JSON.stringify(state.counts));
+            console.log("steps");
         },
-        decrement: (state) => {
-            if(state.count > 0) {
-                state.count -=1
-                localStorage.setItem("stepCount",JSON.stringify(state.count))
+        decrements: (state) => {
+            if(state.counts > 0) {
+                state.counts -=1
+                localStorage.setItem("stepCountNotification",JSON.stringify(state.counts))
             }
         },
         setNumber: (state, action) => {
-            state.count = action.payload
-            localStorage.setItem("stepCount",JSON.stringify(state.count))
+            state.counts = action.payload
+            localStorage.setItem("stepCountNotification",JSON.stringify(state.counts))
         },
         reset: (state) => {
-            state.count = 0
-            localStorage.setItem("stepCount",JSON.stringify(state.count))
+            state.counts = 0
+            localStorage.setItem("stepCountNotification",JSON.stringify(state.counts))
         }
     },
   })
   
-  export const { increment, decrement, setNumber, reset } = StepProgressNotification.actions;
+  export const { increments, decrements, setNumber, reset } = StepProgressNotification.actions;
   
   export default StepProgressNotification.reducer
