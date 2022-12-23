@@ -24,7 +24,7 @@ import GoogleMap from '../GoogleMap';
 import parse from 'html-react-parser';
 
 
-import {  s3Url } from '../../config';
+import { baseUrl, s3Url } from '../../config';
 
 import VideoPreview from './modal/VideoPreview';
 import ImagePreview from './modal/ImagePreview';

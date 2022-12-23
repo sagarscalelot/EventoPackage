@@ -9,7 +9,6 @@ function StepProgressBar({ eventType }) {
 
     const groupSkillProgressBarList = ["Select Skill", "Personal Details", "Photos & Videos", "Add Item", "Equipment", "Other Cost", "Company Details", "Terms and Conditions", "Discount", "Calendar"];
 
-
     const count = useSelector(state => state.StepProgressCount.count);
 
     return (

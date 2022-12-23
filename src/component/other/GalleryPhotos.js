@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import gallery2Image from "../../assest/images/gallery-2.png";
@@ -35,7 +36,7 @@ function GalleryPhotos() {
 
     return (
         <div className="w-full relative" id="photo">
-            <div className="grid grid-cols-1 gap-6 lg:gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {/* <div className="grid grid-cols-1 gap-6 lg:gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
 
                 {gallery.map(e => (
                     <ul className="space-y-8">
@@ -45,6 +46,16 @@ function GalleryPhotos() {
                             </div>
                         </li>
                     </ul>
+                ))}
+            </div> */}
+
+            <div className="container">
+                {console.log(gallery)}
+
+                {gallery.map(e => (
+                    <figure onClick={() => setPreview(true)}>
+                        <img key={e.id} src={s3Url + "/" + e?.url} alt="Gallary img" />
+                    </figure>
                 ))}
             </div>
             <Modal isOpen={preview} >

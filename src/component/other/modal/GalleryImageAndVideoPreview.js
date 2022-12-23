@@ -12,8 +12,6 @@ import "swiper/css/navigation";
 import "swiper/css/thumbs";
 import { s3Url } from "../../../config";
 
-// Swiper thumb example
-// https://codesandbox.io/s/pfhz3h?file=/src/App.jsx:2237-2250
 
 function GalleryImageAndVideoPreview({ handleClose, data }) {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
@@ -34,56 +32,54 @@ function GalleryImageAndVideoPreview({ handleClose, data }) {
           <p className="text-lg text-white font-normal">Catering</p>
         </div>
         <div className="swiper-container gallery-swippers gallery-top gallery-img relative">
-        <Swiper
-          style={{
-            "--swiper-navigation-color": "#fff",
-            "--swiper-pagination-color": "#fff",
-          }}
-          spaceBetween={10}
-          navigation={true}
-          thumbs={{swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null}}
-          modules={[ Navigation, Thumbs]}
-          // className="mySwiper2"
+          <Swiper
+            style={{
+              "--swiper-navigation-color": "#fff",
+              "--swiper-pagination-color": "#fff",
+            }}
+            spaceBetween={10}
+            navigation={true}
+            thumbs={{ swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null }}
+            modules={[Navigation, Thumbs]}
           >
- 
-        
 
-          {data.map((e,i) => (
+
+
+            {data.map((e, i) => (
               <SwiperSlide key={i}>
                 <div className="swiper-slide-container">
-                <div className="w-full lg:w-1/2 rounded-md overflow-hidden mx-auto h-full object-cover">
+                  <div className="w-full lg:w-1/2 rounded-md overflow-hidden mx-auto h-full object-cover">
                     {(e.type === "photo" ?
-                      <img src={s3Url + "/" + e.url} alt="big-dish" className="w-full" /> :
+                      <img src={s3Url + "/" + e.url} alt="big-dish" className="w-full flex items-center justify-center" /> :
                       <video width="100%" src={s3Url + "/" + e?.url} alt="no video" controls allowFullScreen className="w-full"></video>
                     )}
-
                   </div>
                 </div>
               </SwiperSlide>
             ))}
-      </Swiper>
-      <div className="swiper-container gallery-thumbs bg-black">
-      <Swiper
-     onSwiper={setThumbsSwiper}
-     spaceBetween={10}
-     slidesPerView={4}
-     freeMode={true}
-     watchSlidesProgress={true}
-     modules={[Navigation, Thumbs]}
-     className="mySwiper"
-      >
-        {data.map((e, i) => (
-              <SwiperSlide key={i}>
-                <div className="rounded-md overflow-hidden">
+          </Swiper>
+          <div className="swiper-container gallery-thumbs bg-black">
+            <Swiper
+              onSwiper={setThumbsSwiper}
+              spaceBetween={10}
+              slidesPerView={4}
+              freeMode={true}
+              watchSlidesProgress={true}
+              modules={[Navigation, Thumbs]}
+              className="mySwiper"
+            >
+              {data.map((e, i) => (
+                <SwiperSlide key={i}>
+                  <div className="rounded-md overflow-hidden">
                     {(e.type === "photo" ?
                       <img src={s3Url + "/" + e.url} alt="big-dish" /> :
                       <video width="100%" height="100%" src={s3Url + "/" + e?.url} alt="no video" controls allowFullScreen></video>
                     )}
-                </div>
-              </SwiperSlide>
-            ))}
-      </Swiper>
-      </div>
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
         </div>
 
       </div>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link,  useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 
 
@@ -10,13 +10,16 @@ import axios from "axios";
 import { MoonLoader } from 'react-spinners';
 
 
+
 function Notification() {
 
+  const params = useParams();
   const navigate = useNavigate();
   const [allNotifications, setAllNotifications] = useState([]);
   // const [pageNo, setPageNo] = useState(1);
   const [loading, setLoading] = useState(true);
   const token = localStorage.getItem("Token");
+  localStorage.removeItem("notificationid");
   const limit = 5;
   const header = {
     'Authorization': `Token ${token}`
@@ -26,7 +29,7 @@ function Notification() {
   const getAllNotification = async () => {
     const requestObj = {
       // page: pageNo,
-      limit: limit
+      limit: limit,
     }
     try {
       const response = await axios.post(`${baseUrl}/organizer/notification`, requestObj, { headers: header })

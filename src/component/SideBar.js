@@ -301,6 +301,7 @@ function SideBar() {
 
             {/* header link */}
             <Route path="chatbot" element={<Chatbot />} />
+            <Route path="notification" element={<Notification />} />
             <Route path="notification">
               <Route index element={<Notification />} />
               <Route path="details" element={<NotificationDetails />} />
@@ -316,8 +317,6 @@ function SideBar() {
                 </Route>
               </Route>
             </Route>
-
-
           </Routes>
         </div>
       </div>

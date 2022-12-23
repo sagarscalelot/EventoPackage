@@ -3,17 +3,24 @@ import NotificationProgressBar from '../Notification/NotificationProgressBar';
 import { decrements, increments } from '../../redux/stepProgressNotification';
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from 'react-redux';
+import axios from "axios";
+import { baseUrl } from "../../config";
 
 
 function SelectBusinessPromote() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const token = localStorage.getItem("Token");
+  const notificationId = localStorage.getItem("notificationId");
+  const header = {
+    'Authorization': `Token ${token}`,
+  }
 
 
   const clickNextHandler = () => {
     navigate("../publishdatetime");
     dispatch(increments());
-   
+
   }
 
   const clickBackHander = () => {

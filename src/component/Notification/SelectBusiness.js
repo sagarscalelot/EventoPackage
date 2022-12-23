@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import cardImage1 from "../../assest/svg/have-you-places.svg";
 import cardImage2 from "../../assest/svg/personal-skills-business.svg";
 import cardImage3 from "../../assest/svg/group-skils-business.svg";
@@ -10,16 +10,25 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 // import Advertisement from "../Advertisement";
 import NotificationProgressBar from '../Notification/NotificationProgressBar'
+import { data } from "jquery";
+import { getNotificationType } from '../../shared/helper'
+import { baseUrl } from "../../config";
+import { useState } from "react";
+import axios from "axios";
 
 function SelectBusiness() {
+  const token = localStorage.getItem("Token");
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const params = useParams();
-
-
+  const notificationType = getNotificationType(params.notificationType);
   const clickBackHander = () => {
     dispatch(decrements());
     navigate(-1);
+  }
+  const header = {
+    'Authorization': `Token ${token}`
   }
 
   return (
@@ -32,6 +41,7 @@ function SelectBusiness() {
       </div>
       <br />
       <NotificationProgressBar />
+
       <br />
       <div className="flex flex-wrap justify-center pt-4 -mx-4">
         {/* Have you Places */}
