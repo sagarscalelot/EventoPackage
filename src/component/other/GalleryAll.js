@@ -20,18 +20,18 @@ function GalleryAll() {
 	const [gallery, setGallery] = useState([]);
 	const token = localStorage.getItem("Token");
 
-    const header = {
-        'Authorization': `Token ${token}`
-    }
-    const getGallery = async () => {
-        try {
-            const response = await axios.get(`${baseUrl}/organizer/gallery`, { headers: header });
-            console.log("Full Gallery : ", response.data.Data);
-            setGallery(response.data.Data);
-        } catch (error) {
-            console.log(error);
-        }
-    }
+	const header = {
+		'Authorization': `Token ${token}`
+	}
+	const getGallery = async () => {
+		try {
+			const response = await axios.get(`${baseUrl}/organizer/gallery`, { headers: header });
+			console.log("Full Gallery : ", response.data.Data);
+			setGallery(response.data.Data);
+		} catch (error) {
+			console.log(error);
+		}
+	}
 
 	useEffect(() => {
 		getGallery();
@@ -39,38 +39,6 @@ function GalleryAll() {
 
 	return (
 		<div className="w-full relative tab-main active" id="all">
-
-			{/* {gallery.map(e => {
-					return (
-						<ul className="space-y-8">
-							{
-								(e.type === "photo") ?
-									<li className="image-card" onClick={() => setPreview(true)}>
-										<div>
-
-											<img key={e.id} src={s3Url + "/" + e?.url} alt="gallery-2" />
-										</div>
-									</li>
-									:
-									<li id="video-card" className="text-sm leading-6">
-										<div className="bg-white rounded-md relative overflow-hidden w-full h-full">
-											<a href="#" className="relative inset-0 w-full h-full opacity-100 pointer-events-auto" onClick={() => setPreview(true)}>
-
-												<iframe width="100%" src={s3Url + "/" + e?.url} title="YouTube video player" frameBorder="0" allow="accelerometer;  clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
-											</a>
-											<button onClick={() => {
-												setIsVideoPlayerPopUpOpen(true)
-												setVideoUrl(s3Url + "/" + e?.url);
-											}}
-												className="w-10 h-10 flex justify-center items-center bg-black rounded-full anim absolute bottom-0 right-0 hover:opacity-75">
-												<i className='icon-play text-2xl'></i>
-											</button>
-										</div>
-									</li>
-							}
-						</ul>
-					)
-				})} */}
 			<div className="container">
 				{console.log(gallery)}
 				{gallery.map(e => (
