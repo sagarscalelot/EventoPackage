@@ -54,7 +54,7 @@ p.exsmall {
 .nav a {
 	@apply flex items-center text-base font-bold space-x-4 border-l-[3px] border-transparent px-4 py-2.5 hover:border-current hover:text-spiroDiscoBall transition-all duration-300;
 }
-.nav a.active {
+.leftPanel .nav a.active {
 	@apply text-spiroDiscoBall border-spiroDiscoBall;
 }
 
@@ -146,8 +146,9 @@ input:checked + i {
 }
 
 /* gallery swippers */
+.gallery-top .swiper-wrapper,
 .gallery-swippers .swiper-wrapper {
-	@apply items-center justify-center;
+	@apply flex items-center justify-center;
 }
 
 .container {
@@ -167,8 +168,8 @@ input:checked + i {
 }
 
 .container figure > img {
-  grid-row: 1 / -1;
-  grid-column: 1;
+	grid-row: 1 / -1;
+	grid-column: 1;
 }
 
 /* arrow icon  */
@@ -505,6 +506,12 @@ li#video-card.active .video-cover {
 	background-image: url("./assest/images/landing-page/landing-home-bg.png");
 }
 
+@media (max-width: 639px){
+	.landing-wrapper .lmain:after {
+		@apply bg-right;
+	}	
+}
+
 header a {
 	@apply font-primary text-lg font-bold hover:text-japaneseIndigo transition-all duration-300;
 }
@@ -717,5 +724,7 @@ header.nav-up {
 	font-weight: 700;
 	line-height: 24px;
 }
+
+
 
 @tailwind utilities;

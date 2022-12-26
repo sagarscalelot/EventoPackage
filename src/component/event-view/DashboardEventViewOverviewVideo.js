@@ -3,11 +3,9 @@ import videoPreview from "../../assest/images/video-preview.png";
 
 function DashboardEventViewOverviewVideo({ videoUrl }) {
   return (
-    <div className="w-full lg:w-1/5 p-2 ov-p ">
+    <div className="ov-p ">
       <div className="rounded relative overflow-hidden border-2">
-        {/* <img src={videoPreview} alt="upload-1" className="w-full bg-white" /> */}
-
-        {videoUrl ? <video><source src={videoUrl} alt="upload-1" type="video/mp4" /></video> : <img src={videoPreview} alt="upload-1" className="w-full bg-white" />}
+        {videoUrl ? <video><source src={videoUrl} alt="upload-1" type="video/mp4" /></video> : <img src={videoPreview} alt="upload-1" className="w-full py-2" />}
       </div>
     </div>
   );

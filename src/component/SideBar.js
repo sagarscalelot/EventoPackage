@@ -47,7 +47,7 @@ import Gift from "./other/Gift";
 
 
 function SideBar() {
-
+  const [stab, setStab] = useState(1);
   const [languagePopup, setLanguagePopup] = useState(false);
   const [profilepic, setProfilepic] = useState("");
 
@@ -116,73 +116,83 @@ function SideBar() {
           </Link>
         </div>
         <div className="nav">
+
           <NavLink to="../dashboard"  title="Dashboard" onClick={removeId}>
+
             <span>
               <i className="w-6 block text-center text-lg icon-deshbord"></i>
             </span>
             <span>Dashboard</span>
+
           </NavLink>
           <NavLink to="/" activeClassName="active" title="Subscription">
             <span>
               <i className="w-6 block text-center text-lg icon-subsciption"></i>
             </span>
             <span>Subscription</span>
+
           </NavLink>
           <Link to="refer-to-earn" className="" title="Refer & Earn">
+
             <span>
               <i className="w-6 block text-center text-lg icon-refer"></i>
             </span>
             <span>Refer & Earn</span>
           </Link>
-          <Link to="redeem" className="" title="Redeem">
+          <Link to="redeem" className={stab === 4 ? "active" : undefined} onClick={() => setStab(4)} title="Redeem">
             <span>
               <i className="w-6 block text-center text-lg icon-redem"></i>
             </span>
             <span>Redeem</span>
           </Link>
-          <Link to="gallery" className="" title="Gallery">
+
+          <Link to="gallery" className={stab === 5 ? "active" : undefined} onClick={() => setStab(5)} title="Gallery">
             <span>
               <i className="w-6 block text-center text-lg icon-gallery"></i>
             </span>
             <span>Gallery</span>
           </Link>
-          <a href="https://www.festumevento.com" target="_blank" className="" title="Festum Evento">
+          <a href="https://www.festumevento.com" target="_blank" className={stab === 6 ? "active" : undefined} onClick={() => setStab(6)} title="Festum Evento">
             <span>
               <i className="w-6 block text-center text-lg icon-f-evanto"></i>
             </span>
             <span>Festum Evento</span>
           </a>
-          <Link to="booking" className="" title="Booking">
+          <Link to="booking" className={stab === 7 ? "active" : undefined} onClick={() => setStab(7)} title="Booking">
             <span>
               <i className="w-6 block text-center text-lg icon-booking"></i>
             </span>
             <span>Booking</span>
           </Link>
-          <Link to="invoice" className="" title="Invoice">
+          <Link to="invoice" className={stab === 8 ? "active" : undefined} onClick={() => setStab(8)} title="Invoice">
             <span>
               <i className="w-6 block text-center text-lg icon-invoice"></i>
             </span>
             <span>Invoice</span>
           </Link>
-          <Link to="/" className="" title="Membership">
+          <Link to="/" className={stab === 9 ? "active" : undefined} onClick={() => setStab(9)} title="Membership">
             <span>
               <i className="w-6 block text-center text-lg icon-membership"></i>
             </span>
             <span>Membership</span>
           </Link>
-          <Link to="our-products" className="" title="Our Products">
+          <Link to="our-products" className={stab === 10 ? "active" : undefined} onClick={() => setStab(10)} title="Our Products">
             <span>
               <i className="w-6 block text-center text-lg icon-our-product"></i>
             </span>
             <span>Our Products</span>
           </Link>
+
           <NavLink to="gift" activeClassName="active" title="Gift">
+
             <span>
               <i className="w-6 block text-center text-lg icon-refer"></i>
             </span>
             <span>Gift</span>
           </NavLink>
+
           <Link to="faq" className="" title="Help & FAQ">
+
             <span>
               <i className="w-6 block text-center text-lg icon-help"></i>
             </span>
@@ -239,9 +249,8 @@ function SideBar() {
               </Link>
               <Link
                 to="notification"
-                className="block hover:text-spiroDiscoBall anim"
+                className="block hover:text-spiroDiscoBall anim "
                 title="Megaphone"
-                
               >
                 <span className="icon-megaphone text-2xl block"></span>
               </Link>
@@ -302,6 +311,7 @@ function SideBar() {
             <Route path="gallery" element={<Gallery />} />
             <Route path="gift" element={<Gift />} />
             <Route path="booking" element={<Booking />} />
+            <Route path="gift" element={<Gift />} />
             <Route path="invoice" element={<Invoice />} />
             <Route path="faq" element={<FAQ />} />
             <Route path="our-products" element={<OurProducts />} />
@@ -315,12 +325,12 @@ function SideBar() {
               <Route path="selectbusiness">
                 <Route index element={<SelectBusiness />} />
                 <Route path=":notifivationType" >
-                <Route path="selectbusinesspromote" element={<SelectBusinessPromote />} />
-                <Route path="alluserpalns" element={<AllUserSelectPlan />} />
-                <Route path="publishdatetime" element={<PublishDateTime />} />
-                <Route path="existinguserpromote" element={<ExistingUserPromote />} />
-                <Route path="notificationmode" element={<NotificationMode />} />
-                <Route path="notificationpayment" element={<NotificationPayment />} />
+                  <Route path="selectbusinesspromote" element={<SelectBusinessPromote />} />
+                  <Route path="alluserpalns" element={<AllUserSelectPlan />} />
+                  <Route path="publishdatetime" element={<PublishDateTime />} />
+                  <Route path="existinguserpromote" element={<ExistingUserPromote />} />
+                  <Route path="notificationmode" element={<NotificationMode />} />
+                  <Route path="notificationpayment" element={<NotificationPayment />} />
                 </Route>
               </Route>
             </Route>
