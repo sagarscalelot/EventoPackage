@@ -14,7 +14,7 @@ function ImageCompanyPreview({ handleClose, data }) {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   console.log("i data : ", data);
   return (
-    <div className="fixed inset-0 w-full h-full bg-[rgba(0,0,0,0.6)] flex z-50">
+    <div className="fixed inset-0 w-full h-full flex justify-center items-center bg-[rgba(0,0,0,0.6)] flex z-50">
       <button type="button" onClick={() => handleClose(false)} className="absolute right-10 top-10 z-50 rounded-full text-white text-lg"><i className="icon-close"></i></button>
       <div className="swiper-container gallery-top gallery-img relative">
         <Swiper

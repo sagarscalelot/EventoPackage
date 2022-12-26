@@ -36,7 +36,6 @@ function GalleryImageAndVideoPreview({ handleClose, data }) {
               "--swiper-navigation-color": "#fff",
               "--swiper-pagination-color": "#fff",
             }}
-            centeredSlides={true}
             spaceBetween={10}
             navigation={true}
             modules={[FreeMode, Navigation, Thumbs]}

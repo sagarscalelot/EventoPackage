@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import logoImage from "../assest/svg/logo.svg";
 import userImage from "../assest/images/user-2.png";
 import Modal from "./modal/Modal.js"
-import { Link, Route, Routes, useNavigate } from "react-router-dom";
+import { Link, Route, Routes, useNavigate,NavLink } from "react-router-dom";
 import LanguagePopup from "./other/modal/LanguagePopup"
 import SelectWhoYouAre from "./events/SelectWhoYouAre";
 import DashboardEvent from "./events/DashboardEvent";
@@ -43,6 +43,7 @@ import ExistingUserPromote from "./Notification/ExistingUserPromote";
 import PublishDateTime from "./Notification/PublishDateTime";
 import NotificationMode from "./Notification/NotificationMode";
 import NotificationPayment from "./Notification/NotificationPayment";
+import Gift from "./other/Gift";
 
 
 function SideBar() {
@@ -173,12 +174,12 @@ function SideBar() {
             </span>
             <span>Our Products</span>
           </Link>
-          <Link to="/" className={stab === 11 ? "active" : undefined} onClick={() => setStab(11)} title="Gift">
+          <NavLink to="gift" activeClassName="active" onClick={() => setStab(11)} title="Gift">
             <span>
               <i className="w-6 block text-center text-lg icon-refer"></i>
             </span>
             <span>Gift</span>
-          </Link>
+          </NavLink>
           <Link to="faq" className={stab === 12 ? "active" : undefined} onClick={() => setStab(12)} title="Help & FAQ">
             <span>
               <i className="w-6 block text-center text-lg icon-help"></i>
@@ -297,6 +298,7 @@ function SideBar() {
             <Route path="redeem" element={<RedeemCoin />} />
             <Route path="gallery" element={<Gallery />} />
             <Route path="booking" element={<Booking />} />
+            <Route path="gift" element={<Gift />} />
             <Route path="invoice" element={<Invoice />} />
             <Route path="faq" element={<FAQ />} />
             <Route path="our-products" element={<OurProducts />} />

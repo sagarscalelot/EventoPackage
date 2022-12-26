@@ -31,7 +31,7 @@ function VideoCompanyPreview({ handleClose, data }) {
             <SwiperSlide key={i}>
               <div className="swiper-slide-container w-full flex items-center justify-center flex-wrap max-h-[600px] h-full">
                 <div className="w-full lg:w-1/2 rounded-md overflow-hidden h-full">
-                  <video className='w-full h-full' src={s3Url + "/" + e.url} alt="no video" controls allowFullScreen></video>
+                  <video src={s3Url + "/" + e.url} alt="no video" controls allowFullScreen></video>
                 </div>
                 <div className="w-full lg:w-1/2 pl-10 space-y-3 h-full">
                   <p>{e.desc}</p>
