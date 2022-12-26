@@ -1,4 +1,5 @@
 import React from 'react'
+
 import { Link } from 'react-router-dom'
 import chanel from '../../assest/images/chanel.png'
 import puma from '../../assest/images/puma.png'
@@ -72,3 +73,5 @@ const Gift = () => {
 }
 
 export default Gift
+
+
