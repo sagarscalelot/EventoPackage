@@ -54,7 +54,7 @@ p.exsmall {
 .nav a {
 	@apply flex items-center text-base font-bold space-x-4 border-l-[3px] border-transparent px-4 py-2.5 hover:border-current hover:text-spiroDiscoBall transition-all duration-300;
 }
-.nav a.active {
+.leftPanel .nav a.active {
 	@apply text-spiroDiscoBall border-spiroDiscoBall;
 }
 
@@ -167,8 +167,8 @@ input:checked + i {
 }
 
 .container figure > img {
-  grid-row: 1 / -1;
-  grid-column: 1;
+	grid-row: 1 / -1;
+	grid-column: 1;
 }
 
 /* arrow icon  */
