@@ -1,14 +1,11 @@
 import React, { useState } from 'react'
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Thumbs } from "swiper";
-import ImageAndVideoPreviewMainSlide from './ImageAndVideoPreviewMainSlide';
-import dish1Image from "../../../assest/images/dish-1.png";
 import "swiper/css";
 import 'swiper/css/bundle';
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
-import { s3Url } from '../../../config';
 import ImagePreviewMainSlide from './ImagePreviewMainSlide';
 function ImagePreview({ handleClose, data }) {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
@@ -53,10 +50,8 @@ function ImagePreview({ handleClose, data }) {
           >
             {data.map(e => (
               <SwiperSlide>
-
                 <ImagePreviewMainSlide link={e.url}/>
               </SwiperSlide>
-
             ))}
           </Swiper>
         </div>

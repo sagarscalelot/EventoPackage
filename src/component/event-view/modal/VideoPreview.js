@@ -1,15 +1,11 @@
 import React, { useState } from 'react'
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Thumbs } from "swiper";
-import ImageAndVideoPreviewMainSlide from './ImageAndVideoPreviewMainSlide';
-import dish1Image from "../../../assest/images/dish-1.png";
 import "swiper/css";
 import 'swiper/css/bundle';
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
-import { s3Url } from '../../../config';
-import ImagePreviewMainSlide from './ImagePreviewMainSlide';
 import VideoPreviewMainSlide from './VideoPreviewMainSlide';
 
 function VideoPreview({ handleClose, data }) {
@@ -32,14 +28,10 @@ function VideoPreview({ handleClose, data }) {
           >
             {data.map(e => (
               <SwiperSlide>
-
                 <VideoPreviewMainSlide link={e.url} desc={e.description} />
               </SwiperSlide>
-
             ))}
-            {/* <div className="rounded-md overflow-hidden"><img src={dish1Image} alt="/dish-1" width={100} height={100} /> </div> */}
           </Swiper>
-
         </div>
         <div className="swiper-container gallery-thumbs bg-black">
           <Swiper
@@ -55,10 +47,8 @@ function VideoPreview({ handleClose, data }) {
           >
             {data.map(e => (
               <SwiperSlide>
-
                 <VideoPreviewMainSlide link={e.url}/>
               </SwiperSlide>
-
             ))}
           </Swiper>
         </div>

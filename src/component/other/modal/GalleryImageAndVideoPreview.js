@@ -1,7 +1,4 @@
 import React, { useState } from "react";
-import bigDishImage from "../../../assest/images/big-dish.png";
-import dish1Image from "../../../assest/images/dish-1.png";
-
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Navigation, Thumbs } from "swiper";
 import 'swiper/css/bundle';
@@ -42,9 +39,6 @@ function GalleryImageAndVideoPreview({ handleClose, data }) {
             thumbs={{ swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null }}
             modules={[Navigation, Thumbs]}
           >
-
-
-
             {data.map((e, i) => (
               <SwiperSlide key={i}>
                 <div className="swiper-slide-container">
