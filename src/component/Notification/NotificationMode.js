@@ -1,14 +1,17 @@
-import React from "react";
+import React,{useState} from "react";
 import NotificationProgressBar from './NotificationProgressBar';
 import { decrements, increments } from '../../redux/stepProgressNotification';
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from 'react-redux';
+import Modal from "../modal/Modal";
+import NotificationCouponPopUp from "./popups/NotificationCouponPopUp";
 
 function NotificationMode() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [isNotificationDetailPreviewPopupOpen, setIsNotificationDetailPreviewPopupOpen] = useState(false);
 
-
+  const [handleClose, setHandleClose] = useState(false)
   const clickNextHandler = () => {
     dispatch(increments());
     navigate("../notificationpayment");
@@ -97,7 +100,7 @@ function NotificationMode() {
                 />
               </div>
               <div className="px-1 inputHolder pt-3">
-                <button type="button" className="btn-primary whitespace-nowrap">
+                <button type="button" className="btn-primary whitespace-nowrap"  onClick={() => setIsNotificationDetailPreviewPopupOpen(true)}>
                   <h3>Apply Code</h3>
                 </button>
               </div>
@@ -112,6 +115,12 @@ function NotificationMode() {
             <button type="button" className="flex items-center active" onClick={clickNextHandler}><h3>Next</h3><i className="icon-next-arrow ml-3"></i></button>
           </div>
         </div>
+        <Modal isOpen={isNotificationDetailPreviewPopupOpen}>
+        <NotificationCouponPopUp
+          handleClose={setIsNotificationDetailPreviewPopupOpen}
+
+        />
+      </Modal>
       </div>
     </>
   );

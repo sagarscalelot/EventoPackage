@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import logoImage from "../assest/svg/logo.svg";
 import userImage from "../assest/images/user-2.png";
 import Modal from "./modal/Modal.js"
-import { Link, Route, Routes, useNavigate } from "react-router-dom";
+import { Link, Route, Routes, useNavigate,NavLink } from "react-router-dom";
 import LanguagePopup from "./other/modal/LanguagePopup"
 import SelectWhoYouAre from "./events/SelectWhoYouAre";
 import DashboardEvent from "./events/DashboardEvent";
@@ -43,6 +43,7 @@ import ExistingUserPromote from "./Notification/ExistingUserPromote";
 import PublishDateTime from "./Notification/PublishDateTime";
 import NotificationMode from "./Notification/NotificationMode";
 import NotificationPayment from "./Notification/NotificationPayment";
+import Gift from "./other/Gift";
 
 
 function SideBar() {
@@ -115,18 +116,18 @@ function SideBar() {
           </Link>
         </div>
         <div className="nav">
-          <Link to="../dashboard" className="active" title="Dashboard" onClick={removeId}>
+          <NavLink to="../dashboard"  title="Dashboard" onClick={removeId}>
             <span>
               <i className="w-6 block text-center text-lg icon-deshbord"></i>
             </span>
             <span>Dashboard</span>
-          </Link>
-          <Link to="/" className="" title="Subscription">
+          </NavLink>
+          <NavLink to="/" activeClassName="active" title="Subscription">
             <span>
               <i className="w-6 block text-center text-lg icon-subsciption"></i>
             </span>
             <span>Subscription</span>
-          </Link>
+          </NavLink>
           <Link to="refer-to-earn" className="" title="Refer & Earn">
             <span>
               <i className="w-6 block text-center text-lg icon-refer"></i>
@@ -175,12 +176,12 @@ function SideBar() {
             </span>
             <span>Our Products</span>
           </Link>
-          <Link to="/" className="" title="Gift">
+          <NavLink to="gift" activeClassName="active" title="Gift">
             <span>
               <i className="w-6 block text-center text-lg icon-refer"></i>
             </span>
             <span>Gift</span>
-          </Link>
+          </NavLink>
           <Link to="faq" className="" title="Help & FAQ">
             <span>
               <i className="w-6 block text-center text-lg icon-help"></i>
@@ -299,6 +300,7 @@ function SideBar() {
             <Route path="refer-to-earn" element={<ReferToEarn />} />
             <Route path="redeem" element={<RedeemCoin />} />
             <Route path="gallery" element={<Gallery />} />
+            <Route path="gift" element={<Gift />} />
             <Route path="booking" element={<Booking />} />
             <Route path="invoice" element={<Invoice />} />
             <Route path="faq" element={<FAQ />} />
