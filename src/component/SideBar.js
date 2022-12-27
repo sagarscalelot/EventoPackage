@@ -98,6 +98,11 @@ function SideBar() {
     localStorage.removeItem('stepCount');
   }
 
+
+
+
+
+
   return (
     <div className="main flex min-h-screen">
       {/* <!-- Left Panel --> */}
@@ -117,14 +122,17 @@ function SideBar() {
               <i className="w-6 block text-center text-lg icon-deshbord"></i>
             </span>
             <span>Dashboard</span>
+
           </Link>
-          <Link to="/" className={stab === 2 ? "active" : undefined} onClick={() => setStab(2)} title="Subscription">
+          <NavLink to="/" activeClassName="active" title="Subscription">
             <span>
               <i className="w-6 block text-center text-lg icon-subsciption"></i>
             </span>
             <span>Subscription</span>
-          </Link>
-          <Link to="refer-to-earn" className={stab === 3 ? "active" : undefined} onClick={() => setStab(3)} title="Refer & Earn">
+
+          </NavLink>
+          <Link to="refer-to-earn" className="" title="Refer & Earn">
+
             <span>
               <i className="w-6 block text-center text-lg icon-refer"></i>
             </span>
@@ -179,7 +187,9 @@ function SideBar() {
             </span>
             <span>Gift</span>
           </NavLink>
-          <Link to="faq" className={stab === 12 ? "active" : undefined} onClick={() => setStab(12)} title="Help & FAQ">
+
+          <Link to="faq" className="" title="Help & FAQ">
+
             <span>
               <i className="w-6 block text-center text-lg icon-help"></i>
             </span>
@@ -298,6 +308,7 @@ function SideBar() {
             <Route path="refer-to-earn" element={<ReferToEarn />} />
             <Route path="redeem" element={<RedeemCoin />} />
             <Route path="gallery" element={<Gallery />} />
+            <Route path="gift" element={<Gift />} />
             <Route path="booking" element={<Booking />} />
             <Route path="gift">
               <Route index element={<Gift />} />

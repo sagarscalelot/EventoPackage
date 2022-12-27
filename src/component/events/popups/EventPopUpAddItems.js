@@ -89,7 +89,7 @@ function EventPopUpAddItems({isItem, handleClose, data, setReload, edit}) {
         quantity: quantity,
         photos: []
     }
-    if(edit) requestObj.serviceid = data._id;
+    if(edit) requestObj.itemid = data._id;
 
     const formData = new FormData();
     formData.append("file", image);

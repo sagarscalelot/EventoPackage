@@ -45,7 +45,7 @@ function DashboardEventCategoryItem({ data }) {
 										<h3>Live</h3>
 									</label>
 								</div>
-								<h1 className="pt-7">{data?.totalPrice} INR</h1>
+								<h1 className="pt-7">{parseFloat(data?.totalPrice).toFixed(2)} INR</h1>
 							</div>
 						</div>
 						<div className="flex justify-between pt-4">
