@@ -117,13 +117,13 @@ function SideBar() {
           </Link>
         </div>
         <div className="nav">
-          <Link to="../dashboard" className={stab === 1 ? "active" : undefined} title="Dashboard" onClick={removeId} >
+          <NavLink to="../dashboard" activeClassName="active" title="Dashboard" onClick={removeId} >
             <span>
               <i className="w-6 block text-center text-lg icon-deshbord"></i>
             </span>
             <span>Dashboard</span>
 
-          </Link>
+          </NavLink>
           <NavLink to="/" activeClassName="active" title="Subscription">
             <span>
               <i className="w-6 block text-center text-lg icon-subsciption"></i>
@@ -131,70 +131,66 @@ function SideBar() {
             <span>Subscription</span>
 
           </NavLink>
-          <Link to="refer-to-earn" className="" title="Refer & Earn">
-
+          <NavLink to="refer-to-earn" activeClassName="active" title="Refer & Earn">
             <span>
               <i className="w-6 block text-center text-lg icon-refer"></i>
             </span>
             <span>Refer & Earn</span>
-          </Link>
-          <Link to="redeem" className={stab === 4 ? "active" : undefined} onClick={() => setStab(4)} title="Redeem">
+          </NavLink>
+          <NavLink to="redeem" activeClassName="active" title="Redeem">
             <span>
               <i className="w-6 block text-center text-lg icon-redem"></i>
             </span>
             <span>Redeem</span>
-          </Link>
-
-          <Link to="gallery" className={stab === 5 ? "active" : undefined} onClick={() => setStab(5)} title="Gallery">
+          </NavLink>
+          <NavLink to="gallery" activeClassName="active" title="Gallery">
             <span>
               <i className="w-6 block text-center text-lg icon-gallery"></i>
             </span>
             <span>Gallery</span>
-          </Link>
-          <a href="https://www.festumevento.com" target="_blank" className={stab === 6 ? "active" : undefined} onClick={() => setStab(6)} title="Festum Evento">
+          </NavLink>
+          <a href="https://www.festumevento.com" target="_blank" activeClassName="active">
             <span>
               <i className="w-6 block text-center text-lg icon-f-evanto"></i>
             </span>
             <span>Festum Evento</span>
           </a>
-          <Link to="booking" className={stab === 7 ? "active" : undefined} onClick={() => setStab(7)} title="Booking">
+          <NavLink to="booking" activeClassName="active" title="Booking">
             <span>
               <i className="w-6 block text-center text-lg icon-booking"></i>
             </span>
             <span>Booking</span>
-          </Link>
-          <Link to="invoice" className={stab === 8 ? "active" : undefined} onClick={() => setStab(8)} title="Invoice">
+          </NavLink>
+          <NavLink to="invoice" activeClassName="active" title="Invoice">
             <span>
               <i className="w-6 block text-center text-lg icon-invoice"></i>
             </span>
             <span>Invoice</span>
-          </Link>
-          <Link to="/" className={stab === 9 ? "active" : undefined} onClick={() => setStab(9)} title="Membership">
+          </NavLink>
+          <NavLink to="/" activeClassName="active" title="Membership">
             <span>
               <i className="w-6 block text-center text-lg icon-membership"></i>
             </span>
             <span>Membership</span>
-          </Link>
-          <Link to="our-products" className={stab === 10 ? "active" : undefined} onClick={() => setStab(10)} title="Our Products">
+          </NavLink>
+          <NavLink to="our-products" activeClassName="active" title="Our Products">
             <span>
               <i className="w-6 block text-center text-lg icon-our-product"></i>
             </span>
             <span>Our Products</span>
-          </Link>
+          </NavLink>
           <NavLink to="gift" activeClassName="active" title="Gift">
             <span>
               <i className="w-6 block text-center text-lg icon-refer"></i>
             </span>
             <span>Gift</span>
           </NavLink>
-
-          <Link to="faq" className="" title="Help & FAQ">
-
+          <NavLink to="faq" activeClassName="active" title="Help & FAQ">
             <span>
               <i className="w-6 block text-center text-lg icon-help"></i>
             </span>
             <span>Help & FAQ</span>
-          </Link>
+          </NavLink>
         </div>
       </div>
       {/* <!-- Content --> */}

@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react'
 import { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import dashboardBgImage from "../../assest/images/dashboard-bg.png";
 import { baseUrl, s3Url } from '../../config';
 import DashboardEventAttendee from './DashboardEventAttendee';
 import DashboardEventReview from './DashboardEventReview';
@@ -36,6 +37,19 @@ function DashboardEventView() {
       console.log(error);
     }
   }
+  // const getEventById = async () => {
+  // 	try {
+  // 		const response = await axios.get(`${baseUrl}/api/events_get_list`, { headers: header });
+  // 		console.log("get event by id >> ", response.data.data);
+  // 		setEvent(response.data.data[0]);
+  // 		setCapacity(response.data.data[0].capacity[0]);
+  // 		setsocials(response.data.data[0].social[0]);
+  // 		setCompany(response.data.data[0].company_details[0]);
+  //     setService(response.data.data[0].selected_service);
+  // 	} catch (error) {
+  // 		console.log(error);
+  // 	}
+  // }
 
   useEffect(() => {
     getEventById();
@@ -62,6 +76,9 @@ function DashboardEventView() {
             </div>
             <div className="flex items-center text-base font-semibold text-ufoGreen space-x-1">
               <a href="#">{(capacity?.facilities) ? (capacity?.facilities?.replace("_", " ").replace("_", " / ").toUpperCase()) : ""}</a>
+              {/* <a href="#">Romantic Dinner</a>
+                    <span>/</span>
+                    <a href="#">Lunch</a> */}
             </div>
           </div>
         </div>
