@@ -35,7 +35,7 @@ function NotificationCouponPopUp({ handleClose }) {
             <div className="bg-brightGray p-7 space-y-7">
               <div className="flex justify-between items-center">
                 <h1 className="h1">Discount Coupon</h1>
-                <div className="flex items-center space-x-6">
+                <div className="flex items-center space-x-6 cursor-pointer">
                   <i
                     className="icon-close"
                     onClick={() => handleClose(false)}
@@ -43,20 +43,20 @@ function NotificationCouponPopUp({ handleClose }) {
                 </div>
               </div>
 
-              <div className="bg-white p-5 rounded-md">
-                <div className="flex justify-between items-center">
-                  <div className="w-10/12">
-                    <div className="flex justify-between pl-4">
-                      <h2>{coupon.title}</h2>
+              <div className="bg-white p-[30px] rounded-md">
+                <div className="flex w-full justify-between items-center">
+                  <div className="w-full">
+                    <div className="flex justify-between items-center pl-4">
+                      <h2 className="text-2xl font-bold">{coupon.title}</h2>
                       <button
                         type="button"
-                        className="btn-primary whitespace-nowrap"
+                        className="btn-primary whitespace-nowrap uppercase"
                       >
                         Apply
                       </button>
                     </div>
-                    <hr />
-                    <p className="text-gray-400 text-base pt-3 font-medium pl-4">
+                    <span class="block border-b-2 border-dashed border-gray-300 my-5"></span>
+                    <p className="text-gray-400 text-sm pt-3 font-medium pl-4">
                       {coupon.description}
                     </p>
                   </div>
