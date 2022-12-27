@@ -16,8 +16,8 @@ export class AutoPlaceSearch extends Component {
             activeMarker: {},
             selectedPlace: {},
             mapCenter: {
-                lat: this.props.coordinates.coordinates[1],
                 lng: this.props.coordinates.coordinates[0],
+                lat: this.props.coordinates.coordinates[1],
             },
         };
     }

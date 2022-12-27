@@ -19,11 +19,10 @@ function VideoCompanyPreview({ handleClose, data }) {
               "--swiper-navigation-color": "#fff",
               "--swiper-pagination-color": "#fff",
             }}
-            centeredSlides={true}
             spaceBetween={10}
             navigation={true}
+            thumbs={{swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null}}
             modules={[Navigation, Thumbs]}
-            thumbs={{ swiper: thumbsSwiper }}
           >
             {data.map(e => (
               <SwiperSlide>
@@ -36,11 +35,12 @@ function VideoCompanyPreview({ handleClose, data }) {
         <div className="swiper-container gallery-thumbs bg-black">
           <Swiper
             centeredSlides={true}
-            slidesPerView={'auto'}
-            touchRatio={0.2}
-            slideToClickedSlide={true}
-            loopedSlides={4}
+
+            onSwiper={setThumbsSwiper}
             spaceBetween={10}
+   
+            freeMode={true}
+            slidesPerView={4}
             watchSlidesProgress={true}
             modules={[Navigation, Thumbs]}
           // onSwiper={setThumbsSwiper}
