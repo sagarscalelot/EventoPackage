@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import notificationSvg2 from "../../../assest/svg/notification-2.svg";
 import NotificationLIstItem from "../NotificationLIstItem";
 import { s3Url } from "../../../config";
+import parse from 'html-react-parser';
 
 function NotificationDetailsPreviewPopup({ handleClose, notification_title, banner, description }) {
 
@@ -36,7 +37,7 @@ function NotificationDetailsPreviewPopup({ handleClose, notification_title, bann
             <h2>{notification_title}</h2>
           </div>
           <p className="text-gray-400 text-base pt-3 font-medium pl-4">
-            {description}
+            {parse(description)}
           </p>
          
         </div>

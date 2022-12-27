@@ -1,5 +1,4 @@
 import React from 'react';
-import bigdishImage from "../../../assest/images/big-dish.png";
 import { s3Url } from '../../../config';
 
 function VideoPreviewMainSlide({ link, desc }) {

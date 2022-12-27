@@ -1,10 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import gallery2Image from "../../assest/images/gallery-2.png";
-import gallery3Image from "../../assest/images/gallery-3.png";
-import gallery4Image from "../../assest/images/gallery-4.png";
-import gallery6Image from "../../assest/images/gallery-6.png";
 import GalleryImageAndVideoPreview from './modal/GalleryImageAndVideoPreview';
 
 import Modal from '../modal/Modal';
@@ -23,7 +19,6 @@ function GalleryPhotos() {
     const getGallery = async () => {
         try {
             const response = await axios.get(`${baseUrl}/organizer/gallery`, { headers: header });
-            // console.log("Full Gallery : ", response.data.Data.filter(photo => (photo.type === "photo")));
             setGallery(response.data.Data.filter(photo => (photo.type === "photo")));
         } catch (error) {
             console.log(error);
@@ -37,7 +32,6 @@ function GalleryPhotos() {
     return (
         <div className="w-full relative" id="photo">
             <div className="container">
-                {console.log(gallery)}
                 {gallery.map(e => (
                     <figure onClick={() => setPreview(true)}>
                         <img key={e.id} src={s3Url + "/" + e?.url} alt="Gallary img" />

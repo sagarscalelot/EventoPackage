@@ -1,12 +1,14 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { s3Url } from '../../config';
 import { useDispatch } from 'react-redux';
 import { increment } from '../../redux/stepProgressCount';
 import bannerPreview from "../../assest/images/banner-preview.png";
+import axios from 'axios';
+import { baseUrl } from '../../config';
 
 
-function DashboardEventCategoryItem({ data }) {
+function  DashboardEventCategoryItem({ data, handleClick }) {
 
 	const dispatch = useDispatch();
 
@@ -17,14 +19,51 @@ function DashboardEventCategoryItem({ data }) {
 	const header = {
 		'Authorization': `Token ${token}`,
 	}
+
+	const singleEventlive = async (id) => {
+		console.log("live id : ", id)
+		try {
+			const response = await axios.post(`${baseUrl}/organizer/events/liveone`, { eventid: id}, { headers: header });
+			console.log(response);
+		} catch (error) {
+			console.log(error);
+		}
+	}
+
+	const toggleEvent = async (id) => {
+		console.log("e : ", id);
+
+		try {
+			const response = await axios.post(`${baseUrl}/organizer/events/liveone`, { eventid: data._id}, { headers: header });
+			console.log("event active : ", response);
+		} catch (error) {
+			console.log("Something went Wrong.");
+			console.log(error);
+		}
+	}
+	// const checkboxHandler = (e, ele) => {
+
+	// 	if (e.target.checked) {
+	// 		// ele.is_live = true;
+	// 		console.log("in if");
+	// 		// setActiveList(current => [...current, ele]);
+	// 	} else {
+	// 		// console.log("in else");
+	// 		ele.is_live = false;
+	// 		// setActiveList(current => current.filter(data => data._id !== ele._id))
+	// 	}
+	// }
+// console.log("live list: ", activeList);
 	return (
 		<div className="w-full flex items-center ">
-			<div>
+			{/* <div>
 				<label className="checkbox w-16">
-					<input type="checkbox" className="bg-white" />
+					<input type="checkbox" className="bg-white" 
+					// checked={ele.isAdded}
+					onChange={(e) => checkboxHandler(e, data)}/>
 					<i className="icon-right"></i>
 				</label>
-			</div>
+			</div> */}
 			
 				<div className="flex space-x-5 w-full p-4 pr-7 bg-white rounded">
 					<div className="max-w-xs h-[200px] w-full">
@@ -40,9 +79,17 @@ function DashboardEventCategoryItem({ data }) {
 							</div>
 							<div className="">
 								<div className="flex items-center">
-									<input type="checkbox" className="switch mr-3" defaultChecked={data?.is_active} />
+								{/* {console.log("check : ", data?.display_name, data?.is_live)} */}
+
+									<input type="checkbox" className="switch mr-3" 
+									// defaultChecked={data?.is_live}
+									id="on" 
+									defaultChecked={data?.is_live}
+									// onClick={() => singleEventlive(data?._id)}
+									onChange={() => toggleEvent(data)}
+									/>
 									<label htmlFor="">
-										<h3>Live</h3>
+										<h3>Live</h3>	
 									</label>
 								</div>
 								<h1 className="pt-7">{parseFloat(data?.totalPrice).toFixed(2)} INR</h1>

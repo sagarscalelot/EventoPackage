@@ -1,13 +1,11 @@
 import React, { useState } from 'react'
 import { Swiper, SwiperSlide } from "swiper/react";
-import { FreeMode, Navigation, Thumbs } from "swiper";
-import ImageAndVideoPreviewMainSlide from './ImageAndVideoPreviewMainSlide';
-import dish1Image from "../../../assest/images/dish-1.png";
+import { Navigation, Thumbs } from "swiper";
+
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
-import { s3Url } from '../../../config';
 import ImagePreviewMainSlide from './ImagePreviewMainSlide';
 
 function ImageCompanyPreview({ handleClose, data }) {
@@ -16,32 +14,29 @@ function ImageCompanyPreview({ handleClose, data }) {
   return (
     <div className="fixed inset-0 w-full h-full flex justify-center items-center bg-[rgba(0,0,0,0.6)] flex z-50">
       <button type="button" onClick={() => handleClose(false)} className="absolute right-10 top-10 z-50 rounded-full text-white text-lg"><i className="icon-close"></i></button>
-      <div className="swiper-container gallery-top gallery-img relative">
-        <Swiper
-          style={{
-            "--swiper-navigation-color": "#fff",
-            "--swiper-pagination-color": "#fff",
-          }}
-          centeredSlides={false}
-          spaceBetween={10}
-          navigation={true}
-          modules={[FreeMode, Navigation, Thumbs]}
-          thumbs={{ swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null }}
-        >
-          {data.map((e, i) => (
-            <SwiperSlide key={i}>
-              <div className="swiper-slide-container w-full flex flex-wrap max-h-[550px] h-full">
-                <div className="w-full lg:w-1/2 rounded-md overflow-hidden h-full">
-                  <img src={s3Url + "/" + e.url} alt="big-dish" className="w-full" />
-                </div>
-                <div className="w-full lg:w-1/2 pl-10 space-y-3 h-full">
-                  <p>{e.desc}</p>
-                </div>
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-        <div className="swiper-container gallery-thumbs bg-black mt-12 h-auto">
+
+      <div className="relative w-full py-10">
+        <div className="swiper-container gallery-top relative">
+          <Swiper
+            style={{
+              "--swiper-navigation-color": "#fff",
+              "--swiper-pagination-color": "#fff",
+            }}
+            centeredSlides={true}
+            spaceBetween={10}
+            navigation={true}
+            modules={[Navigation, Thumbs]}
+            thumbs={{ swiper: thumbsSwiper }}
+          >
+            {data.map((e,i) => (
+              <SwiperSlide key={i}>
+                 <ImagePreviewMainSlide link={e.url} desc={e.description} />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+        <div className="swiper-container gallery-thumbs bg-black">
+
           <Swiper
             onSwiper={setThumbsSwiper}
             centeredSlides={true}

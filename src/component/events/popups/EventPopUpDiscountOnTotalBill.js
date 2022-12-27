@@ -1,30 +1,22 @@
-import axios from 'axios';
 import React, { useState } from 'react';
-import { baseUrl } from '../../../config';
 
 function EventPopUpDiscountOnTotalBill({handleClose, eventId, setSelectedDiscount, selectedDiscount, serviceOn, activeList}) {
-  // console.log("hi : ", selectedDiscount);
   const [value, setValue] = useState("");
   const token = localStorage.getItem("Token");
   const [error, setError] = useState("");
-  // let discountId = totalDiscountId || advanceDiscountId;
+  
 	const header = {
 		'Authorization': `Token ${token}`
 	}
-  const [pdata, setpdata] = useState({});
-  const [discountname, setDiscountname] = useState(selectedDiscount.discountname);
-  const [discounttype, setDiscounttype] = useState(selectedDiscount.discounttype);
-  const [description, setDescription] = useState(selectedDiscount.description);
+ 
   const [discount, setDiscount] = useState(selectedDiscount.discount);
   const [tandc, setTandc] = useState(selectedDiscount.tandc);
 
-  // console.log("select dis in on bill : ", selectedDiscount);
   const validateDiscount = (e) => {
 		if((e.target.value <= 100) && (e.target.value >= 0)) {
 			setValue(e.target.value);
       setDiscount(e.target.value);
       selectedDiscount.discount = e.target.value + "%";
-			// console.log("discount :", value);
       setError(null);
 		} else {
 			setError("Enter Valid Discount value");
@@ -32,26 +24,6 @@ function EventPopUpDiscountOnTotalBill({handleClose, eventId, setSelectedDiscoun
 	}
 
 	const handleSubmit = async() => {
-    // setSelectedDiscount({ ...selectedDiscount,
-    //   discountname: discountname,
-    //   discounttype: discounttype,
-    //   description: description,
-    //   discount: discount + "%",
-    //   tandc : tandc 
-    // });
-		// try {	
-		// 	// const response = await axios.put(`${baseUrl}/api/org/discount/${discountId}?event_id=${eventId}`,{equipment_id: [], discount: value+"%"},{headers: header});
-		// 	// console.log(response);
-    //   // handleClose(false);
-    //   console.log("Before post on totla : ", activeList);
-    //   const response = await axios.post(`${baseUrl}/organizer/events/discount`,{eventid: eventId, discounts: activeList},{headers: header});
-
-		// 	console.log("res : ",response);
-
-		// 	handleClose(false);
-		// } catch (error) {
-		// 	console.log(error);
-		// }
     setDiscount(discount);
     handleClose(false);
 	}

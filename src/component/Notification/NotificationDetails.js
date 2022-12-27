@@ -2,7 +2,8 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { baseUrl } from "../../config";
-
+import { CKEditor } from '@ckeditor/ckeditor5-react'; 
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import Modal from "../modal/Modal";
 import { toast } from 'react-toastify';
 import NotificationDetailsPreviewPopup from "./popups/NotificationDetailsPreviewPopup";
@@ -147,7 +148,13 @@ function NotificationDetails() {
           </div>
           <div className="w-full space-y-2.5">
             <h3>Description</h3>
-            <div className="w-full bg-white rounded">
+            <CKEditor
+                    editor={ ClassicEditor }
+                    onChange={ ( event, editor ) => {
+                        setDescription((editor.getData()));
+                    } }
+                />
+            {/* <div className="w-full bg-white rounded">
               <div className="p-8 w-full border-b-2 border-brightGray flex items-center space-x-6">
                 <div className="flex space-x-2.5">
                   <button type="button">
@@ -193,7 +200,7 @@ function NotificationDetails() {
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
               ></textarea>
-            </div>
+            </div> */}
           </div>
           <div className="text-right">
             <button

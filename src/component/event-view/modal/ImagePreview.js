@@ -1,14 +1,12 @@
 import React, { useState } from 'react'
 import { Swiper, SwiperSlide } from "swiper/react";
-import { FreeMode, Navigation, Thumbs } from "swiper";
-import ImageAndVideoPreviewMainSlide from './ImageAndVideoPreviewMainSlide';
-import dish1Image from "../../../assest/images/dish-1.png";
+import { Navigation, Thumbs } from "swiper";
+
 import "swiper/css";
 import 'swiper/css/bundle';
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
-import { s3Url } from '../../../config';
 import ImagePreviewMainSlide from './ImagePreviewMainSlide';
 function ImagePreview({ handleClose, data }) {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
@@ -54,11 +52,10 @@ function ImagePreview({ handleClose, data }) {
             modules={[FreeMode, Navigation, Thumbs]}
             className="flex"
           >
-            {data.map((e, i) => (
-              <SwiperSlide key={i}>
-                <div className="rounded-md overflow-hidden w-28 h-28 mx-auto">
-                  <img src={s3Url + "/" + e.url} alt="big-dish" className="w-full h-full" />
-                </div>
+            {data.map(e => (
+              <SwiperSlide>
+                <ImagePreviewMainSlide link={e.url}/>
+
               </SwiperSlide>
             ))}
           </Swiper>
