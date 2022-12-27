@@ -48,6 +48,7 @@ import iphone from "../../assest/images/landing-page/iphone.png";
 import siderevento from "../../assest/images/landing-page/sider-evento.png";
 import giftfcoin from "../../assest/images/landing-page/surprise 1.png";
 import Advertisement from "../Advertisement";
+import multidivice from "../../assest/images/landing-page/Multi-Devices.png"
 
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
@@ -366,9 +367,10 @@ function LandingPage() {
                 </div>
               </header>
               <div className="wrapper relative z-10 flex items-center h-full px-0">
-                <div className="landing-bg-img max-w-[630px] ml-auto">
-                  <p className="text-lg leading-5 font-bold text-white uppercase tracking-wide mb-7">Are You Creater, Artist or your Field</p>
-                  <h2 className="text-5xl xl:text-6xl text-white max-w-full font-bold capitalize">Most <br /> Powerful platform for Creater, Artist & Field </h2>
+                <div className="landing-bg-img sm:max-w-[400px] md:max-w-[450px] lg:max-w-[550px] xl:max-w-[630px] ml-auto">
+                  <img src={multidivice} alt="big-dish" className="max-w-[320px] inline-block sm:hidden mb-4" />
+                  <p className="text-base sm:text-lg leading-6 sm:leading-7 font-bold text-white uppercase tracking-wide mb-4 lg:mb-7">Are You Creater, Artist or your Field</p>
+                  <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-white max-w-full font-bold capitalize">Most <br /> Powerful platform for Creater, Artist & Field </h2>
                 </div>
               </div>
             </div>
@@ -394,12 +396,12 @@ function LandingPage() {
                 </svg>
               </div>
               <div className="md:px-5 xl:px-12 max-w-xl space-y-2 xl:space-y-4">
-                <h3 className="whitespace-nowrap">Are you Creater, Artist & have Field?</h3>
+                <h3>Are you Creater, Artist & have Field?</h3>
                 <p className="text-base text-gray-400">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p>
                 <p className="text-xs font-normal pt-2 md:pt-4">Click htmlFor Orgenaizer app download</p>
                 <div className="flex space-x-3">
-                  <img src={googleplay} alt="App Store images" />
-                  <img src={appstore} alt="App Store images" />
+                  <img src={googleplay} alt="App Store images" className="max-w-[130px] lg:max-w-[150px] xl:max-w-[185px]" />
+                  <img src={appstore} alt="App Store images" className="max-w-[130px] lg:max-w-[150px] xl:max-w-[185px]" />
                 </div>
               </div>
             </div>
@@ -422,8 +424,8 @@ function LandingPage() {
                 <p className="text-base text-gray-400">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p>
                 <p className="text-xs font-normal pt-2 md:pt-4">Click htmlFor Orgenaizer app download</p>
                 <div className="flex space-x-3">
-                  <img src={googleplay} alt="App Store images" />
-                  <img src={appstore} alt="App Store images" />
+                  <img src={googleplay} alt="App Store images" className="max-w-[130px] lg:max-w-[150px] xl:max-w-[185px]" />
+                  <img src={appstore} alt="App Store images" className="max-w-[130px] lg:max-w-[150px] xl:max-w-[185px]" />
                 </div>
               </div>
             </div>
@@ -431,7 +433,7 @@ function LandingPage() {
         </div>
       </div>
 
-      <div className="pt-28 bg-white"></div>
+      <div className="pt-12 md:pt-28 bg-white"></div>
 
       {/* who are you app photo */}
       <section className="w-full bg-[#EEEEEE]">
@@ -518,7 +520,7 @@ function LandingPage() {
 
       {/* Upcoming Slider */}
       <section className="bg-white swiper-main">
-        <div className="wrapper px-0 md:px-5 xl:px-8 2xl:px-10 relative pt-20 lg:pt-48 pb-24">
+        <div className="wrapper px-0 md:px-5 xl:px-8 2xl:px-10 relative pt-20 lg:pt-48 pb-14 lg:pb-24">
           <div className="flex flex-wrap items-center sm:justify-between space-y-10 sm:space-y-0">
             <h2 className="w-full text-center sm:text-left sm:w-auto text-spiroDiscoBall">Upcoming</h2>
             <ul className="flex u-tabs w-full sm:w-auto justify-center sm:justify-end">
@@ -620,7 +622,7 @@ function LandingPage() {
               <div className="block shadow-xl">
                 <div className="relative">
                   <img className="object-cover w-full h-56" src={AnniversaryEvent} alt="Mobile_Store_Offer.png" />
-                  <button onClick={()=> {
+                  <button onClick={() => {
                     setIsVideoPlayerPopUpOpen(true)
                     setVideoUrl("https://www.youtube.com/embed/9-x-dqX4yxo");
                   }} className="w-12 h-12 flex justify-center items-center bg-spiroDiscoBall anim absolute bottom-0 right-0 hover:opacity-75">
@@ -639,10 +641,10 @@ function LandingPage() {
               <div className="block shadow-xl">
                 <div className="relative">
                   <img className="object-cover w-full h-56" src={ChildrenPartyPlannersEvent} alt="Mobile_Store_Offer.png" />
-                  <button onClick={()=> {
+                  <button onClick={() => {
                     setIsVideoPlayerPopUpOpen(true)
                     setVideoUrl("https://www.youtube.com/embed/IC8rX1VcANI");
-                  }}  className="w-12 h-12 flex justify-center items-center bg-spiroDiscoBall anim absolute bottom-0 right-0 hover:opacity-75">
+                  }} className="w-12 h-12 flex justify-center items-center bg-spiroDiscoBall anim absolute bottom-0 right-0 hover:opacity-75">
                     <svg width="17" height="20" viewBox="0 0 17 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M0 0L17 10L0 20V0Z" fill="white" />
                     </svg>
@@ -658,10 +660,10 @@ function LandingPage() {
               <div className="block shadow-xl">
                 <div className="relative">
                   <img className="object-cover w-full h-56" src={BirthdaypartyEvent} alt="Fruit_Market_Offers.png" />
-                  <button onClick={()=> {
+                  <button onClick={() => {
                     setIsVideoPlayerPopUpOpen(true)
                     setVideoUrl("https://www.youtube.com/embed/h-ve-ArQFck");
-                  }}  className="w-12 h-12 flex justify-center items-center bg-spiroDiscoBall anim absolute bottom-0 right-0 hover:opacity-75">
+                  }} className="w-12 h-12 flex justify-center items-center bg-spiroDiscoBall anim absolute bottom-0 right-0 hover:opacity-75">
                     <svg width="17" height="20" viewBox="0 0 17 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M0 0L17 10L0 20V0Z" fill="white" />
                     </svg>
@@ -677,10 +679,10 @@ function LandingPage() {
               <div className="block shadow-xl">
                 <div className="relative">
                   <img className="object-cover w-full h-56" src={SummerGardenPartyEvent} alt="Fashion_Store_Offers.png" />
-                  <button onClick={()=> {
+                  <button onClick={() => {
                     setIsVideoPlayerPopUpOpen(true)
                     setVideoUrl("https://www.youtube.com/embed/yiD2r64xMFc");
-                  }}  className="w-12 h-12 flex justify-center items-center bg-spiroDiscoBall anim absolute bottom-0 right-0 hover:opacity-75">
+                  }} className="w-12 h-12 flex justify-center items-center bg-spiroDiscoBall anim absolute bottom-0 right-0 hover:opacity-75">
                     <svg width="17" height="20" viewBox="0 0 17 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M0 0L17 10L0 20V0Z" fill="white" />
                     </svg>
@@ -722,7 +724,7 @@ function LandingPage() {
               <p className="text-ev-dark font-semibold text-3xl lg:text-4xl">Advertisement rate for your website</p>
             </div>
             <div className="w-full md:w-6/12">
-              <p className="pb-8 pt-8 md:pt-0 text-[#9BA0A8]">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+              <p className="pb-8 pt-4 md:pt-0 text-[#9BA0A8] text-sm md:text-base">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
               <button className="text-white text-lg font-semibold bg-spiroDiscoBall hover:bg-japaneseIndigo anim px-12 py-3">Contact us</button>
             </div>
           </div>
@@ -730,13 +732,13 @@ function LandingPage() {
       </div >
 
       {/* ring Ad */}
-      < div className="bg-white" >
+      {/* < div className="bg-white" >
         <div className="wrapper py-9 relative">
           <div className="px-4 lg:px-8">
             <Advertisement />
           </div>
         </div>
-      </div >
+      </div > */}
 
       {/* Other Products */}
       <div className="bg-white swiper-main">
@@ -764,7 +766,7 @@ function LandingPage() {
               breakpoints={{
                 320: {
                   slidesPerView: 1,
-                  spaceBetween: 20,
+                  spaceBetween: 15,
                 },
                 640: {
                   slidesPerView: 2,
@@ -772,15 +774,15 @@ function LandingPage() {
                 },
                 768: {
                   slidesPerView: 3,
-                  spaceBetween: 30,
+                  spaceBetween: 25,
                 },
                 1024: {
                   slidesPerView: 4,
-                  spaceBetween: 40,
+                  spaceBetween: 25,
                 },
                 1200: {
                   slidesPerView: 5,
-                  spaceBetween: 50,
+                  spaceBetween: 30,
                 },
               }}
               onSlideChange={() => console.log('slide change')}
@@ -789,9 +791,9 @@ function LandingPage() {
                 <div className="swiper-slide py-5">
                   <div className="px-5 py-6 bg-white drop-shadow-lg">
                     <img src={siderevento} className="mx-auto" alt="" />
-                    <div className="text-center pt-8">
+                    <div className="text-center pt-8 w-full overflow-hidden">
                       <p className="text-xl font-bold text-ev-dark">Evento Package</p>
-                      <a href="https://eventopackage.com/" className="text-spiroDiscoBall  text-spiroDiscoBall text-sm font-bold">https://eventopackage.com</a>
+                      <a href="https://eventopackage.com/" className="text-spiroDiscoBall  text-spiroDiscoBall text-sm font-bold text-ellipsis">https://eventopackage.com</a>
                     </div>
                   </div>
                 </div>
@@ -800,9 +802,9 @@ function LandingPage() {
                 <div className="swiper-slide py-5">
                   <div className="px-5 py-6 bg-white drop-shadow-lg">
                     <img src={fcoin} className="mx-auto" alt="" />
-                    <div className="text-center pt-8">
+                    <div className="text-center pt-8 w-full overflow-hidden">
                       <p className="text-xl font-bold text-ev-dark">F-Coin</p>
-                      <p className="text-spiroDiscoBall text-sm font-bold">Coming Soon..</p>
+                      <p className="text-spiroDiscoBall text-sm font-bold text-ellipsis">Coming Soon..</p>
                     </div>
                   </div>
                 </div>
@@ -811,9 +813,9 @@ function LandingPage() {
                 <div className="swiper-slide py-5">
                   <div className="px-5 py-6 bg-white drop-shadow-lg">
                     <img src={sfe} className="mx-auto" alt="" />
-                    <div className="text-center pt-8">
+                    <div className="text-center pt-8 w-full overflow-hidden">
                       <p className="text-xl font-bold text-ev-dark">Festum Evento</p>
-                      <a href="https://www.festumevento.com" target="blank" className="text-spiroDiscoBall text-sm font-bold">https://www.festumevento.com</a>
+                      <a href="https://www.festumevento.com" target="blank" className="text-spiroDiscoBall text-sm font-bold text-ellipsis">https://www.festumevento.com</a>
                     </div>
                   </div>
                 </div>
@@ -822,9 +824,9 @@ function LandingPage() {
                 <div className="swiper-slide py-5">
                   <div className="px-5 py-6 bg-white drop-shadow-lg">
                     <img src={ad} className="mx-auto" alt="" />
-                    <div className="text-center pt-8">
+                    <div className="text-center pt-8 w-full overflow-hidden">
                       <p className="text-xl font-bold text-ev-dark">Ads Portal</p>
-                      <p className="text-spiroDiscoBall text-sm font-bold">Coming Soon..</p>
+                      <p className="text-spiroDiscoBall text-sm font-bold text-ellipsis">Coming Soon..</p>
                     </div>
                   </div>
                 </div>
@@ -833,9 +835,9 @@ function LandingPage() {
                 <div className="swiper-slide py-5">
                   <div className="px-5 py-6 bg-white drop-shadow-lg">
                     <img src={ff} className="mx-auto" alt="" />
-                    <div className="text-center pt-8">
+                    <div className="text-center pt-8 w-full overflow-hidden">
                       <p className="text-xl font-bold text-ev-dark">Friends Fields</p>
-                      <a href="https://friendsfield.in" target="blank" className="text-spiroDiscoBall text-sm font-bold">https://friendsfield.in</a>
+                      <a href="https://friendsfield.in" target="blank" className="text-spiroDiscoBall text-sm font-bold text-ellipsis">https://friendsfield.in</a>
                     </div>
                   </div>
                 </div>
@@ -889,7 +891,7 @@ function LandingPage() {
       {/* Get Our Brochure */}
       <div className="pt-[150px] pb-16 md:pb-0 md:pt-[230px] bg-white">
         <div className="wrapper md:py-10">
-          <div className="text-center pt-56 md:pt-0">
+          <div className="text-center pt-48 md:pt-0">
             <h2 className="text-japaneseIndigo">Get Our Brochure</h2>
             <p className="text-[#9BA0A8] pb-7">Ready to get Our Brochure & Enjoy your Life Through Our Festum Evento App.</p>
             <button className="text-white text-lg font-semibold bg-spiroDiscoBall hover:bg-japaneseIndigo anim px-12 py-2">Download Brochure</button>

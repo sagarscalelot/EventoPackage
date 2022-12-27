@@ -4,18 +4,17 @@ import { FreeMode, Navigation, Thumbs } from "swiper";
 import 'swiper/css/bundle';
 import "swiper/css";
 
-// import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
+import "swiper/css/free-mode";
 import { s3Url } from "../../../config";
 
 
 function GalleryImageAndVideoPreview({ handleClose, data }) {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
-  const [activeThumb, setActiveThumb] = useState();
 
   return (
-    <div className="fixed inset-0 w-full h-full bg-[rgba(0,0,0,0.6)] flex z-50">
+    <div className="fixed inset-0 w-full h-full bg-[rgba(0,0,0,0.6)] flex justify-center items-center z-50">
       <button
         type="button"
         onClick={() => handleClose(false)}
@@ -28,7 +27,7 @@ function GalleryImageAndVideoPreview({ handleClose, data }) {
           <h2 className="text-white">Sweet Love Catering</h2>
           <p className="text-lg text-white font-normal">Catering</p>
         </div>
-        <div className="swiper-container gallery-swippers gallery-top gallery-img relative">
+        <div className="swiper-container gallery-top gallery-img relative">
           <Swiper
             style={{
               "--swiper-navigation-color": "#fff",
@@ -36,37 +35,41 @@ function GalleryImageAndVideoPreview({ handleClose, data }) {
             }}
             spaceBetween={10}
             navigation={true}
+            modules={[FreeMode, Navigation, Thumbs]}
             thumbs={{ swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null }}
-            modules={[Navigation, Thumbs]}
           >
             {data.map((e, i) => (
               <SwiperSlide key={i}>
-                <div className="swiper-slide-container">
+                <div className="swiper-slide-container max-h-[550px]">
                   <div className="w-full lg:w-1/2 rounded-md overflow-hidden mx-auto h-full object-cover">
                     {(e.type === "photo" ?
-                      <img src={s3Url + "/" + e.url} alt="big-dish" className="w-full flex items-center justify-center" /> :
-                      <video width="100%" src={s3Url + "/" + e?.url} alt="no video" controls allowFullScreen className="w-full"></video>
+                      <img src={s3Url + "/" + e.url} alt="big-dish" className="w-full h-full" /> :
+                      <video width="100%" height="100%" src={s3Url + "/" + e?.url} alt="no video" controls allowFullScreen></video>
                     )}
                   </div>
                 </div>
               </SwiperSlide>
             ))}
           </Swiper>
-          <div className="swiper-container gallery-thumbs bg-black">
+          <div className="swiper-container sw2 gallery-thumbs bg-black h-auto mt-12">
             <Swiper
               onSwiper={setThumbsSwiper}
-              spaceBetween={10}
-              slidesPerView={4}
+              centeredSlides={true}
+              slidesPerView={'auto'}
+              touchRatio={0.2}
               freeMode={true}
+              slideToClickedSlide={true}
+              loopedSlides={4}
+              spaceBetween={10}
               watchSlidesProgress={true}
-              modules={[Navigation, Thumbs]}
-              className="mySwiper"
+              modules={[FreeMode, Navigation, Thumbs]}
+              className="flex"
             >
               {data.map((e, i) => (
                 <SwiperSlide key={i}>
-                  <div className="rounded-md overflow-hidden">
+                  <div className="rounded-md overflow-hidden w-28 h-28 mx-auto">
                     {(e.type === "photo" ?
-                      <img src={s3Url + "/" + e.url} alt="big-dish" /> :
+                      <img src={s3Url + "/" + e.url} alt="big-dish" className="w-full h-full" /> :
                       <video width="100%" height="100%" src={s3Url + "/" + e?.url} alt="no video" controls allowFullScreen></video>
                     )}
                   </div>
@@ -75,8 +78,7 @@ function GalleryImageAndVideoPreview({ handleClose, data }) {
             </Swiper>
           </div>
         </div>
-
-      </div>
+      </div >
     </div >
   );
 }

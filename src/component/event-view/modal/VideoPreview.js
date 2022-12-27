@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { Swiper, SwiperSlide } from "swiper/react";
+
 import { Navigation, Thumbs } from "swiper";
+
 import "swiper/css";
 import 'swiper/css/bundle';
 import "swiper/css/free-mode";
@@ -11,8 +13,9 @@ import VideoPreviewMainSlide from './VideoPreviewMainSlide';
 function VideoPreview({ handleClose, data }) {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   return (
-    <div className="fixed inset-0 w-full h-full bg-[rgba(0,0,0,0.6)] flex z-50">
+    <div className="fixed inset-0 w-full h-full bg-[rgba(0,0,0,0.6)] flex items-center justify-center z-50">
       <button type="button" onClick={() => handleClose(false)} className="absolute right-10 top-10 z-50 rounded-full text-white text-lg"><i className="icon-close"></i></button>
+
       <div className="relative w-full py-10">
         <div className="swiper-container gallery-top relative">
           <Swiper
@@ -34,24 +37,29 @@ function VideoPreview({ handleClose, data }) {
           </Swiper>
         </div>
         <div className="swiper-container gallery-thumbs bg-black">
+
           <Swiper
+            onSwiper={setThumbsSwiper}
             centeredSlides={true}
             slidesPerView={'auto'}
             touchRatio={0.2}
+            freeMode={true}
             slideToClickedSlide={true}
             loopedSlides={4}
             spaceBetween={10}
             watchSlidesProgress={true}
-            modules={[Navigation, Thumbs]}
-          // onSwiper={setThumbsSwiper}
+            modules={[FreeMode, Navigation, Thumbs]}
+            className="flex"
           >
+
             {data.map(e => (
               <SwiperSlide>
                 <VideoPreviewMainSlide link={e.url}/>
+
               </SwiperSlide>
             ))}
           </Swiper>
-        </div>
+        </div> */}
       </div>
     </div>
   )

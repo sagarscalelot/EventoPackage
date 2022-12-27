@@ -145,7 +145,7 @@ function PersonalProfile({  details }) {
                 </div>
                 <div className="">
                     <h2>{details?.name}</h2>
-                    <p className="text-xl font-bold text-japaneseIndigo pt-2.5">{details?.about}</p>
+                    <p className="text-xl font-bold text-japaneseIndigo pt-2.5">{details?.about || ""}</p>
                 </div>
             </div>
             {/* <!-- form Edit  --> */}
@@ -153,11 +153,11 @@ function PersonalProfile({  details }) {
                 <div className="flex justify-between space-x-5 -mx-2">
                     <div className="w-full md:w-1/2 px-2 inputHolder">
                         <span className="input-titel">Name</span>
-                        <input type="text" className="input font-bold" name="name" value={values?.name} onChange={changeHandler} disabled={isDisable} />
+                        <input type="text" className="input font-bold" name="name" value={values?.name || ""} onChange={changeHandler} disabled={isDisable} />
                     </div>
                     <div className="w-full md:w-1/2 px-2 inputHolder">
                         <span className="input-titel">Email</span>
-                        <input type="text" className="input font-bold" name="email" value={values?.email} onChange={changeHandler} disabled={isDisable} />
+                        <input type="text" className="input font-bold" name="email" value={values?.email || ""} onChange={changeHandler} disabled={isDisable} />
                     </div>
                 </div>
                 <div className="flex justify-between space-x-5 pt-3 -mx-2">
@@ -170,31 +170,31 @@ function PersonalProfile({  details }) {
                                         <option>+625</option>
                                         <option>+001</option>
                                     </select> */}
-                                <input type="text" className="text-base text-japaneseIndigo bg-white rounded-md flex space-x-3 profile-arrow outline-0 whitespace-nowrap pl-5 pr-10 py-3.5 relative w-28 font-bold" value={values?.country_code} onChange={changeHandler} disabled={isDisable} />
+                                <input type="text" className="text-base text-japaneseIndigo bg-white rounded-md flex space-x-3 profile-arrow outline-0 whitespace-nowrap pl-5 pr-10 py-3.5 relative w-28 font-bold" value={values?.country_code || ""} onChange={changeHandler} disabled={isDisable} />
                             </div>
                             <div className="max-w-full w-full inputHolder">
-                                <input type="text" className="input font-bold" value={values?.phone_no} disonChange={changeHandler} disabled={isDisable} abled />
+                                <input type="text" className="input font-bold" value={values?.phone_no || ""} disonChange={changeHandler} disabled={isDisable} abled />
                             </div>
                         </div>
                     </div>
                     <div className="w-full md:w-1/2 px-2 inputHolder">
                         <span className="input-titel">Address</span>
-                        <input type="text" className="input font-bold" name="address" value={values?.address} onChange={changeHandler} disabled={isDisable} />
+                        <input type="text" className="input font-bold" name="address" value={values?.address || ""} onChange={changeHandler} disabled={isDisable} />
                     </div>
                 </div>
                 <div className="flex justify-between space-x-5 pt-3 -mx-2">
                     <div className="w-full md:w-1/2 px-2 inputHolder">
                         <span className="input-titel">Date Of Birth</span>
-                        <input type="text" className="input font-bold" name="dob" placeholder='dd-mm-yyyy' value={values?.dob} onChange={changeHandler} disabled={isDisable} />
+                        <input type="text" className="input font-bold" name="dob" placeholder='dd-mm-yyyy' value={values?.dob ||""} onChange={changeHandler} disabled={isDisable} />
                     </div>
                     <div className="w-full md:w-1/2 px-2 inputHolder">
                         <span className="input-titel">Country</span>
-                        <input type="text" className="input font-bold" name="country" value={values?.country} onChange={changeHandler} disabled={isDisable} />
+                        <input type="text" className="input font-bold" name="country" value={values?.country || ""} onChange={changeHandler} disabled={isDisable} />
                     </div>
                 </div>
                 <div className="w-full pt-3">
                     <span className="input-titel">About Me</span>
-                    <textarea name="about" id="" cols="30" rows="5" value={values?.about} disabled={isDisable} onChange={changeHandler}
+                    <textarea name="about" id="" cols="30" rows="5" value={values?.about || ""} disabled={isDisable} onChange={changeHandler}
                         className="font-bold outline-none flex items-center w-full bg-white resize-none p-2 px-3.5 rounded-md placeholder:font-bold placeholder:text-japaneseIndigo" ></textarea>
                 </div>
             </div>

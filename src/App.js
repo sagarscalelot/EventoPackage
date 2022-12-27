@@ -24,7 +24,8 @@ function App() {
             <Route path="forgot-password" element={<ForgotPassword />} />
             <Route path="new-password/:username" element={<NewPassword />} />
           </Route>
-          <Route path="dashboard/*" element={<SideBar />} />
+          <Route path="/*" element={<SideBar />} />
+          {/* <Route path="dashboard/*" element={<SideBar />} /> */}
           <Route path="*" element={<h1 style={{ color: "red", margin: "50px" }}>404 | PAGE NOT FOUND</h1>} />
         </Route>
       </Routes>

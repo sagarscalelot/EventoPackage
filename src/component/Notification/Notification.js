@@ -53,11 +53,11 @@ function Notification() {
             <h1>Notification</h1>
           </Link>
           <div className="flex items-center  space-x-5">
-            <button className="btn-primary" onClick={() => navigate("/dashboard/notification/history")}>
+            <button className="btn-primary" onClick={() => navigate("/notification/history")}>
               <i className="icon-time mr-3"></i>
               <span>history</span>
             </button>
-            <button className="btn-primary" onClick={() => navigate("/dashboard/notification/details")} >
+            <button className="btn-primary" onClick={() => navigate("/notification/details")} >
               <i className="icon-plus mr-3"></i>
               <span>Create new</span>
             </button>
