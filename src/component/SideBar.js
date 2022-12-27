@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import logoImage from "../assest/svg/logo.svg";
 import userImage from "../assest/images/user-2.png";
 import Modal from "./modal/Modal.js"
-import { Link, Route, Routes, useNavigate,NavLink } from "react-router-dom";
+import { Link, Route, Routes, useNavigate, NavLink } from "react-router-dom";
 import LanguagePopup from "./other/modal/LanguagePopup"
 import SelectWhoYouAre from "./events/SelectWhoYouAre";
 import DashboardEvent from "./events/DashboardEvent";
@@ -44,6 +44,7 @@ import PublishDateTime from "./Notification/PublishDateTime";
 import NotificationMode from "./Notification/NotificationMode";
 import NotificationPayment from "./Notification/NotificationPayment";
 import Gift from "./other/Gift";
+import GiftDetails from "./other/GiftDetails";
 
 
 function SideBar() {
@@ -116,15 +117,13 @@ function SideBar() {
           </Link>
         </div>
         <div className="nav">
-
-          <NavLink to="../dashboard"  title="Dashboard" onClick={removeId}>
-
+          <Link to="../dashboard" className={stab === 1 ? "active" : undefined} title="Dashboard" onClick={removeId} >
             <span>
               <i className="w-6 block text-center text-lg icon-deshbord"></i>
             </span>
             <span>Dashboard</span>
 
-          </NavLink>
+          </Link>
           <NavLink to="/" activeClassName="active" title="Subscription">
             <span>
               <i className="w-6 block text-center text-lg icon-subsciption"></i>
@@ -182,9 +181,7 @@ function SideBar() {
             </span>
             <span>Our Products</span>
           </Link>
-
           <NavLink to="gift" activeClassName="active" title="Gift">
-
             <span>
               <i className="w-6 block text-center text-lg icon-refer"></i>
             </span>
@@ -282,25 +279,27 @@ function SideBar() {
         {/* <!-- Content In --> */}
         <div className="rightInContent">
           <Routes>
-            <Route index element={<SelectWhoYouAre />} />
-            <Route path="event">
-              <Route path="event-view/:eventType" element={<DashboardEventView />} />
-              <Route path=":eventType" >
-                <Route index element={<DashboardEvent />} />
-                <Route path="addplaces" element={<EventAddPlaces />} />
-                <Route path="aboutplace" element={<EventAboutPlace />} />
-                <Route path="personaldetails" element={<EventPersonalDetails />} />
-                <Route path="personalinfo" element={<EventPSB />} />
-                <Route path="photosandvideos" element={<EventPhotosAndVideos />} />
-                <Route path="addservices" element={<EventAddServices />} />
-                <Route path="addequipments" element={<EventAddEquipments />} />
-                <Route path="capacity" element={<EventCapacity />} />
-                <Route path="companydetails" element={<EventCompanyDetails />} />
-                <Route path="termsandconditions" element={<EventTermsAndConditions />} />
-                <Route path="discounts" element={<EventDiscounts />} />
-                <Route path="calender" element={<EventCalender />} />
-                <Route path="othercost" element={<PSBOtherCost />} />
-                <Route path="additem" element={<EventAddItems />} />
+            <Route path="dashboard">
+              <Route index element={<SelectWhoYouAre />} />
+              <Route path="event">
+                <Route path="event-view/:eventType" element={<DashboardEventView />} />
+                <Route path=":eventType" >
+                  <Route index element={<DashboardEvent />} />
+                  <Route path="addplaces" element={<EventAddPlaces />} />
+                  <Route path="aboutplace" element={<EventAboutPlace />} />
+                  <Route path="personaldetails" element={<EventPersonalDetails />} />
+                  <Route path="personalinfo" element={<EventPSB />} />
+                  <Route path="photosandvideos" element={<EventPhotosAndVideos />} />
+                  <Route path="addservices" element={<EventAddServices />} />
+                  <Route path="addequipments" element={<EventAddEquipments />} />
+                  <Route path="capacity" element={<EventCapacity />} />
+                  <Route path="companydetails" element={<EventCompanyDetails />} />
+                  <Route path="termsandconditions" element={<EventTermsAndConditions />} />
+                  <Route path="discounts" element={<EventDiscounts />} />
+                  <Route path="calender" element={<EventCalender />} />
+                  <Route path="othercost" element={<PSBOtherCost />} />
+                  <Route path="additem" element={<EventAddItems />} />
+                </Route>
               </Route>
             </Route>
 
@@ -311,7 +310,10 @@ function SideBar() {
             <Route path="gallery" element={<Gallery />} />
             <Route path="gift" element={<Gift />} />
             <Route path="booking" element={<Booking />} />
-            <Route path="gift" element={<Gift />} />
+            <Route path="gift">
+              <Route index element={<Gift />} />
+              <Route path="giftdetails" element={<GiftDetails />} />
+            </Route>
             <Route path="invoice" element={<Invoice />} />
             <Route path="faq" element={<FAQ />} />
             <Route path="our-products" element={<OurProducts />} />
