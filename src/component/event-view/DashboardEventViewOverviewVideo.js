@@ -5,8 +5,7 @@ function DashboardEventViewOverviewVideo({ videoUrl }) {
   return (
     <div className="ov-p ">
       <div className="rounded relative overflow-hidden border-2">
-        {videoUrl ? <video><source src={videoUrl} alt="upload-1" type="video/mp4" /></video> : <img src={videoPreview} alt="upload-1" className="w-full bg-white" />}
-
+        {videoUrl ? <video><source src={videoUrl} alt="upload-1" type="video/mp4" /></video> : <img src={videoPreview} alt="upload-1" className="w-full py-2" />}
       </div>
     </div>
   );

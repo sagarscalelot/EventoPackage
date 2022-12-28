@@ -6,6 +6,8 @@ import 'swiper/css/bundle';
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
+import { s3Url } from '../../../config';
+import ImagePreviewMainSlide from './ImagePreviewMainSlide';
 import VideoPreviewMainSlide from './VideoPreviewMainSlide';
 
 function VideoPreview({ handleClose, data }) {
