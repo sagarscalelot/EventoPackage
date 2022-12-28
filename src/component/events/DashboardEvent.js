@@ -10,7 +10,7 @@ import { useDispatch } from 'react-redux';
 import { reset } from '../../redux/stepProgressCount';
 import { MoonLoader } from 'react-spinners';
 import Paggination from '../Paggination';
-import { getEventType } from '../../shared/helper'; 
+import { getEventType } from '../../shared/helper';
 
 function DashboardEvent() {
 	const params = useParams();
@@ -23,6 +23,8 @@ function DashboardEvent() {
 	const token = localStorage.getItem("Token");
 	const eventType = getEventType(params.eventType);
 	const limit = 3;
+	const [activeList, setActiveList] = useState([]);
+
 	const header = {
 		'Authorization': `Token ${token}`
 	}
@@ -42,6 +44,10 @@ function DashboardEvent() {
 		}
 	}
 
+	const handleClick = (list) => {
+		console.log("back list : ", list);
+	};
+
 	const getCategory = async () => {
 		try {
 			const response = await axios.get(`${baseUrl}/organizer/events/listcategory`, { headers: header });
@@ -60,8 +66,31 @@ function DashboardEvent() {
 		dispatch(reset());
 	}, [isCreateNewPopUpOpen]);
 
+	const multipleEventlive = async () => {
+		console.log("live id : ",)
+		try {
+			const response = await axios.post(`${baseUrl}/organizer/events/livemulti`, { eventids: activeList }, { headers: header });
+			console.log(response);
+		} catch (error) {
+			console.log(error);
+		}
+	}
 
+	const checkboxHandler = (e, ele) => {
 
+		if (e.target.checked) {
+			// ele.is_live = true;
+			console.log("in if");
+			setActiveList(current => [...current, ele._id]);
+		} else {
+			console.log("in else");
+			// ele.is_live = false;
+
+			setActiveList(current => current.filter(data => data !== ele._id))
+		}
+		// handleClick=(activeList)
+	}
+console.log("live list : ", activeList);
 	return (
 		<div className="wrapper">
 			<div className="flex flex-wrap items-center">
@@ -74,7 +103,9 @@ function DashboardEvent() {
 							<option value={ele.category_name} key={ele._id} >{ele.category_name}</option>
 						))}
 					</select>
-					<button className="bg-white px-5 py-3 text-japaneseIndigo font-bold rounded-md tracking-wider">MultipleLive</button>
+					<button className="bg-white px-5 py-3 text-japaneseIndigo font-bold rounded-md tracking-wider"
+					
+						onClick={() => multipleEventlive()}>MultipleLive</button>
 					<button href="#" onClick={() => setIsCreateNewPopUpOpen(true)} className="btn-primary"><i className="icon-plus mr-3"></i>Create New</button>
 				</div>
 			</div>
@@ -88,7 +119,20 @@ function DashboardEvent() {
 					data-testid="loader"
 				/>
 				{allEvents.docs?.map(ele => (
-					<DashboardEventCategoryItem key={ele._id} data={ele} />
+					<>
+					<div className="w-full flex items-center ">
+						<div>
+							<label className="checkbox w-16">
+								<input type="checkbox" className="bg-white"
+									// checked={ele.isAdded}
+									// checked={ele.is_live}
+									onChange={(e) => checkboxHandler(e, ele)} />
+								<i className="icon-right"></i>
+							</label>
+						</div>
+						<DashboardEventCategoryItem key={ele._id} data={ele} liveList={handleClick} />
+						</div>
+					</>
 				))}
 
 				{!loading && ((allEvents?.totalPages > 0) ? <Paggination allEvents={allEvents} limit={limit} setPageNo={setPageNo} pageNo={pageNo} /> : <h1 style={{ margin: "100px 0" }}>No Event Found</h1>)}

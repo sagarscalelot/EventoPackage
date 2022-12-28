@@ -1,5 +1,5 @@
-import React, { Component, useState } from "react";
-import { Map, Marker, GoogleApiWrapper } from "google-maps-react";
+import React, { Component } from "react";
+import {GoogleApiWrapper } from "google-maps-react";
 import PlacesAutocomplete, {
     geocodeByAddress,
     getLatLng,
@@ -16,8 +16,8 @@ export class AutoPlaceSearch extends Component {
             activeMarker: {},
             selectedPlace: {},
             mapCenter: {
-                lat: this.props.coordinates.coordinates[1],
                 lng: this.props.coordinates.coordinates[0],
+                lat: this.props.coordinates.coordinates[1],
             },
         };
     }
@@ -90,7 +90,6 @@ export class AutoPlaceSearch extends Component {
                             })}
                         </div>
                         <GoogleMap
-                            // handleClick={this.handleClick}
                             coordinates={{
                                 type: "Point",
                                 coordinates: [this.props.coordinates.coordinates[0], this.props.coordinates.coordinates[1]]

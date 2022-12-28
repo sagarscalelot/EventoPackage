@@ -1,9 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import gallery1Image from "../../assest/images/gallery-1.png";
-import gallery2Image from "../../assest/images/gallery-2.png";
-import gallery3Image from "../../assest/images/gallery-3.png";
-import gallery5Image from "../../assest/images/gallery-5.png";
 import GalleryImageAndVideoPreview from './modal/GalleryImageAndVideoPreview';
 import Modal from '../modal/Modal';
 import { baseUrl, s3Url } from '../../config';
@@ -63,9 +59,7 @@ function GalleryVideos() {
                 <GalleryImageAndVideoPreview handleClose={setPreview} />
             </Modal>
             <Modal isOpen={isVideoPlayerPopUpOpen} >
-
                 <VideoPlayer handleClose={setIsVideoPlayerPopUpOpen} videoUrl={videoUrl} />
-
             </Modal>
         </>
     )

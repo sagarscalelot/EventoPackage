@@ -73,9 +73,11 @@ function EventCapacity() {
     } catch (error) {
       console.log(error);
     }
+    console.log("co : ", coordinates[0]);
   }
   useEffect(() => {
     getCapacity();
+    getLiveLocation();
   }, []);
 
   const clickNextHandler = async () => {
@@ -104,6 +106,26 @@ function EventCapacity() {
     navigate(-1);
   }
 
+  const getLiveLocation = () => {
+    if (!navigator.geolocation) {
+      console.log('Geolocation is not supported by your browser');
+    } else {
+      console.log('Locating...');
+      navigator.geolocation.getCurrentPosition((position) => {
+        // setStatus(null);
+        console.log(position.coords.latitude, position.coords.longitude);
+        setCoordinates([position.coords.longitude, position.coords.latitude]);
+        values.location = {
+          type: "Point",
+          coordinates: [position.coords.longitude, position.coords.latitude],
+        };
+        // setLat(position.coords.latitude);
+        // setLng(position.coords.longitude);
+      }, () => {
+        console.log('Unable to retrieve your location');
+      });
+    }
+  }
   return (
     //   <!-- Content In -->
     <div>
@@ -147,9 +169,10 @@ function EventCapacity() {
               <input type="text" className="input font-bold" name="parking_capacity" value={values.parking_capacity} onChange={handleInputChange} />
             </div>
             <div className="w-full relative">
+            <button className='absolute bottom-3 right-3 bg-spiroDiscoBall text-base capitalize font-semibold text-white px-7 py-3 rounded-md z-40' onClick={getLiveLocation}>Get Live Location</button>
               <span className="input-titel">Address</span>
               <span className="input-titel">{values.address}</span>
-              <div className="w-full flex flex-wrap bg-white p-2 rounded-md min-h-[220px] xl:min-h-[300px]">
+              <div className="w-full flex flex-wrap bg-white p-2 rounded-md min-h-[300px] xl:min-h-[400px]">
                 <div className="relative rounded-md w-full">
                   {console.log("add : ", values.location.coordinates)}
                   {Object.keys(values.location).length === 0 ? (
@@ -158,7 +181,7 @@ function EventCapacity() {
                         handleClick={handleClick}
                         coordinates={{
                           type: "Point",
-                          coordinates: [72.807623, 21.221723]
+                          coordinates: [coordinates[0], coordinates[1]]
                         }}
                       />
                     </>

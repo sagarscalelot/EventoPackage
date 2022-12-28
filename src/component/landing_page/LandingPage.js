@@ -341,7 +341,6 @@ function LandingPage() {
                           </div>
                         </div>
                       </div>
-                      <button className="btn-primary bg-japaneseIndigo border-japaneseIndigo hover:text-japaneseIndigo font-semibold tracking-wider px-3 md:px-5">Contact Us</button>
                       <Link to="/dashboard" className="btn-primary bg-japaneseIndigo border-japaneseIndigo hover:text-japaneseIndigo font-semibold tracking-wider px-3 md:px-5">Dashboard</Link>
                       <span className="xl:hidden inline-block" onClick="toggleActive('nav', 'hidden')">
                         <svg className="w-5 md:w-7 h-auto cursor-pointer fill-current hover:text-ev-sky anim" viewBox="0 0 100 80" width="40" height="40">
@@ -357,10 +356,11 @@ function LandingPage() {
                         <li className="w-full lg:w-auto"><a href="#" className="block">Home</a></li>
                         <li className="w-full lg:w-auto"><a href="#about" className="block">About</a></li>
                         <li className="w-full lg:w-auto"><a href="#feature" className="block">Feature</a></li>
-                        <li className="w-full lg:w-auto"><a href="#" className="block">Upcoming</a></li>
+                        <li className="w-full lg:w-auto"><a href="#" className="block">F-Coin</a></li>
                         <li className="w-full lg:w-auto"><a href="#showcase" className="block">Showcase</a></li>
-                        <li className="w-full lg:w-auto"><a href="#" className="block">Price</a></li>
                         <li className="w-full lg:w-auto"><a href="#" className="block">About Us</a></li>
+                        <li className="w-full lg:w-auto"><a href="#" className="block">Contact us</a></li>
+                        <li className="w-full lg:w-auto"><a href="#" className="block">Ads</a></li>
                       </ul>
                     </nav>
                   </div>
@@ -960,16 +960,20 @@ function LandingPage() {
                     <a href="#" className="block opacity-50 mr-4">Home</a>
                     <a href="#" className="block opacity-50 mr-4">About</a>
                     <a href="#" className="block opacity-50 mr-4">Feature</a>
-                    <a href="#" className="block opacity-50 mr-4">Upcoming</a>
+                    <a href="#" className="block opacity-50 mr-4">F-Coin</a>
                     <a href="#" className="block opacity-50 mr-4">Showcase</a>
-                    <a href="#" className="block opacity-50 mr-4">Price</a>
                     <a href="#" className="block opacity-50 mr-4">About us</a>
+                    <a href="#" className="block opacity-50 mr-4">Contact us</a>
+                    <a href="#" className="block opacity-50 mr-4">Ads</a>
                   </div>
                 </div>
                 <div className="space-y-2 lg:space-y-4">
                   <span className="ft-titel">Contact info</span>
-                  <div className="flex flex-wrap -mx-3.5 opacity-50 space-y-2 sm:space-y-0">
-                    <div className="w-full lg:w-1/3 py-2 lg:py-0 px-3.5 border-b lg:border-b-0 lg:border-r border-white border-opacity-20 ft-text">
+                  <div className="w-full lg:py-0 ft-text lg:flex">
+                    help@eventopackage.com
+                  </div>
+                  {/* <div className="flex flex-wrap  opacity-50 space-y-2 sm:space-y-0">
+                     <div className="w-full lg:w-1/3 py-2 lg:py-0 px-3.5 border-b lg:border-b-0 lg:border-r border-white border-opacity-20 ft-text">
                       Surat, Gujarat
                     </div>
                     <div className="w-full lg:w-1/3 py-2 lg:py-0 px-3.5 border-b lg:border-b-0 lg:border-r border-white border-opacity-20 ft-text flex lg:justify-center">
@@ -977,10 +981,7 @@ function LandingPage() {
                         <span className="block whitespace-nowrap">+91 97279 38000</span>
                       </div>
                     </div>
-                    <div className="w-full lg:w-1/3 py-2 lg:py-0 px-3.5 lg:pl-6 ft-text lg:flex justify-center">
-                      help@eventopackage.com
-                    </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>

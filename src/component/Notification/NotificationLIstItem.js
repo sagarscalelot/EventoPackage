@@ -2,7 +2,7 @@ import React from "react";
 import { s3Url } from "../../config"
 import { Link } from "react-router-dom";
 import notificationSvg2 from "../../assest/svg/notification-2.svg";
-
+import parse from 'html-react-parser';
 import {  increments } from '../../redux/stepProgressNotification';
 import { useDispatch } from 'react-redux';
 
@@ -25,7 +25,7 @@ function NotificationLIstItem({ data }) {
             </Link>
           </div>
           <p className="text-gray-400 text-base pt-3 font-medium pl-4">
-            {data?.description}
+            {parse(data?.description)}
           </p>
           <div className="flex justify-end">
             <button className="btn-primary small flex items-center">

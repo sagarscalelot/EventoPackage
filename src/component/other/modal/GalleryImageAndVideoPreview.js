@@ -57,39 +57,22 @@ function GalleryImageAndVideoPreview({ handleClose, data }) {
             ))}
           </Swiper>
           <Swiper
-            // onSwiper={setThumbsSwiper}
-            // spaceBetween={10}
-            // centeredSlides={true}
-            // slidesPerView={"auto"}
-            // slideToClickedSlide={true}
-            // loop={true}
-            // modules={[FreeMode, Navigation, Thumbs]}
-            // className="mySwiper mt-5"
-
-            // onSwiper={setThumbsSwiper}
-            // spaceBetween={10}
-            // centeredSlides={true}
-            // slidesPerView={"auto"}
-            // slideToClickedSlide={true}
-            // touchRatio={0.2}
-            // loop={false}
-            // watchSlidesProgress={true}
-            // modules={[FreeMode, Navigation, Thumbs]}
-            // className="mySwiper thum w-full max-w-full mt-5 bg-black"
-
             onSwiper={setThumbsSwiper}
-            loop={true}
-            centeredSlides={true}
             spaceBetween={10}
+            centeredSlides={true}
             slidesPerView={'auto'}
-            freeMode={true}
-            watchSlidesProgress={true}
+            slideToClickedSlide={true}
+            
+            touchRatio={0.2}
+            loop={false}
+            loopedSlides={4}
+
             modules={[FreeMode, Navigation, Thumbs]}
-            className="mySwiper thum w-full max-w-full mt-5 bg-black"
+            className={"mySwiper w-full max-w-full mt-5"}
           >
             {data.map((e, i) => (
-              <SwiperSlide key={i} className="py-3">
-                <div className="rounded-md overflow-hidden w-28 h-28 mx-auto mr-3">
+              <SwiperSlide key={i}>
+                <div className="rounded-md overflow-hidden w-28 h-28 mx-auto">
                   {(e.type === "photo" ?
                     <img src={s3Url + "/" + e.url} alt="big-dish" className="w-full h-full object-cover" /> :
                     <video width="100%" height="100%" src={s3Url + "/" + e?.url} alt="no video" controls allowFullScreen></video>

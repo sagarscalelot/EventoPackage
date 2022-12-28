@@ -735,3 +735,8 @@ header.nav-up {
 .thum .swiper-slide.swiper-slide-active {
 	opacity: 1;
 }
+
+.swiper-thumbs .swiper-wrapper > div {
+    width: 150px;
+    height: 150px;
+}

@@ -1,8 +1,27 @@
 import React, { useState } from 'react'
-import Advertisement from '../Advertisement';
+import $ from 'jquery';
 
 function FAQ() {
     const [isopen, setIsOpen] = useState()
+
+    var $titleTab = $('.title_tab');
+    $('.title_tab.active').next('.inner_content').slideDown();
+    $titleTab.on('click', function (e) {
+        e.preventDefault();
+        if ($(this).hasClass('active')) {
+            $(this).removeClass('active');
+            $(this).next().stop().slideUp(500);
+            $(this).next().find('p').removeClass('show');
+        } else {
+            $(this).addClass('active');
+            $(this).next().stop().slideDown(500);
+            $(this).parent().siblings().children('.title_tab').removeClass('active');
+            $(this).parent().siblings().children('.inner_content').slideUp(500);
+            $(this).parent().siblings().children('.inner_content').find('p').removeClass('show');
+            $(this).next().find('p').addClass('show');
+        }
+    });
+
     return (
         <div className="wrapper min-h-full">
             <div className="space-y-7 h-full">
@@ -16,7 +35,7 @@ function FAQ() {
                                 <i className="icon-minus text-[3px]"></i>
                             </span>
                             </h3>
-                            <div className="inner_content" style={{display: 'none'}}>
+                            <div className="inner_content" style={{ display: 'none' }}>
                                 <p>You can create a new account at the end of the order process or on the following page: Create new account. You can view all of your orders and subscriptions in your customer account. You can also change your addresses and your password.</p>
                             </div>
                         </div>
@@ -26,7 +45,7 @@ function FAQ() {
                                 <i className="icon-minus text-[3px]"></i>
                             </span>
                             </h3>
-                            <div className="inner_content" style={{display: 'none'}}>
+                            <div className="inner_content" style={{ display: 'none' }}>
                                 <p>You can create a new account at the end of the order process or on the following page: Create new account. You can view all of your orders and subscriptions in your customer account. You can also change your addresses and your password.</p>
                             </div>
                         </div>
@@ -36,7 +55,7 @@ function FAQ() {
                                 <i className="icon-minus text-[3px]"></i>
                             </span>
                             </h3>
-                            <div className="inner_content" style={{display: 'none'}}>
+                            <div className="inner_content" style={{ display: 'none' }}>
                                 <p>You can create a new account at the end of the order process or on the following page: Create new account. You can view all of your orders and subscriptions in your customer account. You can also change your addresses and your password.</p>
                             </div>
                         </div>
@@ -46,7 +65,7 @@ function FAQ() {
                                 <i className="icon-minus text-[3px]"></i>
                             </span>
                             </h3>
-                            <div className="inner_content" style={{display: 'none'}}>
+                            <div className="inner_content" style={{ display: 'none' }}>
                                 <p>You can create a new account at the end of the order process or on the following page: Create new account. You can view all of your orders and subscriptions in your customer account. You can also change your addresses and your password.</p>
                             </div>
                         </div>
@@ -56,17 +75,17 @@ function FAQ() {
                                 <i className="icon-minus text-[3px]"></i>
                             </span>
                             </h3>
-                            <div className="inner_content" style={{display: 'none'}}>
+                            <div className="inner_content" style={{ display: 'none' }}>
                                 <p>You can create a new account at the end of the order process or on the following page: Create new account. You can view all of your orders and subscriptions in your customer account. You can also change your addresses and your password.</p>
                             </div>
                         </div>
                     </div>
                 </div>
-                {/* <!-- advisement --> */}
-                <Advertisement />
             </div>
         </div>
     )
 }
+
+
 
 export default FAQ;

@@ -2,50 +2,41 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { baseUrl } from '../../../config';
 import Select from 'react-select';
-import { current } from '@reduxjs/toolkit';
+import Multiselect from 'multiselect-react-dropdown';
+import { options } from '@fullcalendar/core/preact';
 
 function EventPopUpDiscountOnEquipmentOrItem({ handleClose, eventId, setSelectedDiscount, selectedDiscount, serviceOn, activeList }) {
-	// console.log("props : ", selectedDiscount);
 	const [discount, setDiscount] = useState("");
-	const [servicesList, setServicesList] = useState([]);
+	const [serviceList, setServiceList] = useState([]);
 	const [itemList, setItemList] = useState([]);
 	const [eqipmentList, setEqipmentList] = useState([]);
 	const [error, setError] = useState("");
-
+	const [items, setItems] = useState([]);
 	const [selecetdServiceId, setSelectedServiceId] = useState("");
-	const [fetchedDiscount, setFetcheddiscount] = useState(selectedDiscount.discount); 
-	// console.log(servicesList);
 	const token = localStorage.getItem("Token");
+	// const []
 	const header = {
 		'Authorization': `Token ${token}`
 	}
 
-	console.log("list : ", activeList);
+	const [list, setList] = useState([]);
+
+	// console.log("list : ", activeList);
 
 	const getServiceList = async () => {
 		try {
-			// setServiceList([]);
-			const eventDetails = await axios.get(`${baseUrl}/organizer/events/getone?eventid=${eventId}`, { headers: header });
+			const eventDetails = await axios.get(`${baseUrl}/organizer/events/discount/getselectservice?eventid=${eventId}`, { headers: header });
 
-			console.log("event services : ", eventDetails.data.Data?.services);
-			console.log("event items : ", eventDetails.data.Data?.items);
-			// console.log("event equipments : ", eventDetails.data.Data?.equipments);
+			console.log("event services : ", eventDetails?.data?.Data);
+			// console.log("event equipmens : ", eventDetails.data.Data?.equipments);
+			// console.log("event items : ", eventDetails?.data.Data);
+			setItems(eventDetails?.data?.Data);
+			// eventDetails?.data?.Data.items.map((e) => (
+			// 	setItemList(current => [...current, (e.name, e._id)])
+			// 	// items.push(e.name)	
 
-			setServicesList(eventDetails.data.Data?.services);
-			setEqipmentList(eventDetails.data.Data?.equipments);
-			setItemList(eventDetails.data.Data?.items);
-			// const responseServise = await axios.get(`${baseUrl}/organizer/events/getselectservice?eventid=${eventId}`, { headers: header });
-			// setServicesList([]);
-			// servicesList.map(ele => {
-			// 	setServicesList(current => [...current, { value: ele._id, label: ele.name }]);
-			// })
-			// eqipmentList.map(ele => {
-			// 	setEqipmentList(current => [...current, { value: ele._id, label: ele.name }]);
-			// })
-			// itemList.map(ele => {
-			// 	setItemList(current => [...current, { value: ele._id, label: ele.name }]);
-			// })
-			// console.log("services >> ", responseServise.data.Data);
+			// ))
+
 		} catch (error) {
 			console.log(error);
 		}
@@ -56,7 +47,8 @@ function EventPopUpDiscountOnEquipmentOrItem({ handleClose, eventId, setSelected
 	}, []);
 
 	const optionChangeHandler = (e) => {
-		e.map(ele => {
+		console.log("e : ", e);
+		return e.map(ele => {
 			setSelectedServiceId(cuurent => [...cuurent, ele.value])
 		})
 		console.log(selecetdServiceId);
@@ -65,91 +57,50 @@ function EventPopUpDiscountOnEquipmentOrItem({ handleClose, eventId, setSelected
 	const validateDiscount = (e) => {
 		if ((e.target.value <= 100) && (e.target.value >= 0)) {
 			setDiscount(e.target.value);
-			selectedDiscount.discount = e.target.value + "%";
-			// selectedDiscount.sid = selectedDiscount._id;
-			setError(null);	
+			// selectedDiscount.discount = e.target.value + "%";
+			setError(null);
 		} else {
 			setError("Enter Valid Discount value");
 		}
-		// console.log("fetched dis : ", discount);
 
 	}
 
-	// let b = setSelectedDiscount({ ...selectedDiscount, sid: selectedDiscount._id, discountname:selectedDiscount.discountname, discounttype : selectedDiscount.discounttype, description : selectedDiscount.description, discount: discount + "%", tandc : selectedDiscount.tandc, services : servicesList, items : itemList, equipments : eqipmentList});
-
-	
 	const handleSubmit = async () => {
-		
-		// ----------------------------------
-		// setSelectedDiscount({ ...selectedDiscount, sid: selectedDiscount._id, discountname:selectedDiscount.discountname, discounttype : selectedDiscount.discounttype, description : selectedDiscount.description, discount: discount + "%", tandc : selectedDiscount.tandc, services : servicesList, items : itemList, equipments : eqipmentList, isAdded : "true" });
-
-		// const reqObj = {
-		// 	eventid : eventId,
-		// 	discounts : [selectedDiscount]
-		// }
-		// console.log("eventId :>>>>>>>>>>>>>>>>>>>>>>>>> ", reqObj);
-
-		// console.log("dis before create : ",activeList);
-		// try {
-		// 	// const response = await axios.put(`${baseUrl}/api/org/discount/${discountId}?event_id=${eventId}`,{equipment_id: selecetdServiceId, discount: value+"%"},{headers: header});
-		// 	// console.log(response);
-		// 	// handleClose(false);
-		// 	console.log("try");
-		// 	const response = await axios.post(`${baseUrl}/organizer/events/discount`,reqObj,{headers: header});
-
-		// 	console.log("res :", response);
-
-		// 	handleClose(false);
-		// } catch (error) {
-		// 	console.log("Error",error);
-		// }
-		// -----------------------------------------
-
 		setDiscount(discount);
-		// setServicesList(servicesList);
-		// setEqipmentList(eqipmentList);
-		// setItemList(itemList);
-		// selectedDiscount.discount = 
-		// handleClick(selectedDiscount.discount);
-		console.log("dis : ", discount);
-		console.log("list : ", eqipmentList, itemList);
+		selectedDiscount.discount = discount + "%";
+		console.log(" :", list);
+		selectedDiscount.services = [];
+		selectedDiscount.equipments = [];
+		selectedDiscount.items = [];
 
+		list.map((e, i) => (
+			e.type === "service" ? (selectedDiscount.services).push(e._id) : 
+			((e.type === "equipment" ? (selectedDiscount.equipments).push(e._id) : 
+			(selectedDiscount.items).push(e._id)))
+			)
+		)
+		// selectedDiscount.services.push();
+		// selectedDiscount.equipments = eqipmentList;
+		// selectedDiscount.items = itemList;
+		// console.log("list : ", list);
 		handleClose(false);
 	}
 
-
+	const val = [
+        { name: "Option 1", cat: "Group 1" },
+        { name: "Option 2", cat: "Group 1" }
+      ]
 	const handleChange = e => {
-		// e.map(ele => {
-			// setSelectedServiceId(cuurent => [...cuurent, e.target.value])
-		// })
-		// setSelectedServiceId(e.target.value)
-		console.log("selected services : ", e);
-		// // selectedDiscount.services = e.target.value;
-		// // setSelectedDiscount({ ...selectedDiscount, services : e.target.value})
-		// // setSelectedServiceId(cuurent => [...cuurent, e.target.value])
-		// console.log("selected services : ", selecetdServiceId);
-	};
+		// console.log(selectedDiscount);
+		// e.map((e, i) => (
+		// 	(e.type === "service" ? setServiceList(current => [...current, e._id]) : ((e.type === "equipment" ? setEqipmentList(current => [...current, e._id]) : setItemList(current => [...current, e._id]))))
+		// ))
+		// console.log("selected services : ", e);	
+		console.log("e : ", e);
+		setList(e);
+		// setList(curr => [...curr, e][0]);
+	}
 
-	// const arr = [
-	// 	{value: '', text: '--Choose an option--'},
-	// 	{value: 'apple', text: 'Apple 🍏'},
-	// 	{value: 'banana', text: 'Banana 🍌'},
-	// 	{value: 'kiwi', text: 'Kiwi 🥝'},
-	//   ];
-
-
-	//  const ColourOption = [
-	// 	{ value: 'ocean', label: 'Ocean', color: '#00B8D9', isFixed: true },
-	// 	{ value: 'blue', label: 'Blue', color: '#0052CC', isDisabled: true },
-	// 	{ value: 'purple', label: 'Purple', color: '#5243AA' },
-	// 	{ value: 'red', label: 'Red', color: '#FF5630', isFixed: true },
-	// 	{ value: 'orange', label: 'Orange', color: '#FF8B00' },
-	// 	{ value: 'yellow', label: 'Yellow', color: '#FFC400' },
-	// 	{ value: 'green', label: 'Green', color: '#36B37E' },
-	// 	{ value: 'forest', label: 'Forest', color: '#00875A' },
-	// 	{ value: 'slate', label: 'Slate', color: '#253858' },
-	// 	{ value: 'silver', label: 'Silver', color: '#666666' },
-	//   ];
 	return (
 		<>
 			{/* //  <!--  Discount on Particular Equipment Or Item  --> */}
@@ -171,33 +122,37 @@ function EventPopUpDiscountOnEquipmentOrItem({ handleClose, eventId, setSelected
 
 								<div className="w-full lg:w-1/2 inputHolder">
 									<label className="input-titel">Equipment Or Item</label>
+									{/* <Select className="w-full arrow option" 
+									options={[{label : items}]} isMulti onChange={(e) => optionChangeHandler(e)} /> */}
 									{/* <Select options={options} /> */}
-									<select onChange={handleChange}  className="w-full arrow option"  >
-										{servicesList.map((e, i) => (
-											<option key={i} value={e}>
+									{/* <select onChange={handleChange} className="w-full arrow option"  >
+										{items.map((e, i) => (
+											<option key={e._id} value={{}}>
 												{e.name}
 											</option>
 										))}
-										{eqipmentList.map((e, i) => (
-											<option key={i} value={e}>
-												{e.name}
-											</option>
-										))}
-										{itemList.map((e, i) => (
-											<option key={i} value={e}>
-												{e.name}
-											</option>
-										))}
-									</select>
+									</select> */}
+									{/* <Select
+										// defaultValue={[itemList[0], itemList[1]]}
+										isMulti
+										// isObject={false}
+										// name="colors"
+										options={items.name}
+										className="basic-multi-select"
+										classNamePrefix="select"
+									/> */}
+
+									<Multiselect
+										options={items} // Options to display in the dropdown
+										displayValue="name"
+										// isObject={false}
+										// onRemove={(e) => console.log(e)}	
+										// selectedValues={val}
+										onSelect={(e) => handleChange(e)}
+										// showCheckbox	
+										className="w-full arrow option"
+									/>
 								</div>
-								{/* <Select
-    defaultValue={}
-    isMulti
-    name="colors"
-    options={ColourOption}
-    className="basic-multi-select"
-    classNamePrefix="select"
-  /> */}
 								<div className={serviceOn ? "w-full lg:w-1/2 inputHolder" : "w-full inputHolder"}>
 									<label className="input-titel">Discount</label>
 									<input className="input option" type="text" onChange={validateDiscount} />
