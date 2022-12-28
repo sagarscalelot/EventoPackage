@@ -21,6 +21,7 @@ import ImageCompanyPreview from './modal/ImageCompanyPreview';
 import VideoCompanyPreview from './modal/VideoCompanyPreview';
 
 function DashboardEventViewOverview({ data, capacity, socials, company, service }) {
+
     const [preview, setPreview] = useState(false);
     const [previewPhoto, setPreviewPhoto] = useState(false);
     const [previewVideo, setPreviewVideo] = useState(false);

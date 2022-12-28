@@ -14,7 +14,7 @@ function ImageAndVideoPreview({ handleClose, data }) {
     <div className="fixed inset-0 w-full h-full bg-[rgba(0,0,0,0.6)] flex z-50">
       <button type="button" onClick={() => handleClose(false)} className="absolute right-10 top-10 z-50 rounded-full text-white text-lg"><i className="icon-close"></i></button>
       <div className="relative w-full py-10">
-        <div className="swiper-container gallery-top relative">
+        <div className="swiper-container gallery-top relative max-h-[550px] h-full">
           <Swiper
             style={{
               "--swiper-navigation-color": "#fff",
@@ -33,7 +33,7 @@ function ImageAndVideoPreview({ handleClose, data }) {
             ))}
           </Swiper>
         </div>
-        <div className="swiper-container gallery-thumbs bg-black">
+        <div className="swiper-container gallery-thumbs bg-black mt-12">
           <Swiper
             centeredSlides={true}
             slidesPerView={'auto'}
@@ -43,7 +43,7 @@ function ImageAndVideoPreview({ handleClose, data }) {
             spaceBetween={10}
             watchSlidesProgress={true}
             modules={[Navigation, Thumbs]}
-          // onSwiper={setThumbsSwiper}
+          onSwiper={setThumbsSwiper}
           >
             {data?.photos?.map(e => (
               <SwiperSlide>

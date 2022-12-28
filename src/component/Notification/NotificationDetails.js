@@ -94,7 +94,7 @@ function NotificationDetails() {
       <div className="space-y-8 h-full">
         {/* <!-- title-holder  --> */}
         <div className="flex justify-between items-center">
-          <Link to="../notification" className="flex items-center">
+          <Link to="../../notification" className="flex items-center">
             <i className="icon-back-arrow mr-4 text-2xl"></i>
             <h1>Create New Notification</h1>
           </Link>
