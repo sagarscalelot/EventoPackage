@@ -728,3 +728,9 @@ header.nav-up {
 
 
 @tailwind utilities;
+
+
+.swiper-thumbs .swiper-wrapper > div {
+    width: 150px;
+    height: 150px;
+}

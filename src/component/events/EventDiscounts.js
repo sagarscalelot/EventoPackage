@@ -36,7 +36,7 @@ function EventDiscounts() {
 			const response = await axios.get(`${baseUrl}/organizer/discount/list`, { headers: header });
 			if (response.data.IsSuccess) {
 				const res = await axios.get(`${baseUrl}/organizer/events/discount?eventid=${eventId}`, { headers: header });
-				
+
 				response.data.Data.map((element) => {
 					let isMatched = false;
 					res.data.Data.discounts.map(selement => {
@@ -45,7 +45,7 @@ function EventDiscounts() {
 							isMatched = true;
 							setActiveList(current => [...current, selement]);
 						}
-						
+
 					});
 					if (!isMatched) {
 						displayDiscount.push(element);
@@ -57,6 +57,7 @@ function EventDiscounts() {
 		} catch (error) {
 			console.log(error);
 		}
+		console.log("display : ", displayDiscount);
 	}
 	useEffect(() => {
 		getDiscount();
@@ -78,25 +79,25 @@ function EventDiscounts() {
 	const initialRender2 = useRef(true);
 
 	const clickNextHandler = async () => {
-			try {
-				console.log("try");
-				
-				const reqObj = {
-					eventid: eventId,
-					discounts: activeList
-				}
-				console.log("active list : ", activeList);
-		
-				console.log("obj : ", reqObj);
-		
-				const createResponse = await axios.post(`${baseUrl}/organizer/events/discount`, reqObj, { headers: header });
-	
-				console.log("res :", createResponse);
-	
-			} catch (error) {
-				console.log("Error", error);
+		try {
+			console.log("try");
+
+			const reqObj = {
+				eventid: eventId,
+				discounts: activeList
 			}
-			toast.success("Data saved Successfully.");
+			console.log("active list : ", activeList);
+
+			console.log("obj : ", reqObj);
+
+			const createResponse = await axios.post(`${baseUrl}/organizer/events/discount`, reqObj, { headers: header });
+
+			console.log("res :", createResponse);
+
+		} catch (error) {
+			console.log("Error", error);
+		}
+		toast.success("Data saved Successfully.");
 		dispatch(increment());
 		navigate(`../calender`);
 	}
@@ -120,7 +121,7 @@ function EventDiscounts() {
 				ele.sid = ele.sid
 			} else {
 
-			ele.sid = ele._id
+				ele.sid = ele._id
 			}
 			setActiveList(current => [...current, ele]);
 		} else {
@@ -141,17 +142,17 @@ function EventDiscounts() {
 	}
 
 	const handleSubmit = async () => {
-		
+
 		try {
 			console.log("try");
 			const reqObj = {
 				eventid: eventId,
 				discounts: activeList
 			}
-			console.log("active list : ", activeList);
-	
+			// console.log("active list : ", activeList);
+
 			console.log("obj : ", reqObj);
-	
+
 			const createResponse = await axios.post(`${baseUrl}/organizer/events/discount`, reqObj, { headers: header });
 
 			console.log("res :", createResponse);
@@ -194,7 +195,48 @@ function EventDiscounts() {
 										<div>
 											<h1 className="text-white">{ele.discountname}</h1>
 											<div className="text-[40px] text-black font-bold">{ele.discount}</div>
-											<span className="text-xs text-white font-normal">{ele.description}</span>
+
+											{
+												// ele?.services?.length > 0 ?
+
+												// 	ele?.services?.map((e, i) => (
+												// 		<span className="text-xs text-white font-normal">
+												// 			{e.name}
+												// 		</span>
+												// 	))
+												// 	// <div className="media-upload-holder">
+												// 	// 	{/* <!-- photo-holder --> */}
+												// 	// 	<div className="w-full">
+												// 	// 		<div className="flex flex-wrap -mx-2" >
+												// 	// 			{data?.photos?.map((e, i) => (
+												// 	// 				<DashboardEventViewOverviewPhoto key={i} alt={e.description} imageUrl={s3Url + "/" + e?.url} />
+												// 	// 			))}
+												// 	// 		</div>
+												// 	// 	</div>
+												// 	// </div>
+												// 	:
+												// 	(ele?.equipments?.length > 0 ?
+												// 		ele?.equipments?.map((e, i) => (
+												// 			<span className="text-xs text-white font-normal">
+												// 				{e.name}
+												// 			</span>
+												// 		))
+												// 		:
+												// 		ele?.items?.length > 0 ?
+												// 			ele?.items?.map((e, i) => (
+												// 				<span className="text-xs text-white font-normal">
+												// 					{e.name}
+												// 				</span>
+												// 			))
+												// 			: ele.description
+												// 	)
+
+											}
+											{/* <span className="text-xs text-white font-normal">{ele?.services.length > 0 ? "a" : "b"}</span>
+											<span className="text-xs text-white font-normal">{ele?.equipments ? "c" : "d"}</span>
+											<span className="text-xs text-white font-normal">{ele?.items ? "e" : "f"}</span> */}
+										<span className="text-xs text-white font-normal">{ele?.description}</span>
+									
 										</div>
 										<div>
 											<button onClick={() => editButtonHandler(ele)} className="bg-white p-2 rounded-md text-sm font-bold"><i className="text-sm edit text-black icon-edit mr-2"></i>Edit</button>
