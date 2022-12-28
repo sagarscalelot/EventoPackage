@@ -46,7 +46,6 @@ function VideoCompanyPreview({ handleClose, data }) {
             centeredSlides={true}
             slidesPerView={'auto'}
             touchRatio={0.2}
-            freeMode={true}
             slideToClickedSlide={true}
             loopedSlides={4}
             spaceBetween={10}

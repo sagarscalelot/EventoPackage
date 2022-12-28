@@ -149,12 +149,12 @@ function SideBar() {
             </span>
             <span>Gallery</span>
           </NavLink>
-          <NavLink to="https://www.festumevento.com" target="_blank" activeClassName="active" title="Festum Evento">
+          <a href="https://www.festumevento.com" target="_blank" activeClassName="active">
             <span>
               <i className="w-6 block text-center text-lg icon-f-evanto"></i>
             </span>
             <span>Festum Evento</span>
-          </NavLink>
+          </a>
           <NavLink to="booking" activeClassName="active" title="Booking">
             <span>
               <i className="w-6 block text-center text-lg icon-booking"></i>

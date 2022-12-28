@@ -57,7 +57,7 @@ function GalleryAll() {
 									setIsVideoPlayerPopUpOpen(true)
 									setVideoUrl(s3Url + "/" + e?.url);
 								}}
-									className="w-10 h-10 flex justify-center items-center bg-black rounded-full anim absolute bottom-0 right-0 hover:opacity-75">
+									className="w-10 h-10 flex justify-center items-center rounded-full anim absolute bottom-0 right-0 ">
 									<i className='icon-play text-2xl'></i>
 								</button>
 							</div>

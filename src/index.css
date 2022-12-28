@@ -506,10 +506,10 @@ li#video-card.active .video-cover {
 	background-image: url("./assest/images/landing-page/landing-home-bg.png");
 }
 
-@media (max-width: 639px){
+@media (max-width: 639px) {
 	.landing-wrapper .lmain:after {
 		@apply bg-right;
-	}	
+	}
 }
 
 header a {
@@ -725,6 +725,13 @@ header.nav-up {
 	line-height: 24px;
 }
 
-
-
 @tailwind utilities;
+
+.thum .swiper-slide.swiper-slide {
+	width: auto !important;
+	cursor: pointer;
+	opacity: 0.4;
+}
+.thum .swiper-slide.swiper-slide-active {
+	opacity: 1;
+}
