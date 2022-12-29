@@ -37,7 +37,9 @@ function DashboardEvent() {
 		try {
 			const response = await axios.post(`${baseUrl}/organizer/events/list`, requestObj, { headers: header });
 			setAllEvents(response.data.Data);
-			console.log(response.data.Data);
+
+			console.log("Event List>>>>>",response.data.Data.docs);
+
 			setLoading(false);
 		} catch (error) {
 			console.log(error);

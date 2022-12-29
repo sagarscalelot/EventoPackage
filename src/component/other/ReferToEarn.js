@@ -18,12 +18,14 @@ function ReferToEarn() {
       const response = await axios.get(`${baseUrl}/organizer/profile`, { headers: header });
       console.log("response.data.Data", response.data.Data.my_refer_code);
       setDetails(response.data.Data)
+
     } catch (error) {
       console.log(error);
     }
   }
 
   useEffect(() => {
+
     getProfile();
   }, []);
   // details.my_refer_code
@@ -32,6 +34,7 @@ function ReferToEarn() {
     Refer Friends to allset and give them 10 coin with your referral code ${details.my_refer_code} once they order, you get 10 coin too. www.eventopackage.com`);
     toast.success("Referral Code Copied");
   }
+
 
   return (
     <div className="wrapper min-h-full">
@@ -185,17 +188,22 @@ function ReferToEarn() {
                 <div className="rounded-md border-2 border-dotted border-ufoGreen bg-green-100 p-3 flex items-center justify-between">
                   <div className="pr-7">
                     <p className="text-xs">Referral Code</p>
+
                     <h1 className="text-40 text-ufoGreen">{details.my_refer_code}</h1>
                   </div>
                   <div className="px-3 border-l-2 border-ufoGreen border-dotted">
                     {/* <a href="#" className="text-sm font-bold uppercase">Copy<br />Code</a> */}
                     <button className="text-sm font-bold uppercase" onClick={() => copyCode()}>Copy<br />Code</button>
+
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+
+        {/* <!-- advisement --> */}
+       
       </div>
     </div>
   )

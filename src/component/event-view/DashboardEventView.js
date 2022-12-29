@@ -12,6 +12,7 @@ import bannerPreview from "../../assest/images/banner-preview.png";
 function DashboardEventView() {
   const [tab, setTab] = useState(1);
   const [event, setEvent] = useState({});
+  const [review, setReview] = useState({});
   const [capacity, setCapacity] = useState({});
   const [socials, setsocials] = useState({});
   const [company, setCompany] = useState({});
@@ -33,23 +34,12 @@ function DashboardEventView() {
       setsocials(response.data.Data.tandc);
       setCompany(response.data.Data.companydetail);
       setService(response.data.Data.services);
+      setReview(response.data.Data.reviews);
     } catch (error) {
       console.log(error);
     }
   }
-  // const getEventById = async () => {
-  // 	try {
-  // 		const response = await axios.get(`${baseUrl}/api/events_get_list`, { headers: header });
-  // 		console.log("get event by id >> ", response.data.data);
-  // 		setEvent(response.data.data[0]);
-  // 		setCapacity(response.data.data[0].capacity[0]);
-  // 		setsocials(response.data.data[0].social[0]);
-  // 		setCompany(response.data.data[0].company_details[0]);
-  //     setService(response.data.data[0].selected_service);
-  // 	} catch (error) {
-  // 		console.log(error);
-  // 	}
-  // }
+
 
   useEffect(() => {
     getEventById();
@@ -91,7 +81,7 @@ function DashboardEventView() {
         {/* <!-- tab-contents-holder --> */}
         {tab === 1 && <DashboardEventViewOverview data={event} capacity={capacity} socials={socials} company={company} service={service} />}
         {tab === 2 && <DashboardEventAttendee />}
-        {tab === 3 && <DashboardEventReview />}
+        {tab === 3 && <DashboardEventReview  />}
       </div>
     </>
   )

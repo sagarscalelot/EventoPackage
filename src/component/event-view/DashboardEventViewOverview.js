@@ -37,6 +37,13 @@ function DashboardEventViewOverview({ data, capacity, socials, company, service 
 	const [previewVideo, setPreviewVideo] = useState(false);
 	const [previewCompanyVideo, setPreviewCompanyVideo] = useState(false);
 	const [previewCompanyPhoto, setPreviewcompanyPhoto] = useState(false);
+
+	const gradientStyle = (type) => {
+		if (type === "discount_on_total_bill") return " from-[#13e1b094] to-[#13E1B0] ";
+		if (type === "discount_on_equipment_or_item") return " from-[#20c0e878] to-[#20C0E8] ";
+		if (type === "advance_and_discount_confirmation") return " from-[#faba1585] to-[#FABA15] ";
+	}
+
 	// const dataProps = { data };
 	console.log("dataProps  : ", data)
 	// console.log(" capacity: ", capacity?.location?.coordinates)
@@ -459,7 +466,7 @@ function DashboardEventViewOverview({ data, capacity, socials, company, service 
 						{(data?.discounts?.length > 0) &&
 							<>
 								{data?.discounts?.map(e => (
-									<div className="bg-gradient-to-r from-[#13e1b094] to-[#13E1B0] p-3.5 xl:p-5 rounded-lg relative">
+									<div className={gradientStyle(e.discounttype) + "bg-gradient-to-r from-[#13e1b094] to-[#13E1B0] p-3.5 xl:p-5 rounded-lg relative"}>
 										{/* <DashboardEventViewOverviewPhoto key={e.id} alt={e.description} imageUrl={s3Url + "/" + e?.url} /> */}
 										<div className="text-center">
 											<h1 className="text-white">{e?.discountname}</h1>
