@@ -10,11 +10,7 @@ import Modal from "../modal/Modal";
 import EventPopUpShareEvent from './popups/EventPopUpShareEvent';
 
 
-
-
-
- 
- const Star = ({ratings}) => {
+const Star = ({ratings}) => {
 	const numberRating = Number(ratings);
 	console.log("numberRating",numberRating);
   const ratingStar = Array.from({ length: 5 }, (elem, index) => {
@@ -37,13 +33,7 @@ import EventPopUpShareEvent from './popups/EventPopUpShareEvent';
  };
  
 
- 
-
-
-
-function  DashboardEventCategoryItem({ data, handleClick }) {
-
-
+function DashboardEventCategoryItem({ data, handleClick }) {
 
 	const dispatch = useDispatch();
 
@@ -57,7 +47,6 @@ function  DashboardEventCategoryItem({ data, handleClick }) {
 	const header = {
 		'Authorization': `Token ${token}`,
 	}
-
 
 	const singleEventlive = async (id) => {
 		console.log("live id : ", id)
@@ -80,20 +69,6 @@ function  DashboardEventCategoryItem({ data, handleClick }) {
 			console.log(error);
 		}
 	}
-
-	// const checkboxHandler = (e, ele) => {
-
-	// 	if (e.target.checked) {
-	// 		// ele.is_live = true;
-	// 		console.log("in if");
-	// 		// setActiveList(current => [...current, ele]);
-	// 	} else {
-	// 		// console.log("in else");
-	// 		ele.is_live = false;
-	// 		// setActiveList(current => current.filter(data => data._id !== ele._id))
-	// 	}
-	// }
-	// console.log("live list: ", activeList);
 	const flat_no = data?.personaldetail?.flat_no + ", ";
 	const street = data?.personaldetail?.street + ", ";
 	const area = data?.personaldetail?.area + ", ";
@@ -103,14 +78,7 @@ function  DashboardEventCategoryItem({ data, handleClick }) {
 
 	return (
 		<div className="w-full flex items-center ">
-			{/* <div>
-				<label className="checkbox w-16">
-					<input type="checkbox" className="bg-white" 
-					// checked={ele.isAdded}
-					onChange={(e) => checkboxHandler(e, data)}/>
-					<i className="icon-right"></i>
-				</label>
-			</div> */}
+		
 
 			<div className="flex space-x-5 w-full p-4 pr-7 bg-white rounded">
 				<div className="max-w-xs h-[200px] w-full">
@@ -120,11 +88,11 @@ function  DashboardEventCategoryItem({ data, handleClick }) {
 				<div className="w-full">
 					<div className="flex justify-between border-b-2 pb-4">
 						<div className="">
+						<span className="text-sm text-white bg-spiroDiscoBall px-3 py-1">{data?.event_category.category_name}</span>
 						<span className="text-sm text-white bg-spiroDiscoBall px-3 py-1 ml-2 capitalize ">{data.is_approved === true ? "verified" : "unverified"}</span>
 							<h2 className="text-japaneseIndigo pt-5">{data?.display_name}</h2>
 							<div className="text-sm text-quicksilver pt-3"><i className="icon-fill-location mr-3"></i>
-								{/* {data?.capacity?.address}{data?.personaldetail?.area + "," + data?.personaldetail?.city + "," + data?.personaldetail?.state} */}
-								{/* {console.log(data)} */}
+							
 								{data?.capacity ? data?.capacity?.address :
 									<>
 										{data?.personaldetail?.flat_no ? flat_no : ""}
@@ -139,33 +107,31 @@ function  DashboardEventCategoryItem({ data, handleClick }) {
 						</div>
 						<div className="">
 							<div className="flex items-center">
-
-								{/* {console.log("check : ", data?.display_name, data?.is_live)} */}
+								
 
 								<input type="checkbox" className="switch mr-3"
-									// defaultChecked={data?.is_live}
+									
 									id="on"
 									defaultChecked={data?.is_live}
-									// onClick={() => singleEventlive(data?._id)}
+								
 									onChange={() => toggleEvent(data)}
-
-
-									/>
-									<label htmlFor="">
-										<h3>Live</h3>	
-									</label>
-								</div>
-								<h1 className="pt-7">{data?.aboutplace?.place_price} INR</h1>
-
+								/>
+								<label htmlFor="">
+									<h3>Live</h3>
+								</label>
 							</div>
-							<h1 className="pt-7">{parseFloat(data?.totalPrice).toFixed(2)} INR</h1>
+							<h1 className="pt-7">
+								{data?.aboutplace ? parseFloat(data?.aboutplace?.place_price).toFixed(2) : data?.personaldetail?.price} INR
+								
+							</h1>
 						</div>
-
-						<div className="flex justify-between pt-4">
-
+					</div>
+					<div className="flex justify-between pt-4">
+						
+						<div className="flex items-center">
 							<div className="flex items-center space-x-1">
 							<Star ratings={data.ratings}/>
-								<span className="text-quicksilver text-xs font-bold pl-2">{data?.totalreview} ratings</span>
+								<span className="text-quicksilver text-xs font-bold pl-2"> {data?.totalreview} ratings</span>
 							</div>
 							<div className="flex text-spiroDiscoBall text-xs font-bold ml-6">
 								{data?.discounts[0]?.discounttype === "discount_on_total_bill" ? <> <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -175,7 +141,6 @@ function  DashboardEventCategoryItem({ data, handleClick }) {
 									<path d="M4.81306 3.49999C4.72469 3.49999 4.63632 3.52624 4.55932 3.58136C4.36246 3.72223 4.31697 3.99521 4.45783 4.19207L8.83253 10.3167C8.9734 10.5135 9.24638 10.559 9.44324 10.4181C9.6401 10.2782 9.68472 10.0043 9.54473 9.80831L5.17003 3.68373C5.08341 3.56387 4.94955 3.49999 4.81306 3.49999Z" fill="#FAFAFA" />
 								</svg> <span className="ml-2 inline-block">{data?.discounts[0]?.discount} OFF On Total Bill</span></> : ""}
 							</div>
-
 						</div>
 						<div className="flex space-x-2">
 							<Link to={`../addplaces`} onClick={() => { localStorage.setItem("eventId", data?._id); localStorage.setItem("event_type", data?.event_type); dispatch(increment()) }} className="bg-brightGray px-2 py-1 text-center rounded"><i className="text-base edit text-black icon-edit" style={{ color: "#000" }}></i></Link>
@@ -183,11 +148,10 @@ function  DashboardEventCategoryItem({ data, handleClick }) {
 								className="icon-fill-megaphone text-base text-black"></i></button>
 							<button to={`/dashboard/event/calender`} className="bg-brightGray px-2 py-1 text-center rounded  cursor-not-allowed" disabled><i
 								className="icon-calendar1 text-base text-black"></i></button>
-							{/* {console.log("data : ", data)} */}
-							{/* {data?.tandc &&  */}
+							
 							<button to="/" className="bg-brightGray px-2 py-1 text-center rounded cursor-not-allowed" disabled><i
 								className="icon-percentage text-base text-black"></i></button>
-							{/* } */}
+						
 							<button onClick={() => setSharePopUpOpen(true)} className="bg-brightGray px-2 py-1 text-center rounded"><i
 								className="icon-share text-base text-black"></i></button>
 
@@ -195,11 +159,9 @@ function  DashboardEventCategoryItem({ data, handleClick }) {
 					</div>
 				</div>
 			</div>
-
 			<Modal isOpen={sharePopUpOpen}>
 				<EventPopUpShareEvent handleClose={setSharePopUpOpen} url={url} />
 			</Modal>
-
 		</div>
 	)
 }

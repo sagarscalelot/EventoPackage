@@ -1,5 +1,5 @@
 import React from 'react'
-import Advertisement from '../Advertisement';
+// import Advertisement from '../Advertisement';
 
 function RedeemCoin() {
   return (
@@ -114,7 +114,7 @@ function RedeemCoin() {
                     </div>
                 </div>
                 {/* <!-- advisement --> */}
-                <Advertisement />
+                {/* <Advertisement /> */}
             </div>
           </div>
   )

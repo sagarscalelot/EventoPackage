@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Advertisement from '../Advertisement';
+// import Advertisement from '../Advertisement';
 import upload2Image from "../../assest/images/upload-2.png";
 import ChatboatUserListItem from './ChatboatUserListItem';
 
@@ -11,7 +11,7 @@ function Chatbot() {
 
             <div className="flex flex-wrap space-y-7 w-full">
                 {/* <!-- advisement --> */}
-                <Advertisement />
+                {/* <Advertisement /> */}
                 {/* <!-- title-holder  --> */}
                 <div className="space-y-6 w-full">
                     <h1 className="w-full">Chatbot</h1>

@@ -65,8 +65,7 @@ function EventPopUpCreateNew({ handleClose, selectedCategory, displayName, edit,
 				handleClose(false);
 				if(!edit) {
 					dispatch(increment());
-					navigate(`../addplaces`);
-					localStorage.setItem("eventId",)
+					
 				}
 				// temporary fix for page reload
 				window.location.reload();
