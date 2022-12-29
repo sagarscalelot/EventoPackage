@@ -45,7 +45,7 @@ function DashboardEventViewOverview({ data, capacity, socials, company, service 
 	}
 
 	// const dataProps = { data };
-	// console.log("dataProps  : ", data)
+	console.log("dataProps  : ", data)
 	// console.log(" capacity: ", capacity?.location?.coordinates)
 	// console.log(" socials: ", socials)
 	// console.log(" jus create : ", data)
@@ -56,7 +56,12 @@ function DashboardEventViewOverview({ data, capacity, socials, company, service 
 	//     const newString = s.replace(regex, "");
 	//     return newString;
 	// }
-
+	const flat_no = data?.personaldetail?.flat_no + ", "
+	const street = data?.personaldetail?.street + ", "
+	const area = data?.personaldetail?.area + ", "
+	const city = data?.personaldetail?.city + ", "
+	const state = data?.personaldetail?.state + "-"
+	const pincode = data?.personaldetail?.pincode
 	// const regex = /(<([^>]+)>)/ig;
 	return (
 		<div className="pt-7 lg:pt-10">
@@ -229,9 +234,15 @@ function DashboardEventViewOverview({ data, capacity, socials, company, service 
 						<div className="space-y-1.5">
 							<h3 className="text-lg">Address</h3>
 							<div className="bg-white p-4 rounded-md">
-								{
-									data?.companydetail ?
-										<h3>{company?.flat_no + ", " + company?.street + ", " + company?.area + ", " + company?.city + ", " + company?.state + "-" + company?.pincode}</h3> : ""
+								{data?.capacity ? <h3>{data?.capacity?.address}</h3> :
+									<h3>
+										{data?.personaldetail?.flat_no ? flat_no : ""}
+										{data?.personaldetail?.street ? street : ""}
+										{data?.personaldetail?.area ? area : ""}
+										{data?.personaldetail?.city ? city : ""}
+										{data?.personaldetail?.state ? state : ""}
+										{data?.personaldetail?.pincode ? pincode : ""}
+									</h3>
 								}
 								{/* <h3>Akshya Nagar 1st Block 1st Cross, Rammurthy nagar, Bangalore-560016</h3> */}
 							</div>
@@ -431,7 +442,8 @@ function DashboardEventViewOverview({ data, capacity, socials, company, service 
 					{/* <!-- right-bar  --> */}
 					<div className="w-full lg:w-4/12 lg:pl-5 space-y-7 sticky top-0">
 						{/* <!-- map-content  --> */}
-						{capacity &&
+						{/* {console.log("L : ", capacity?.location > 0)} */}
+						{capacity?.location?.coordinates &&
 							<div className="w-full relative min-h-[170px] xl:min-h-[220px] p-2.5 bg-white rounded-md">
 								<div className='w-full min-h-[180px]' style={{ position: "inherit" }}>
 									<GoogleMap
@@ -444,7 +456,7 @@ function DashboardEventViewOverview({ data, capacity, socials, company, service 
 								</div>
 								<div className="p-3.5 pt-0 xl:p-5 xl:pt-0">
 									<span className="input-titel"><i className="icon-fill-location mr-1"></i> Location</span>
-									<h3 className="text-sm xl:text-base">{company?.flat_no + ", " + company?.street + ", " + company?.area + ", " + company?.city + ", " + company?.state + "-" + company?.pincode}</h3>
+									<h3 className="text-sm xl:text-base">{data?.capacity?.address}</h3>
 								</div>
 							</div>
 						}

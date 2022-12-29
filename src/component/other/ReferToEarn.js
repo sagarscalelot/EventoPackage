@@ -1,30 +1,39 @@
+import React, { useState, useEffect } from 'react'
 import axios from 'axios';
-import { data } from 'jquery';
-import React, { useEffect } from 'react'
-import { useState } from 'react';
-import { baseUrl } from '../../config';
-import Advertisement from '../Advertisement';
+import { baseUrl } from "../../config";
+import { toast } from 'react-toastify';
 
 function ReferToEarn() {
+
   const token = localStorage.getItem("Token");
 
-  const [myReferCode, setMyReferCode] = useState('');
-
   const header = {
-    'Authorization': `Token ${token}`
+    'Authorization': `Token ${token}`,
   }
-  const referCode = async () => {
+
+  const [details, setDetails] = useState({});
+
+  const getProfile = async () => {
     try {
       const response = await axios.get(`${baseUrl}/organizer/profile`, { headers: header });
-      setMyReferCode(response.data.Data.my_refer_code)
+      console.log("response.data.Data", response.data.Data.my_refer_code);
+      setDetails(response.data.Data)
+
     } catch (error) {
       console.log(error);
     }
   }
 
   useEffect(() => {
-    referCode();
-  }, [])
+
+    getProfile();
+  }, []);
+  // details.my_refer_code
+  const copyCode = () => {
+    navigator.clipboard.writeText(`Give 10 Coin, Get 10 Coin
+    Refer Friends to allset and give them 10 coin with your referral code ${details.my_refer_code} once they order, you get 10 coin too. www.eventopackage.com`);
+    toast.success("Referral Code Copied");
+  }
 
 
   return (
@@ -179,18 +188,22 @@ function ReferToEarn() {
                 <div className="rounded-md border-2 border-dotted border-ufoGreen bg-green-100 p-3 flex items-center justify-between">
                   <div className="pr-7">
                     <p className="text-xs">Referral Code</p>
-                    <h1 className="text-40 text-ufoGreen">{myReferCode}</h1>
+
+                    <h1 className="text-40 text-ufoGreen">{details.my_refer_code}</h1>
                   </div>
                   <div className="px-3 border-l-2 border-ufoGreen border-dotted">
-                    <a href="#" className="text-sm font-bold uppercase">Copy<br />Code</a>
+                    {/* <a href="#" className="text-sm font-bold uppercase">Copy<br />Code</a> */}
+                    <button className="text-sm font-bold uppercase" onClick={() => copyCode()}>Copy<br />Code</button>
+
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+
         {/* <!-- advisement --> */}
-        <Advertisement />
+       
       </div>
     </div>
   )
