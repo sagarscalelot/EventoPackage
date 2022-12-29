@@ -725,6 +725,20 @@ header.nav-up {
 	line-height: 24px;
 }
 
+
+.icon-half-star{@apply text-[#FFBA09] w-4 relative z-10;}
+i.icon-half-star:after {
+	content: "";
+	position: absolute;
+	width: 14px;
+	height: 14px;
+	background-image: url("../src/assest/images/halfStar.png");
+	object-fit: cover;
+	left: 0;
+	top: 0;
+	z-index: -1;
+}
+
 @tailwind utilities;
 
 .thum .swiper-slide.swiper-slide {

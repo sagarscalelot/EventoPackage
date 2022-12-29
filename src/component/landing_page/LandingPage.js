@@ -6,7 +6,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import { Navigation } from 'swiper';
+import { Autoplay, Navigation, Pagination } from 'swiper';
 
 import "owl.carousel/dist/assets/owl.carousel.min.css";
 import "owl.carousel/dist/assets/owl.theme.default.min.css";
@@ -48,7 +48,12 @@ import iphone from "../../assest/images/landing-page/iphone.png";
 import siderevento from "../../assest/images/landing-page/sider-evento.png";
 import giftfcoin from "../../assest/images/landing-page/surprise 1.png";
 import Advertisement from "../Advertisement";
-import multidivice from "../../assest/images/landing-page/Multi-Devices.png"
+import multidivice from "../../assest/images/landing-page/Multi-Devices.png";
+import banner1 from "../../assest/images/landing-page/heroBanner1.png";
+import dj from "../../assest/images/landing-page/dj.png";
+import Speaker from "../../assest/images/landing-page/Speaker.png";
+import noiseporn from "../../assest/images/landing-page/noiseporn.jpg";
+import adbanner from "../../assest/images/landing-page/add-banner.jpg";
 
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
@@ -341,7 +346,10 @@ function LandingPage() {
                           </div>
                         </div>
                       </div>
-                      <Link to="/dashboard" className="btn-primary bg-japaneseIndigo border-japaneseIndigo hover:text-japaneseIndigo font-semibold tracking-wider px-3 md:px-5">Dashboard</Link>
+
+                      <button className="btn-primary bg-japaneseIndigo border-japaneseIndigo hover:text-japaneseIndigo font-semibold tracking-wider px-3 py-2 sm:py-3 min-w-[70px] sm:min-w-[120px]">Ads</button>
+                      <Link to="/dashboard" className="btn-primary bg-japaneseIndigo border-japaneseIndigo hover:text-japaneseIndigo font-semibold tracking-wider px-3 py-2 sm:py-3 min-w-[70px] sm:min-w-[120px]">Dashboard</Link>
+
                       <span className="xl:hidden inline-block" onClick="toggleActive('nav', 'hidden')">
                         <svg className="w-5 md:w-7 h-auto cursor-pointer fill-current hover:text-ev-sky anim" viewBox="0 0 100 80" width="40" height="40">
                           <rect width="100" height="15"></rect>
@@ -353,14 +361,15 @@ function LandingPage() {
                     {/* <!-- Navbar --> */}
                     <nav className="w-full lg:w-auto py-4 lg:py-0 lg:order-2 text-center hidden xl:block">
                       <ul className="flex flex-wrap space-y-2 lg:space-y-0 lg:space-x-8">
-                        <li className="w-full lg:w-auto"><a href="#" className="block">Home</a></li>
-                        <li className="w-full lg:w-auto"><a href="#about" className="block">About</a></li>
-                        <li className="w-full lg:w-auto"><a href="#feature" className="block">Feature</a></li>
-                        <li className="w-full lg:w-auto"><a href="#" className="block">F-Coin</a></li>
-                        <li className="w-full lg:w-auto"><a href="#showcase" className="block">Showcase</a></li>
-                        <li className="w-full lg:w-auto"><a href="#" className="block">About Us</a></li>
-                        <li className="w-full lg:w-auto"><a href="#" className="block">Contact us</a></li>
-                        <li className="w-full lg:w-auto"><a href="#" className="block">Ads</a></li>
+
+                        <li className="w-full lg:w-auto"><a href="#" className="block hover:opacity-50">Home</a></li>
+                        <li className="w-full lg:w-auto"><a href="#about" className="block hover:opacity-50">About</a></li>
+                        <li className="w-full lg:w-auto"><a href="#feature" className="block hover:opacity-50">Feature</a></li>
+                        <li className="w-full lg:w-auto"><a href="#showcase" className="block hover:opacity-50">Showcase</a></li>
+                        <li className="w-full lg:w-auto"><a href="#" className="block hover:opacity-50">F-coin</a></li>
+                        <li className="w-full lg:w-auto"><a href="#" className="block hover:opacity-50">About Us</a></li>
+                        <li className="w-full lg:w-auto"><a href="#" className="block hover:opacity-50">Contact us</a></li>
+
                       </ul>
                     </nav>
                   </div>
@@ -378,62 +387,50 @@ function LandingPage() {
         </div>
       </div>
 
-      {/* who are you */}
-      <div id="feature" className="bg-white">
+      {/* eVANT bANNER */}
+      <div id="feature" className="bg-white"> 
+        {/* banner slider */}
         <div className="wrapper">
-          <div className="title text-center py-5 md:py-8 lg:py-12">
-            <h2>Who are you?</h2>
-          </div>
-          <hr className="py-0 my-0 border-gray-100" />
-          <div className="flex flex-wrap">
-            <div className="w-full md:w-1/2 flex flex-col md:flex-row py-7 xl:py-12">
-              <div className="icon mb-4">
-                <svg width="67" height="67" viewBox="0 0 67 67" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M66.9019 22.1846L66.8568 21.9331C66.8487 21.8943 66.8445 21.8554 66.8364 21.8176L62.1378 10.4696V4.88672H4.78448V10.4697L0.163574 21.8167C0.153367 21.8617 0.147217 21.9067 0.138973 21.9505L0.0960508 22.1846C0.0327148 22.5906 0 23.0067 0 23.4309C0 26.4653 1.69306 29.1029 4.1875 30.4513V62.1141H62.8125V30.4513C65.305 29.1028 67 26.4652 67 23.4309C67 23.0067 66.9652 22.5906 66.9019 22.1846ZM63.747 21.6367H53.4909L52.2579 13.3486H60.3712L63.747 21.6367ZM7.57754 7.67769H59.3467V10.4697H7.57754V7.67769ZM51.0842 24.4277L51.2355 25.4408L50.4095 26.5398C49.42 27.8586 47.9068 28.6151 46.2609 28.6151C44.6149 28.6151 43.1018 27.8586 42.1122 26.5398L41.2698 25.4172L41.2207 24.4277H51.0842ZM41.0837 21.6367L40.6768 13.3486H49.4342L50.6693 21.6367H41.0837ZM38.4257 24.4276L38.4748 25.4398L37.6467 26.5398C36.6571 27.8586 35.144 28.6151 33.5 28.6151C31.852 28.6151 30.3409 27.8586 29.3493 26.5398L28.5027 25.41L28.5518 24.4276H38.4257ZM28.693 21.6367L29.1122 13.3486H37.8838L38.2887 21.6367H28.693ZM16.3451 21.6367L17.5637 13.3486H26.319L25.8977 21.6367H16.3451ZM25.7547 24.4277L25.7035 25.451L24.8857 26.5398C23.894 27.8586 22.383 28.6151 20.737 28.6151C19.0911 28.6151 17.58 27.8586 16.5884 26.5398L15.7828 25.4674L15.9362 24.4277H25.7547ZM6.62685 13.3486H14.7422L13.5237 21.6367H3.2512L6.62685 13.3486ZM2.88702 24.4277H13.1145L12.8957 25.5124L12.1248 26.5399C11.1331 27.8587 9.62209 28.6152 7.97405 28.6152C5.45723 28.6152 3.35327 26.8118 2.88702 24.4277ZM54.4375 59.3253H43.2694V49.5516H44.666C45.4369 49.5516 46.0625 48.928 46.0625 48.1572C46.0625 47.3864 45.4369 46.7628 44.666 46.7628H43.2694V36.9891H54.4375V59.3253ZM60.0197 59.3253H60.0194H57.2285V34.2003H40.4785V59.3253H6.97847V31.3449C7.30352 31.3857 7.63892 31.4073 7.97418 31.4073C10.5833 31.4073 12.9018 30.154 14.3557 28.2166C15.8115 30.154 18.1281 31.4073 20.7372 31.4073C23.3462 31.4073 25.6628 30.154 27.1186 28.2166C28.5724 30.154 30.8911 31.4073 33.5001 31.4073C36.1092 31.4073 38.4237 30.154 39.8795 28.2166C41.3353 30.154 43.6519 31.4073 46.261 31.4073C48.8701 31.4073 51.1867 30.154 52.6425 28.2166C54.0983 30.154 56.4128 31.4073 59.0219 31.4073C59.3613 31.4073 59.6926 31.3859 60.0197 31.3449V59.3253ZM59.0216 28.6152C57.3778 28.6152 55.8647 27.8587 54.875 26.5399L54.0632 25.4624L53.9058 24.4278H64.1088C63.6427 26.8118 61.5407 28.6152 59.0216 28.6152Z" fill="#1FC0E8" />
-                  <path d="M9.76953 34.1992V53.7381H37.6876V34.1992H9.76953ZM34.8945 50.9492H12.5626V36.9881H34.8945V50.9492Z" fill="#1FC0E8" />
-                  <path d="M32.0938 43.9688C31.7073 43.9688 31.3577 44.1242 31.1062 44.3777L28.3152 47.1707C28.0616 47.4223 27.9062 47.7719 27.9062 48.1562C27.9062 48.9271 28.5319 49.5507 29.3007 49.5507C29.6871 49.5507 30.0368 49.3952 30.2883 49.1417L33.0793 46.3529C33.3329 46.0993 33.4882 45.7497 33.4882 45.3633C33.4882 44.5944 32.8646 43.9688 32.0938 43.9688Z" fill="#1FC0E8" />
-                  <path d="M32.0918 38.3867C31.7054 38.3867 31.3558 38.5422 31.1042 38.7957L22.7292 47.1686C22.4777 47.4201 22.3203 47.7717 22.3203 48.1562C22.3203 48.927 22.946 49.5506 23.7168 49.5506C24.1013 49.5506 24.4508 49.3951 24.7023 49.1417L33.0773 40.7688C33.331 40.5172 33.4863 40.1656 33.4863 39.7812C33.4863 39.0103 32.8627 38.3867 32.0918 38.3867Z" fill="#1FC0E8" />
-                </svg>
-              </div>
-              <div className="md:px-5 xl:px-12 max-w-xl space-y-2 xl:space-y-4">
-                <h3>Are you Creater, Artist & have Field?</h3>
-                <p className="text-base text-gray-400">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p>
-                <p className="text-xs font-normal pt-2 md:pt-4">Click htmlFor Orgenaizer app download</p>
-                <div className="flex space-x-3">
-                  <img src={googleplay} alt="App Store images" className="max-w-[130px] lg:max-w-[150px] xl:max-w-[185px]" />
-                  <img src={appstore} alt="App Store images" className="max-w-[130px] lg:max-w-[150px] xl:max-w-[185px]" />
+          <div className="w-full py-14">
+            <Swiper
+              spaceBetween={30}
+              centeredSlides={true}
+              autoplay={{
+                delay: 2500,
+                disableOnInteraction: false,
+              }}
+              pagination={{
+                clickable: true,
+              }}
+              navigation={false}
+              modules={[Autoplay]}
+              className="mySwiper">
+              <SwiperSlide>
+                <div className="w-full h-full min-h-[250px] md:min-h-[350px] xl:min-h-[450px] rounded-xl lg:rounded-2xl 2xl:rounded-3xl overflow-hidden relative">
+                  <img src={banner1} className="w-full h-full object-cover absolute inset-0" alt="Bannr1"/>
                 </div>
-              </div>
-            </div>
-            <div className="w-full md:w-1/2 flex flex-col md:flex-row py-7 xl:py-12 border-t md:border-t-0 md:border-l border-gray-100 md:pl-5 xl:pl-12">
-              <div className="icon mb-4">
-                <svg width="66" height="66" viewBox="0 0 66 66" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <g clipPath="url(#clip0_2535_16186)">
-                    <path d="M53.507 32.2494C60.2713 26.1684 60.8252 15.7553 54.7442 8.9911C49.167 2.78719 39.8318 1.73325 33.0117 6.53766C25.5771 1.29074 15.2968 3.06425 10.0499 10.4987C5.23537 17.3206 6.28503 26.6654 12.4929 32.2492C4.77946 36.3153 -0.0347537 44.3315 0.000188937 53.0509V60.1223C0.000188937 61.4241 1.05551 62.4794 2.35737 62.4794H63.6427C64.9446 62.4794 65.9999 61.4241 65.9999 60.1223V53.0509C66.0347 44.3315 61.2205 36.3153 53.507 32.2494ZM42.4284 8.26545C48.9283 8.25827 54.2034 13.5216 54.2107 20.0215C54.2158 24.6571 51.4994 28.8639 47.2723 30.7666C47.0908 30.849 46.9094 30.9244 46.7255 31.0023C46.1438 31.237 45.5438 31.4237 44.9317 31.561C44.8139 31.587 44.696 31.6011 44.5758 31.6247C43.8919 31.7557 43.1978 31.8259 42.5015 31.8345C42.188 31.8345 41.8721 31.8108 41.5586 31.7827C41.4408 31.7827 41.3228 31.7827 41.205 31.7591C39.8653 31.6013 38.5621 31.2172 37.3511 30.6229C37.3064 30.6017 37.2544 30.604 37.2097 30.5852C36.9739 30.4721 36.7383 30.3731 36.5285 30.2457C36.5474 30.2221 36.5592 30.1963 36.5779 30.1727C37.6588 28.7838 38.511 27.2314 39.1024 25.5739L39.1754 25.3759C39.4443 24.5842 39.6532 23.7735 39.8001 22.9503C39.8214 22.8302 39.8378 22.7146 39.8567 22.585C39.9931 21.7471 40.0647 20.9 40.0712 20.0511C40.0645 19.2037 39.9928 18.3582 39.8567 17.5218C39.8378 17.3993 39.8214 17.286 39.8001 17.1565C39.6532 16.3335 39.4443 15.5226 39.1754 14.7309L39.1024 14.5329C38.511 12.8754 37.6587 11.323 36.5779 9.93414C36.559 9.91052 36.5473 9.88469 36.5285 9.86107C38.3193 8.81638 40.3552 8.26559 42.4284 8.26545ZM11.7858 20.0512C11.7691 13.5591 17.0184 8.28258 23.5105 8.26587C26.5537 8.25799 29.4814 9.43071 31.6777 11.5372C31.8144 11.6693 31.9488 11.8011 32.0807 11.9379C32.4855 12.362 32.8588 12.815 33.198 13.2932C33.3018 13.4393 33.3961 13.595 33.4926 13.7458C33.822 14.2528 34.1112 14.7848 34.3576 15.3368C34.4166 15.4712 34.4614 15.608 34.5132 15.7422C34.7616 16.3528 34.9572 16.9837 35.0978 17.6279C35.1144 17.6986 35.1191 17.7693 35.1331 17.8424C35.4317 19.3059 35.4317 20.8148 35.1331 22.2784C35.1191 22.3515 35.1142 22.4222 35.0978 22.4929C34.9573 23.1371 34.7618 23.768 34.5132 24.3786C34.4614 24.5129 34.4165 24.6497 34.3576 24.7839C34.111 25.3351 33.8218 25.8663 33.4926 26.3726C33.396 26.5235 33.3018 26.6791 33.198 26.8252C32.859 27.3035 32.4855 27.7564 32.0807 28.1805C31.9487 28.3173 31.8143 28.4493 31.6777 28.5812C30.7233 29.4907 29.623 30.2333 28.4225 30.778C28.2316 30.8652 28.0383 30.9454 27.8427 31.0138C27.2745 31.2393 26.6899 31.4205 26.0938 31.5559C25.9453 31.5889 25.792 31.6077 25.6412 31.6336C25.0012 31.7528 24.3522 31.8182 23.7012 31.8294H23.442C22.7911 31.8183 22.1421 31.7528 21.5021 31.6336C21.3512 31.6077 21.1979 31.5889 21.0495 31.5559C20.4534 31.4205 19.8686 31.2393 19.3005 31.0138C19.1048 30.936 18.9116 30.8559 18.7207 30.778C14.5036 28.874 11.7912 24.6781 11.7858 20.0512ZM42.4284 57.7652H4.71441V53.051C4.67988 45.0635 9.71245 37.932 17.2496 35.2877C21.2957 36.9723 25.847 36.9723 29.8933 35.2877C30.6802 35.5753 31.4472 35.9146 32.1891 36.3037C32.6794 36.5559 33.132 36.8434 33.6034 37.1333C33.9099 37.3242 34.2209 37.5105 34.5156 37.7203C34.9706 38.0432 35.3996 38.3944 35.8215 38.755C36.0926 38.9908 36.3612 39.2264 36.6158 39.4622C37.0047 39.8298 37.37 40.2188 37.7212 40.6172C37.9734 40.9048 38.2186 41.197 38.452 41.4988C38.7608 41.8948 39.0554 42.3003 39.3289 42.7174C39.5646 43.0709 39.7744 43.4386 39.9817 43.8064C40.2175 44.2118 40.4343 44.6173 40.6323 45.0392C40.8303 45.4611 41.0047 45.9231 41.1743 46.3734C41.3228 46.7646 41.4808 47.1536 41.6033 47.5519C41.7684 48.0987 41.8838 48.6644 41.9993 49.2301C42.07 49.5647 42.162 49.8925 42.2138 50.2318C42.3534 51.1651 42.4251 52.1073 42.4283 53.051V57.7652H42.4284ZM61.2856 57.7652H47.1428V53.051C47.1428 52.3132 47.1004 51.5824 47.0344 50.8589C47.0154 50.6467 46.9826 50.4369 46.9589 50.2248C46.8953 49.7038 46.8222 49.1877 46.7232 48.6761C46.6808 48.4578 46.636 48.2384 46.5888 48.0184C46.4757 47.4936 46.3445 46.9735 46.1952 46.458C46.1457 46.2883 46.1008 46.1162 46.049 45.9489C45.389 43.839 44.4326 41.8336 43.2088 39.9925L43.1168 39.8582C42.7114 39.2563 42.2784 38.6741 41.818 38.1116L41.8015 38.0903C41.3301 37.5058 40.8186 36.9376 40.2812 36.4002C40.3118 36.4002 40.3448 36.4002 40.3778 36.4002C41.043 36.4876 41.7128 36.5349 42.3838 36.5416H42.5135C43.1344 36.5363 43.7544 36.4961 44.371 36.4215C44.5642 36.3979 44.7552 36.3625 44.9484 36.3318C45.4498 36.2549 45.9448 36.1551 46.4334 36.0326C46.5725 35.9972 46.7139 35.9642 46.8554 35.9241C47.4966 35.7497 48.1264 35.5355 48.741 35.283C56.2837 37.9247 61.3208 45.0594 61.2857 53.0511V57.7652H61.2856Z" fill="#1FC0E8" />
-                  </g>
-                  <defs>
-                    <clipPath id="clip0_2535_16186">
-                      <rect width="66" height="66" fill="white" />
-                    </clipPath>
-                  </defs>
-                </svg>
-
-              </div>
-              <div className="md:px-5 xl:px-12 max-w-xl space-y-2 xl:space-y-4">
-                <h3>Are you User?</h3>
-                <p className="text-base text-gray-400">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p>
-                <p className="text-xs font-normal pt-2 md:pt-4">Click htmlFor Orgenaizer app download</p>
-                <div className="flex space-x-3">
-                  <img src={googleplay} alt="App Store images" className="max-w-[130px] lg:max-w-[150px] xl:max-w-[185px]" />
-                  <img src={appstore} alt="App Store images" className="max-w-[130px] lg:max-w-[150px] xl:max-w-[185px]" />
+              </SwiperSlide>
+              <SwiperSlide>
+                <div className="w-full h-full min-h-[250px] md:min-h-[350px] xl:min-h-[450px] rounded-xl lg:rounded-2xl 2xl:rounded-3xl overflow-hidden relative">
+                  <img src={banner1} className="w-full h-full object-cover absolute inset-0" alt="Bannr1"/>
                 </div>
-              </div>
-            </div>
+              </SwiperSlide>
+              <SwiperSlide>
+                <div className="w-full h-full min-h-[250px] md:min-h-[350px] xl:min-h-[450px] rounded-xl lg:rounded-2xl 2xl:rounded-3xl overflow-hidden relative">
+                  <img src={banner1} className="w-full h-full object-cover absolute inset-0" alt="Bannr1"/>
+                </div>
+              </SwiperSlide>
+              <SwiperSlide>
+                <div className="w-full h-full min-h-[250px] md:min-h-[350px] xl:min-h-[450px] rounded-xl lg:rounded-2xl 2xl:rounded-3xl overflow-hidden relative">
+                  <img src={banner1} className="w-full h-full object-cover absolute inset-0" alt="Bannr1"/>
+                </div>
+              </SwiperSlide>
+            </Swiper>
           </div>
         </div>
       </div>
 
-      <div className="pt-12 md:pt-28 bg-white"></div>
+      <div className="sm:pt-8 lg:pt-16ss xl:pt-28 bg-white"></div>
 
       {/* who are you app photo */}
       <section className="w-full bg-[#EEEEEE]">
@@ -520,19 +517,212 @@ function LandingPage() {
 
       {/* Upcoming Slider */}
       <section className="bg-white swiper-main">
-        <div className="wrapper px-0 md:px-5 xl:px-8 2xl:px-10 relative pt-20 lg:pt-48 pb-14 lg:pb-24">
-          <div className="flex flex-wrap items-center sm:justify-between space-y-10 sm:space-y-0">
-            <h2 className="w-full text-center sm:text-left sm:w-auto text-spiroDiscoBall">Upcoming</h2>
+        <div className="wrapper px-3 md:px-5 xl:px-8 2xl:px-10 relative pt-14 md:pt-20 lg:pt-48 xl:pt-56 pb-14 lg:pb-24">
+            <h2 className="w-full text-center sm:text-left sm:w-auto text-spiroDiscoBall text-4xl md:text-40 xl:text-5xl px-[30px] mb-2 sm:mb-4">Events</h2>
+          {/* <div className="flex flex-wrap items-center sm:justify-between space-y-10 sm:space-y-0">
             <ul className="flex u-tabs w-full sm:w-auto justify-center sm:justify-end">
               <li data-tab="event" className={tab === 1 ? "active" : undefined} onClick={() => setTab(1)} >Events</li>
               <li data-tab="Offers" className={tab === 2 ? "active" : undefined} onClick={() => setTab(2)}>Offers</li>
               <li data-tab="Live" className={tab === 3 ? "active" : undefined} onClick={() => setTab(3)}>Live Stream</li>
             </ul>
-          </div>
-          <div className="">
-            {tab === 1 && <Event />}
+          </div> */}
+          {/* <div className="w-full">
+            {tab === 1 && <Event />} 
             {tab === 2 && <Offer />}
             {tab === 3 && <LiveStream />}
+          </div> */}
+          <div className="w-full">
+          <Swiper
+                slidesPerView={3}
+                navigation
+                loop={true}
+                centeredSlides={false}
+                autoplay={{
+                    delay: 2500,
+                    disableOnInteraction: false,
+                }}
+                onSlideChange={() => console.log('slide change')}
+                onSwiper={(swiper) => console.log(swiper)}
+                breakpoints={{
+                    320: {
+                        slidesPerView: 1,
+                        spaceBetween: 30,
+                    },
+                    768: {
+                        slidesPerView: 2,
+                        spaceBetween: 15,
+                    },
+                    1024: {
+                        slidesPerView: 3,
+                        spaceBetween: 15,
+                    },
+                }}
+                modules={[Navigation]}
+                className="mySwiper"
+            >
+                <SwiperSlide>
+                    <div className="swiper-slide py-5">
+                        <div className="px-1 md:px-3.5 w-full">
+                            <div className="block pb-4 sm:p-4 shadow-lg bg-white rounded-lg relative">
+                                <img src={dj} alt="card-1" className="object-cover w-full h-44 md:h-56 rounded-md" />
+                                <span className="block absolute top-6 left-0 leading-4 bg-spiroDiscoBall text-white text-sm font-bold py-1 px-2.5">DJ</span>
+                                <div className="absolute top-6 right-5">
+                                    <span className="flex items-center justify-center w-[30px] h-[30px] rounded-full bg-white mb-3 cursor-pointer">
+                                        <svg width="13" height="12" viewBox="0 0 13 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M3.68959 0.654297C4.34449 0.654297 4.94493 0.865867 5.47417 1.28314C5.98156 1.68319 6.31937 2.19272 6.51825 2.56323C6.71713 2.1927 7.05494 1.68319 7.56234 1.28314C8.09158 0.865867 8.69201 0.654297 9.34692 0.654297C11.1745 0.654297 12.5527 2.17828 12.5527 4.19922C12.5527 6.38255 10.8333 7.87635 8.23032 10.1377C7.7883 10.5218 7.28727 10.9571 6.76651 11.4213C6.69787 11.4826 6.60971 11.5164 6.51825 11.5164C6.42679 11.5164 6.33863 11.4826 6.26999 11.4214C5.74918 10.957 5.24818 10.5218 4.8059 10.1375C2.2032 7.87635 0.483769 6.38255 0.483769 4.19922C0.483769 2.17828 1.86199 0.654297 3.68959 0.654297Z" fill="#2E363F" />
+                                        </svg>
+                                    </span>
+                                    <span className="flex items-center justify-center w-[30px] h-[30px] rounded-full bg-white cursor-pointer">
+                                        <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M10.0834 8.31035C9.33809 8.31035 8.68134 8.65405 8.26884 9.17674L4.70238 7.46467C4.76159 7.27545 4.80321 7.07936 4.80321 6.87244C4.80321 6.59179 4.74183 6.32498 4.6358 6.07957L8.36825 3.97391C8.78363 4.43093 9.39417 4.72737 10.0834 4.72737C11.3312 4.72737 12.3463 3.77574 12.3463 2.60587C12.3463 1.43601 11.3312 0.484375 10.0834 0.484375C8.83552 0.484375 7.82045 1.43601 7.82045 2.60587C7.82045 2.87547 7.87966 3.1312 7.9779 3.36862L4.23433 5.48046C3.81931 5.03702 3.21757 4.75094 2.54027 4.75094C1.29242 4.75094 0.277344 5.70258 0.277344 6.87244C0.277344 8.04231 1.29242 8.99394 2.54027 8.99394C3.29785 8.99394 3.9657 8.64014 4.37664 8.10277L7.93136 9.80928C7.86588 10.0074 7.82045 10.2138 7.82045 10.4318C7.82045 11.6017 8.83552 12.5533 10.0834 12.5533C11.3312 12.5533 12.3463 11.6017 12.3463 10.4318C12.3463 9.26198 11.3312 8.31035 10.0834 8.31035Z" fill="#2E363F" />
+                                        </svg>
+                                    </span>
+                                </div>
+                                <div className="pb-0 p-3 sm:pt-5 sm:px-2">
+                                    <div className="flex flex-wrap justify-between items-center">
+                                        <svg width="89" height="12" viewBox="0 0 89 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M12.5615 4.55671C12.5182 4.42328 12.4029 4.32603 12.2641 4.30588L8.36435 3.73919L6.62029 0.205426C6.55822 0.0796298 6.43009 0 6.28983 0C6.14954 0 6.02143 0.0796298 5.95934 0.205426L4.21521 3.73919L0.315542 4.30588C0.176749 4.32603 0.0613958 4.42328 0.0180553 4.55669C-0.0253098 4.69012 0.0108565 4.83658 0.111321 4.93449L2.93307 7.68515L2.26705 11.5692C2.24331 11.7075 2.30016 11.8472 2.41365 11.9296C2.47785 11.9763 2.55389 12 2.6303 12C2.68898 12 2.74784 11.986 2.80175 11.9577L6.2898 10.1238L9.77771 11.9576C9.90191 12.0229 10.0523 12.0121 10.1658 11.9296C10.2793 11.8472 10.3362 11.7074 10.3125 11.5691L9.64624 7.68515L12.4683 4.93447C12.5687 4.83658 12.6049 4.69012 12.5615 4.55671Z" fill="#ECA926" />
+                                            <path d="M31.4307 4.55671C31.3873 4.42327 31.272 4.32603 31.1332 4.30588L27.2335 3.73919L25.4894 0.205426C25.4274 0.0796298 25.2992 0 25.159 0C25.0187 0 24.8906 0.0796298 24.8285 0.205426L23.0843 3.73919L19.1847 4.30588C19.0459 4.32603 18.9305 4.42328 18.8872 4.55669C18.8438 4.69012 18.88 4.83658 18.9805 4.93449L21.8022 7.68515L21.1362 11.5692C21.1125 11.7074 21.1693 11.8472 21.2828 11.9296C21.347 11.9763 21.423 12 21.4994 12C21.5581 12 21.617 11.986 21.6709 11.9577L25.1589 10.1238L28.6468 11.9576C28.771 12.0229 28.9215 12.0121 29.035 11.9296C29.1485 11.8472 29.2053 11.7074 29.1816 11.5691L28.5154 7.68515L31.3374 4.93447C31.4379 4.83658 31.4741 4.69012 31.4307 4.55671Z" fill="#ECA926" />
+                                            <path d="M50.2998 4.55671C50.2565 4.42327 50.1412 4.32603 50.0024 4.30588L46.1026 3.73919L44.3586 0.205426C44.2965 0.0796298 44.1684 0 44.0281 0C43.8878 0 43.7597 0.0796298 43.6976 0.205426L41.9535 3.73919L38.0538 4.30588C37.915 4.32603 37.7997 4.42328 37.7563 4.55669C37.713 4.69012 37.7491 4.83658 37.8496 4.93449L40.6714 7.68515L40.0053 11.5692C39.9816 11.7074 40.0384 11.8472 40.1519 11.9296C40.2161 11.9763 40.2922 12 40.3686 12C40.4273 12 40.4861 11.986 40.54 11.9577L44.0281 10.1238L47.516 11.9576C47.6402 12.0229 47.7906 12.0121 47.9041 11.9296C48.0176 11.8472 48.0745 11.7074 48.0508 11.5691L47.3845 7.68515L50.2066 4.93447C50.307 4.83658 50.3432 4.69012 50.2998 4.55671Z" fill="#ECA926" />
+                                            <path d="M69.169 4.55671C69.1256 4.42327 69.0103 4.32603 68.8715 4.30588L64.9718 3.73919L63.2277 0.205426C63.1656 0.0796298 63.0375 0 62.8972 0C62.757 0 62.6288 0.0796298 62.5668 0.205426L60.8226 3.73919L56.923 4.30588C56.7842 4.32603 56.6688 4.42328 56.6255 4.55669C56.5821 4.69012 56.6183 4.83658 56.7187 4.93449L59.5405 7.68515L58.8745 11.5692C58.8507 11.7074 58.9076 11.8472 59.0211 11.9296C59.0853 11.9763 59.1613 12 59.2377 12C59.2964 12 59.3553 11.986 59.4092 11.9577L62.8972 10.1238L66.3851 11.9576C66.5093 12.0229 66.6598 12.0121 66.7732 11.9296C66.8867 11.8472 66.9436 11.7074 66.9199 11.5691L66.2537 7.68515L69.0757 4.93447C69.1762 4.83658 69.2124 4.69012 69.169 4.55671Z" fill="#999999" />
+                                            <path d="M88.0401 4.55671C87.9967 4.42327 87.8814 4.32603 87.7426 4.30588L83.8429 3.73919L82.0988 0.205426C82.0367 0.0796298 81.9086 0 81.7683 0C81.628 0 81.4999 0.0796298 81.4379 0.205426L79.6937 3.73919L75.7941 4.30588C75.6553 4.32603 75.5399 4.42328 75.4966 4.55669C75.4532 4.69012 75.4894 4.83658 75.5898 4.93449L78.4116 7.68515L77.7456 11.5692C77.7218 11.7074 77.7787 11.8472 77.8922 11.9296C77.9564 11.9763 78.0324 12 78.1088 12C78.1675 12 78.2264 11.986 78.2803 11.9577L81.7683 10.1238L85.2562 11.9576C85.3804 12.0229 85.5309 12.0121 85.6443 11.9296C85.7578 11.8472 85.8147 11.7074 85.791 11.5691L85.1247 7.68515L87.9468 4.93447C88.0473 4.83658 88.0834 4.69012 88.0401 4.55671Z" fill="#999999" />
+                                        </svg>
+                                        <div className="flex space-x-5">
+                                            <p className="text-sm font-bold text-[#13E1B0]">Available</p>
+                                        </div>
+                                    </div>
+                                    <h2 className="text-japaneseIndigo text-base sm:text-lg xl:text-2xl font-semibold pt-1 pb-2 xl:py-2">DJ Lemon</h2>
+                                    <div className="flex justify-between items-center pt-2 xl:pt-4 border-t border-[#dddddd]">
+                                        <span className="text-lg font-bold text-spiroDiscoBall mr-3">250 INR</span>
+                                        <div className="flex space-x-3">
+                                            <p className="text-xs font-bold text-[#9BA0A8]">Vesu, Surat</p>
+                                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <g clip-path="url(#clip0_2535_16260)">
+                                                    <path d="M8 0C5.18859 0 2.84375 2.26469 2.84375 5.15625C2.84375 6.25631 3.17431 7.23725 3.80872 8.15644L7.60541 14.0808C7.78959 14.3688 8.21078 14.3683 8.39459 14.0808L12.2078 8.13628C12.8285 7.25875 13.1562 6.22834 13.1562 5.15625C13.1562 2.31309 10.8432 0 8 0ZM8 7.5C6.70772 7.5 5.65625 6.44853 5.65625 5.15625C5.65625 3.86397 6.70772 2.8125 8 2.8125C9.29228 2.8125 10.3438 3.86397 10.3438 5.15625C10.3438 6.44853 9.29228 7.5 8 7.5Z" fill="#9BA0A8" />
+                                                    <path d="M11.6645 10.7715L9.30416 14.4617C8.69319 15.4143 7.30341 15.4111 6.69537 14.4626L4.33119 10.7725C2.25106 11.2534 0.96875 12.1344 0.96875 13.1873C0.96875 15.0142 4.5915 15.9998 8 15.9998C11.4085 15.9998 15.0312 15.0142 15.0312 13.1873C15.0312 12.1337 13.7472 11.2522 11.6645 10.7715Z" fill="#9BA0A8" />
+                                                </g>
+                                                <defs>
+                                                    <clipPath id="clip0_2535_16260">
+                                                        <rect width="16" height="16" fill="white" />
+                                                    </clipPath>
+                                                </defs>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </SwiperSlide>
+                <SwiperSlide>
+                    <div className="swiper-slide py-5">
+                        <div className="px-1 md:px-3.5 w-full">
+                            <div className="block pb-4 sm:p-4 shadow-lg bg-white rounded-lg relative">
+                                <img src={Speaker} alt="card-1" className="object-cover w-full h-44 md:h-56 rounded-md" />
+                                <span className="block absolute top-6 left-0 leading-4 bg-spiroDiscoBall text-white text-sm font-bold py-1 px-2.5">Speaker / Anchor</span>
+                                <div className="absolute top-6 right-5">
+                                    <span className="flex items-center justify-center w-[30px] h-[30px] rounded-full bg-white mb-3 cursor-pointer">
+                                        <svg width="13" height="12" viewBox="0 0 13 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M3.68959 0.654297C4.34449 0.654297 4.94493 0.865867 5.47417 1.28314C5.98156 1.68319 6.31937 2.19272 6.51825 2.56323C6.71713 2.1927 7.05494 1.68319 7.56234 1.28314C8.09158 0.865867 8.69201 0.654297 9.34692 0.654297C11.1745 0.654297 12.5527 2.17828 12.5527 4.19922C12.5527 6.38255 10.8333 7.87635 8.23032 10.1377C7.7883 10.5218 7.28727 10.9571 6.76651 11.4213C6.69787 11.4826 6.60971 11.5164 6.51825 11.5164C6.42679 11.5164 6.33863 11.4826 6.26999 11.4214C5.74918 10.957 5.24818 10.5218 4.8059 10.1375C2.2032 7.87635 0.483769 6.38255 0.483769 4.19922C0.483769 2.17828 1.86199 0.654297 3.68959 0.654297Z" fill="#2E363F" />
+                                        </svg>
+                                    </span>
+                                    <span className="flex items-center justify-center w-[30px] h-[30px] rounded-full bg-white cursor-pointer">
+                                        <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M10.0834 8.31035C9.33809 8.31035 8.68134 8.65405 8.26884 9.17674L4.70238 7.46467C4.76159 7.27545 4.80321 7.07936 4.80321 6.87244C4.80321 6.59179 4.74183 6.32498 4.6358 6.07957L8.36825 3.97391C8.78363 4.43093 9.39417 4.72737 10.0834 4.72737C11.3312 4.72737 12.3463 3.77574 12.3463 2.60587C12.3463 1.43601 11.3312 0.484375 10.0834 0.484375C8.83552 0.484375 7.82045 1.43601 7.82045 2.60587C7.82045 2.87547 7.87966 3.1312 7.9779 3.36862L4.23433 5.48046C3.81931 5.03702 3.21757 4.75094 2.54027 4.75094C1.29242 4.75094 0.277344 5.70258 0.277344 6.87244C0.277344 8.04231 1.29242 8.99394 2.54027 8.99394C3.29785 8.99394 3.9657 8.64014 4.37664 8.10277L7.93136 9.80928C7.86588 10.0074 7.82045 10.2138 7.82045 10.4318C7.82045 11.6017 8.83552 12.5533 10.0834 12.5533C11.3312 12.5533 12.3463 11.6017 12.3463 10.4318C12.3463 9.26198 11.3312 8.31035 10.0834 8.31035Z" fill="#2E363F" />
+                                        </svg>
+                                    </span>
+                                </div>
+                                <div className="pb-0 p-3 sm:pt-5 sm:px-2">
+                                    <div className="flex flex-wrap justify-between items-center">
+                                        <svg width="89" height="12" viewBox="0 0 89 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M12.5615 4.55671C12.5182 4.42328 12.4029 4.32603 12.2641 4.30588L8.36435 3.73919L6.62029 0.205426C6.55822 0.0796298 6.43009 0 6.28983 0C6.14954 0 6.02143 0.0796298 5.95934 0.205426L4.21521 3.73919L0.315542 4.30588C0.176749 4.32603 0.0613958 4.42328 0.0180553 4.55669C-0.0253098 4.69012 0.0108565 4.83658 0.111321 4.93449L2.93307 7.68515L2.26705 11.5692C2.24331 11.7075 2.30016 11.8472 2.41365 11.9296C2.47785 11.9763 2.55389 12 2.6303 12C2.68898 12 2.74784 11.986 2.80175 11.9577L6.2898 10.1238L9.77771 11.9576C9.90191 12.0229 10.0523 12.0121 10.1658 11.9296C10.2793 11.8472 10.3362 11.7074 10.3125 11.5691L9.64624 7.68515L12.4683 4.93447C12.5687 4.83658 12.6049 4.69012 12.5615 4.55671Z" fill="#ECA926" />
+                                            <path d="M31.4307 4.55671C31.3873 4.42327 31.272 4.32603 31.1332 4.30588L27.2335 3.73919L25.4894 0.205426C25.4274 0.0796298 25.2992 0 25.159 0C25.0187 0 24.8906 0.0796298 24.8285 0.205426L23.0843 3.73919L19.1847 4.30588C19.0459 4.32603 18.9305 4.42328 18.8872 4.55669C18.8438 4.69012 18.88 4.83658 18.9805 4.93449L21.8022 7.68515L21.1362 11.5692C21.1125 11.7074 21.1693 11.8472 21.2828 11.9296C21.347 11.9763 21.423 12 21.4994 12C21.5581 12 21.617 11.986 21.6709 11.9577L25.1589 10.1238L28.6468 11.9576C28.771 12.0229 28.9215 12.0121 29.035 11.9296C29.1485 11.8472 29.2053 11.7074 29.1816 11.5691L28.5154 7.68515L31.3374 4.93447C31.4379 4.83658 31.4741 4.69012 31.4307 4.55671Z" fill="#ECA926" />
+                                            <path d="M50.2998 4.55671C50.2565 4.42327 50.1412 4.32603 50.0024 4.30588L46.1026 3.73919L44.3586 0.205426C44.2965 0.0796298 44.1684 0 44.0281 0C43.8878 0 43.7597 0.0796298 43.6976 0.205426L41.9535 3.73919L38.0538 4.30588C37.915 4.32603 37.7997 4.42328 37.7563 4.55669C37.713 4.69012 37.7491 4.83658 37.8496 4.93449L40.6714 7.68515L40.0053 11.5692C39.9816 11.7074 40.0384 11.8472 40.1519 11.9296C40.2161 11.9763 40.2922 12 40.3686 12C40.4273 12 40.4861 11.986 40.54 11.9577L44.0281 10.1238L47.516 11.9576C47.6402 12.0229 47.7906 12.0121 47.9041 11.9296C48.0176 11.8472 48.0745 11.7074 48.0508 11.5691L47.3845 7.68515L50.2066 4.93447C50.307 4.83658 50.3432 4.69012 50.2998 4.55671Z" fill="#ECA926" />
+                                            <path d="M69.169 4.55671C69.1256 4.42327 69.0103 4.32603 68.8715 4.30588L64.9718 3.73919L63.2277 0.205426C63.1656 0.0796298 63.0375 0 62.8972 0C62.757 0 62.6288 0.0796298 62.5668 0.205426L60.8226 3.73919L56.923 4.30588C56.7842 4.32603 56.6688 4.42328 56.6255 4.55669C56.5821 4.69012 56.6183 4.83658 56.7187 4.93449L59.5405 7.68515L58.8745 11.5692C58.8507 11.7074 58.9076 11.8472 59.0211 11.9296C59.0853 11.9763 59.1613 12 59.2377 12C59.2964 12 59.3553 11.986 59.4092 11.9577L62.8972 10.1238L66.3851 11.9576C66.5093 12.0229 66.6598 12.0121 66.7732 11.9296C66.8867 11.8472 66.9436 11.7074 66.9199 11.5691L66.2537 7.68515L69.0757 4.93447C69.1762 4.83658 69.2124 4.69012 69.169 4.55671Z" fill="#999999" />
+                                            <path d="M88.0401 4.55671C87.9967 4.42327 87.8814 4.32603 87.7426 4.30588L83.8429 3.73919L82.0988 0.205426C82.0367 0.0796298 81.9086 0 81.7683 0C81.628 0 81.4999 0.0796298 81.4379 0.205426L79.6937 3.73919L75.7941 4.30588C75.6553 4.32603 75.5399 4.42328 75.4966 4.55669C75.4532 4.69012 75.4894 4.83658 75.5898 4.93449L78.4116 7.68515L77.7456 11.5692C77.7218 11.7074 77.7787 11.8472 77.8922 11.9296C77.9564 11.9763 78.0324 12 78.1088 12C78.1675 12 78.2264 11.986 78.2803 11.9577L81.7683 10.1238L85.2562 11.9576C85.3804 12.0229 85.5309 12.0121 85.6443 11.9296C85.7578 11.8472 85.8147 11.7074 85.791 11.5691L85.1247 7.68515L87.9468 4.93447C88.0473 4.83658 88.0834 4.69012 88.0401 4.55671Z" fill="#999999" />
+                                        </svg>
+                                        <div className="flex space-x-5">
+                                            <p className="text-sm font-bold text-[#13E1B0]">Available</p>
+                                        </div>
+                                    </div>
+                                    <h2 className="text-japaneseIndigo text-base sm:text-lg xl:text-2xl font-semibold pt-1 pb-2 xl:py-2">Kimberly Maldonado</h2>
+                                    <div className="flex justify-between items-center pt-2 xl:pt-4 border-t border-[#dddddd]">
+                                        <span className="text-lg font-bold text-spiroDiscoBall mr-3">150 INR</span>
+                                        <div className="flex space-x-3">
+                                            <p className="text-xs font-bold text-[#9BA0A8]">Vesu, Surat</p>
+                                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <g clip-path="url(#clip0_2535_16260)">
+                                                    <path d="M8 0C5.18859 0 2.84375 2.26469 2.84375 5.15625C2.84375 6.25631 3.17431 7.23725 3.80872 8.15644L7.60541 14.0808C7.78959 14.3688 8.21078 14.3683 8.39459 14.0808L12.2078 8.13628C12.8285 7.25875 13.1562 6.22834 13.1562 5.15625C13.1562 2.31309 10.8432 0 8 0ZM8 7.5C6.70772 7.5 5.65625 6.44853 5.65625 5.15625C5.65625 3.86397 6.70772 2.8125 8 2.8125C9.29228 2.8125 10.3438 3.86397 10.3438 5.15625C10.3438 6.44853 9.29228 7.5 8 7.5Z" fill="#9BA0A8" />
+                                                    <path d="M11.6645 10.7715L9.30416 14.4617C8.69319 15.4143 7.30341 15.4111 6.69537 14.4626L4.33119 10.7725C2.25106 11.2534 0.96875 12.1344 0.96875 13.1873C0.96875 15.0142 4.5915 15.9998 8 15.9998C11.4085 15.9998 15.0312 15.0142 15.0312 13.1873C15.0312 12.1337 13.7472 11.2522 11.6645 10.7715Z" fill="#9BA0A8" />
+                                                </g>
+                                                <defs>
+                                                    <clipPath id="clip0_2535_16260">
+                                                        <rect width="16" height="16" fill="white" />
+                                                    </clipPath>
+                                                </defs>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </SwiperSlide>
+                <SwiperSlide>
+                    <div className="swiper-slide py-5">
+                        <div className="px-1 md:px-3.5 w-full">
+                            <div className="block pb-4 sm:p-4 shadow-lg bg-white rounded-lg relative">
+                                <img src={noiseporn} alt="card-1" className="object-cover w-full h-44 md:h-56 rounded-md" />
+                                <span className="block absolute top-6 left-0 leading-4 bg-spiroDiscoBall text-white text-sm font-bold py-1 px-2.5">Motivational speakers</span>
+                                <div className="absolute top-6 right-5">
+                                    <span className="flex items-center justify-center w-[30px] h-[30px] rounded-full bg-white mb-3 cursor-pointer">
+                                        <svg width="13" height="12" viewBox="0 0 13 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M3.68959 0.654297C4.34449 0.654297 4.94493 0.865867 5.47417 1.28314C5.98156 1.68319 6.31937 2.19272 6.51825 2.56323C6.71713 2.1927 7.05494 1.68319 7.56234 1.28314C8.09158 0.865867 8.69201 0.654297 9.34692 0.654297C11.1745 0.654297 12.5527 2.17828 12.5527 4.19922C12.5527 6.38255 10.8333 7.87635 8.23032 10.1377C7.7883 10.5218 7.28727 10.9571 6.76651 11.4213C6.69787 11.4826 6.60971 11.5164 6.51825 11.5164C6.42679 11.5164 6.33863 11.4826 6.26999 11.4214C5.74918 10.957 5.24818 10.5218 4.8059 10.1375C2.2032 7.87635 0.483769 6.38255 0.483769 4.19922C0.483769 2.17828 1.86199 0.654297 3.68959 0.654297Z" fill="#2E363F" />
+                                        </svg>
+                                    </span>
+                                    <span className="flex items-center justify-center w-[30px] h-[30px] rounded-full bg-white cursor-pointer">
+                                        <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M10.0834 8.31035C9.33809 8.31035 8.68134 8.65405 8.26884 9.17674L4.70238 7.46467C4.76159 7.27545 4.80321 7.07936 4.80321 6.87244C4.80321 6.59179 4.74183 6.32498 4.6358 6.07957L8.36825 3.97391C8.78363 4.43093 9.39417 4.72737 10.0834 4.72737C11.3312 4.72737 12.3463 3.77574 12.3463 2.60587C12.3463 1.43601 11.3312 0.484375 10.0834 0.484375C8.83552 0.484375 7.82045 1.43601 7.82045 2.60587C7.82045 2.87547 7.87966 3.1312 7.9779 3.36862L4.23433 5.48046C3.81931 5.03702 3.21757 4.75094 2.54027 4.75094C1.29242 4.75094 0.277344 5.70258 0.277344 6.87244C0.277344 8.04231 1.29242 8.99394 2.54027 8.99394C3.29785 8.99394 3.9657 8.64014 4.37664 8.10277L7.93136 9.80928C7.86588 10.0074 7.82045 10.2138 7.82045 10.4318C7.82045 11.6017 8.83552 12.5533 10.0834 12.5533C11.3312 12.5533 12.3463 11.6017 12.3463 10.4318C12.3463 9.26198 11.3312 8.31035 10.0834 8.31035Z" fill="#2E363F" />
+                                        </svg>
+                                    </span>
+                                </div>
+                                <div className="pb-0 p-3 sm:pt-5 sm:px-2">
+                                    <div className="flex flex-wrap justify-between items-center">
+                                        <svg width="89" height="12" viewBox="0 0 89 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M12.5615 4.55671C12.5182 4.42328 12.4029 4.32603 12.2641 4.30588L8.36435 3.73919L6.62029 0.205426C6.55822 0.0796298 6.43009 0 6.28983 0C6.14954 0 6.02143 0.0796298 5.95934 0.205426L4.21521 3.73919L0.315542 4.30588C0.176749 4.32603 0.0613958 4.42328 0.0180553 4.55669C-0.0253098 4.69012 0.0108565 4.83658 0.111321 4.93449L2.93307 7.68515L2.26705 11.5692C2.24331 11.7075 2.30016 11.8472 2.41365 11.9296C2.47785 11.9763 2.55389 12 2.6303 12C2.68898 12 2.74784 11.986 2.80175 11.9577L6.2898 10.1238L9.77771 11.9576C9.90191 12.0229 10.0523 12.0121 10.1658 11.9296C10.2793 11.8472 10.3362 11.7074 10.3125 11.5691L9.64624 7.68515L12.4683 4.93447C12.5687 4.83658 12.6049 4.69012 12.5615 4.55671Z" fill="#ECA926" />
+                                            <path d="M31.4307 4.55671C31.3873 4.42327 31.272 4.32603 31.1332 4.30588L27.2335 3.73919L25.4894 0.205426C25.4274 0.0796298 25.2992 0 25.159 0C25.0187 0 24.8906 0.0796298 24.8285 0.205426L23.0843 3.73919L19.1847 4.30588C19.0459 4.32603 18.9305 4.42328 18.8872 4.55669C18.8438 4.69012 18.88 4.83658 18.9805 4.93449L21.8022 7.68515L21.1362 11.5692C21.1125 11.7074 21.1693 11.8472 21.2828 11.9296C21.347 11.9763 21.423 12 21.4994 12C21.5581 12 21.617 11.986 21.6709 11.9577L25.1589 10.1238L28.6468 11.9576C28.771 12.0229 28.9215 12.0121 29.035 11.9296C29.1485 11.8472 29.2053 11.7074 29.1816 11.5691L28.5154 7.68515L31.3374 4.93447C31.4379 4.83658 31.4741 4.69012 31.4307 4.55671Z" fill="#ECA926" />
+                                            <path d="M50.2998 4.55671C50.2565 4.42327 50.1412 4.32603 50.0024 4.30588L46.1026 3.73919L44.3586 0.205426C44.2965 0.0796298 44.1684 0 44.0281 0C43.8878 0 43.7597 0.0796298 43.6976 0.205426L41.9535 3.73919L38.0538 4.30588C37.915 4.32603 37.7997 4.42328 37.7563 4.55669C37.713 4.69012 37.7491 4.83658 37.8496 4.93449L40.6714 7.68515L40.0053 11.5692C39.9816 11.7074 40.0384 11.8472 40.1519 11.9296C40.2161 11.9763 40.2922 12 40.3686 12C40.4273 12 40.4861 11.986 40.54 11.9577L44.0281 10.1238L47.516 11.9576C47.6402 12.0229 47.7906 12.0121 47.9041 11.9296C48.0176 11.8472 48.0745 11.7074 48.0508 11.5691L47.3845 7.68515L50.2066 4.93447C50.307 4.83658 50.3432 4.69012 50.2998 4.55671Z" fill="#ECA926" />
+                                            <path d="M69.169 4.55671C69.1256 4.42327 69.0103 4.32603 68.8715 4.30588L64.9718 3.73919L63.2277 0.205426C63.1656 0.0796298 63.0375 0 62.8972 0C62.757 0 62.6288 0.0796298 62.5668 0.205426L60.8226 3.73919L56.923 4.30588C56.7842 4.32603 56.6688 4.42328 56.6255 4.55669C56.5821 4.69012 56.6183 4.83658 56.7187 4.93449L59.5405 7.68515L58.8745 11.5692C58.8507 11.7074 58.9076 11.8472 59.0211 11.9296C59.0853 11.9763 59.1613 12 59.2377 12C59.2964 12 59.3553 11.986 59.4092 11.9577L62.8972 10.1238L66.3851 11.9576C66.5093 12.0229 66.6598 12.0121 66.7732 11.9296C66.8867 11.8472 66.9436 11.7074 66.9199 11.5691L66.2537 7.68515L69.0757 4.93447C69.1762 4.83658 69.2124 4.69012 69.169 4.55671Z" fill="#999999" />
+                                            <path d="M88.0401 4.55671C87.9967 4.42327 87.8814 4.32603 87.7426 4.30588L83.8429 3.73919L82.0988 0.205426C82.0367 0.0796298 81.9086 0 81.7683 0C81.628 0 81.4999 0.0796298 81.4379 0.205426L79.6937 3.73919L75.7941 4.30588C75.6553 4.32603 75.5399 4.42328 75.4966 4.55669C75.4532 4.69012 75.4894 4.83658 75.5898 4.93449L78.4116 7.68515L77.7456 11.5692C77.7218 11.7074 77.7787 11.8472 77.8922 11.9296C77.9564 11.9763 78.0324 12 78.1088 12C78.1675 12 78.2264 11.986 78.2803 11.9577L81.7683 10.1238L85.2562 11.9576C85.3804 12.0229 85.5309 12.0121 85.6443 11.9296C85.7578 11.8472 85.8147 11.7074 85.791 11.5691L85.1247 7.68515L87.9468 4.93447C88.0473 4.83658 88.0834 4.69012 88.0401 4.55671Z" fill="#999999" />
+                                        </svg>
+                                        <div className="flex space-x-5">
+                                            <p className="text-sm font-bold text-[#E05D5D]">Not Available</p>
+                                        </div>
+                                    </div>
+                                    <h2 className="text-japaneseIndigo text-base sm:text-lg xl:text-2xl font-semibold pt-1 pb-2 xl:py-2">Tony Robbins</h2>
+                                    <div className="flex justify-between items-center pt-2 xl:pt-4 border-t border-[#dddddd]">
+                                        <span className="text-lg font-bold text-spiroDiscoBall mr-3">150 INR</span>
+                                        <div className="flex space-x-3">
+                                            <p className="text-xs font-bold text-[#9BA0A8]">Vesu, Surat</p>
+                                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <g clip-path="url(#clip0_2535_16260)">
+                                                    <path d="M8 0C5.18859 0 2.84375 2.26469 2.84375 5.15625C2.84375 6.25631 3.17431 7.23725 3.80872 8.15644L7.60541 14.0808C7.78959 14.3688 8.21078 14.3683 8.39459 14.0808L12.2078 8.13628C12.8285 7.25875 13.1562 6.22834 13.1562 5.15625C13.1562 2.31309 10.8432 0 8 0ZM8 7.5C6.70772 7.5 5.65625 6.44853 5.65625 5.15625C5.65625 3.86397 6.70772 2.8125 8 2.8125C9.29228 2.8125 10.3438 3.86397 10.3438 5.15625C10.3438 6.44853 9.29228 7.5 8 7.5Z" fill="#9BA0A8" />
+                                                    <path d="M11.6645 10.7715L9.30416 14.4617C8.69319 15.4143 7.30341 15.4111 6.69537 14.4626L4.33119 10.7725C2.25106 11.2534 0.96875 12.1344 0.96875 13.1873C0.96875 15.0142 4.5915 15.9998 8 15.9998C11.4085 15.9998 15.0312 15.0142 15.0312 13.1873C15.0312 12.1337 13.7472 11.2522 11.6645 10.7715Z" fill="#9BA0A8" />
+                                                </g>
+                                                <defs>
+                                                    <clipPath id="clip0_2535_16260">
+                                                        <rect width="16" height="16" fill="white" />
+                                                    </clipPath>
+                                                </defs>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </SwiperSlide>
+            </Swiper>
           </div>
         </div >
       </section>
@@ -540,23 +730,23 @@ function LandingPage() {
       {/* App Showcase */}
       < section id="showcase" className="relative bg-white" >
         <div className="px-3.5 relative pt-16 lg:pt-24">
-          <div className="lg:pt-10">
-            <h1 className="w-full text-center sm:w-auto text-4xl lg:text-[50px] text-white font-bold mb-3 lg:mb-6 relative z-10">App Showcase</h1>
-            <p className="max-w-5xl mx-auto text-white text-center relative z-10">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+          <div className="w-full pt-4">
+            <h1 className="w-full text-center sm:w-auto text-4xl lg:text-[50px] text-white font-bold mb-4 lg:mb-6 relative z-10">App Showcase</h1>
+            <p className="max-w-5xl mx-auto text-white text-center relative z-10 text-base md:text-lg xl:text-xl">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
             <img src={ShowBACK} className="absolute inset-0 w-full h-full z-0" alt="Showcase-bg" />
           </div>
-          <div className="flex items-center text-center -mx-3.5 pt-10 lg:pt-16 relative z-10">
+          <div className="flex items-center text-center -mx-3.5 pt-8 lg:pt-16 relative z-10">
             <img src={Showcasebg} alt="Showcase-bg" />
           </div>
         </div>
       </section >
 
       {/* f-coin */}
-      < section className="py-12 lg:py-20 2xl:py-24 bg-white" >
+      < section className="py-12 lg:pt-20 2xl:pt-24 lg:pb-40 bg-white" >
         <div className="wrapper">
-          <h2 className="text-center pb-3 xl:pb-6 font-extrabold text-4xl xl:text-5xl">F - Coin</h2>
-          <p className="lg:max-w-screen-lg lg:px-8 mx-auto font-bold text-center text-[#9BA0A8] pb-5 lg:pb-9">Refer a friend and get an additional 10 coins and your friend gets additional 10 point. So Refer away</p>
-          <div className="flex flex-wrap items-center justify-center">
+          <h2 className="text-center pb-3 xl:pb-6 font-extrabold text-4xl md:text-40 xl:text-5xl">F - Coin</h2>
+          <p className="lg:max-w-screen-lg lg:px-8 mx-auto font-bold text-center text-[#9BA0A8] text-base md:text-lg xl:text-xl">Refer a friend and get an additional 10 coins and your friend gets additional 10 point. So Refer away</p>
+          {/* <div className="flex flex-wrap items-center justify-center">
             <div className="w-full bg-[#2E363F] py-10 pb-12 px-5 md:p-[50px]">
               <div className="flex flex-wrap">
                 <div className="pt-3 w-full md:w-2/12 mb-5 md:mb-0">
@@ -597,7 +787,7 @@ function LandingPage() {
               <h2 className="text-5xl lg:text-7xl text-ev-dark font-bold"><span data-purecounter-start="0" data-purecounter-end="150" data-purecounter-duration="0" className="purecounter">5000+</span></h2>
               <p className="text-base font-bold lg:text-2xl text-ev-gray">Download</p>
             </div>
-          </div>
+          </div> */}
         </div>
       </section >
 
@@ -606,9 +796,9 @@ function LandingPage() {
         <div className="wrapper flex flex-wrap py-16 md:py-24 xl:py-40 relative">
           <img src={aboutg} alt="Our Company" className="w-full md:w-1/2 md:max-w-[650px] md:absolute right-0 top-1/2 md:-translate-y-1/2" />
           <div className="w-full md:w-1/2 max-w-xl md:pr-10 mt-6 md:mt-0">
-            <h2 className="text-4xl lg:text-5xl mb-5">Who we are?</h2>
-            <p className="text-base md:text-lg text-[#9BA0A8] font-semibold mb-3">Evento Package emerges as a great solution for the artists, creators, and event managers. Do you want to work as an event manager and want to organize an event on an advanced package? We confirm the best solution for you. </p>
-            <p className="text-base md:text-lg text-[#9BA0A8] font-semibold">The package is simple and designed with an updated version that helps artists and creators to get the best solution.</p>
+            <h2 className="text-4xl md:text-40 xl:text-5xl mb-5">Who we are?</h2>
+            <p className="text-base md:text-lg xl:text-xl text-[#9BA0A8] font-semibold mb-3">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+            <p className="text-base md:text-lg xl:text-xl text-[#9BA0A8] font-semibold">The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections</p>
           </div>
         </div>
       </section>
@@ -616,7 +806,7 @@ function LandingPage() {
       {/* Ads Video Gallery */}
       < section className="bg-white pt-20" >
         <div className="max-w-screen-2xl mx-auto px-4">
-          <h2 className="text-center text-ev-dark pb-3 lg:pb-6">Ads Video Gallery</h2>
+          <h2 className="text-center text-ev-dark pb-3 lg:pb-6 text-4xl md:text-40 xl:text-5xl">Ads Video Gallery</h2>
           <div className="flex flex-wrap items-center">
             <div className="w-full md:w-1/2 xl:w-1/4 p-2 lg:p-4">
               <div className="block shadow-xl">
@@ -706,10 +896,9 @@ function LandingPage() {
               <img src={ourcompany} alt="Our Company" className="w-full" />
             </div>
             <div className="w-full lg:w-6/12">
-              <div className="px-5 lg:px-14 py-10 lg:py-0">
-                <h2 className="text-ev-dark font-semibold pb-8">Our Company</h2>
-                <p className="font-semibold text-base md:text-lg text-[#9BA0A8] pb-4">Simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                <p className="font-semibold text-base md:text-lg text-[#9BA0A8] pb-4">Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+              <div className="pl-5 pr-3 lg:pl-14 lg:pr-10 py-10 xl:py-5">
+                <h2 className="text-ev-dark font-semibold pb-6 text-4xl md:text-40 xl:text-5xl">Our Company</h2>
+                <p className="font-semibold text-[#9BA0A8] pb-4 text-base md:text-lg xl:text-xl lowercase max-h-96 overflow-y-auto text-ellipsis pr-2 lg:pr-4">FESTUMEVENTO, ESTABLISHED IN 2019, BRINGS A UNIQUE BLEND OF THE ORGANIZATION THROUGH EMERGING IT SOLUTIONS SUCH AS ACCOUNTING SOFTWARE, ERP MANAGEMENT SYSTEM, AND MANY MORE. EARLIER, WE STARTED AS A PRODUCT-BASED ORGANIZATION. AFTER THE POSITIVE RESPONSE FROM OUR CLIENT AND THE SUCCESSFUL EVOLUTION OF OUR PRODUCT, WE DECIDED TO ESTABLISH THE ORGANIZATION BASED ON OUR PRODUCT. AFTER SUCCESSFULLY IMPLEMENTING OUR PRODUCTS, WE ARE EXPANDING OUR SERVICES WITH THE LATEST IT SOLUTIONS SUCH AS MOBILE APP DEVELOPMENT, WEB DEVELOPMENT, ETC. WE HAVE A STRONG MARKETING TEAM OF PROFESSIONALS AND EXPERTS WHO ACTIVELY WORK ON YOUR PROJECTS TO FULFIL YOUR REQUIREMENTS. WE HAVE INTELLIGENT TECHIES WHO ARE READY TO SOLVE ANY REAL-TIME PROBLEMS IN THE DIGITAL WORLD.</p>
               </div>
             </div>
           </div>
@@ -718,37 +907,42 @@ function LandingPage() {
 
       {/* Advertisement rate for your website */}
       < div className="bg-white" >
-        <div className="wrapper py-14 md:py-24">
-          <div className="flex flex-wrap justify-between">
-            <div className="w-full md:w-5/12">
-              <p className="text-ev-dark font-semibold text-3xl lg:text-4xl">Advertisement rate for your website</p>
+        <div className="wrapper pt-8 md:pt-12">
+          <div className="flex flex-wrap justify-between items-center p-8 md:p-10 xl:p-12 xl:px-16 bg-gradient-to-r from-[#83DCF2] to-[#23C1E8]">
+            <div className="w-full md:w-7/12 space-y-2 lg:space-y-4">
+              <span className="text-2xl lg:text-3xl font-bold text-white">Download our user app</span>
+              <p className="text-bold font-bold text-sm lg:text-base pr-5 text-white">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p>
             </div>
-            <div className="w-full md:w-6/12">
-              <p className="pb-8 pt-4 md:pt-0 text-[#9BA0A8] text-sm md:text-base">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-              <button className="text-white text-lg font-semibold bg-spiroDiscoBall hover:bg-japaneseIndigo anim px-12 py-3">Contact us</button>
+            <div className="w-full md:w-5/12">              
+                <div className="flex space-x-3 mt-5 md:mt-0 md:justify-end">
+                  <button className="max-w-[125px]">
+                    <img src={googleplay} alt="g-pay" />
+                  </button>
+                  <button className="max-w-[125px]">
+                    <img src={appstore} alt="apple-btn" />
+                  </button>
+                </div>
             </div>
           </div>
+          {/* <div class="w-full px-4 mx-auto py-4 md:py-9 relative mt-8 md:mt-12">
+            <img src={adbanner} alt="Lates Ring collection" class="w-full block absolute inset-0 h-full object-cover object-[15%] sm:object-center"/>
+            <div class="flex items-center flex-wrap justify-between pr-10 lg:px-8 relative">
+              <h1 class="text-3xl md:text-4xl xl:text-5xl font-normal text-white">50% off</h1>
+              <p class="text-xl md:text-30 xl:text-40 text-white font-normal">Lates Ring collection</p>
+            </div>
+          </div> */}
         </div>
       </div >
-
-      {/* ring Ad */}
-      {/* < div className="bg-white" >
-        <div className="wrapper py-9 relative">
-          <div className="px-4 lg:px-8">
-            <Advertisement />
-          </div>
-        </div>
-      </div > */}
 
       {/* Other Products */}
       <div className="bg-white swiper-main">
         <div className="wrapper py-14 md:py-24">
-          <h2 className="text-center text-ev-dark pb-3 lg:pb-6">Other Products</h2>
-          <div className="swiper mySwiper px-4 responsive">
+          <h2 className="text-center text-ev-dark pb-3 lg:pb-6 text-4xl md:text-40 xl:text-5xl">Other Products</h2>
+          <div className="swiper mySwiper px-5 responsive max-w-6xl">
             <Swiper
               modules={[Navigation]}
               spaceBetween={25}
-              slidesPerView={5}
+              slidesPerView={4}
               loop={true}
               centeredSlides={false}
               autoPlay={{
@@ -781,23 +975,12 @@ function LandingPage() {
                   spaceBetween: 25,
                 },
                 1200: {
-                  slidesPerView: 5,
+                  slidesPerView: 4,
                   spaceBetween: 30,
                 },
               }}
               onSlideChange={() => console.log('slide change')}
               onSwiper={(swiper) => console.log(swiper)}>
-              <SwiperSlide>
-                <div className="swiper-slide py-5">
-                  <div className="px-5 py-6 bg-white drop-shadow-lg">
-                    <img src={siderevento} className="mx-auto" alt="" />
-                    <div className="text-center pt-8 w-full overflow-hidden">
-                      <p className="text-xl font-bold text-ev-dark">Evento Package</p>
-                      <a href="https://eventopackage.com/" className="text-spiroDiscoBall  text-spiroDiscoBall text-sm font-bold text-ellipsis">https://eventopackage.com</a>
-                    </div>
-                  </div>
-                </div>
-              </SwiperSlide>
               <SwiperSlide>
                 <div className="swiper-slide py-5">
                   <div className="px-5 py-6 bg-white drop-shadow-lg">
@@ -850,33 +1033,32 @@ function LandingPage() {
       </div>
 
       {/* Get in touch with Us */}
-      <div className="md:py-10 gradiyent-c">
+      <div className="md:py-10 relative bg-white">
+        <span className="gradiyent-c inline-block absolute w-full h-full max-h-[550px]"></span>
         <div className="wrapper flex flex-wrap justify-center relative">
-          <div className="">
-            <div className="text-center text-white pt-10 pb-[240px] md:pt-14 md:pb-[250px] lg:pt-20 lg:pb-[280px]">
-              <h2 className="">Get in touch with Us</h2>
-              <p className="text-sm lg:text-xl pt-10">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer<br /> took a galley of type and scrambled it to make a type specimen book.</p>
-            </div>
+          <div className="text-center text-white pb-8 lg:pb-12 pt-12 mt:pt-14 xl:pt-24">
+            <h2 className="text-[30px] md:text-40 xl:text-5xl">Get in touch with Us</h2>
+            <p className="text-base md:text-lg xl:text-xl pt-4 md:pt-8">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer<br /> took a galley of type and scrambled it to make a type specimen book.</p>
           </div>
-          <div className="absolute top-56 lg:top-80 px-3.5 md:px-0 mx-auto w-full">
-            <form className="md:w-1/2 flex flex-wrap mx-auto bg-white shadow-lg px-8 md:px-12 py-6">
-              <div className="w-full p-1 relative">
+          <div className="w-full max-w-[1200px] mx-auto">
+            <form className="flex flex-wrap w-full bg-white shadow-lg p-8">
+              <div className="w-full p-1.5 px-0 sm:p-3.5 relative">
                 <label htmlFor="name" className="leading-7 text-sm font-medium">Your Name<span className="text-red-500">*</span></label>
                 <input type="text" id="name" name="name" className="htmlForm-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-[#EEEEEE] bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0focus:border-gray-500 focus:ring-2 focus:ring-gray-300 outline-none" />
               </div>
-              <div className="w-full md:w-1/2 p-1 relative">
+              <div className="w-full md:w-1/2 p-1.5 px-0 sm:p-3.5 relative">
                 <label htmlFor="name" className="leading-7 text-sm font-medium">Company Name<span className="text-red-500">*</span></label>
                 <input type="text" id="company" name="company" className="htmlForm-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-[#EEEEEE] bg-clip-padding border border-solid border-gray-300  transition ease-in-out m-0focus:border-gray-500 focus:ring-2 focus:ring-gray-300 outline-none" />
               </div>
-              <div className="w-full md:w-1/2 p-1 relative">
+              <div className="w-full md:w-1/2 p-1.5 px-0 sm:p-3.5 relative">
                 <label htmlFor="name" className="leading-7 text-sm font-medium">Email Address<span className="text-red-500">*</span></label>
                 <input type="email" id="email" name="email" className="htmlForm-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-[#EEEEEE] bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0focus:border-gray-500 focus:ring-2 focus:ring-gray-300 outline-none" />
               </div >
-              <div className="w-full mb-7 p-1 relative">
+              <div className="w-full mb-7 p-1.5 px-0 sm:p-3.5 pb-0 relative">
                 <label htmlFor="message" className="leading-7 text-sm font-medium">Description<span className="text-red-500">*</span></label>
                 <textarea id="message" name="message" col="5" rows="3" className="htmlForm-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-[#EEEEEE] bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0focus:border-gray-500 focus:ring-2 focus:ring-gray-300 outline-none"></textarea>
               </div >
-              <div className="relative w-full">
+              <div className="relative w-full p-1.5 px-0 sm:p-3.5 pt-0">
                 <button className="w-full text-white text-lg font-semibold bg-spiroDiscoBall hover:bg-japaneseIndigo anim py-2 relative" type="submit" >
                   <span >Submit your query</span>
                 </button >
@@ -889,13 +1071,11 @@ function LandingPage() {
       </div >
 
       {/* Get Our Brochure */}
-      <div className="pt-[150px] pb-16 md:pb-0 md:pt-[230px] bg-white">
-        <div className="wrapper md:py-10">
-          <div className="text-center pt-48 md:pt-0">
-            <h2 className="text-japaneseIndigo">Get Our Brochure</h2>
-            <p className="text-[#9BA0A8] pb-7">Ready to get Our Brochure & Enjoy your Life Through Our Festum Evento App.</p>
-            <button className="text-white text-lg font-semibold bg-spiroDiscoBall hover:bg-japaneseIndigo anim px-12 py-2">Download Brochure</button>
-          </div>
+      <div className="py-12 md:pb-14 bg-white">
+        <div className="wrapper md:py-10 text-center space-y-3 md:space-y-6">
+          <h2 className="text-japaneseIndigo text-4xl md:text-40 xl:text-5xl">Get Our Brochure</h2>
+          <p className="text-[#9BA0A8] text-xl md:text-2xl xl:text-3xl">Ready to get Our Brochure & Enjoy your Life Through Our Festum Evento App.</p>
+          <button className="text-white text-lg font-semibold bg-spiroDiscoBall hover:bg-japaneseIndigo anim px-12 py-2">Download Brochure</button>
         </div>
       </div>
 
@@ -950,54 +1130,51 @@ function LandingPage() {
                     </clipPath>
                   </defs>
                 </svg>
-
-                <p className="max-w-sm text-sm lg:text-base text-white opacity-60 font-normal">Festum Evento is a newly developed application, available on Google play store, based on the idea to let people find the best place to be in and around the world.</p>
+                <p className="max-w-sm text-base text-white opacity-60 font-normal">Festum Evento is a newly developed application, available on Google play store, based on the idea to let people find the best place to be in and around the world.</p>
               </div>
-              <div className="w-full md:w-6/12 space-y-10">
+              <div className="w-full md:w-6/12 space-y-5 lg:space-y-10">
                 <div className="space-y-4">
                   <span className="ft-titel">Userfull Link</span>
                   <div className="flex flex-wrap f-manu">
-                    <a href="#" className="block opacity-50 mr-4">Home</a>
-                    <a href="#" className="block opacity-50 mr-4">About</a>
-                    <a href="#" className="block opacity-50 mr-4">Feature</a>
-                    <a href="#" className="block opacity-50 mr-4">F-Coin</a>
-                    <a href="#" className="block opacity-50 mr-4">Showcase</a>
-                    <a href="#" className="block opacity-50 mr-4">About us</a>
-                    <a href="#" className="block opacity-50 mr-4">Contact us</a>
-                    <a href="#" className="block opacity-50 mr-4">Ads</a>
+
+                    <a href="#" className="block opacity-50 mr-4 hover:text-white hover:opacity-100 anim">Home</a>
+                    <a href="#" className="block opacity-50 mr-4 hover:text-white hover:opacity-100 anim">About</a>
+                    <a href="#" className="block opacity-50 mr-4 hover:text-white hover:opacity-100 anim">Feature</a>
+                    <a href="#" className="block opacity-50 mr-4 hover:text-white hover:opacity-100 anim">Upcoming</a>
+                    <a href="#" className="block opacity-50 mr-4 hover:text-white hover:opacity-100 anim">Showcase</a>
+                    <a href="#" className="block opacity-50 mr-4 hover:text-white hover:opacity-100 anim">Price</a>
+                    <a href="#" className="block opacity-50 mr-4 hover:text-white hover:opacity-100 anim">About us</a>
+                    <a href="#" className="block opacity-50 mr-4 hover:text-white hover:opacity-100 anim">Become a Partner</a>
+                    <a href="#" className="block opacity-50 mr-4 hover:text-white hover:opacity-100 anim">Become a Agent</a>
                   </div>
                 </div>
                 <div className="space-y-2 lg:space-y-4">
-                  <span className="ft-titel">Contact info</span>
-                  <div className="w-full lg:py-0 ft-text lg:flex">
-                    help@eventopackage.com
-                  </div>
-                  {/* <div className="flex flex-wrap  opacity-50 space-y-2 sm:space-y-0">
-                     <div className="w-full lg:w-1/3 py-2 lg:py-0 px-3.5 border-b lg:border-b-0 lg:border-r border-white border-opacity-20 ft-text">
-                      Surat, Gujarat
+                  <div className="flex flex-wrap items-center -mx-3.5 space-y-4 lg:space-y-0">
+                    <div className="w-full lg:w-1/2 px-3.5 ">
+                      <a href="javascript:void(0)" className="py-2 ft-text inline-block opacity-50">
+                        support@festumevento.com
+                      </a>
+
                     </div>
-                    <div className="w-full lg:w-1/3 py-2 lg:py-0 px-3.5 border-b lg:border-b-0 lg:border-r border-white border-opacity-20 ft-text flex lg:justify-center">
-                      <div>
-                        <span className="block whitespace-nowrap">+91 97279 38000</span>
+                    <div className="w-full lg:w-1/2 px-3.5 flex md:justify-end">
+                      <div className="space-y-2 md:space-y-4">
+                        <span className="ft-titel">For Shopper</span>
+                        <div className="flex space-x-3">
+                          <button className="w-32 md:w-auto">
+                            <img src={googleplay} alt="g-pay" /></button>
+                          <button className="w-32 md:w-auto">
+                            <img src={appstore} alt="apple-btn" /></button>
+                        </div>
                       </div>
                     </div>
-                  </div> */}
+
+                  </div>
+
                 </div>
               </div>
             </div>
             <div className="flex flex-wrap pt-10 justify-between items-center">
-              <div className="w-full md:w-1/2 xl:w-1/3 md:px-3.5 order-1 xl:order-1 flex justify-center xl:justify-start">
-                <div className="space-y-2 md:space-y-4">
-                  <span className="ft-titel">For User</span>
-                  <div className="flex space-x-3">
-                    <button className="w-32 md:w-auto">
-                      <img src={googleplay} alt="g-pay" /></button>
-                    <button className="w-32 md:w-auto">
-                      <img src={appstore} alt="apple-btn" /></button>
-                  </div>
-                </div>
-              </div>
-              <div className="w-full xl:w-1/3 pt-5 xl:pt-0 flex justify-center space-x-3 order-3 xl:order-2">
+              <div className="w-full flex justify-center space-x-3">
                 <a href="#" className="block hover:opacity-60 anim">
                   <img src={whatsupfooter} alt="#whapsapp" /></a>
                 <a href="#" className="block hover:opacity-60 anim">
@@ -1012,17 +1189,6 @@ function LandingPage() {
                   <img src={linkedinfooter} alt="#linkin" /></a>
                 <a href="#" className="block hover:opacity-60 anim">
                   <img src={youtubefooter} alt="#youtube" /></a>
-              </div>
-              <div className="w-full md:w-1/2 xl:w-1/3 md:px-3.5 flex justify-center pt-5 md:pt-0 md:justify-end order-2 xl:order-3">
-                <div className="space-y-2 md:space-y-4">
-                  <span className="ft-titel">For Shopper</span>
-                  <div className="flex space-x-3">
-                    <button className="w-32 md:w-auto">
-                      <img src={googleplay} alt="g-pay" /></button>
-                    <button className="w-32 md:w-auto">
-                      <img src={appstore} alt="apple-btn" /></button>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
