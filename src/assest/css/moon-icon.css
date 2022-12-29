@@ -25,6 +25,9 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-half-star:before {
+  content: "\e94c";
+}
 .icon-logout:before {
   content: "\e94a";
   color: #fe4d5f;

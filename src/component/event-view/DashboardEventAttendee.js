@@ -1,5 +1,5 @@
 import React from 'react'
-import Advertisement from '../Advertisement';
+// import Advertisement from '../Advertisement';
 import DashboardEventAtteneeListItem from './DashboardEventAtteneeListItem';
 
 function DashboardEventAttendee() {
@@ -14,7 +14,7 @@ function DashboardEventAttendee() {
                     <DashboardEventAtteneeListItem id={"#69552563"} name={"Mackenzie Holdern"} price={"$900.000"} />
                 </div>
                 {/* <!-- calendar end --> */}
-                <Advertisement />
+                {/* <Advertisement /> */}
             </div>
         </div>
     )

@@ -8,6 +8,35 @@ import axios from 'axios';
 import { baseUrl } from '../../config';
 
 
+
+ 
+ const Star = ({ratings}) => {
+	const numberRating = Number(ratings);
+	console.log("numberRating",numberRating);
+  const ratingStar = Array.from({ length: 5 }, (elem, index) => {
+    let number = index + 0.5;
+    return (
+      <span key={index}>
+        {numberRating >= index + 1 ? (
+          <i className="icon-fillStar text-sm"></i>
+        ) : numberRating >= number ? (
+          <i className="icon-half-star text-sm"></i>
+        ) : (
+          <i className="icon-star text-sm"></i>
+        )}
+      </span>
+    );
+  });
+	 return (
+		<div>{ratingStar}</div>
+	 )
+ };
+ 
+
+ 
+
+
+
 function  DashboardEventCategoryItem({ data, handleClick }) {
 
 	const dispatch = useDispatch();
@@ -19,6 +48,7 @@ function  DashboardEventCategoryItem({ data, handleClick }) {
 	const header = {
 		'Authorization': `Token ${token}`,
 	}
+
 
 	const singleEventlive = async (id) => {
 		console.log("live id : ", id)
@@ -41,30 +71,9 @@ function  DashboardEventCategoryItem({ data, handleClick }) {
 			console.log(error);
 		}
 	}
-	// const checkboxHandler = (e, ele) => {
 
-	// 	if (e.target.checked) {
-	// 		// ele.is_live = true;
-	// 		console.log("in if");
-	// 		// setActiveList(current => [...current, ele]);
-	// 	} else {
-	// 		// console.log("in else");
-	// 		ele.is_live = false;
-	// 		// setActiveList(current => current.filter(data => data._id !== ele._id))
-	// 	}
-	// }
-// console.log("live list: ", activeList);
 	return (
-		<div className="w-full flex items-center ">
-			{/* <div>
-				<label className="checkbox w-16">
-					<input type="checkbox" className="bg-white" 
-					// checked={ele.isAdded}
-					onChange={(e) => checkboxHandler(e, data)}/>
-					<i className="icon-right"></i>
-				</label>
-			</div> */}
-			
+		<div className="w-full flex items-center ">			
 				<div className="flex space-x-5 w-full p-4 pr-7 bg-white rounded">
 					<div className="max-w-xs h-[200px] w-full">
 					<Link to={`../../event-view/${eventType}`} className="" onClick={() => { localStorage.setItem("eventId", data?._id) }} >
@@ -75,7 +84,8 @@ function  DashboardEventCategoryItem({ data, handleClick }) {
 							<div className="">
 								<span className="text-sm text-white bg-spiroDiscoBall px-3 py-1">{data?.event_category.category_name}</span>
 								<h2 className="text-japaneseIndigo pt-5">{data?.display_name}</h2>
-								<div className="text-sm text-quicksilver pt-3"><i className="icon-fill-location mr-3"></i>{data?.capacity?.address}{data?.personaldetail?.area + ","+ data?.personaldetail?.city+"," +  data?.personaldetail?.state}</div>
+								<div className="text-sm text-quicksilver pt-3"><i className="icon-fill-location mr-3"></i>{(data?.capacity?.address && data?.capacity?.address !== "") || (data?.personaldetail?.area && data?.personaldetail?.area !=="" && data?.personaldetail?.city && data?.personaldetail?.city !=="" && data?.personaldetail?.state && data?.personaldetail?.state !=="" ?  data?.personaldetail?.area + ","+ data?.personaldetail?.city+"," +  data?.personaldetail?.state : "")}
+</div>
 							</div>
 							<div className="">
 								<div className="flex items-center">
@@ -92,17 +102,13 @@ function  DashboardEventCategoryItem({ data, handleClick }) {
 										<h3>Live</h3>	
 									</label>
 								</div>
-								<h1 className="pt-7">{parseFloat(data?.totalPrice).toFixed(2)} INR</h1>
+								<h1 className="pt-7">{data?.aboutplace?.place_price} INR</h1>
 							</div>
 						</div>
 						<div className="flex justify-between pt-4">
 							<div className="flex items-center space-x-1">
-								<i className="icon-fillStar text-sm"></i>
-								<i className="icon-fillStar text-sm"></i>
-								<i className="icon-fillStar text-sm"></i>
-								<i className="icon-star text-sm"></i>
-								<i className="icon-star text-sm"></i>
-								<span className="text-quicksilver text-xs font-bold pl-2"> 19,981 ratings</span>
+							<Star ratings={data.ratings}/>
+								<span className="text-quicksilver text-xs font-bold pl-2">{data?.totalreview} ratings</span>
 							</div>
 							<div className="flex space-x-2">
 								<Link to={`../addplaces`} onClick={() => { localStorage.setItem("eventId", data?._id); localStorage.setItem("event_type", data?.event_type); dispatch(increment()) }} className="bg-brightGray px-2 py-1 text-center rounded"><i className="text-base edit text-black icon-edit" style={{ color: "#000" }}></i></Link>
