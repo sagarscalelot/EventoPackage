@@ -34,23 +34,28 @@ function EventDiscounts() {
 		try {
 
 			const response = await axios.get(`${baseUrl}/organizer/discount/list`, { headers: header });
+			
 			if (response.data.IsSuccess) {
-				const res = await axios.get(`${baseUrl}/organizer/events/discount?eventid=${eventId}`, { headers: header });
-
-				response.data.Data.map((element) => {
-					let isMatched = false;
-					res.data.Data.discounts.map(selement => {
-						if (selement.sid === element._id) {
-							displayDiscount.push(selement);
-							isMatched = true;
-							setActiveList(current => [...current, selement]);
+				try {
+					const res = await axios.get(`${baseUrl}/organizer/events/discount?eventid=${eventId}`, { headers: header });
+					
+					response.data.Data.map((element) => {
+						let isMatched = false;
+						res.data.Data.discounts.map(selement => {
+							if (selement.sid === element._id) {
+								displayDiscount.push(selement);
+								isMatched = true;
+								setActiveList(current => [...current, selement]);
+							}
+							
+						});
+						if (!isMatched) {
+							displayDiscount.push(element);
 						}
-
 					});
-					if (!isMatched) {
-						displayDiscount.push(element);
-					}
-				});
+				} catch (error) {
+					console.log(error);
+				}
 				setAllDiscount(displayDiscount);
 			}
 
@@ -80,13 +85,13 @@ function EventDiscounts() {
 
 	const clickNextHandler = async () => {
 		try {
-			console.log("try");
+			// console.log("try");
 
 			const reqObj = {
 				eventid: eventId,
 				discounts: activeList
 			}
-			console.log("active list : ", activeList);
+			// console.log("active list : ", activeList);
 
 			console.log("obj : ", reqObj);
 

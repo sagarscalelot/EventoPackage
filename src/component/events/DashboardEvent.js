@@ -37,7 +37,7 @@ function DashboardEvent() {
 		try {
 			const response = await axios.post(`${baseUrl}/organizer/events/list`, requestObj, { headers: header });
 			setAllEvents(response.data.Data);
-			// console.log(response.data.Data.docs);
+			console.log(response.data.Data);
 			setLoading(false);
 		} catch (error) {
 			console.log(error);
@@ -50,7 +50,7 @@ function DashboardEvent() {
 
 	const getCategory = async () => {
 		try {
-			const response = await axios.get(`${baseUrl}/organizer/events/listcategory`, { headers: header });
+			const response = await axios.get(`${baseUrl}/organizer/events/listcategory?event_type=have_you_places`, { headers: header });
 			setCategory(response.data.Data);
 		} catch (error) {
 			console.log(error);
