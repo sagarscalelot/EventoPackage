@@ -122,15 +122,13 @@ function SideBar() {
               <i className="w-6 block text-center text-lg icon-deshbord"></i>
             </span>
             <span>Dashboard</span>
-
           </NavLink>
-          <NavLink to="/" activeClassName="active" title="Subscription">
+          {/* <NavLink to="/" activeClassName="active" title="Subscription">
             <span>
               <i className="w-6 block text-center text-lg icon-subsciption"></i>
             </span>
             <span>Subscription</span>
-
-          </NavLink>
+          </NavLink> */}
           <NavLink to="refer-to-earn" activeClassName="active" title="Refer & Earn">
             <span>
               <i className="w-6 block text-center text-lg icon-refer"></i>
@@ -143,11 +141,11 @@ function SideBar() {
             </span>
             <span>Redeem</span>
           </NavLink>
-          <NavLink to="gallery" activeClassName="active" title="Gallery">
+          <NavLink to="entertainment" activeClassName="active" title="Entertainment">
             <span>
               <i className="w-6 block text-center text-lg icon-gallery"></i>
             </span>
-            <span>Gallery</span>
+            <span>Entertainment</span>
           </NavLink>
           <a href="https://www.festumevento.com" target="_blank" activeClassName="active">
             <span>
@@ -167,29 +165,35 @@ function SideBar() {
             </span>
             <span>Invoice</span>
           </NavLink>
-          <NavLink to="/" activeClassName="active" title="Membership">
+          {/* <NavLink to="/" activeClassName="active" title="Membership">
             <span>
               <i className="w-6 block text-center text-lg icon-membership"></i>
             </span>
             <span>Membership</span>
-          </NavLink>
+          </NavLink> */}
           <NavLink to="our-products" activeClassName="active" title="Our Products">
             <span>
               <i className="w-6 block text-center text-lg icon-our-product"></i>
             </span>
             <span>Our Products</span>
           </NavLink>
-          <NavLink to="gift" activeClassName="active" title="Gift">
+          {/* <NavLink to="gift" activeClassName="active" title="Gift">
             <span>
               <i className="w-6 block text-center text-lg icon-refer"></i>
             </span>
             <span>Gift</span>
-          </NavLink>
+          </NavLink> */}
           <NavLink to="faq" activeClassName="active" title="Help & FAQ">
             <span>
               <i className="w-6 block text-center text-lg icon-help"></i>
             </span>
-            <span>Help & FAQ</span>
+            <span>FAQ</span>
+          </NavLink>
+          <NavLink to="chatbot" activeClassName="active" title="Help & FAQ">
+            <span>
+              <i className="w-6 block text-center text-lg icon-massage"></i>
+            </span>
+            <span>Help</span>
           </NavLink>
         </div>
       </div>
@@ -233,13 +237,13 @@ function SideBar() {
               >
                 <span className="icon-language text-2xl block"></span>
               </a>
-              <Link
+              {/* <Link
                 to="chatbot"
                 className="block hover:text-spiroDiscoBall anim"
                 title="Massage"
               >
                 <span className="icon-massage text-2xl block"></span>
-              </Link>
+              </Link> */}
               <Link
                 to="notification"
                 className="block hover:text-spiroDiscoBall anim "
@@ -303,7 +307,7 @@ function SideBar() {
             <Route path="profile" element={<Profile />} />
             <Route path="refer-to-earn" element={<ReferToEarn />} />
             <Route path="redeem" element={<RedeemCoin />} />
-            <Route path="gallery" element={<Gallery />} />
+            <Route path="entertainment" element={<Gallery />} />
             <Route path="gift" element={<Gift />} />
             <Route path="booking" element={<Booking />} />
             <Route path="gift">

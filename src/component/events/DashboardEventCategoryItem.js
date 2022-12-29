@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { s3Url } from '../../config';
 import { useDispatch } from 'react-redux';
@@ -6,6 +6,7 @@ import { increment } from '../../redux/stepProgressCount';
 import bannerPreview from "../../assest/images/banner-preview.png";
 import axios from 'axios';
 import { baseUrl } from '../../config';
+
 
 
 
@@ -39,6 +40,7 @@ import { baseUrl } from '../../config';
 
 function  DashboardEventCategoryItem({ data, handleClick }) {
 
+
 	const dispatch = useDispatch();
 
 	const params = useParams();
@@ -53,7 +55,7 @@ function  DashboardEventCategoryItem({ data, handleClick }) {
 	const singleEventlive = async (id) => {
 		console.log("live id : ", id)
 		try {
-			const response = await axios.post(`${baseUrl}/organizer/events/liveone`, { eventid: id}, { headers: header });
+			const response = await axios.post(`${baseUrl}/organizer/events/liveone`, { eventid: id }, { headers: header });
 			console.log(response);
 		} catch (error) {
 			console.log(error);
@@ -64,13 +66,14 @@ function  DashboardEventCategoryItem({ data, handleClick }) {
 		console.log("e : ", id);
 
 		try {
-			const response = await axios.post(`${baseUrl}/organizer/events/liveone`, { eventid: data._id}, { headers: header });
+			const response = await axios.post(`${baseUrl}/organizer/events/liveone`, { eventid: data._id }, { headers: header });
 			console.log("event active : ", response);
 		} catch (error) {
 			console.log("Something went Wrong.");
 			console.log(error);
 		}
 	}
+
 
 	return (
 		<div className="w-full flex items-center ">			
@@ -89,22 +92,27 @@ function  DashboardEventCategoryItem({ data, handleClick }) {
 							</div>
 							<div className="">
 								<div className="flex items-center">
+
 								{/* {console.log("check : ", data?.display_name, data?.is_live)} */}
 
-									<input type="checkbox" className="switch mr-3" 
+								<input type="checkbox" className="switch mr-3"
 									// defaultChecked={data?.is_live}
-									id="on" 
+									id="on"
 									defaultChecked={data?.is_live}
 									// onClick={() => singleEventlive(data?._id)}
 									onChange={() => toggleEvent(data)}
+
 									/>
 									<label htmlFor="">
 										<h3>Live</h3>	
 									</label>
 								</div>
 								<h1 className="pt-7">{data?.aboutplace?.place_price} INR</h1>
+
 							</div>
+							<h1 className="pt-7">{parseFloat(data?.totalPrice).toFixed(2)} INR</h1>
 						</div>
+
 						<div className="flex justify-between pt-4">
 							<div className="flex items-center space-x-1">
 							<Star ratings={data.ratings}/>
@@ -121,10 +129,12 @@ function  DashboardEventCategoryItem({ data, handleClick }) {
 								<Link to="/" className="bg-brightGray px-2 py-1 text-center rounded"><i
 									className="icon-share text-base text-black"></i></Link>
 							</div>
+
 						</div>
 					</div>
 				</div>
-			
+			</div>
+
 		</div>
 	)
 }

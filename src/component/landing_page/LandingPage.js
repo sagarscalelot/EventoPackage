@@ -346,8 +346,10 @@ function LandingPage() {
                           </div>
                         </div>
                       </div>
+
                       <button className="btn-primary bg-japaneseIndigo border-japaneseIndigo hover:text-japaneseIndigo font-semibold tracking-wider px-3 py-2 sm:py-3 min-w-[70px] sm:min-w-[120px]">Ads</button>
                       <Link to="/dashboard" className="btn-primary bg-japaneseIndigo border-japaneseIndigo hover:text-japaneseIndigo font-semibold tracking-wider px-3 py-2 sm:py-3 min-w-[70px] sm:min-w-[120px]">Dashboard</Link>
+
                       <span className="xl:hidden inline-block" onClick="toggleActive('nav', 'hidden')">
                         <svg className="w-5 md:w-7 h-auto cursor-pointer fill-current hover:text-ev-sky anim" viewBox="0 0 100 80" width="40" height="40">
                           <rect width="100" height="15"></rect>
@@ -359,6 +361,7 @@ function LandingPage() {
                     {/* <!-- Navbar --> */}
                     <nav className="w-full lg:w-auto py-4 lg:py-0 lg:order-2 text-center hidden xl:block">
                       <ul className="flex flex-wrap space-y-2 lg:space-y-0 lg:space-x-8">
+
                         <li className="w-full lg:w-auto"><a href="#" className="block hover:opacity-50">Home</a></li>
                         <li className="w-full lg:w-auto"><a href="#about" className="block hover:opacity-50">About</a></li>
                         <li className="w-full lg:w-auto"><a href="#feature" className="block hover:opacity-50">Feature</a></li>
@@ -366,6 +369,7 @@ function LandingPage() {
                         <li className="w-full lg:w-auto"><a href="#" className="block hover:opacity-50">F-coin</a></li>
                         <li className="w-full lg:w-auto"><a href="#" className="block hover:opacity-50">About Us</a></li>
                         <li className="w-full lg:w-auto"><a href="#" className="block hover:opacity-50">Contact us</a></li>
+
                       </ul>
                     </nav>
                   </div>
@@ -1132,6 +1136,7 @@ function LandingPage() {
                 <div className="space-y-4">
                   <span className="ft-titel">Userfull Link</span>
                   <div className="flex flex-wrap f-manu">
+
                     <a href="#" className="block opacity-50 mr-4 hover:text-white hover:opacity-100 anim">Home</a>
                     <a href="#" className="block opacity-50 mr-4 hover:text-white hover:opacity-100 anim">About</a>
                     <a href="#" className="block opacity-50 mr-4 hover:text-white hover:opacity-100 anim">Feature</a>
@@ -1149,6 +1154,7 @@ function LandingPage() {
                       <a href="javascript:void(0)" className="py-2 ft-text inline-block opacity-50">
                         support@festumevento.com
                       </a>
+
                     </div>
                     <div className="w-full lg:w-1/2 px-3.5 flex md:justify-end">
                       <div className="space-y-2 md:space-y-4">
@@ -1161,7 +1167,9 @@ function LandingPage() {
                         </div>
                       </div>
                     </div>
+
                   </div>
+
                 </div>
               </div>
             </div>

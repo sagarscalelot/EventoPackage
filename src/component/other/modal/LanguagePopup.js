@@ -1,13 +1,13 @@
 import React from "react";
 
-function LanguagePopup({handleClose}) {
+function LanguagePopup({ handleClose }) {
     return (
         <div className="fixed inset-0 w-full h-full bg-[rgba(0,0,0,0.6)] flex z-50">
-            <div className="w-full lg:w-1/2 2xl:w-7/12" onClick={()=> handleClose(false)} ></div>
+            <div className="w-full lg:w-1/2 2xl:w-7/12" onClick={() => handleClose(false)} ></div>
             <div className="w-full lg:w-1/2 2xl:w-5/12 bg-brightGray py-12 space-y-8">
                 <h1 className="px-12">Language</h1>
                 <div className="space-y-2.5 px-12 h-[calc(100vh-170px)] overflow-y-auto language">
-                    <label
+                    {/* <label
                         htmlFor="selact1"
                         className="bg-white rounded-md py-3 px-5 flex items-center justify-between cursor-pointer"
                     >
@@ -1705,7 +1705,7 @@ function LanguagePopup({handleClose}) {
                                 <i className="icon-right text-[10px] scale-0 origin-center duration-300 transition-all"></i>
                             </div>
                         </div>
-                    </label>
+                    </label> */}
                     <label
                         htmlFor="selact19"
                         className="bg-white rounded-md py-3 px-5 flex items-center justify-between cursor-pointer"
@@ -1936,7 +1936,7 @@ function LanguagePopup({handleClose}) {
                             </div>
                         </div>
                     </label>
-                    <label
+                    {/* <label
                         htmlFor="selact20"
                         className="bg-white rounded-md py-3 px-5 flex items-center justify-between cursor-pointer"
                     >
@@ -2069,7 +2069,7 @@ function LanguagePopup({handleClose}) {
                                 <i className="icon-right text-[10px] scale-0 origin-center duration-300 transition-all"></i>
                             </div>
                         </div>
-                    </label>
+                    </label> */}
                 </div>
             </div>
         </div>

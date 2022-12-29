@@ -24,7 +24,7 @@ function ImagePreview({ handleClose, data }) {
             }}
             spaceBetween={10}
             navigation={true}
-            thumbs={{swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null}}
+            thumbs={{ swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null }}
             modules={[Navigation, Thumbs]}
           >
             {data.map(e => (
@@ -42,7 +42,7 @@ function ImagePreview({ handleClose, data }) {
           <Swiper
             onSwiper={setThumbsSwiper}
             spaceBetween={10}
-   
+
             freeMode={true}
             slidesPerView={4}
             watchSlidesProgress={true}
@@ -51,7 +51,7 @@ function ImagePreview({ handleClose, data }) {
           >
             {data.map(e => (
               <SwiperSlide>
-                <ImagePreviewMainSlide link={e.url}/>
+                <ImagePreviewMainSlide link={e.url} />
               </SwiperSlide>
             ))}
           </Swiper>
