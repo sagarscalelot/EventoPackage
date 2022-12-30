@@ -1,7 +1,7 @@
 import React from 'react'
 import sweetLoveCatering2Image from "../../assest/images/sweet-love-catring-2.png";
 import user3Image from "../../assest/images/user-3.png";
-
+import BookingListItem from './BookingListItem'
 function Booking() {
     return (
         <div className="wrapper min-h-full">
@@ -66,6 +66,7 @@ function Booking() {
                     </div>
                 </div>
             </div>
+            <BookingListItem />
         </div>
     )
 }
