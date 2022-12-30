@@ -5,7 +5,7 @@ import axios from "axios";
 import { baseUrl } from '../../../config.js';
 import {  useNavigate, useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { increment } from '../../../redux/stepProgressCount.js';
+import { increment, decrement } from '../../../redux/stepProgressCount.js';
 import { toast } from 'react-toastify';
 import { getEventType } from '../../../shared/helper.js';
 
@@ -27,7 +27,7 @@ function EventPopUpCreateNew({ handleClose, selectedCategory, displayName, edit,
 	}
 	const getCategory = async() => {
 		try {
-			const response = await axios.get(`${baseUrl}/organizer/events/listcategory?event_type=have_you_places`,{headers: header});
+			const response = await axios.get(`${baseUrl}/organizer/events/listcategory?event_type=${eventType}`,{headers: header});
 			// console.log("Categorys >> ",response);
 			setCategory(response.data.Data);
 			setNewCategoryId(response.data.Data[0]?._id);
@@ -65,10 +65,14 @@ function EventPopUpCreateNew({ handleClose, selectedCategory, displayName, edit,
 				handleClose(false);
 				if(!edit) {
 					dispatch(increment());
-					
 				}
+				console.log("event d : ", response.data.Data);
+				// window.location.reload();
+				navigate("../addplaces");
+				localStorage.setItem("eventId", response.data.Data._id)
+				localStorage.setItem("event_type", response.data.Data.event_type)
+				// dispatch(increment())
 				// temporary fix for page reload
-				window.location.reload();
 			} else {
 				toast.error(response.data.Message);
 				handleClose(false);
@@ -77,6 +81,7 @@ function EventPopUpCreateNew({ handleClose, selectedCategory, displayName, edit,
 			toast.error("Something went Wrong.");
 			console.log(error);
 		}
+		// localStorage.setItem("eventId", data?._id); localStorage.setItem("event_type", data?.event_type);
 	}
 
 	return (
