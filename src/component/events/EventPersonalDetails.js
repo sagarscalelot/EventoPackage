@@ -58,7 +58,9 @@ function EventPersonalDetails() {
 	const [count, setCount] = useState(false);
 
 	const clickNextHandler = async (values) => {
+
 		const requestObj = { ...values, is_mobile_no_hidden: mobileNoHidden, is_email_hidden: emailHidden, eventid: eventId };
+
 		console.log("values >> ", requestObj);
 		try {
 			const response = await axios.post(`${baseUrl}/organizer/events/personaldetail`, requestObj, { headers: header });
@@ -88,27 +90,24 @@ function EventPersonalDetails() {
 	});
 
 	const getProfile = async () => {
-		try {
-			const response = await axios.get(`${baseUrl}/organizer/profile`, { headers: header });
-			console.log("response.data.Data", response.data.Data.country_code);
-			// setDetails(response.data.Data)
-			// setName(response.data.Data.name);
-			// setCountryCode(response.data.Data.country_code);
-			// setEmail(response.data.Data.email);
-			// setMobileNo(response.data.Data.phone_no);
+
+        try {
+            const response = await axios.get(`${baseUrl}/organizer/profile`, { headers: header });
+            console.log("response.data.Data", response.data.Data.country_code);
 			formik.values.full_name = response.data.Data.name
 			formik.values.mobile_no = response.data.Data.phone_no;
 			formik.values.email = response.data.Data.email;
 			formik.values.country_code = response.data.Data.country_code;
 			// setCode(code);
 		} catch (error) {
-			console.log(error);
-		}
+            console.log(error);
+        }
 		setCount(true)
-	}
+    }
 
 	const getPersonalDetails = async () => {
 		try {
+
 			const response = await axios.get(`${baseUrl}/organizer/events/personaldetail?eventid=${eventId}`, { headers: header });
 			if (response.data.Data.personaldetail) {
 				formik.setValues(response.data.Data.personaldetail);
@@ -167,15 +166,22 @@ function EventPersonalDetails() {
 						</div>
 						<div className="w-full flex items-end flex-wrap">
 
+						
 							<div className="w-full md:w-1/3 px-2 inputHolder">
+							<div className="w-full md:w-1/2 px-2 inputHolder">
+								<span className="input-titel">Country Code<span>*</span></span>
+								<input type="text" className="input" name="country-code" value={formik.values?.country_code} onChange={(e) => setInputValue("country_code", e.target.value)} required readOnly />
+								<small className="text-red-500 text-xs">{formik.errors.country_code}</small>
+								<br />
+							</div>
+
 								<div className="input-label-holder">
 									<label className="input-titel">Mobile Number <span>*</span></label>
 									<div className="input-checkd"><input type="checkbox" className="mr-2" name="is_mobile_hidden" onChange={() => setMobileNoHidden(!mobileNoHidden)} />Hidden</div>
 								</div>
-								<div className="flex">
-									<input type="text" className="input max-w-[80px] w-full mr-3" name="country-code" value={formik.values?.country_code} onChange={(e) => setInputValue("country_code", e.target.value)} required readOnly />
-									<input type="text" className="input" name="mobile_no" value={formik.values?.mobile_no} onChange={(e) => setInputValue("mobile_no", e.target.value)} required readOnly />
-								</div>
+
+								<input type="text" className="input" name="mobile_no" value={formik.values?.mobile_no} onChange={(e) => setInputValue("mobile_no", e.target.value)} required readOnly />
+
 								<small className="text-red-500 text-xs">{formik.errors.mobile_no}</small>
 								<br />
 							</div>

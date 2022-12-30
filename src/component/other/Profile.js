@@ -1,11 +1,9 @@
 import axios from 'axios';
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 // import Advertisement from '../Advertisement';
 import PersonalProfile from './PersonalProfile';
 import BusinessProfile from './BusinessProfile';
 import { baseUrl } from "../../config";
-import { useEffect } from 'react';
-import { useState } from 'react';
 
 function Profile() {
     const token = localStorage.getItem("Token");

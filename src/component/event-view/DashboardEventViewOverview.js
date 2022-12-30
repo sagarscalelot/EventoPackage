@@ -45,7 +45,7 @@ function DashboardEventViewOverview({ data, capacity, socials, company, service 
 	}
 
 	// const dataProps = { data };
-	// console.log("dataProps  : ", data)
+	console.log("dataProps  : ", data)
 	// console.log(" capacity: ", capacity?.location?.coordinates)
 	// console.log(" socials: ", socials)
 	// console.log(" jus create : ", data)
@@ -56,7 +56,12 @@ function DashboardEventViewOverview({ data, capacity, socials, company, service 
 	//     const newString = s.replace(regex, "");
 	//     return newString;
 	// }
-
+	const flat_no = data?.personaldetail?.flat_no + ", "
+	const street = data?.personaldetail?.street + ", "
+	const area = data?.personaldetail?.area + ", "
+	const city = data?.personaldetail?.city + ", "
+	const state = data?.personaldetail?.state + "-"
+	const pincode = data?.personaldetail?.pincode
 	// const regex = /(<([^>]+)>)/ig;
 	return (
 		<div className="pt-7 lg:pt-10">
@@ -130,10 +135,7 @@ function DashboardEventViewOverview({ data, capacity, socials, company, service 
 											</div>
 											<p className="text-quicksilver text-sm font-normal leading-6 pt-3">
 												{e?.description}</p>
-											{/* <p className="text-quicksilver text-sm font-normal leading-6 pt-3">Lorem Ipsum is simply dummy text of the
-                                                printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever
-                                                since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
-                                                specimen book </p> */}
+										
 										</div>
 									</div>
 								)}
@@ -164,10 +166,7 @@ function DashboardEventViewOverview({ data, capacity, socials, company, service 
 											</div>
 											<p className="text-quicksilver text-sm font-normal leading-6 pt-3">
 												{e?.description}</p>
-											{/* <p className="text-quicksilver text-sm font-normal leading-6 pt-3">Lorem Ipsum is simply dummy text of the
-                                                printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever
-                                                since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
-                                                specimen book </p> */}
+										
 										</div>
 									</div>
 								)}
@@ -197,10 +196,7 @@ function DashboardEventViewOverview({ data, capacity, socials, company, service 
 											</div>
 											<p className="text-quicksilver text-sm font-normal leading-6 pt-3">
 												{e?.description}</p>
-											{/* <p className="text-quicksilver text-sm font-normal leading-6 pt-3">Lorem Ipsum is simply dummy text of the
-                                                printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever
-                                                since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
-                                                specimen book </p> */}
+											
 										</div>
 									</div>
 								)}
@@ -229,9 +225,15 @@ function DashboardEventViewOverview({ data, capacity, socials, company, service 
 						<div className="space-y-1.5">
 							<h3 className="text-lg">Address</h3>
 							<div className="bg-white p-4 rounded-md">
-								{
-									data?.companydetail ?
-										<h3>{company?.flat_no + ", " + company?.street + ", " + company?.area + ", " + company?.city + ", " + company?.state + "-" + company?.pincode}</h3> : ""
+								{data?.capacity ? <h3>{data?.capacity?.address}</h3> :
+									<h3>
+										{data?.personaldetail?.flat_no ? flat_no : ""}
+										{data?.personaldetail?.street ? street : ""}
+										{data?.personaldetail?.area ? area : ""}
+										{data?.personaldetail?.city ? city : ""}
+										{data?.personaldetail?.state ? state : ""}
+										{data?.personaldetail?.pincode ? pincode : ""}
+									</h3>
 								}
 								{/* <h3>Akshya Nagar 1st Block 1st Cross, Rammurthy nagar, Bangalore-560016</h3> */}
 							</div>
@@ -243,8 +245,7 @@ function DashboardEventViewOverview({ data, capacity, socials, company, service 
 							<div className="p-7 bg-white rounded-md space-y-1">
 								<h3>{company?.name}</h3>
 								<p className="text-quicksilver text-sm font-normal">{company?.about} </p>
-								{/* <h3>Company Name</h3> */}
-								{/* <p className="text-quicksilver text-sm font-normal">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p> */}
+							
 							</div>
 						</div>
 						{/* <!-- Photo-holder --> */}
@@ -294,29 +295,9 @@ function DashboardEventViewOverview({ data, capacity, socials, company, service 
 							<h3 className="text-lg">Terms & Conditions</h3>
 							<div className="p-3.5 xl:p-5 bg-white rounded-md">
 								<div className="flex items-start text-quicksilver font-normal">
-									<div className="pt-0.5">*</div>
 									<p className="text-sm font-normal pl-3">{(socials?.t_and_c) ? parse((socials?.t_and_c)) : ""}</p>
 								</div>
-								{/* <div className="flex items-start text-quicksilver font-normal">
-                                    <div className="pt-0.5">*</div>
-                                    <p className="text-sm font-normal pl-3">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p>
-                                </div>
-                                <div className="flex items-start text-quicksilver font-normal">
-                                    <div className="pt-0.5">*</div>
-                                    <p className="text-sm font-normal pl-3">when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,</p>
-                                </div>
-                                <div className="flex items-start text-quicksilver font-normal">
-                                    <div className="pt-0.5">*</div>
-                                    <p className="text-sm font-normal pl-3">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been  the industry's</p>
-                                </div>
-                                <div className="flex items-start text-quicksilver font-normal">
-                                    <div className="pt-0.5">*</div>
-                                    <p className="text-sm font-normal pl-3">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p>
-                                </div>
-                                <div className="flex items-start text-quicksilver font-normal">
-                                    <div className="pt-0.5">*</div>
-                                    <p className="text-sm font-normal pl-3">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p>
-                                </div> */}
+								
 							</div>
 						</div>
 						{/* <!-- Social-Media --> */}
@@ -431,7 +412,8 @@ function DashboardEventViewOverview({ data, capacity, socials, company, service 
 					{/* <!-- right-bar  --> */}
 					<div className="w-full lg:w-4/12 lg:pl-5 space-y-7 sticky top-0">
 						{/* <!-- map-content  --> */}
-						{capacity &&
+						{/* {console.log("L : ", capacity?.location > 0)} */}
+						{capacity?.location?.coordinates &&
 							<div className="w-full relative min-h-[170px] xl:min-h-[220px] p-2.5 bg-white rounded-md">
 								<div className='w-full min-h-[180px]' style={{ position: "inherit" }}>
 									<GoogleMap
@@ -444,7 +426,7 @@ function DashboardEventViewOverview({ data, capacity, socials, company, service 
 								</div>
 								<div className="p-3.5 pt-0 xl:p-5 xl:pt-0">
 									<span className="input-titel"><i className="icon-fill-location mr-1"></i> Location</span>
-									<h3 className="text-sm xl:text-base">{company?.flat_no + ", " + company?.street + ", " + company?.area + ", " + company?.city + ", " + company?.state + "-" + company?.pincode}</h3>
+									<h3 className="text-sm xl:text-base">{data?.capacity?.address}</h3>
 								</div>
 							</div>
 						}
@@ -470,17 +452,7 @@ function DashboardEventViewOverview({ data, capacity, socials, company, service 
 
 							</>
 						}
-						{/* <div className="text-center">
-                                <h1 className="text-white">Discount On Total Bill</h1>
-                                <div className="text-[40px] text-black font-bold">10%</div>
-                                <div className="space-y-2">
-                                    <span className="text-xs text-white font-normal block">4 Event can be posted or one event with max 30 day</span>
-                                    <span className="text-xs text-white font-normal block">4 Event can be posted or one event with max 30 day</span>
-                                </div>
-                                <img src={celebrationSvg} alt="celebration" className="absolute -right-2 -bottom-2 -rotate-90 opacity-80" />
-                            </div> */}
-						{/* </div> */}
-						{/* <!-- Calander  --> */}
+				
 						<div className="calendar inline-block justify-center items-center rounded-md drop-shadow-one bg-white w-full my-10 pb-5">
 							<div className="month flex justify-center items-center text-lg lg:text-xl font-semibold py-4 px-10 border-b border-opacity-20">
 								<a href="#"><i className="icon-left-d-arrow"></i></a>

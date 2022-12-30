@@ -3,7 +3,7 @@ import Modal from "../../modal/Modal.js"
 import EventPopUpCategory from './EventPopUpCategory.js'
 import axios from "axios";
 import { baseUrl } from '../../../config.js';
-import {  useParams } from 'react-router-dom';
+import {  useNavigate, useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { increment } from '../../../redux/stepProgressCount.js';
 import { toast } from 'react-toastify';
@@ -17,7 +17,7 @@ function EventPopUpCreateNew({ handleClose, selectedCategory, displayName, edit,
 	const [newCategoryId, setNewCategoryId] = useState(0);
 	const [newCategoryDisplayName, setNewCategoryDisplayName] = useState("");
 	const dispatch = useDispatch();
-
+	const navigate = useNavigate();
 	const params = useParams();
 	const eventType = getEventType(params.eventType);
 
@@ -27,7 +27,7 @@ function EventPopUpCreateNew({ handleClose, selectedCategory, displayName, edit,
 	}
 	const getCategory = async() => {
 		try {
-			const response = await axios.get(`${baseUrl}/organizer/events/listcategory`,{headers: header});
+			const response = await axios.get(`${baseUrl}/organizer/events/listcategory?event_type=have_you_places`,{headers: header});
 			// console.log("Categorys >> ",response);
 			setCategory(response.data.Data);
 			setNewCategoryId(response.data.Data[0]?._id);
@@ -65,7 +65,7 @@ function EventPopUpCreateNew({ handleClose, selectedCategory, displayName, edit,
 				handleClose(false);
 				if(!edit) {
 					dispatch(increment());
-					// navigate(`../addplaces`);
+					
 				}
 				// temporary fix for page reload
 				window.location.reload();
