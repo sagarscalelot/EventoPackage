@@ -24,21 +24,24 @@ function DashboardEvent() {
 	const eventType = getEventType(params.eventType);
 	const limit = 3;
 	const [activeList, setActiveList] = useState([]);
+	const [selectedCategory, setSelectedCategory] = useState("");
 
-	const header = {
+	const header = { 
 		'Authorization': `Token ${token}`
 	}
 	const getAllEvents = async () => {
 		const requestObj = {
 			page: pageNo,
 			limit: limit,
-			event_type: eventType
+			event_type: eventType,
+			category_name: selectedCategory
 		}
+		console.log("cat : ", requestObj);
 		try {
 			const response = await axios.post(`${baseUrl}/organizer/events/list`, requestObj, { headers: header });
 			setAllEvents(response.data.Data);
 
-			console.log("Event List>>>>>",response.data.Data.docs);
+			console.log("Event List>>>>>",response.data.Data);
 
 			setLoading(false);
 		} catch (error) {
@@ -52,7 +55,7 @@ function DashboardEvent() {
 
 	const getCategory = async () => {
 		try {
-			const response = await axios.get(`${baseUrl}/organizer/events/listcategory?event_type=have_you_places`, { headers: header });
+			const response = await axios.get(`${baseUrl}/organizer/events/listcategory?event_type=${eventType}`, { headers: header });
 			setCategory(response.data.Data);
 		} catch (error) {
 			console.log(error);
@@ -61,7 +64,7 @@ function DashboardEvent() {
 
 	useEffect(() => {
 		getAllEvents();
-	}, [pageNo]);
+	}, [pageNo, selectedCategory]);
 
 	useEffect(() => {
 		getCategory();
@@ -92,6 +95,11 @@ function DashboardEvent() {
 		}
 		// handleClick=(activeList)
 	}
+
+	const cat = (e) => {
+		console.log("e : ", e);
+		setSelectedCategory(e);
+	}
 console.log("live list : ", activeList);
 	return (
 		<div className="wrapper">
@@ -99,10 +107,11 @@ console.log("live list : ", activeList);
 				<h1>All Category</h1>
 				<div className="flex whitespace-nowrap space-x-5 ml-auto">
 					<select name="All Category"
-						className="arrow bg-white pl-5 pr-11 py-3 text-japaneseIndigo font-bold rounded-md tracking-wider appearance-none focus-visible:outline-none">
-						<option value="all-category" >All Category</option>
+						className="arrow bg-white pl-5 pr-11 py-3 text-japaneseIndigo font-bold rounded-md tracking-wider appearance-none focus-visible:outline-none"
+						onChange={(e) => cat(e.target.value)}>
+						<option value="" >All Category</option>
 						{category?.map(ele => (
-							<option value={ele.category_name} key={ele._id} >{ele.category_name}</option>
+							<option value={ele?.category_name} key={ele._id} >{ele?.category_name}</option>
 						))}
 					</select>
 					<button className="bg-white px-5 py-3 text-japaneseIndigo font-bold rounded-md tracking-wider"

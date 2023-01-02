@@ -45,6 +45,7 @@ import NotificationMode from "./Notification/NotificationMode";
 import NotificationPayment from "./Notification/NotificationPayment";
 import Gift from "./other/Gift";
 import GiftDetails from "./other/GiftDetails";
+import InvoiceDetials from "./other/InvoiceDetials";
 
 
 function SideBar() {
@@ -314,7 +315,10 @@ function SideBar() {
               <Route index element={<Gift />} />
               <Route path="giftdetails" element={<GiftDetails />} />
             </Route>
-            <Route path="invoice" element={<Invoice />} />
+            <Route path="invoice">
+              <Route index element={<Invoice />} />
+              <Route path="invoicedetials" element={<InvoiceDetials />} />
+            </Route>
             <Route path="faq" element={<FAQ />} />
             <Route path="our-products" element={<OurProducts />} />
 

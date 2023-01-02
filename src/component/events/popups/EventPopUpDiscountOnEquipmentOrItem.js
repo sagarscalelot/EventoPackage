@@ -103,7 +103,8 @@ function EventPopUpDiscountOnEquipmentOrItem({ handleClose, eventId, setSelected
 	const validateDiscount = (e) => {
 		if ((e.target.value <= 100) && (e.target.value >= 0)) {
 			setDiscount(e.target.value);
-			// selectedDiscount.discount = e.target.value + "%";
+			console.log("D :", e.target.value);
+			selectedDiscount.discount = e.target.value + "%";
 			setError(null);
 		} else {
 			setError("Enter Valid Discount value");
@@ -113,7 +114,7 @@ function EventPopUpDiscountOnEquipmentOrItem({ handleClose, eventId, setSelected
 
 	const handleSubmit = async () => {
 		setDiscount(discount);
-		selectedDiscount.discount = discount + "%";
+		// selectedDiscount.discount = discount + "%";
 
 		selectedDiscount.services = [];
 		selectedDiscount.equipments = [];

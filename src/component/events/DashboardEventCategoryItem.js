@@ -6,39 +6,34 @@ import { increment } from '../../redux/stepProgressCount';
 import bannerPreview from "../../assest/images/banner-preview.png";
 import axios from 'axios';
 import { baseUrl } from '../../config';
-import Modal from "../modal/Modal";
-import EventPopUpShareEvent from './popups/EventPopUpShareEvent';
 
 
-const Star = ({ratings}) => {
-	const numberRating = Number(ratings);
-	console.log("numberRating", numberRating);
-	const ratingStar = Array.from({ length: 5 }, (elem, index) => {
-		let number = index + 0.5;
-		return (
-			<span key={index}>
-				{numberRating >= index + 1 ? (
-					<i className="icon-fillStar text-sm"></i>
-				) : numberRating >= number ? (
-					<i className="icon-half-star text-sm"></i>
-				) : (
-					<i className="icon-star text-sm"></i>
-				)}
-			</span>
-		);
-	});
-	return (
-		<div>{ratingStar}</div>
-	 )
- };
- 
 
 function DashboardEventCategoryItem({ data, handleClick }) {
 
 	const dispatch = useDispatch();
 
-	const [sharePopUpOpen, setSharePopUpOpen] = useState(false);
-	const url = "https://eventopackage.com/";
+	const Star = ({ ratings }) => {
+		const numberRating = Number(ratings);
+		console.log("numberRating", numberRating);
+		const ratingStar = Array.from({ length: 5 }, (elem, index) => {
+			let number = index + 0.5;
+			return (
+				<span key={index}>
+					{numberRating >= index + 1 ? (
+						<i className="icon-fillStar text-sm"></i>
+					) : numberRating >= number ? (
+						<i className="icon-half-star text-sm"></i>
+					) : (
+						<i className="icon-star text-sm"></i>
+					)}
+				</span>
+			);
+		});
+		return (
+			<div>{ratingStar}</div>
+		)
+	};
 
 	const params = useParams();
 	const eventType = params.eventType;
@@ -69,30 +64,29 @@ function DashboardEventCategoryItem({ data, handleClick }) {
 			console.log(error);
 		}
 	}
+
 	const flat_no = data?.personaldetail?.flat_no + ", ";
 	const street = data?.personaldetail?.street + ", ";
 	const area = data?.personaldetail?.area + ", ";
 	const city = data?.personaldetail?.city + ", ";
 	const state = data?.personaldetail?.state + "-";
 	const pincode = data?.personaldetail?.pincode;
-
 	return (
 		<div className="w-full flex items-center ">
-		
 
 			<div className="flex space-x-5 w-full p-4 pr-7 bg-white rounded">
 				<div className="max-w-xs h-[200px] w-full">
 					<Link to={`../../event-view/${eventType}`} className="" onClick={() => { localStorage.setItem("eventId", data?._id) }} >
-						<img className="object-cover w-full h-full" src={(data && data.aboutplace && data.aboutplace.banner && data.aboutplace.banner !== '') ? (s3Url + "/" + data.aboutplace.banner) : (data && data.personaldetail && data.personaldetail.banner && data.personaldetail.banner !== '') ? (s3Url + "/" + data.personaldetail.banner) : bannerPreview} alt="images" /></Link>
+						<img className="object-cover w-full h-full" src={(data && data.aboutplace && data.aboutplace.banner && data.aboutplace.banner != '') ? (s3Url + "/" + data.aboutplace.banner) : (data && data.personaldetail && data.personaldetail.banner && data.personaldetail.banner !== '') ? (s3Url + "/" + data.personaldetail.banner) : bannerPreview} alt="images" /></Link>
 				</div>
 				<div className="w-full">
 					<div className="flex justify-between border-b-2 pb-4">
-						<div className="">
-						<span className="text-sm text-white bg-spiroDiscoBall px-3 py-1">{data?.event_category.category_name}</span>
-						<span className="text-sm text-white bg-spiroDiscoBall px-3 py-1 ml-2 capitalize ">{data.is_approved === true ? "verified" : "unverified"}</span>
+						<div className="capitalize">
+							<span className="text-sm text-white bg-spiroDiscoBall px-3 py-1">{data?.event_category?.category_name}</span>
+							<span className="text-sm text-white bg-spiroDiscoBall px-3 py-1 ml-2 capitalize">{data?.is_approved == true ? "verified" : "unverified"}</span>
 							<h2 className="text-japaneseIndigo pt-5">{data?.display_name}</h2>
 							<div className="text-sm text-quicksilver pt-3"><i className="icon-fill-location mr-3"></i>
-							
+								{/* {data?.capacity?.address}{data?.personaldetail?.area + "," + data?.personaldetail?.city + "," + data?.personaldetail?.state} */}
 								{data?.capacity ? data?.capacity?.address :
 									<>
 										{data?.personaldetail?.flat_no ? flat_no : ""}
@@ -106,32 +100,40 @@ function DashboardEventCategoryItem({ data, handleClick }) {
 							</div>
 						</div>
 						<div className="">
-							<div className="flex items-center">
-								
+							<div className="flex items-center justify-end">
+								{/* {console.log("check : ", data?.display_name, data?.is_live)} */}
 
 								<input type="checkbox" className="switch mr-3"
-									
+									// defaultChecked={data?.is_live}
 									id="on"
 									defaultChecked={data?.is_live}
-								
+									// onClick={() => singleEventlive(data?._id)}
 									onChange={() => toggleEvent(data)}
 								/>
 								<label htmlFor="">
 									<h3>Live</h3>
 								</label>
 							</div>
+							{/* <h1 className="pt-7">{parseFloat(data?.).toFixed(2)} INR</h1> */}
 							<h1 className="pt-7">
-								{data?.aboutplace ? parseFloat(data?.aboutplace?.place_price).toFixed(2) : data?.personaldetail?.price} INR
-								
+								{/* {data?.aboutplace ?
+									<>{data?.aboutplace?.place_price ?
+										<>{parseFloat(data?.aboutplace?.place_price).toFixed(2)} INR</> : ""} </> :
+									<>{data?.personaldetail?.price ? <> {parseFloat(data?.personaldetail?.price).toFixed(2)} INR</> : ""}
+									</>} */}
+								{data?.aboutplace?.place_price ?
+									<>{parseFloat(data?.aboutplace?.place_price).toFixed(2)} INR</>
+									:
+									data?.personaldetail?.price ? <> {parseFloat(data?.personaldetail?.price).toFixed(2)} INR</> : "0 INR"
+								}
 							</h1>
 						</div>
 					</div>
 					<div className="flex justify-between pt-4">
-						
 						<div className="flex items-center">
 							<div className="flex items-center space-x-1">
-							<Star ratings={data.ratings}/>
-								<span className="text-quicksilver text-xs font-bold pl-2"> {data?.totalreview} ratings</span>
+								<Star ratings={data?.ratings} />
+								<span className="text-quicksilver text-xs font-bold pl-2">{data?.totalreview} ratings</span>
 							</div>
 							<div className="flex text-spiroDiscoBall text-xs font-bold ml-6">
 								{data?.discounts[0]?.discounttype === "discount_on_total_bill" ? <> <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -143,45 +145,24 @@ function DashboardEventCategoryItem({ data, handleClick }) {
 							</div>
 						</div>
 						<div className="flex space-x-2">
-							<Link to={`../addplaces`} onClick={() => { localStorage.setItem("eventId", data?._id); localStorage.setItem("event_type", data?.event_type); dispatch(increment()) }} className="bg-brightGray px-2 py-1 text-center rounded"><i className="text-base edit text-black icon-edit" style={{ color: "#000" }}></i></Link>
-							<button to="/" className="bg-brightGray px-2 py-1 text-center rounded cursor-not-allowed" disabled><i
+							<button className="bg-brightGray px-2 py-1 text-center rounded">
+								<Link to={`../addplaces`} onClick={() => { localStorage.setItem("eventId", data?._id); localStorage.setItem("event_type", data?.event_type); dispatch(increment()) }}>
+									<i className="text-base edit text-black icon-edit" style={{ color: "#000" }}></i>
+								</Link>
+							</button>
+							<button className="bg-brightGray px-2 py-1 text-center rounded cursor-not-allowed" disabled><i
 								className="icon-fill-megaphone text-base text-black"></i></button>
-							<button to={`/dashboard/event/calender`} className="bg-brightGray px-2 py-1 text-center rounded  cursor-not-allowed" disabled><i
+							<button className="bg-brightGray px-2 py-1 text-center rounded cursor-not-allowed" disabled><i
 								className="icon-calendar1 text-base text-black"></i></button>
-							
-							<button to="/" className="bg-brightGray px-2 py-1 text-center rounded cursor-not-allowed" disabled><i
+							<button className="bg-brightGray px-2 py-1 text-center rounded cursor-not-allowed" disabled><i
 								className="icon-percentage text-base text-black"></i></button>
-						
-							<button onClick={() => setSharePopUpOpen(true)} className="bg-brightGray px-2 py-1 text-center rounded"><i
+							<button className="bg-brightGray px-2 py-1 text-center rounded"><i
 								className="icon-share text-base text-black"></i></button>
-
 						</div>
-						<h1 className="pt-7">{parseFloat(data?.totalPrice).toFixed(2)} INR</h1>
-					</div>
-
-					<div className="flex justify-between pt-4">
-						<div className="flex items-center space-x-1">
-							<Star ratings={data.ratings} />
-							<span className="text-quicksilver text-xs font-bold pl-2">{data?.totalreview} ratings</span>
-						</div>
-						<div className="flex space-x-2">
-							<Link to={`../addplaces`} onClick={() => { localStorage.setItem("eventId", data?._id); localStorage.setItem("event_type", data?.event_type); dispatch(increment()) }} className="bg-brightGray px-2 py-1 text-center rounded"><i className="text-base edit text-black icon-edit" style={{ color: "#000" }}></i></Link>
-							<Link to="/" className="bg-brightGray px-2 py-1 text-center rounded"><i
-								className="icon-fill-megaphone text-base text-black"></i></Link>
-							<Link to={`/dashboard/event/calender`} className="bg-brightGray px-2 py-1 text-center rounded"><i
-								className="icon-calendar1 text-base text-black"></i></Link>
-							<Link to="/" className="bg-brightGray px-2 py-1 text-center rounded"><i
-								className="icon-percentage text-base text-black"></i></Link>
-							<Link to="/" className="bg-brightGray px-2 py-1 text-center rounded"><i
-								className="icon-share text-base text-black"></i></Link>
-						</div>
-
 					</div>
 				</div>
 			</div>
-			<Modal isOpen={sharePopUpOpen}>
-				<EventPopUpShareEvent handleClose={setSharePopUpOpen} url={url} />
-			</Modal>
+
 		</div>
 	)
 }
