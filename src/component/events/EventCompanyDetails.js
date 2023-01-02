@@ -309,7 +309,7 @@ function EventCompanyDetails() {
 							</div>
 						</div>
 						<div className="w-full flex items-end flex-wrap">
-							<div className="w-full md:w-1/3 px-2 inputHolder">
+							<div className="w-full md:w-1/2 px-2 inputHolder">
 								<div className="input-label-holder">
 									<label className="input-titel">Company Contact No <span>*</span></label>
 								</div>

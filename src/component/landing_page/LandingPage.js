@@ -444,7 +444,7 @@ function LandingPage() {
                   </svg>
                 </div>
                 <div className="xl:space-y-2.5">
-                  <h2 className="text-xl xl:text-3xl text-ev-dark">Evento Package App</h2>
+                  <h2 className="text-xl xl:text-3xl text-ev-dark">Free Register</h2>
                   <p className="text-sm xl:text-base text-[#9BA0A8]">lets you Know the Best places to be, in and Around the Country.</p>
                 </div>
               </div>
@@ -455,7 +455,7 @@ function LandingPage() {
                   </svg>
                 </div>
                 <div className="xl:space-y-2.5">
-                  <h2 className="text-xl xl:text-3xl text-ev-dark">Grab Interest</h2>
+                  <h2 className="text-xl xl:text-3xl text-ev-dark">Gift Coupon</h2>
                   <p className="text-sm xl:text-base text-[#9BA0A8]">Register your Event Now! to get Houseful Bash.</p>
                 </div>
               </div>
@@ -466,7 +466,7 @@ function LandingPage() {
                   </svg>
                 </div>
                 <div className="xl:space-y-2.5">
-                  <h2 className="text-xl xl:text-3xl text-ev-dark">Get Best Offer</h2>
+                  <h2 className="text-xl xl:text-3xl text-ev-dark">Language</h2>
                   <p className="text-sm xl:text-base text-[#9BA0A8]">established fact that a reader will be distracted by the readable</p>
                 </div>
               </div>
@@ -484,7 +484,7 @@ function LandingPage() {
                   </svg>
                 </div>
                 <div className="xl:space-y-2.5">
-                  <h2 className="text-xl xl:text-3xl text-ev-dark">Generate Excitement</h2>
+                  <h2 className="text-xl xl:text-3xl text-ev-dark">Refer and Earn</h2>
                   <p className="text-sm xl:text-base text-[#9BA0A8]">Generate a Crowd in your Place. Register your SHOP offers now!</p>
                 </div>
               </div>
@@ -495,7 +495,7 @@ function LandingPage() {
                   </svg>
                 </div>
                 <div className="xl:space-y-2.5">
-                  <h2 className="text-xl xl:text-3xl text-ev-dark">Party Lovers?</h2>
+                  <h2 className="text-xl xl:text-3xl text-ev-dark">Entertainment</h2>
                   <p className="text-sm xl:text-base text-[#9BA0A8]">Check out Cool Party places on Our App.</p>
                 </div>
               </div>
@@ -506,7 +506,7 @@ function LandingPage() {
                   </svg>
                 </div>
                 <div className="xl:space-y-2.5">
-                  <h2 className="text-xl xl:text-3xl text-ev-dark">Free to use for end user</h2>
+                  <h2 className="text-xl xl:text-3xl text-ev-dark">Easy to use</h2>
                   <p className="text-sm xl:text-base text-[#9BA0A8]">established fact that a reader will be distracted by the readable</p>
                 </div>
               </div>
@@ -797,8 +797,11 @@ function LandingPage() {
           <img src={aboutg} alt="Our Company" className="w-full md:w-1/2 md:max-w-[650px] md:absolute right-0 top-1/2 md:-translate-y-1/2" />
           <div className="w-full md:w-1/2 max-w-xl md:pr-10 mt-6 md:mt-0">
             <h2 className="text-4xl md:text-40 xl:text-5xl mb-5">Who we are?</h2>
-            <p className="text-base md:text-lg xl:text-xl text-[#9BA0A8] font-semibold mb-3">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-            <p className="text-base md:text-lg xl:text-xl text-[#9BA0A8] font-semibold">The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections</p>
+            <p className="text-base md:text-lg xl:text-xl text-[#9BA0A8] font-semibold mb-3">Festumevento is a team of smart techies and intelligent experts who constantly work on the product mindset to deliver the latest marketing advantage. Since 2019, we have been the markets leading it solution providers, and we connect you to tremendous business insights.</p><p className="text-base md:text-lg xl:text-xl text-[#9BA0A8] font-semibold mb-3">
+            Our mission is to achieve growth by making our clients grow with innovative ideas and solutions. We aim to enhance our customers business with the latest and creative digital solutions that create an impeccable reputation all over the globe.
+            We love challenges and solve the complex problems that our clients bring to us.</p>
+            <p className="text-base md:text-lg xl:text-xl text-[#9BA0A8] font-semibold mb-3">
+             Our expert team has the potential to find out the possible way of the most complicated problems that the world needs. We believe in unique and user-friendly solutions that work efficiently no matter if its reinvented.</p>
           </div>
         </div>
       </section>
@@ -1158,7 +1161,7 @@ function LandingPage() {
                     </div>
                     <div className="w-full lg:w-1/2 px-3.5 flex md:justify-end">
                       <div className="space-y-2 md:space-y-4">
-                        <span className="ft-titel">For Shopper</span>
+                        <span className="ft-titel">For Users</span>
                         <div className="flex space-x-3">
                           <button className="w-32 md:w-auto">
                             <img src={googleplay} alt="g-pay" /></button>
@@ -1175,19 +1178,19 @@ function LandingPage() {
             </div>
             <div className="flex flex-wrap pt-10 justify-between items-center">
               <div className="w-full flex justify-center space-x-3">
-                <a href="#" className="block hover:opacity-60 anim">
+                <a href="https://web.whatsapp.com/" target="blank" className="block hover:opacity-60 anim">
                   <img src={whatsupfooter} alt="#whapsapp" /></a>
-                <a href="#" className="block hover:opacity-60 anim">
+                <a href="https://www.facebook.com/EventoPackage" target="blank" className="block hover:opacity-60 anim">
                   <img src={facebookfooter} alt="#facebook" /></a>
-                <a href="#" className="block hover:opacity-60 anim">
+                <a href="https://web.telegram.org/z/" target="blank" className="block hover:opacity-60 anim">
                   <img src={telegramfooter} alt="#massanger" /></a>
-                <a href="#" className="block hover:opacity-60 anim">
+                <a href="https://www.instagram.com/EventoPackage/" target="blank" className="block hover:opacity-60 anim">
                   <img src={instagramfooter} alt="#instagram" /></a>
-                <a href="#" className="block hover:opacity-60 anim">
+                <a href="https://twitter.com/EventoPackage" target="blank" className="block hover:opacity-60 anim">
                   <img src={twitterfooter} alt="#twitter" /></a>
-                <a href="#" className="block hover:opacity-60 anim">
+                <a href="https://www.linkedin.com/company/eventopackage" target="blank"  className="block hover:opacity-60 anim">
                   <img src={linkedinfooter} alt="#linkin" /></a>
-                <a href="#" className="block hover:opacity-60 anim">
+                <a href="https://www.youtube.com/channel/UCmtm1FLrLLtecvKhvu2KdHA" target="blank"  className="block hover:opacity-60 anim">
                   <img src={youtubefooter} alt="#youtube" /></a>
               </div>
             </div>
