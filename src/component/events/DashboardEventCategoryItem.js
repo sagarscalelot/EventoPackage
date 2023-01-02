@@ -70,10 +70,6 @@ function DashboardEventCategoryItem({ data, handleClick }) {
 		}
 	}
 
-
-
-
-
 	const flat_no = data?.personaldetail?.flat_no + ", ";
 	const street = data?.personaldetail?.street + ", ";
 	const area = data?.personaldetail?.area + ", ";
