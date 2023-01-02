@@ -62,7 +62,6 @@ function Booking() {
             {/* <!-- main-content  --> */}
             <div className="space-y-5 mt-6">
                 {booking.map((e) => (
-
                     <div key={e._id} className="w-full bg-white flex p-2.5 rounded-md">
                         <div className="w-1/6">
                             <img src={e && e.url && e.url !== '' ? (s3Url + "/" + e.url) : bookingImg} alt="sweet-love-catering-2" className="w-auto h-full object-cover" />

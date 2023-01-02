@@ -7,12 +7,12 @@ function ImagePreviewMainSlide({ link, desc }) {
     console.log("link : ", li);
 
     return (
-        <div className="swiper-slide-container w-full flex flex-wrap h-full">
+        <div className="swiper-slide-container w-full flex-wrap h-full flex justify-center items-center">
             <div className="w-full lg:w-1/2 rounded-md overflow-hidden h-full">
                 <img src={li} alt="big-dish" className="w-full" />
             </div>
             <div className="w-full lg:w-1/2 pl-10 space-y-3 h-full">
-                <p>{desc}</p>
+                <p>{desc ? desc : 'No Description Avialabale'}</p>
             </div>
         </div>
 
