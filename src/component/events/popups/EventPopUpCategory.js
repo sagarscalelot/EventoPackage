@@ -1,19 +1,35 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { baseUrl } from '../../../config';
-
+// import getEventType from '../../shared/helper';
+import {getEventType} from '../../../shared/helper';
 function EventPopUpCategory({handleClose}) {
+
+	const params = useParams();
 
 	const [catagoryInputName, setcatagoryInputName] = useState();
 	// console.log(catagoryInputName);
-	const token = localStorage.getItem("Token");;
+	const token = localStorage.getItem("Token");
+	// const eventType = localStorage.getItem("event_type");
+	const eventType = getEventType(params.eventType);
+
 	const header = {
 		'Authorization': `Token ${token}`
 	}
+
 	const addCategory = async() => {
+
+		const reqObj = {
+			category_name : catagoryInputName,
+			event_type : eventType
+		}
+
 		try {
+
 			const response = await axios.post(`${baseUrl}/organizer/events/addcategory`,{"category_name": catagoryInputName, "event_type":"personal_skills_business"},{headers: header});
+
 			console.log(response);
 			if(response.data.IsSuccess) {
 				toast.success(response.data.Message);

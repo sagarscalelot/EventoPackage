@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { data } from 'jquery';
 import React from 'react'
+
 import { useEffect } from 'react';
 import { useState } from 'react';
 import bookingImg from '../../assest/images/banner-preview.png'
@@ -94,7 +95,6 @@ function Booking() {
                     </div>
                 ))}
             </div>
-
 
         </div>
     )
