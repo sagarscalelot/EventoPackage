@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import logoImage from "../assest/svg/logo.svg";
-import userImage from "../assest/images/user-2.png";
+import userImage from "../assest/images/userdefault.jpg";
 import Modal from "./modal/Modal.js"
 import { Link, Route, Routes, useNavigate, NavLink } from "react-router-dom";
 import LanguagePopup from "./other/modal/LanguagePopup"

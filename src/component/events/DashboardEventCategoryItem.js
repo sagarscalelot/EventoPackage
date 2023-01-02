@@ -6,6 +6,8 @@ import { increment } from '../../redux/stepProgressCount';
 import bannerPreview from "../../assest/images/banner-preview.png";
 import axios from 'axios';
 import { baseUrl } from '../../config';
+import Modal from "../modal/Modal";
+import EventPopUpShareEvent from './popups/EventPopUpShareEvent';
 
 
 
@@ -34,6 +36,9 @@ function DashboardEventCategoryItem({ data, handleClick }) {
 			<div>{ratingStar}</div>
 		)
 	};
+	const [sharePopUpOpen, setSharePopUpOpen] = useState(false);
+	const url = "https://eventopackage.com/";
+
 
 	const params = useParams();
 	const eventType = params.eventType;
@@ -156,13 +161,15 @@ function DashboardEventCategoryItem({ data, handleClick }) {
 								className="icon-calendar1 text-base text-black"></i></button>
 							<button className="bg-brightGray px-2 py-1 text-center rounded cursor-not-allowed" disabled><i
 								className="icon-percentage text-base text-black"></i></button>
-							<button className="bg-brightGray px-2 py-1 text-center rounded"><i
+						<button onClick={() => setSharePopUpOpen(true)} className="bg-brightGray px-2 py-1 text-center rounded"><i
 								className="icon-share text-base text-black"></i></button>
 						</div>
 					</div>
 				</div>
 			</div>
-
+			<Modal isOpen={sharePopUpOpen}>
+				<EventPopUpShareEvent handleClose={setSharePopUpOpen} url={url} />
+			</Modal>
 		</div>
 	)
 }

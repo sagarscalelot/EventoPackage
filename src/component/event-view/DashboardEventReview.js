@@ -27,7 +27,7 @@ function DashboardEventReview() {
   useEffect(() => {
     getEventById();
   }, []);
-  console.log("Reviews", allEvents);
+  // console.log("Reviews", allEvents);
   return (
       
     <div className="pt-7 lg:pt-10">

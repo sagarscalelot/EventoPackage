@@ -1,17 +1,43 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
 // import Advertisement from '../Advertisement';
+import { baseUrl } from '../../config';
 import DashboardEventAtteneeListItem from './DashboardEventAtteneeListItem';
 
 function DashboardEventAttendee() {
+    const [allEvents, setAllEvents] = useState([]);
+    const token = localStorage.getItem("Token");
+    const eventId = localStorage.getItem("eventId");
+  
+    const header = {
+      'Authorization': `Token ${token}`
+    }
+    const getEventById = async () => {
+      try {
+        const response = await axios.get(`${baseUrl}/organizer/booking/list`, { headers: header });
+        setAllEvents(response.data.Data);
+  
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  
+    useEffect(() => {
+      getEventById();
+    }, []);
     return (
         <div className="pt-7 lg:pt-10">
             {/* <!-- Attendee-Teb-Content   --> */}
             <div className="w-full space-y-7" id="attendee">
                 <div className="w-full space-y-2.5">
-                    <DashboardEventAtteneeListItem id={"#55841251"} name={"Reynaldo Franklin"} price={"$560.00"} />
-                    <DashboardEventAtteneeListItem id={"#23541251"} name={"Mark Jecno"} price={"$1250.00"} />
-                    <DashboardEventAtteneeListItem id={"#69852563"} name={"Joila balia"} price={"$900.00"} />
-                    <DashboardEventAtteneeListItem id={"#69552563"} name={"Mackenzie Holdern"} price={"$900.000"} />
+                {allEvents.map(ele => (
+					<>
+					<div className="w-full flex items-center ">
+					
+						<DashboardEventAtteneeListItem key={ele._id} data={ele}  />
+						</div>
+					</>
+				))}
                 </div>
                 {/* <!-- calendar end --> */}
                 {/* <Advertisement /> */}

@@ -45,7 +45,7 @@ function DashboardEventViewOverview({ data, capacity, socials, company, service 
 	}
 
 	// const dataProps = { data };
-	console.log("dataProps  : ", data)
+	// console.log("dataProps  : ", data)
 	// console.log(" capacity: ", capacity?.location?.coordinates)
 	// console.log(" socials: ", socials)
 	// console.log(" jus create : ", data)

@@ -1,21 +1,32 @@
 import axios from 'axios';
-import React, { useState } from 'react'
+
+import { data } from 'jquery';
+import React from 'react'
+
 import { useEffect } from 'react';
-import { baseUrl } from '../../config';
-import BookingListItem from './BookingListItem';
+import { useState } from 'react';
+import bookingImg from '../../assest/images/banner-preview.png'
+import userImg from '../../assest/images/landing-page/user-i.png'
+import { baseUrl, s3Url } from '../../config';
 
 function Booking() {
     const [booking, setBooking] = useState([]);
-    const token = localStorage.getItem("Token");
 
+    const token = localStorage.getItem("Token");
     const header = {
-        'Authorization': `Token ${token}`
+        'Authorization': `Token ${token}`,
     }
     const BookingList = async () => {
-        const response = await axios.get(`${baseUrl}/organizer/booking/list`, { headers: header });
-        setBooking(response.data.Data);
-        console.log("AAAAAAAAAA", response.data.Data);
+        try {
+            const response = await axios.get(`${baseUrl}/organizer/booking/list`, { headers: header });
+            console.log("Booking Data", response.data.Data);
+            setBooking(response.data.Data);
+        } catch (error) {
+            console.log(error);
+        }
     }
+
+
     useEffect(() => {
         BookingList();
     }, [])
@@ -51,9 +62,44 @@ function Booking() {
             {/* <!-- main-content  --> */}
             <div className="space-y-5 mt-6">
                 {booking.map((e) => (
-                    <BookingListItem key={e._id} data={e} />
+
+                    <div key={e._id} className="w-full bg-white flex p-2.5 rounded-md">
+                        <div className="w-1/6">
+                            <img src={e && e.url && e.url !== '' ? (s3Url + "/" + e.url) : bookingImg} alt="sweet-love-catering-2" className="w-auto h-full object-cover" />
+                            {/* (s3Url + "/" + data.aboutplace.banner) */}
+                        </div>
+                        <div className="w-full px-3">
+                            <div className="flex justify-between items-center pb-2">
+                                <h2>{e?.category_name}</h2>
+                                <h2>{e?.totalPrice} INR</h2>
+                            </div>
+                            <div className="flex items-center space-x-2 pb-5 border-b">
+                                <img src={e && e.userid && e.userid.profile_pic && e.userid.profile_pic !== '' ? (s3Url + "/" + e.userid.profile_pic) : userImg} alt="user-3" className="w-9 h-9 object-cover" />
+                                <p className="text-base text-quicksilver font-normal">{e?.userid?.name}</p>
+                            </div>
+                            <div className="flex items-center justify-between py-5">
+                                <div className="flex  space-x-7">
+                                    <div>
+                                        <span className="text-xs text-quicksilver font-bold"><i className="icon-calendar2 pr-2"></i>Date</span>
+                                        <p className="text-base">{e?.start_date}</p>
+                                    </div>
+                                    <div className="border-x px-7">
+                                        <span className="text-xs text-quicksilver font-bold"><i className="icon-light-fill-time pr-2"></i>Time</span>
+                                        <p className="text-base">{e?.start_time}</p>
+                                    </div>
+                                    <div>
+                                        <span className="text-xs text-quicksilver font-bold"><i className="icon-location pr-2"></i>Location</span>
+                                        <p className="text-base">{e?.address}</p>
+                                    </div>
+                                </div>
+                                <button className='bg-spiroDiscoBall text-base capitalize font-semibold text-white px-7 py-3 rounded-md'>download invoice</button>
+                            </div>
+                        </div>
+                    </div>
                 ))}
-            </div>           
+            </div>
+
+
         </div>
     )
 }

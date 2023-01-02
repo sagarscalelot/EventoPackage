@@ -45,7 +45,7 @@ function OurProducts() {
                             <a href="https://www.instagram.com/EventoPackage/" target="blank" className="bg-white w-9 h-9 rounded-full shadow flex justify-center items-center"><span><img src={InstIcon} alt="Instagram"/></span></a>
                           </div>
                           <div className="">
-                            <a href="https://www.linkedin.com/authwall?trk=bf&trkInfo=AQErRdNnm1-r9AAAAXzKln7ouu8mpq2wQGS9Blcg-ex_T69la6pJ-JlkDxvCGDpgmbcJOZDTw_umEH3mQVUiJY5QF-oDZwnG1MrOh61LGKIFyxJDgz9NnHgVGOqh8NIPFkOoHoM=&originalReferer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fcompany%2Feventopackage" traget="blank" className="bg-white w-9 h-9 rounded-full shadow flex justify-center items-center"><span><img src={linkedIcon} alt="Linked"/></span></a>
+                            <a href="https://www.linkedin.com/company/eventopackage" target="blank" className="bg-white w-9 h-9 rounded-full shadow flex justify-center items-center"><span><img src={linkedIcon} alt="Linked"/></span></a>
                           </div>
                         </div>
                       </div>
@@ -83,14 +83,14 @@ function OurProducts() {
                       <div className="">
                         <span className="text-sm text-japaneseIndigo font-bold capitalize pb-3">Social Media</span>
                         <div className="flex space-x-5 border-r-2 pr-5 pt-3">
-                          <div className="">
-                            <div className="bg-white w-9 h-9 rounded-full shadow flex justify-center items-center"><span><img src={facebookIcon} alt="Facebook"/></span></div>
+                        <div className="">
+                            <a href="https://www.facebook.com/EventoPackage" target="blank" className="bg-white w-9 h-9 rounded-full shadow flex justify-center items-center"><span><img src={facebookIcon} alt="Facebook"/></span></a>
                           </div>
                           <div className="">
-                            <div className="bg-white w-9 h-9 rounded-full shadow flex justify-center items-center"><span><img src={InstIcon} alt="Instagram"/></span></div>
+                            <a href="https://www.instagram.com/EventoPackage/" target="blank" className="bg-white w-9 h-9 rounded-full shadow flex justify-center items-center"><span><img src={InstIcon} alt="Instagram"/></span></a>
                           </div>
                           <div className="">
-                            <div className="bg-white w-9 h-9 rounded-full shadow flex justify-center items-center"><span><img src={linkedIcon} alt="Linked"/></span></div>
+                            <a href="https://www.linkedin.com/company/eventopackage" target="blank" className="bg-white w-9 h-9 rounded-full shadow flex justify-center items-center"><span><img src={linkedIcon} alt="Linked"/></span></a>
                           </div>
                         </div>
                       </div>
@@ -128,14 +128,14 @@ function OurProducts() {
                       <div className="">
                         <span className="text-sm text-japaneseIndigo font-bold capitalize pb-3">Social Media</span>
                         <div className="flex space-x-5 border-r-2 pr-5 pt-3">
-                          <div className="">
-                            <div className="bg-white w-9 h-9 rounded-full shadow flex justify-center items-center"><span><img src={facebookIcon} alt="Facebook"/></span></div>
+                        <div className="">
+                            <a href="https://www.facebook.com/EventoPackage" target="blank" className="bg-white w-9 h-9 rounded-full shadow flex justify-center items-center"><span><img src={facebookIcon} alt="Facebook"/></span></a>
                           </div>
                           <div className="">
-                            <div className="bg-white w-9 h-9 rounded-full shadow flex justify-center items-center"><span><img src={InstIcon} alt="Instagram"/></span></div>
+                            <a href="https://www.instagram.com/EventoPackage/" target="blank" className="bg-white w-9 h-9 rounded-full shadow flex justify-center items-center"><span><img src={InstIcon} alt="Instagram"/></span></a>
                           </div>
                           <div className="">
-                            <div className="bg-white w-9 h-9 rounded-full shadow flex justify-center items-center"><span><img src={linkedIcon} alt="Linked"/></span></div>
+                            <a href="https://www.linkedin.com/company/eventopackage" target="blank" className="bg-white w-9 h-9 rounded-full shadow flex justify-center items-center"><span><img src={linkedIcon} alt="Linked"/></span></a>
                           </div>
                         </div>
                       </div>

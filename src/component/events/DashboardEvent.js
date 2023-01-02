@@ -36,12 +36,11 @@ function DashboardEvent() {
 			event_type: eventType,
 			category_name: selectedCategory
 		}
-		console.log("cat : ", requestObj);
 		try {
 			const response = await axios.post(`${baseUrl}/organizer/events/list`, requestObj, { headers: header });
 			setAllEvents(response.data.Data);
 
-			console.log("Event List>>>>>",response.data.Data);
+			// console.log("Event List>>>>>",response.data.Data);
 
 			setLoading(false);
 		} catch (error) {
@@ -145,7 +144,6 @@ console.log("live list : ", activeList);
 						</div>
 					</>
 				))}
-
 				{!loading && ((allEvents?.totalPages > 0) ? <Paggination allEvents={allEvents} limit={limit} setPageNo={setPageNo} pageNo={pageNo} /> : <h1 style={{ margin: "100px 0" }}>No Event Found</h1>)}
 
 				<Modal isOpen={isCreateNewPopUpOpen} >
