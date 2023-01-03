@@ -445,7 +445,7 @@ function LandingPage() {
                 </div>
                 <div className="xl:space-y-2.5">
                   <h2 className="text-xl xl:text-3xl text-ev-dark">Free Register</h2>
-                  <p className="text-sm xl:text-base text-[#9BA0A8]">lets you Know the Best places to be, in and Around the Country.</p>
+                  <p className="text-sm xl:text-base text-[#9BA0A8]">Absolutely free to download for all users. Just fill in basic details and get registered.</p>
                 </div>
               </div>
               <div className="flex items-start space-x-4">
@@ -456,7 +456,7 @@ function LandingPage() {
                 </div>
                 <div className="xl:space-y-2.5">
                   <h2 className="text-xl xl:text-3xl text-ev-dark">Gift Coupon</h2>
-                  <p className="text-sm xl:text-base text-[#9BA0A8]">Register your Event Now! to get Houseful Bash.</p>
+                  <p className="text-sm xl:text-base text-[#9BA0A8]">Get premium offers and gift coupons on each booking.</p>
                 </div>
               </div>
               <div className="flex items-start space-x-4">
@@ -467,7 +467,7 @@ function LandingPage() {
                 </div>
                 <div className="xl:space-y-2.5">
                   <h2 className="text-xl xl:text-3xl text-ev-dark">Language</h2>
-                  <p className="text-sm xl:text-base text-[#9BA0A8]">established fact that a reader will be distracted by the readable</p>
+                  <p className="text-sm xl:text-base text-[#9BA0A8]">Choose from multiple languages for your convenience.</p>
                 </div>
               </div>
             </div>
@@ -485,7 +485,7 @@ function LandingPage() {
                 </div>
                 <div className="xl:space-y-2.5">
                   <h2 className="text-xl xl:text-3xl text-ev-dark">Refer and Earn</h2>
-                  <p className="text-sm xl:text-base text-[#9BA0A8]">Generate a Crowd in your Place. Register your SHOP offers now!</p>
+                  <p className="text-sm xl:text-base text-[#9BA0A8]">Earn referral coins and get special offers and discounts.</p>
                 </div>
               </div>
               <div className="flex items-start space-x-4">
@@ -496,7 +496,7 @@ function LandingPage() {
                 </div>
                 <div className="xl:space-y-2.5">
                   <h2 className="text-xl xl:text-3xl text-ev-dark">Entertainment</h2>
-                  <p className="text-sm xl:text-base text-[#9BA0A8]">Check out Cool Party places on Our App.</p>
+                  <p className="text-sm xl:text-base text-[#9BA0A8]">Watch or post live-stream videos. Showcase your talent and services.</p>
                 </div>
               </div>
               <div className="flex items-start space-x-4">
@@ -507,7 +507,7 @@ function LandingPage() {
                 </div>
                 <div className="xl:space-y-2.5">
                   <h2 className="text-xl xl:text-3xl text-ev-dark">Easy to use</h2>
-                  <p className="text-sm xl:text-base text-[#9BA0A8]">established fact that a reader will be distracted by the readable</p>
+                  <p className="text-sm xl:text-base text-[#9BA0A8]">A user-friendly platform.</p>
                 </div>
               </div>
             </div>
