@@ -496,7 +496,7 @@ function LandingPage() {
                 </div>
                 <div className="xl:space-y-2.5">
                   <h2 className="text-xl xl:text-3xl text-ev-dark">Entertainment</h2>
-                  <p className="text-sm xl:text-base text-[#9BA0A8]">Watch or post live-stream videos. Showcase your talent and services.</p>
+                  <p className="text-sm xl:text-base text-[#9BA0A8]">Watch and upload videos. Showcase your talent and services.</p>
                 </div>
               </div>
               <div className="flex items-start space-x-4">
@@ -797,9 +797,9 @@ function LandingPage() {
           <img src={aboutg} alt="Our Company" className="w-full md:w-1/2 md:max-w-[650px] md:absolute right-0 top-1/2 md:-translate-y-1/2" />
           <div className="w-full md:w-1/2 max-w-xl md:pr-10 mt-6 md:mt-0">
             <h2 className="text-4xl md:text-40 xl:text-5xl mb-5">Who we are?</h2>
-            <p className="text-base md:text-lg xl:text-xl text-[#9BA0A8] font-semibold mb-3">Festumevento is a team of smart techies and intelligent experts who constantly work on the product mindset to deliver the latest marketing advantage. Since 2019, we have been the markets leading it solution providers, and we connect you to tremendous business insights.</p><p className="text-base md:text-lg xl:text-xl text-[#9BA0A8] font-semibold mb-3">
+            <p className="text-base md:text-lg xl:text-xl text-[#9BA0A8] font-semibold mb-3">Festumevento is a group of knowledgeable specialists and techies who are always improving the product thinking to provide the most recent marketing advantage. We have led the market in IT solution providers since 2019 and connect you to excellent business insights.</p><p className="text-base md:text-lg xl:text-xl text-[#9BA0A8] font-semibold mb-3">
             Our mission is to achieve growth by making our clients grow with innovative ideas and solutions. We aim to enhance our customers business with the latest and creative digital solutions that create an impeccable reputation all over the globe.
-            We love challenges and solve the complex problems that our clients bring to us.</p>
+            We love challenges and solving the complex problems that our clients bring to us.</p>
             <p className="text-base md:text-lg xl:text-xl text-[#9BA0A8] font-semibold mb-3">
              Our expert team has the potential to find out the possible way of the most complicated problems that the world needs. We believe in unique and user-friendly solutions that work efficiently no matter if its reinvented.</p>
           </div>
@@ -943,15 +943,15 @@ function LandingPage() {
           <h2 className="text-center text-ev-dark pb-3 lg:pb-6 text-4xl md:text-40 xl:text-5xl">Other Products</h2>
           <div className="swiper mySwiper px-5 responsive max-w-6xl">
             <Swiper
-              modules={[Navigation]}
+              modules={[Navigation,Autoplay]}
               spaceBetween={25}
               slidesPerView={4}
               loop={true}
               centeredSlides={false}
-              autoPlay={{
-                delay: 1500,
+              autoplay={{
+                delay: 2500,
                 disableOnInteraction: false,
-              }}
+        }}
               navigation={{
                 prevEl: navigationPrevRef.current,
                 nextEl: navigationNextRef.current,
@@ -990,7 +990,7 @@ function LandingPage() {
                     <img src={fcoin} className="mx-auto" alt="" />
                     <div className="text-center pt-8 w-full overflow-hidden">
                       <p className="text-xl font-bold text-ev-dark">F-Coin</p>
-                      <p className="text-spiroDiscoBall text-sm font-bold text-ellipsis">Coming Soon..</p>
+                      {/* <p className="text-spiroDiscoBall text-sm font-bold text-ellipsis">Coming Soon..</p> */}
                     </div>
                   </div>
                 </div>
@@ -1000,8 +1000,8 @@ function LandingPage() {
                   <div className="px-5 py-6 bg-white drop-shadow-lg">
                     <img src={sfe} className="mx-auto" alt="" />
                     <div className="text-center pt-8 w-full overflow-hidden">
-                      <p className="text-xl font-bold text-ev-dark">Festum Evento</p>
-                      <a href="https://www.festumevento.com" target="blank" className="text-spiroDiscoBall text-sm font-bold text-ellipsis">https://www.festumevento.com</a>
+                      <a href="https://www.festumevento.com" target="blank" className="text-xl font-bold text-ev-dark">Festum Evento</a>
+                      {/* <a href="" className="text-spiroDiscoBall text-sm font-bold text-ellipsis">https://www.festumevento.com</a> */}
                     </div>
                   </div>
                 </div>
@@ -1012,7 +1012,7 @@ function LandingPage() {
                     <img src={ad} className="mx-auto" alt="" />
                     <div className="text-center pt-8 w-full overflow-hidden">
                       <p className="text-xl font-bold text-ev-dark">Ads Portal</p>
-                      <p className="text-spiroDiscoBall text-sm font-bold text-ellipsis">Coming Soon..</p>
+                      {/* <p className="text-spiroDiscoBall text-sm font-bold text-ellipsis">Coming Soon..</p> */}
                     </div>
                   </div>
                 </div>
@@ -1023,7 +1023,7 @@ function LandingPage() {
                     <img src={ff} className="mx-auto" alt="" />
                     <div className="text-center pt-8 w-full overflow-hidden">
                       <p className="text-xl font-bold text-ev-dark">Friends Fields</p>
-                      <a href="https://friendsfield.in" target="blank" className="text-spiroDiscoBall text-sm font-bold text-ellipsis">https://friendsfield.in</a>
+                      {/* <a href="https://friendsfield.in" target="blank" className="text-spiroDiscoBall text-sm font-bold text-ellipsis">https://friendsfield.in</a> */}
                     </div>
                   </div>
                 </div>
@@ -1077,7 +1077,7 @@ function LandingPage() {
       <div className="py-12 md:pb-14 bg-white">
         <div className="wrapper md:py-10 text-center space-y-3 md:space-y-6">
           <h2 className="text-japaneseIndigo text-4xl md:text-40 xl:text-5xl">Get Our Brochure</h2>
-          <p className="text-[#9BA0A8] text-xl md:text-2xl xl:text-3xl">Ready to get Our Brochure & Enjoy your Life Through Our Festum Evento App.</p>
+          <p className="text-[#9BA0A8] text-xl md:text-2xl xl:text-3xl">Ready to get Our Brochure & Enjoy your Life Through Our Evento Package App.</p>
           <button className="text-white text-lg font-semibold bg-spiroDiscoBall hover:bg-japaneseIndigo anim px-12 py-2">Download Brochure</button>
         </div>
       </div>
@@ -1147,15 +1147,15 @@ function LandingPage() {
                     <a href="#" className="block opacity-50 mr-4 hover:text-white hover:opacity-100 anim">Showcase</a>
                     <a href="#" className="block opacity-50 mr-4 hover:text-white hover:opacity-100 anim">Price</a>
                     <a href="#" className="block opacity-50 mr-4 hover:text-white hover:opacity-100 anim">About us</a>
-                    <a href="#" className="block opacity-50 mr-4 hover:text-white hover:opacity-100 anim">Become a Partner</a>
-                    <a href="#" className="block opacity-50 mr-4 hover:text-white hover:opacity-100 anim">Become a Agent</a>
+                    <a href="#" className="block opacity-50 mr-4 hover:text-white hover:opacity-100 anim">Become an Partner</a>
+                    <a href="#" className="block opacity-50 mr-4 hover:text-white hover:opacity-100 anim">Become an Agent</a>
                   </div>
                 </div>
                 <div className="space-y-2 lg:space-y-4">
                   <div className="flex flex-wrap items-center -mx-3.5 space-y-4 lg:space-y-0">
                     <div className="w-full lg:w-1/2 px-3.5 ">
                       <a href="javascript:void(0)" className="py-2 ft-text inline-block opacity-50">
-                        support@festumevento.com
+                      help@eventopackage.com
                       </a>
 
                     </div>
