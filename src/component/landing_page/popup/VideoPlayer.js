@@ -2,7 +2,7 @@ import React from 'react';
 
 function VideoPlayer({ handleClose, videoUrl, active }) {
     return (
-        <div className="fixed top-0 left-0 right-0 bottom-0 h-screen w-full flex items-center justify-center z-[999] bg-[rgba(0,0,0,0.5)]">
+        <div className="fixed top-0 left-0 right-0 bottom-0 h-screen w-full flex justify-center items-center z-[999] bg-[rgba(0,0,0,0.5)]">
             <div className="video-popup max-w-[800px] max-h-[500px] h-full w-full flex items-center justify-center relative bg-white rounded-xl shadow-lg p-3 anim">
                 <div onClick={() => handleClose(false)} className="cursor-pointer absolute -top-3 flex justify-center items-center -right-3 w-8 h-8 p-2 rounded-full bg-red-500">
                     <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

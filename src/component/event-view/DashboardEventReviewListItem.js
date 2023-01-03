@@ -4,6 +4,7 @@ import preview from '../../assest/images/userdefault.jpg';
 import moment from 'moment';
 
 function DashboardEventReviewListItem({ data }) {
+
   let reviewTime = moment.unix(data?.timestamp/1000).fromNow();
 console.log("Review Data list",data.userid.profile_pic);
     const Star = ({ratings}) => {
@@ -46,9 +47,12 @@ console.log("Review Data list",data.userid.profile_pic);
                     </div>
                 </div>
                 <p className="text-japaneseIndigo text-sm font-normal leading-6 pt-2">{data?.review}</p>
+
             </div>
         </div>
+
     )
+
 }
 
 export default DashboardEventReviewListItem;

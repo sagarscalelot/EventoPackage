@@ -1,13 +1,17 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
-export default function InvoiceDetials() {
+export default function InvoiceDetials({ e }) {
+    console.log(e);
+    const navigate = useNavigate();
+
     return (
         <div className="wrapper min-h-full">
 
             <div className="space-y-8 h-full">
                 {/* <!-- title-holder  --> */}
                 <div className="flex justify-between items-center">
-                    <a href="#" className="flex items-center"><i className="icon-back-arrow mr-4 text-2xl"></i><h1>Invoice Details</h1></a>
+                    <div onClick={() => navigate("../../invoice")} className="flex items-center cursor-pointer"><i className="icon-back-arrow mr-4 text-2xl"></i><h1>Invoice Details</h1></div>
                     <a href="#" className="btn-primary small group">Download Invoice</a>
                 </div>
                 {/* <!-- main-content  --> */}
@@ -28,15 +32,15 @@ export default function InvoiceDetials() {
                         </div>
                         <div className="text-left">
                             <span className="block text-base font-bold">invoice Number</span>
-                            <span className="block text-sm font-normal text-quicksilver pt-1">Sweet Love Catering</span>
+                            <span className="block text-sm font-normal text-quicksilver pt-1">{e?.name}</span>
                         </div>
                         <div className="text-left">
                             <span className="block text-base font-bold">Transaction ID</span>
-                            <span className="block text-sm font-normal text-quicksilver pt-1">Dgugkijmrol1529632</span>
+                            <span className="block text-sm font-normal text-quicksilver pt-1">{e?.trans_Id}</span>
                         </div>
                         <div className="text-left">
                             <span className="block text-base font-bold">You Received</span>
-                            <span className="block text-sm font-normal text-quicksilver pt-1">$560</span>
+                            <span className="block text-sm font-normal text-quicksilver pt-1">{e?.totalPrice}</span>
                         </div>
                     </div>
                 </div>
