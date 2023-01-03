@@ -754,3 +754,5 @@ i.icon-half-star:after {
     width: 150px;
     height: 150px;
 }
+.input-0.multiSelectContainer input.searchBox {width: 0;}
+.input-0.multiSelectContainer .search-wrapper.searchWrapper {border: 0;}

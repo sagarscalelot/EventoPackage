@@ -15,7 +15,7 @@ function DashboardEventAttendee() {
     const getEventById = async () => {
       try {
         const response = await axios.get(`${baseUrl}/organizer/booking/list`, { headers: header });
-        setAllEvents(response.data.Data);
+        setAllEvents(response.data.Data.docs);
   
       } catch (error) {
         console.log(error);
@@ -32,10 +32,7 @@ function DashboardEventAttendee() {
                 <div className="w-full space-y-2.5">
                 {allEvents.map(ele => (
 					<>
-					<div className="w-full flex items-center ">
-					
-						<DashboardEventAtteneeListItem key={ele._id} data={ele}  />
-						</div>
+					  <DashboardEventAtteneeListItem key={ele._id} data={ele}  />
 					</>
 				))}
                 </div>

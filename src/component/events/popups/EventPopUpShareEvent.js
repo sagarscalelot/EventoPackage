@@ -1,4 +1,6 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { baseUrl } from '../../../config';
 import {
     EmailShareButton,
     FacebookShareButton,
@@ -49,16 +51,39 @@ import {
 } from "react-share";
 
 export default function EventPopUpShareEvent({ handleClose, url }) {
+    const token = localStorage.getItem("Token");
+
+    const header = {
+      'Authorization': `Token ${token}`,
+    }
+  
+    const [details, setDetails] = useState({});
+  
+    const getProfile = async () => {
+      try {
+        const response = await axios.get(`${baseUrl}/organizer/profile`, { headers: header });
+        console.log("response.data.Data", response.data.Data.my_refer_code);
+        setDetails(response.data.Data)
+  
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  
+    useEffect(() => {
+  
+      getProfile();
+    }, []);
     const size = 50;
     url = `Give 10 Coin, Get 10 Coin
-    Refer Friends to allset and give them 10 coin with your referral code 525252 once they order, you get 10 coin too. www.eventopackage.com`
+    Refer Friends to allset and give them 10 coin with your referral code ${details.my_refer_code} once they order, you get 10 coin too. www.eventopackage.com`
     return (
         <div className="popup table fixed w-full inset-0 z-40 bg-black bg-opacity-75 h-screen">
             <div className="table-cell align-middle">
                 <div className="popin max-w-2xl w-full mx-auto max-h-[calc(100vh-55px)] overflow-y-auto lg:px-9">
                     <div className="bg-brightGray p-12">
                         <div className="flex justify-between items-center">
-                            <h1 className="h1">share Event</h1>
+                            <h1 className="h1">Share Event</h1>
                             <div className="flex items-center space-x-6">
                                 <button onClick={() => handleClose(false)} href="#" className="text-xl"><i className="icon-close"></i></button>
                                 <WhatsappShareButton url={url}>
