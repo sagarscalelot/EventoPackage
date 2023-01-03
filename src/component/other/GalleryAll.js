@@ -42,8 +42,8 @@ function GalleryAll() {
 						</figure>
 						:
 						<figure>
-							<div className="bg-white rounded-md relative overflow-hidden w-full h-full">
-								<a href="#" className="relative inset-0 w-full h-full opacity-100 pointer-events-auto" onClick={() => setPreview(true)}>
+							<div className="bg-white rounded-md relative overflow-hidden w-full h-full flex justify-center items-center">
+								<a href="#" className="relative inset-0 w-full h-full opacity-100 pointer-events-auto flex justify-center items-center" onClick={() => setPreview(true)}>
 
 									<iframe width="100%" src={s3Url + "/" + e?.url} title="YouTube video player" frameBorder="0" allow="accelerometer;  clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
 								</a>

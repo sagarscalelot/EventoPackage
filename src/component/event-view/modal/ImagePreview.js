@@ -13,10 +13,10 @@ import ImagePreviewMainSlide from './ImagePreviewMainSlide';
 function ImagePreview({ handleClose, data }) {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   return (
-    <div className="fixed inset-0 w-full h-full bg-[rgba(0,0,0,0.6)] flex z-50">
+    <div className="fixed inset-0 w-full h-full bg-[rgba(0,0,0,0.6)] flex justify-center items-center z-50">
       <button type="button" onClick={() => handleClose(false)} className="absolute right-10 top-10 z-50 rounded-full text-white text-lg"><i className="icon-close"></i></button>
       <div className="relative w-full py-10">
-        <div className="swiper-container gallery-top relative">
+        <div className="swiper-container gallery-top relative flex justify-center items-center">
           <Swiper
             style={{
               "--swiper-navigation-color": "#fff",
@@ -29,7 +29,6 @@ function ImagePreview({ handleClose, data }) {
           >
             {data.map(e => (
               <SwiperSlide>
-
                 <ImagePreviewMainSlide link={e.url} desc={e.description} />
               </SwiperSlide>
 
@@ -38,7 +37,7 @@ function ImagePreview({ handleClose, data }) {
           </Swiper>
 
         </div>
-        <div className="swiper-container gallery-thumbs bg-black">
+        {/* <div className="swiper-container gallery-thumbs bg-black">
           <Swiper
             onSwiper={setThumbsSwiper}
             spaceBetween={10}
@@ -55,7 +54,7 @@ function ImagePreview({ handleClose, data }) {
               </SwiperSlide>
             ))}
           </Swiper>
-        </div>
+        </div> */}
       </div>
     </div>
   )

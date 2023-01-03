@@ -15,9 +15,8 @@ import { s3Url } from "../../../config";
 
 function GalleryImageAndVideoPreview({ handleClose, data }) {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
-
   return (
-    <div className="fixed inset-0 w-full h-full bg-[rgba(0,0,0,0.6)] flex justify-center items-center z-50">
+    <div div className="fixed inset-0 w-full h-full bg-[rgba(0,0,0,0.6)] flex justify-center items-center z-50" >
       <button
         type="button"
         onClick={() => handleClose(false)}
@@ -27,8 +26,8 @@ function GalleryImageAndVideoPreview({ handleClose, data }) {
       </button>
       <div className="relative w-full py-10">
         <div className="max-w-3xl mx-auto px-12">
-          <h2 className="text-white">Sweet Love Catering</h2>
-          <p className="text-lg text-white font-normal">Catering</p>
+          <h2 className="text-white">{data?.display_name}</h2>
+          <p className="text-lg text-white font-normal">{data?.event_category?.category_name}</p>
         </div>
         <div>
           <Swiper
@@ -46,7 +45,7 @@ function GalleryImageAndVideoPreview({ handleClose, data }) {
             {data.map((e, i) => (
               <SwiperSlide key={i}>
                 <div className="swiper-slide-container">
-                  <div className="w-full lg:w-1/2 rounded-md overflow-hidden mx-auto h-full object-cover">
+                  <div className="w-full lg:w-1/2 rounded-md overflow-hidden mx-auto h-full object-cover flex items-center justify-center">
                     {(e.type === "photo" ?
                       <img src={s3Url + "/" + e.url} alt="big-dish" className="w-full h-full object-contain" /> :
                       <video width="100%" height="100%" src={s3Url + "/" + e?.url} alt="no video" controls allowFullScreen></video>
@@ -56,13 +55,13 @@ function GalleryImageAndVideoPreview({ handleClose, data }) {
               </SwiperSlide>
             ))}
           </Swiper>
-          <Swiper
+          {/* <Swiper
             onSwiper={setThumbsSwiper}
             spaceBetween={10}
             centeredSlides={true}
             slidesPerView={'auto'}
             slideToClickedSlide={true}
-            
+
             touchRatio={0.2}
             loop={false}
             loopedSlides={4}
@@ -80,7 +79,7 @@ function GalleryImageAndVideoPreview({ handleClose, data }) {
                 </div>
               </SwiperSlide>
             ))}
-          </Swiper>
+          </Swiper> */}
         </div>
       </div>
     </div>
