@@ -1,8 +1,6 @@
 import React, {useEffect,useState} from 'react'
 import axios from 'axios';
 import { baseUrl } from '../../config';
-import user1Image from "../../assest/images/user-1.png";
-import user2Image from "../../assest/images/user-2.png";
 // import Advertisement from '../Advertisement';
 import DashboardEventReviewListItem from './DashboardEventReviewListItem';
 
@@ -37,10 +35,7 @@ function DashboardEventReview() {
 
         {allEvents.map(ele => (
 					<>
-					<div className="w-full flex items-center ">
-					
 						<DashboardEventReviewListItem key={ele._id} data={ele}  />
-						</div>
 					</>
 				))}
 

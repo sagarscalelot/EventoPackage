@@ -1,26 +1,31 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import $ from 'jquery';
 
 function FAQ() {
     const [isopen, setIsOpen] = useState()
 
-    var $titleTab = $('.title_tab');
-    $('.title_tab.active').next('.inner_content').slideDown();
-    $titleTab.on('click', function (e) {
-        e.preventDefault();
-        if ($(this).hasClass('active')) {
-            $(this).removeClass('active');
-            $(this).next().stop().slideUp(500);
-            $(this).next().find('p').removeClass('show');
-        } else {
-            $(this).addClass('active');
-            $(this).next().stop().slideDown(500);
-            $(this).parent().siblings().children('.title_tab').removeClass('active');
-            $(this).parent().siblings().children('.inner_content').slideUp(500);
-            $(this).parent().siblings().children('.inner_content').find('p').removeClass('show');
-            $(this).next().find('p').addClass('show');
-        }
-    });
+
+
+    useEffect(() => {
+        var $titleTab = $('.title_tab');
+        $('.title_tab.active').next('.inner_content').slideDown();
+        $titleTab.on('click', function (e) {
+            e.preventDefault();
+            if ($(this).hasClass('active')) {
+                $(this).removeClass('active');
+                $(this).next().stop().slideUp(500);
+                $(this).next().find('p').removeClass('show');
+            } else {
+                $(this).addClass('active');
+                $(this).next().stop().slideDown(500);
+                $(this).parent().siblings().children('.title_tab').removeClass('active');
+                $(this).parent().siblings().children('.inner_content').slideUp(500);
+                $(this).parent().siblings().children('.inner_content').find('p').removeClass('show');
+                $(this).next().find('p').addClass('show');
+            }
+        });
+    }, [])
+
 
     return (
         <div className="wrapper min-h-full">

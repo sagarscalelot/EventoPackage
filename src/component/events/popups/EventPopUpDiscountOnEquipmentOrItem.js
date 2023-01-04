@@ -139,14 +139,14 @@ function EventPopUpDiscountOnEquipmentOrItem({ handleClose, eventId, setSelected
 
 	return (
 		<>
-
+			
 			<div className="popup table fixed w-full inset-0 z-40 bg-black bg-opacity-75 h-screen">
 				<div className="table-cell align-middle">
 					<div className="popin max-w-2xl w-full mx-auto max-h-[calc(100vh-55px)] overflow-y-auto lg:px-9">
 						<div className="bg-brightGray p-7 space-y-7">
 							<h2 className="h1 w-full max-w-[60%] text-center mx-auto"> {selectedDiscount?.discountname} </h2>
 							<form className="flex items-center space-x-5">
-								<div className="w-full lg:w-1/2 inputHolder">
+								<div className="w-full lg:w-2/3 inputHolder">
 									<label className="input-titel">Equipment Or Item</label>
 									<Multiselect
 										options={selectList} // Options to display in the dropdown
@@ -156,10 +156,10 @@ function EventPopUpDiscountOnEquipmentOrItem({ handleClose, eventId, setSelected
 										selectedValues={preSelectList}
 										onSelect={(e) => setList(e)}
 										// showCheckbox	
-										className="w-full arrow option"
+										className="w-full arrow option input-0 bg-white rounded"
 									/>
 								</div>
-								<div className={serviceOn ? "w-full lg:w-1/2 inputHolder" : "w-full inputHolder"}>
+								<div className={serviceOn ? "w-full inputHolder" : "w-full lg:w-1/3 inputHolder"}>
 									<label className="input-titel">Discount</label>
 									<input className="input option" type="text" onChange={validateDiscount} />
 									<span className="mt-1" style={{ color: "red", fontSize: "14px" }}>{error} </span>

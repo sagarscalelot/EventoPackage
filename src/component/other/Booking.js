@@ -8,19 +8,27 @@ import { useState } from 'react';
 import bookingImg from '../../assest/images/banner-preview.png'
 import userImg from '../../assest/images/landing-page/user-i.png'
 import { baseUrl, s3Url } from '../../config';
+import BookPage from '../BookPage';
+import { MoonLoader } from 'react-spinners';
 
 function Booking() {
     const [booking, setBooking] = useState([]);
-
+    const [loading, setLoading] = useState(true);
+    const [pageNo, setPageNo] = useState(1);
+    const limit = 3;
     const token = localStorage.getItem("Token");
     const header = {
         'Authorization': `Token ${token}`,
     }
     const BookingList = async () => {
+        const requestObj = {
+			page: pageNo,
+			limit: limit,
+		}
         try {
-            const response = await axios.get(`${baseUrl}/organizer/booking/list`, { headers: header });
-            console.log("Booking Data", response.data.Data);
+            const response = await axios.post(`${baseUrl}/organizer/booking/list`,requestObj, { headers: header });
             setBooking(response.data.Data);
+            setLoading(false);
         } catch (error) {
             console.log(error);
         }
@@ -29,7 +37,7 @@ function Booking() {
 
     useEffect(() => {
         BookingList();
-    }, [])
+    }, [pageNo])
 
     return (
         <div className="wrapper min-h-full">
@@ -61,7 +69,16 @@ function Booking() {
             </div>
             {/* <!-- main-content  --> */}
             <div className="space-y-5 mt-6">
-                {booking.map((e) => (
+            <MoonLoader
+					cssOverride={{ margin: "100px auto" }}
+					color={"#20c0E8"}
+					loading={loading}
+					size={50}
+					aria-label="Loading Spinner"
+					data-testid="loader"
+				/>
+                {booking.docs?.map((e) => (
+
                     <div key={e._id} className="w-full bg-white flex p-2.5 rounded-md">
                         <div className="w-1/6">
                             <img src={e && e.url && e.url !== '' ? (s3Url + "/" + e.url) : bookingImg} alt="sweet-love-catering-2" className="w-auto h-full object-cover" />
@@ -96,9 +113,8 @@ function Booking() {
                         </div>
                     </div>
                 ))}
+                {!loading && ((booking?.totalPages > 0) ? <BookPage booking={booking} limit={limit} setPageNo={setPageNo} pageNo={pageNo} /> : <h1 style={{ margin: "100px 0" }}>No Booking Found</h1>)}
             </div>
-
-
         </div>
     )
 }

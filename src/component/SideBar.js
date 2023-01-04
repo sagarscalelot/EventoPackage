@@ -99,11 +99,6 @@ function SideBar() {
     localStorage.removeItem('stepCount');
   }
 
-
-
-
-
-
   return (
     <div className="main flex min-h-screen">
       {/* <!-- Left Panel --> */}
