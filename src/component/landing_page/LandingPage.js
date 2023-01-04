@@ -732,7 +732,7 @@ function LandingPage() {
         <div className="px-3.5 relative pt-16 lg:pt-24">
           <div className="w-full pt-4">
             <h1 className="w-full text-center sm:w-auto text-4xl lg:text-[50px] text-white font-bold mb-4 lg:mb-6 relative z-10">App Showcase</h1>
-            <p className="max-w-5xl mx-auto text-white text-center relative z-10 text-base md:text-lg xl:text-xl">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+            <p className="max-w-5xl mx-auto text-white text-center relative z-10 text-base md:text-lg xl:text-xl">By connecting planners and organizers, this medium aims to ease the efforts of end users to find all event needs in one place.  The platform lets people from around the globe register, book, and make payments.</p>
             <img src={ShowBACK} className="absolute inset-0 w-full h-full z-0" alt="Showcase-bg" />
           </div>
           <div className="flex items-center text-center -mx-3.5 pt-8 lg:pt-16 relative z-10">
@@ -914,7 +914,7 @@ function LandingPage() {
           <div className="flex flex-wrap justify-between items-center p-8 md:p-10 xl:p-12 xl:px-16 bg-gradient-to-r from-[#83DCF2] to-[#23C1E8]">
             <div className="w-full md:w-7/12 space-y-2 lg:space-y-4">
               <span className="text-2xl lg:text-3xl font-bold text-white">Download our user app</span>
-              <p className="text-bold font-bold text-sm lg:text-base pr-5 text-white">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p>
+              <p className="text-bold font-bold text-sm lg:text-base pr-5 text-white">Download the app and Register your account with. Discover the perfect planning package for any occasion. Find everything you need to create the most memorable moments.</p>
             </div>
             <div className="w-full md:w-5/12">              
                 <div className="flex space-x-3 mt-5 md:mt-0 md:justify-end">
@@ -1041,7 +1041,7 @@ function LandingPage() {
         <div className="wrapper flex flex-wrap justify-center relative">
           <div className="text-center text-white pb-8 lg:pb-12 pt-12 mt:pt-14 xl:pt-24">
             <h2 className="text-[30px] md:text-40 xl:text-5xl">Get in touch with Us</h2>
-            <p className="text-base md:text-lg xl:text-xl pt-4 md:pt-8">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer<br /> took a galley of type and scrambled it to make a type specimen book.</p>
+            <p className="text-base md:text-lg xl:text-xl pt-4 md:pt-8">Feel free to contact us for any queries.</p>
           </div>
           <div className="w-full max-w-[1200px] mx-auto">
             <form className="flex flex-wrap w-full bg-white shadow-lg p-8">
@@ -1133,7 +1133,7 @@ function LandingPage() {
                     </clipPath>
                   </defs>
                 </svg>
-                <p className="max-w-sm text-base text-white opacity-60 font-normal">Festum Evento is a newly developed application, available on Google play store, based on the idea to let people find the best place to be in and around the world.</p>
+                <p className="max-w-sm text-base text-white opacity-60 font-normal">Evento Package is a platform that empowers event planners to connect and hire artists, performers, venues, decorators, security providers, caterers, designers, photographers, cake makers, and several more professionals in the event industry. </p>
               </div>
               <div className="w-full md:w-6/12 space-y-5 lg:space-y-10">
                 <div className="space-y-4">
