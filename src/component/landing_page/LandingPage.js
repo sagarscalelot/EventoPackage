@@ -62,6 +62,13 @@ import Offer from "./Offer";
 import LiveStream from "./LiveStream";
 import Modal from "../modal/Modal";
 import VideoPlayer from "./popup/VideoPlayer";
+import { baseUrl } from "../../config";
+import { toast } from 'react-toastify';
+import axios from 'axios';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
+import { useCallback } from 'react';
+import { useNavigate, useParams } from "react-router-dom";
 
 const changeLanguage = (ln) => {
   return () => {
@@ -107,34 +114,58 @@ const options2 = {
 };
 
 function LandingPage() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [contact, setContact] = useState("");
-  const [message, setMessage] = useState("");
-  const [tab, setTab] = useState(1);
+  const navigate = useNavigate();
+  const validationSchema = Yup.object().shape({
+		name: Yup.string().required('Name is required'),
+		email: Yup.string().required('Email is required'),
+		company_name: Yup.string().required('Company name is required'),
+		description: Yup.string().required("Description is required.")
+	});
 
+	const initialState = {
+		name: "",
+		email: "",
+		company_name: "",
+		description: "",
+	};
+
+const subbb = () =>{
+  console.log("CLICKED");
+}
+
+
+	const clickNextHandler = async (values) => {
+		try {
+			const requestObj = { ...values };
+			const response = await axios.post(`${baseUrl}/landing/getintouch`, requestObj);
+      console.log("RESPONSE>>>>>>>>",response);
+			if (response.data.IsSuccess) {
+        toast.success(response.data?.Message);
+			} else {
+				toast.success(response.data?.Message);
+			}
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
+  const formik = useFormik({
+		initialValues: initialState,
+		validationSchema: validationSchema,
+		onSubmit: clickNextHandler,
+	});
+
+	const setInputValue = useCallback(
+		(key, value) =>
+			formik.setValues({
+				...formik.values,
+				[key]: value,
+			}),
+		[formik]
+	);
 
   const [isVideoPlayerPopUpOpen, setIsVideoPlayerPopUpOpen] = useState(false);
   const [videoUrl, setVideoUrl] = useState("");
-
-  function save() {
-    console.log({ name, email, contact, message });
-    let data = { name, email, contact, message };
-    fetch("http://143.244.137.15:8000/getintouch", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    }).then((result) => {
-      alert("You have successfully submited your query");
-      setName("");
-      setEmail("");
-      setContact("");
-      setMessage("");
-    });
-  }
 
   useEffect(() => {
     $(document).ready(function () {
@@ -901,7 +932,7 @@ function LandingPage() {
             <div className="w-full lg:w-6/12">
               <div className="pl-5 pr-3 lg:pl-14 lg:pr-10 py-10 xl:py-5">
                 <h2 className="text-ev-dark font-semibold pb-6 text-4xl md:text-40 xl:text-5xl">Our Company</h2>
-                <p className="font-semibold text-[#9BA0A8] pb-4 text-base md:text-lg xl:text-xl lowercase max-h-96 overflow-y-auto text-ellipsis pr-2 lg:pr-4">FESTUMEVENTO, ESTABLISHED IN 2019, BRINGS A UNIQUE BLEND OF THE ORGANIZATION THROUGH EMERGING IT SOLUTIONS SUCH AS ACCOUNTING SOFTWARE, ERP MANAGEMENT SYSTEM, AND MANY MORE. EARLIER, WE STARTED AS A PRODUCT-BASED ORGANIZATION. AFTER THE POSITIVE RESPONSE FROM OUR CLIENT AND THE SUCCESSFUL EVOLUTION OF OUR PRODUCT, WE DECIDED TO ESTABLISH THE ORGANIZATION BASED ON OUR PRODUCT. AFTER SUCCESSFULLY IMPLEMENTING OUR PRODUCTS, WE ARE EXPANDING OUR SERVICES WITH THE LATEST IT SOLUTIONS SUCH AS MOBILE APP DEVELOPMENT, WEB DEVELOPMENT, ETC. WE HAVE A STRONG MARKETING TEAM OF PROFESSIONALS AND EXPERTS WHO ACTIVELY WORK ON YOUR PROJECTS TO FULFIL YOUR REQUIREMENTS. WE HAVE INTELLIGENT TECHIES WHO ARE READY TO SOLVE ANY REAL-TIME PROBLEMS IN THE DIGITAL WORLD.</p>
+                <p className="font-semibold text-[#9BA0A8] pb-4 text-base md:text-lg xl:text-xl  max-h-96 overflow-y-auto text-ellipsis pr-2 lg:pr-4">Festumevento, established in 2019, brings a unique blend of the organization through emerging it solutions such as accounting software, erp management system, and many more. earlier, we started as a product-based organization. after the positive response from our client and the successful evolution of our product, we decided to establish the organization based on our product. after successfully implementing our products, we are expanding our services with the latest it solutions such as mobile app development, web development, etc. we have a strong marketing team of professionals and experts who actively work on your projects to fulfil your requirements. we have intelligent techies who are ready to solve any real-time problems in the digital world.</p>
               </div>
             </div>
           </div>
@@ -1044,34 +1075,44 @@ function LandingPage() {
             <p className="text-base md:text-lg xl:text-xl pt-4 md:pt-8">Feel free to contact us for any queries.</p>
           </div>
           <div className="w-full max-w-[1200px] mx-auto">
-            <form className="flex flex-wrap w-full bg-white shadow-lg p-8">
-              <div className="w-full p-1.5 px-0 sm:p-3.5 relative">
-                <label htmlFor="name" className="leading-7 text-sm font-medium">Your Name<span className="text-red-500">*</span></label>
-                <input type="text" id="name" name="name" className="htmlForm-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-[#EEEEEE] bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0focus:border-gray-500 focus:ring-2 focus:ring-gray-300 outline-none" />
+            <form onSubmit={formik.handleSubmit} className="flex flex-wrap w-full bg-white shadow-lg p-8">
+              <div className="w-full p-1.5 px-0 sm:p-3.5">
+                <div className="relative">
+                  <label htmlFor="name" className="leading-7 text-sm font-medium">Your Name<span className="text-red-500">*</span></label>
+                  <input type="text" id="name" name="name" value={formik.values?.name} onChange={(e) => setInputValue("name", e.target.value)}  className="htmlForm-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-[#EEEEEE] bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0focus:border-gray-500 focus:ring-2 focus:ring-gray-300 outline-none" />
+                  <small className="absolute top-full left-0 text-red-500 text-xs">{formik.errors.name}</small>
+                </div>
               </div>
-              <div className="w-full md:w-1/2 p-1.5 px-0 sm:p-3.5 relative">
-                <label htmlFor="name" className="leading-7 text-sm font-medium">Company Name<span className="text-red-500">*</span></label>
-                <input type="text" id="company" name="company" className="htmlForm-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-[#EEEEEE] bg-clip-padding border border-solid border-gray-300  transition ease-in-out m-0focus:border-gray-500 focus:ring-2 focus:ring-gray-300 outline-none" />
+              <div className="w-full md:w-1/2 p-1.5 px-0 sm:p-3.5">
+                <div className="relative">
+                  <label htmlFor="name" className="leading-7 text-sm font-medium">Company Name<span className="text-red-500">*</span></label>
+                  <input type="text" id="company_name" name="company_name" value={formik.values?.company_name} onChange={(e) => setInputValue("company_name", e.target.value)} className="htmlForm-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-[#EEEEEE] bg-clip-padding border border-solid border-gray-300  transition ease-in-out m-0focus:border-gray-500 focus:ring-2 focus:ring-gray-300 outline-none" />
+                  <small className="absolute top-full left-0 text-red-500 text-xs">{formik.errors.company_name}</small>
+                </div>
               </div>
-              <div className="w-full md:w-1/2 p-1.5 px-0 sm:p-3.5 relative">
-                <label htmlFor="name" className="leading-7 text-sm font-medium">Email Address<span className="text-red-500">*</span></label>
-                <input type="email" id="email" name="email" className="htmlForm-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-[#EEEEEE] bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0focus:border-gray-500 focus:ring-2 focus:ring-gray-300 outline-none" />
-              </div >
-              <div className="w-full mb-7 p-1.5 px-0 sm:p-3.5 pb-0 relative">
-                <label htmlFor="message" className="leading-7 text-sm font-medium">Description<span className="text-red-500">*</span></label>
-                <textarea id="message" name="message" col="5" rows="3" className="htmlForm-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-[#EEEEEE] bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0focus:border-gray-500 focus:ring-2 focus:ring-gray-300 outline-none"></textarea>
-              </div >
+              <div className="w-full md:w-1/2 p-1.5 px-0 sm:p-3.5">
+                <div className="relative">
+                  <label htmlFor="name" className="leading-7 text-sm font-medium">Email Address<span className="text-red-500">*</span></label>
+                  <input type="text" id="email" name="email" value={formik.values?.email} onChange={(e) => setInputValue("email", e.target.value)}  className="htmlForm-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-[#EEEEEE] bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0focus:border-gray-500 focus:ring-2 focus:ring-gray-300 outline-none" />
+                  <small className="absolute top-full left-0 text-red-500 text-xs">{formik.errors.email}</small>
+                </div>
+              </div>
+              <div className="w-full mb-7 p-1.5 px-0 sm:p-3.5 pb-0">
+                <div className="relative">
+                  <label htmlFor="description" className="leading-7 text-sm font-medium">Description<span className="text-red-500">*</span></label>
+                  <textarea id="description" name="description" col="5" rows="3" value={formik.values?.description} onChange={(e) => setInputValue("description", e.target.value)}  className="htmlForm-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-[#EEEEEE] bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0focus:border-gray-500 focus:ring-2 focus:ring-gray-300 outline-none"></textarea>
+                  <small className="absolute top-full left-0 text-red-500 text-xs">{formik.errors.description}</small>
+                </div>
+              </div>
               <div className="relative w-full p-1.5 px-0 sm:p-3.5 pt-0">
-                <button className="w-full text-white text-lg font-semibold bg-spiroDiscoBall hover:bg-japaneseIndigo anim py-2 relative" type="submit" >
-                  <span >Submit your query</span>
-                </button >
-                <div className="absolute inset-0 text-white flex items-center" >
-                </div >
-              </div >
-            </form >
-          </div >
-        </div >
-      </div >
+                <button className="w-full text-white text-lg font-semibold bg-spiroDiscoBall hover:bg-japaneseIndigo anim py-2 relative" type="submit"   >
+                  Submit your query
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
 
       {/* Get Our Brochure */}
       <div className="py-12 md:pb-14 bg-white">
