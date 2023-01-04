@@ -47,9 +47,11 @@ function Paggination({ allEvents, limit, setPageNo, pageNo }) {
                 ))}
 
                 <li>
+
                     <button className="btns" style={allEvents?.page === allEvents?.totalPages ? {cursor: "not-allowed"} : {}} disabled={allEvents?.page === allEvents?.totalPages ? true : false} onClick={() => setPageNo(current => current+1)}>
                         <svg width="8" height="14" viewBox="0 0 8 14" fill="#25364f" xmlns="http://www.w3.org/2000/svg"> 
                             <path d="M1.52612 0.527405L-2.66844e-07 2.05358L4.94516 6.99874L-1.99612e-06 11.9439L1.52612 13.4701L7.99745 6.99874L1.52612 0.527405Z" className="fill-current" /> 
+
                         </svg>
                     </button>
                 </li>

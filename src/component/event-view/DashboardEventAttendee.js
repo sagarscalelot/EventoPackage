@@ -14,8 +14,8 @@ function DashboardEventAttendee() {
     }
     const getEventById = async () => {
       try {
-        const response = await axios.get(`${baseUrl}/organizer/booking/list`, { headers: header });
-        setAllEvents(response.data.Data.docs);
+        const response = await axios.get(`${baseUrl}/organizer/events/getone?eventid=${eventId}`, { headers: header });
+        setAllEvents(response.data.Data.reviews);
   
       } catch (error) {
         console.log(error);

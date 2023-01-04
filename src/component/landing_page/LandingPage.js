@@ -445,7 +445,7 @@ function LandingPage() {
                 </div>
                 <div className="xl:space-y-2.5">
                   <h2 className="text-xl xl:text-3xl text-ev-dark">Free Register</h2>
-                  <p className="text-sm xl:text-base text-[#9BA0A8]">lets you Know the Best places to be, in and Around the Country.</p>
+                  <p className="text-sm xl:text-base text-[#9BA0A8]">Absolutely free to download for all users. Just fill in basic details and get registered.</p>
                 </div>
               </div>
               <div className="flex items-start space-x-4">
@@ -456,7 +456,7 @@ function LandingPage() {
                 </div>
                 <div className="xl:space-y-2.5">
                   <h2 className="text-xl xl:text-3xl text-ev-dark">Gift Coupon</h2>
-                  <p className="text-sm xl:text-base text-[#9BA0A8]">Register your Event Now! to get Houseful Bash.</p>
+                  <p className="text-sm xl:text-base text-[#9BA0A8]">Get premium offers and gift coupons on each booking.</p>
                 </div>
               </div>
               <div className="flex items-start space-x-4">
@@ -467,7 +467,7 @@ function LandingPage() {
                 </div>
                 <div className="xl:space-y-2.5">
                   <h2 className="text-xl xl:text-3xl text-ev-dark">Language</h2>
-                  <p className="text-sm xl:text-base text-[#9BA0A8]">established fact that a reader will be distracted by the readable</p>
+                  <p className="text-sm xl:text-base text-[#9BA0A8]">Choose from multiple languages for your convenience.</p>
                 </div>
               </div>
             </div>
@@ -485,7 +485,7 @@ function LandingPage() {
                 </div>
                 <div className="xl:space-y-2.5">
                   <h2 className="text-xl xl:text-3xl text-ev-dark">Refer and Earn</h2>
-                  <p className="text-sm xl:text-base text-[#9BA0A8]">Generate a Crowd in your Place. Register your SHOP offers now!</p>
+                  <p className="text-sm xl:text-base text-[#9BA0A8]">Earn referral coins and get special offers and discounts.</p>
                 </div>
               </div>
               <div className="flex items-start space-x-4">
@@ -496,7 +496,7 @@ function LandingPage() {
                 </div>
                 <div className="xl:space-y-2.5">
                   <h2 className="text-xl xl:text-3xl text-ev-dark">Entertainment</h2>
-                  <p className="text-sm xl:text-base text-[#9BA0A8]">Check out Cool Party places on Our App.</p>
+                  <p className="text-sm xl:text-base text-[#9BA0A8]">Watch and upload videos. Showcase your talent and services.</p>
                 </div>
               </div>
               <div className="flex items-start space-x-4">
@@ -507,7 +507,7 @@ function LandingPage() {
                 </div>
                 <div className="xl:space-y-2.5">
                   <h2 className="text-xl xl:text-3xl text-ev-dark">Easy to use</h2>
-                  <p className="text-sm xl:text-base text-[#9BA0A8]">established fact that a reader will be distracted by the readable</p>
+                  <p className="text-sm xl:text-base text-[#9BA0A8]">A user-friendly platform.</p>
                 </div>
               </div>
             </div>
@@ -732,7 +732,7 @@ function LandingPage() {
         <div className="px-3.5 relative pt-16 lg:pt-24">
           <div className="w-full pt-4">
             <h1 className="w-full text-center sm:w-auto text-4xl lg:text-[50px] text-white font-bold mb-4 lg:mb-6 relative z-10">App Showcase</h1>
-            <p className="max-w-5xl mx-auto text-white text-center relative z-10 text-base md:text-lg xl:text-xl">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+            <p className="max-w-5xl mx-auto text-white text-center relative z-10 text-base md:text-lg xl:text-xl">By connecting planners and organizers, this medium aims to ease the efforts of end users to find all event needs in one place.  The platform lets people from around the globe register, book, and make payments.</p>
             <img src={ShowBACK} className="absolute inset-0 w-full h-full z-0" alt="Showcase-bg" />
           </div>
           <div className="flex items-center text-center -mx-3.5 pt-8 lg:pt-16 relative z-10">
@@ -797,9 +797,9 @@ function LandingPage() {
           <img src={aboutg} alt="Our Company" className="w-full md:w-1/2 md:max-w-[650px] md:absolute right-0 top-1/2 md:-translate-y-1/2" />
           <div className="w-full md:w-1/2 max-w-xl md:pr-10 mt-6 md:mt-0">
             <h2 className="text-4xl md:text-40 xl:text-5xl mb-5">Who we are?</h2>
-            <p className="text-base md:text-lg xl:text-xl text-[#9BA0A8] font-semibold mb-3">Festumevento is a team of smart techies and intelligent experts who constantly work on the product mindset to deliver the latest marketing advantage. Since 2019, we have been the markets leading it solution providers, and we connect you to tremendous business insights.</p><p className="text-base md:text-lg xl:text-xl text-[#9BA0A8] font-semibold mb-3">
+            <p className="text-base md:text-lg xl:text-xl text-[#9BA0A8] font-semibold mb-3">Festumevento is a group of knowledgeable specialists and techies who are always improving the product thinking to provide the most recent marketing advantage. We have led the market in IT solution providers since 2019 and connect you to excellent business insights.</p><p className="text-base md:text-lg xl:text-xl text-[#9BA0A8] font-semibold mb-3">
             Our mission is to achieve growth by making our clients grow with innovative ideas and solutions. We aim to enhance our customers business with the latest and creative digital solutions that create an impeccable reputation all over the globe.
-            We love challenges and solve the complex problems that our clients bring to us.</p>
+            We love challenges and solving the complex problems that our clients bring to us.</p>
             <p className="text-base md:text-lg xl:text-xl text-[#9BA0A8] font-semibold mb-3">
              Our expert team has the potential to find out the possible way of the most complicated problems that the world needs. We believe in unique and user-friendly solutions that work efficiently no matter if its reinvented.</p>
           </div>
@@ -914,7 +914,7 @@ function LandingPage() {
           <div className="flex flex-wrap justify-between items-center p-8 md:p-10 xl:p-12 xl:px-16 bg-gradient-to-r from-[#83DCF2] to-[#23C1E8]">
             <div className="w-full md:w-7/12 space-y-2 lg:space-y-4">
               <span className="text-2xl lg:text-3xl font-bold text-white">Download our user app</span>
-              <p className="text-bold font-bold text-sm lg:text-base pr-5 text-white">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p>
+              <p className="text-bold font-bold text-sm lg:text-base pr-5 text-white">Download the app and Register your account with. Discover the perfect planning package for any occasion. Find everything you need to create the most memorable moments.</p>
             </div>
             <div className="w-full md:w-5/12">              
                 <div className="flex space-x-3 mt-5 md:mt-0 md:justify-end">
@@ -943,15 +943,15 @@ function LandingPage() {
           <h2 className="text-center text-ev-dark pb-3 lg:pb-6 text-4xl md:text-40 xl:text-5xl">Other Products</h2>
           <div className="swiper mySwiper px-5 responsive max-w-6xl">
             <Swiper
-              modules={[Navigation]}
+              modules={[Navigation,Autoplay]}
               spaceBetween={25}
               slidesPerView={4}
               loop={true}
               centeredSlides={false}
-              autoPlay={{
-                delay: 1500,
+              autoplay={{
+                delay: 2500,
                 disableOnInteraction: false,
-              }}
+        }}
               navigation={{
                 prevEl: navigationPrevRef.current,
                 nextEl: navigationNextRef.current,
@@ -990,20 +990,20 @@ function LandingPage() {
                     <img src={fcoin} className="mx-auto" alt="" />
                     <div className="text-center pt-8 w-full overflow-hidden">
                       <p className="text-xl font-bold text-ev-dark">F-Coin</p>
-                      <p className="text-spiroDiscoBall text-sm font-bold text-ellipsis">Coming Soon..</p>
+                      {/* <p className="text-spiroDiscoBall text-sm font-bold text-ellipsis">Coming Soon..</p> */}
                     </div>
                   </div>
                 </div>
               </SwiperSlide>
               <SwiperSlide>
                 <div className="swiper-slide py-5">
-                  <div className="px-5 py-6 bg-white drop-shadow-lg">
+                  <a href="https://www.festumevento.com" target="blank" className="px-5 py-6 bg-white drop-shadow-lg block">
                     <img src={sfe} className="mx-auto" alt="" />
                     <div className="text-center pt-8 w-full overflow-hidden">
                       <p className="text-xl font-bold text-ev-dark">Festum Evento</p>
-                      <a href="https://www.festumevento.com" target="blank" className="text-spiroDiscoBall text-sm font-bold text-ellipsis">https://www.festumevento.com</a>
+                      {/* <a href="" className="text-spiroDiscoBall text-sm font-bold text-ellipsis">https://www.festumevento.com</a> */}
                     </div>
-                  </div>
+                  </a>
                 </div>
               </SwiperSlide>
               <SwiperSlide>
@@ -1012,20 +1012,20 @@ function LandingPage() {
                     <img src={ad} className="mx-auto" alt="" />
                     <div className="text-center pt-8 w-full overflow-hidden">
                       <p className="text-xl font-bold text-ev-dark">Ads Portal</p>
-                      <p className="text-spiroDiscoBall text-sm font-bold text-ellipsis">Coming Soon..</p>
+                      {/* <p className="text-spiroDiscoBall text-sm font-bold text-ellipsis">Coming Soon..</p> */}
                     </div>
                   </div>
                 </div>
               </SwiperSlide>
               <SwiperSlide>
                 <div className="swiper-slide py-5">
-                  <div className="px-5 py-6 bg-white drop-shadow-lg">
+                  <a href="https://friendsfield.in" target="blank" className="px-5 py-6 bg-white drop-shadow-lg block">
                     <img src={ff} className="mx-auto" alt="" />
                     <div className="text-center pt-8 w-full overflow-hidden">
                       <p className="text-xl font-bold text-ev-dark">Friends Fields</p>
-                      <a href="https://friendsfield.in" target="blank" className="text-spiroDiscoBall text-sm font-bold text-ellipsis">https://friendsfield.in</a>
+                      {/* <a href="https://friendsfield.in" target="blank" className="text-spiroDiscoBall text-sm font-bold text-ellipsis">https://friendsfield.in</a> */}
                     </div>
-                  </div>
+                  </a>
                 </div>
               </SwiperSlide>
               <div ref={navigationNextRef} className={"swiper-button-next text-3xl"} />
@@ -1041,7 +1041,7 @@ function LandingPage() {
         <div className="wrapper flex flex-wrap justify-center relative">
           <div className="text-center text-white pb-8 lg:pb-12 pt-12 mt:pt-14 xl:pt-24">
             <h2 className="text-[30px] md:text-40 xl:text-5xl">Get in touch with Us</h2>
-            <p className="text-base md:text-lg xl:text-xl pt-4 md:pt-8">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer<br /> took a galley of type and scrambled it to make a type specimen book.</p>
+            <p className="text-base md:text-lg xl:text-xl pt-4 md:pt-8">Feel free to contact us for any queries.</p>
           </div>
           <div className="w-full max-w-[1200px] mx-auto">
             <form className="flex flex-wrap w-full bg-white shadow-lg p-8">
@@ -1077,7 +1077,7 @@ function LandingPage() {
       <div className="py-12 md:pb-14 bg-white">
         <div className="wrapper md:py-10 text-center space-y-3 md:space-y-6">
           <h2 className="text-japaneseIndigo text-4xl md:text-40 xl:text-5xl">Get Our Brochure</h2>
-          <p className="text-[#9BA0A8] text-xl md:text-2xl xl:text-3xl">Ready to get Our Brochure & Enjoy your Life Through Our Festum Evento App.</p>
+          <p className="text-[#9BA0A8] text-xl md:text-2xl xl:text-3xl">Ready to get Our Brochure & Enjoy your Life Through Our Evento Package App.</p>
           <button className="text-white text-lg font-semibold bg-spiroDiscoBall hover:bg-japaneseIndigo anim px-12 py-2">Download Brochure</button>
         </div>
       </div>
@@ -1133,7 +1133,7 @@ function LandingPage() {
                     </clipPath>
                   </defs>
                 </svg>
-                <p className="max-w-sm text-base text-white opacity-60 font-normal">Festum Evento is a newly developed application, available on Google play store, based on the idea to let people find the best place to be in and around the world.</p>
+                <p className="max-w-sm text-base text-white opacity-60 font-normal">Evento Package is a platform that empowers event planners to connect and hire artists, performers, venues, decorators, security providers, caterers, designers, photographers, cake makers, and several more professionals in the event industry. </p>
               </div>
               <div className="w-full md:w-6/12 space-y-5 lg:space-y-10">
                 <div className="space-y-4">
@@ -1147,15 +1147,15 @@ function LandingPage() {
                     <a href="#" className="block opacity-50 mr-4 hover:text-white hover:opacity-100 anim">Showcase</a>
                     <a href="#" className="block opacity-50 mr-4 hover:text-white hover:opacity-100 anim">Price</a>
                     <a href="#" className="block opacity-50 mr-4 hover:text-white hover:opacity-100 anim">About us</a>
-                    <a href="#" className="block opacity-50 mr-4 hover:text-white hover:opacity-100 anim">Become a Partner</a>
-                    <a href="#" className="block opacity-50 mr-4 hover:text-white hover:opacity-100 anim">Become a Agent</a>
+                    <a href="#" className="block opacity-50 mr-4 hover:text-white hover:opacity-100 anim">Become an Partner</a>
+                    <a href="#" className="block opacity-50 mr-4 hover:text-white hover:opacity-100 anim">Become an Agent</a>
                   </div>
                 </div>
                 <div className="space-y-2 lg:space-y-4">
                   <div className="flex flex-wrap items-center -mx-3.5 space-y-4 lg:space-y-0">
                     <div className="w-full lg:w-1/2 px-3.5 ">
                       <a href="javascript:void(0)" className="py-2 ft-text inline-block opacity-50">
-                        support@festumevento.com
+                      help@eventopackage.com
                       </a>
 
                     </div>
