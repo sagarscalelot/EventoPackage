@@ -122,8 +122,8 @@ function EventCalender() {
 						plugins={[dayGridPlugin]}
 						initialView="dayGridMonth"
 						events={[
-							{ title: 'event 1',  start: new Date("January 06, 2023 3:20:00"), end: new Date("January 09, 2023 16:20:00"), color: generateRandomColor() },
-							{ title: 'event 2',  start: new Date("January 11, 2023 5:20:00"), end: new Date("January 16, 2023 16:20:00"), color: generateRandomColor() }
+							{ title: 'event 1',  start: new Date("January 06, 2023 3:20:00"), end: new Date("January 06, 2023 16:20:00"), color: generateRandomColor() },
+							{ title: 'event 2',  start: new Date("January 11, 2023 5:20:00"), end: new Date("January 11, 2023 16:20:00"), color: generateRandomColor() }
 						  ]}
 						
 					/>

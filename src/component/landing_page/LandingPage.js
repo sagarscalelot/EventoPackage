@@ -997,13 +997,13 @@ function LandingPage() {
               </SwiperSlide>
               <SwiperSlide>
                 <div className="swiper-slide py-5">
-                  <div className="px-5 py-6 bg-white drop-shadow-lg">
+                  <a href="https://www.festumevento.com" target="blank" className="px-5 py-6 bg-white drop-shadow-lg block">
                     <img src={sfe} className="mx-auto" alt="" />
                     <div className="text-center pt-8 w-full overflow-hidden">
-                      <a href="https://www.festumevento.com" target="blank" className="text-xl font-bold text-ev-dark">Festum Evento</a>
+                      <p className="text-xl font-bold text-ev-dark">Festum Evento</p>
                       {/* <a href="" className="text-spiroDiscoBall text-sm font-bold text-ellipsis">https://www.festumevento.com</a> */}
                     </div>
-                  </div>
+                  </a>
                 </div>
               </SwiperSlide>
               <SwiperSlide>
@@ -1019,13 +1019,13 @@ function LandingPage() {
               </SwiperSlide>
               <SwiperSlide>
                 <div className="swiper-slide py-5">
-                  <div className="px-5 py-6 bg-white drop-shadow-lg">
+                  <a href="https://friendsfield.in" target="blank" className="px-5 py-6 bg-white drop-shadow-lg block">
                     <img src={ff} className="mx-auto" alt="" />
                     <div className="text-center pt-8 w-full overflow-hidden">
                       <p className="text-xl font-bold text-ev-dark">Friends Fields</p>
                       {/* <a href="https://friendsfield.in" target="blank" className="text-spiroDiscoBall text-sm font-bold text-ellipsis">https://friendsfield.in</a> */}
                     </div>
-                  </div>
+                  </a>
                 </div>
               </SwiperSlide>
               <div ref={navigationNextRef} className={"swiper-button-next text-3xl"} />
