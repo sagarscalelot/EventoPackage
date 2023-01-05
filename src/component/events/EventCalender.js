@@ -40,7 +40,7 @@ function EventCalender() {
 			limit: limit,
 		}
 		try {
-			const response = await axios.post(`${baseUrl}/organizer/booking/list`,requestObj, { headers: header });
+			const response = await axios.get(`${baseUrl}/organizer/events/getone?eventid=${eventId}`, { headers: header });
 			//  setStartDate(((new Date(response.data.Data.docs[0].start_date)).toDateString() + " "+ (response.data.Data.docs[0].start_time)+":00") )
 		// const a= new Date(response.data.Data.docs[0].start_date); 
 			// setcalenderlist( Object.entries( response.data.Data))
@@ -48,9 +48,9 @@ function EventCalender() {
 			// setStartDate(ssdate);
 			// const enddate = moment.unix(response.data.Data.docs[0].end_timestamp/1000).format('LLL').toString()
 			// setEndDate(enddate)
-			console.log("GGGGGGGGGGGGGGGGGG",response.data.Data);
-			console.log("START TIME>>>>", moment.unix(response.data.Data.docs[0].start_timestamp/1000).format('MM/DD/YYYY HH:mm'));
-			console.log("END TIME>>>>", moment.unix(response.data.Data.docs[0].end_timestamp/1000).format('LLL'));
+			console.log("GGGGGGGGGGGGGGGGGG",response.data.Data.attendee);
+			console.log("START TIME>>>>", moment.unix(response.data.Data.attendee[0].start_timestamp/1000).format('MM/DD/YYYY HH:mm'));
+			console.log("END TIME>>>>", moment.unix(response.data.Data.attendee[0].end_timestamp/1000).format('LLL'));
 			
 		} catch (error) {
 			console.log(error);

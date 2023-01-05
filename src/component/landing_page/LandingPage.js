@@ -19,10 +19,10 @@ import ff from "../../assest/images/landing-page/FF.png";
 import Showcasebg from "../../assest/images/landing-page/Showcase-bg.png";
 import ShowBACK from "../../assest/images/landing-page/BACK.jpg";
 import aboutg from "../../assest/images/landing-page/about-g.png";
-import AnniversaryEvent from "../../assest/images/landing-page/video-1.png";
-import ChildrenPartyPlannersEvent from "../../assest/images/landing-page/video-2.png";
-import BirthdaypartyEvent from "../../assest/images/landing-page/video-3.png";
-import SummerGardenPartyEvent from "../../assest/images/landing-page/video-4.png";
+import AnniversaryEvent from "../../assest/images/landing-page/video1.png";
+// import ChildrenPartyPlannersEvent from "../../assest/images/landing-page/video2.png";
+import BirthdaypartyEvent from "../../assest/images/landing-page/video2.png";
+import SummerGardenPartyEvent from "../../assest/images/landing-page/video3.png";
 // import video1 from "../../assest/images/landing-page/Anniversary-Event.mp4";
 // import video2 from "../../assest/images/landing-page/Children's-Party-Planners-Event.mp4";
 // import video3 from "../../assest/images/landing-page/Birthday-party-Event.mp4";
@@ -287,7 +287,7 @@ const subbb = () =>{
                         </a>
                         <div className="notification-holder w-full max-w-[510px] h-auto bg-[#eee] absolute py-[35px] px-6 sm:px-[40px] right-0 z-50 top-full hidden">
                           <div className="notif-title flex items-center content-between w-full h-auto relative mb-[30px]">
-                            <h2 className="text-3xl font-bold text-japaneseIndigo">Language</h2>
+                            <h2 className="text-3xl font-bold text-japaneseIndigo">{t('Language')}</h2>
                           </div>
                           <div className="notification-box notif-lag w-full h-auto relative">
                             <label className="notif-holder flex relative content-between items-center w-full max-w-full h-[60px] bg-white rounded-lg mb-2">
@@ -393,7 +393,7 @@ const subbb = () =>{
                     <nav className="w-full lg:w-auto py-4 lg:py-0 lg:order-2 text-center hidden xl:block">
                       <ul className="flex flex-wrap space-y-2 lg:space-y-0 lg:space-x-8">
 
-                        <li className="w-full lg:w-auto"><a href="#" className="block hover:opacity-50">Home</a></li>
+                        <li className="w-full lg:w-auto"><a href="#" className="block hover:opacity-50">{t('Home')}</a></li>
                         <li className="w-full lg:w-auto"><a href="#about" className="block hover:opacity-50">About</a></li>
                         <li className="w-full lg:w-auto"><a href="#feature" className="block hover:opacity-50">Feature</a></li>
                         <li className="w-full lg:w-auto"><a href="#showcase" className="block hover:opacity-50">Showcase</a></li>
@@ -497,7 +497,7 @@ const subbb = () =>{
                   </svg>
                 </div>
                 <div className="xl:space-y-2.5">
-                  <h2 className="text-xl xl:text-3xl text-ev-dark">Language</h2>
+                  <h2 className="text-xl xl:text-3xl text-ev-dark">{t("Language")}</h2>
                   <p className="text-sm xl:text-base text-[#9BA0A8]">Choose from multiple languages for your convenience.</p>
                 </div>
               </div>
@@ -841,7 +841,7 @@ const subbb = () =>{
       <section className="bg-white pt-20">
         <div className="max-w-screen-2xl mx-auto px-4">
           <h2 className="text-center text-ev-dark pb-3 lg:pb-6 text-4xl md:text-40 xl:text-5xl">Ads Video Gallery</h2>
-          <div className="flex flex-wrap items-center">
+          <div className="flex flex-wrap items-center justify-center">
             <div className="w-full md:w-1/2 xl:w-1/4 p-2 lg:p-4">
               <div className="block shadow-xl">
                 <div className="relative">
@@ -856,12 +856,12 @@ const subbb = () =>{
                   </button>
                 </div>
                 <div className="p-4">
-                  <h5 className="text-xl font-bold text-ev-dark">Anniversary Event</h5>
+                  <h5 className="text-xl font-bold text-ev-dark">Artist</h5>
                   <p className="mt-2 text-sm font-bold text-[#9BA0A8]">250 Offer</p>
                 </div>
               </div>
             </div>
-            <div className="w-full md:w-1/2 xl:w-1/4 p-2 lg:p-4">
+            {/* <div className="w-full md:w-1/2 xl:w-1/4 p-2 lg:p-4">
               <div className="block shadow-xl">
                 <div className="relative">
                   <img className="object-cover w-full h-56" src={ChildrenPartyPlannersEvent} alt="Mobile_Store_Offer.png" />
@@ -879,7 +879,7 @@ const subbb = () =>{
                   <p className="mt-2 text-sm font-bold text-[#9BA0A8]">250 Offer</p>
                 </div>
               </div>
-            </div>
+            </div> */}
             <div className="w-full md:w-1/2 xl:w-1/4 p-2 lg:p-4">
               <div className="block shadow-xl">
                 <div className="relative">
@@ -894,7 +894,7 @@ const subbb = () =>{
                   </button>
                 </div>
                 <div className="p-4">
-                  <h5 className="text-xl font-bold text-ev-dark">Birthday party Event</h5>
+                  <h5 className="text-xl font-bold text-ev-dark">Vendors</h5>
                   <p className="mt-2 text-sm font-bold text-[#9BA0A8]">250 Offer</p>
                 </div>
               </div>
@@ -913,7 +913,7 @@ const subbb = () =>{
                   </button>
                 </div>
                 <div className="p-4">
-                  <h5 className="text-xl font-bold text-ev-dark">Summer Garden Party Event</h5>
+                  <h5 className="text-xl font-bold text-ev-dark">Venue</h5>
                   <p className="mt-2 text-sm font-bold text-[#9BA0A8]">250 Offer</p>
                 </div>
               </div>
