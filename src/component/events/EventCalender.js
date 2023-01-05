@@ -9,6 +9,7 @@ import { useDispatch } from 'react-redux';
 import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import { useState } from 'react';
+import moment from 'moment';
 
 function EventCalender() {
 	const displayName = localStorage.getItem("displayName");
@@ -31,26 +32,52 @@ function EventCalender() {
 		console.log(new Date(date[0], date[1], date[2]));
 	}
 
-	const Calendar = async () => {
+	// const Calendar = async () => {
+	// 	try {
+	// 		const response = await axios.post(`${baseUrl}/organizer/events/calendar`, { eventId: eventId }, { headers: header });
+	// 		console.log("AAAAAAAAAAAAA>>>>>>>>>", response.data.Data);
+	// 		console.log("Calender Response", Object.entries(response.data.Data));
+	// 		setcalenderlist(Object.entries(response.data.Data))
+	// 		setcalenderlist(response.data.Data);
+	// 		Object.entries(calenderlist);
+	// 		console.log(">>>>>>>>>>>>>>>>>", calenderlist);
+	// 	} catch (error) {
+	// 		console.log(error);
+	// 	}
+	// }
+
+	const [name, setName] = useState('');
+	const [sdate, setSdate] = useState('');
+	const [edate, setEdate] = useState('');
+
+	const calendar = async () => {
 		try {
-			const response = await axios.post(`${baseUrl}/organizer/events/calendar`, { eventId: eventId }, { headers: header });
-			console.log("Calender Response", Object.entries(response.data.Data));
-			setcalenderlist(Object.entries(response.data.Data))
+			const response = await axios.get(`${baseUrl}/organizer/events/getone?eventid=${eventId}`, { headers: header });
+			// console.log(response.data.Data);
+			// setName(response.data.Data);
+			// setSdate(response.data.Data);
+			// setEdate(response.data.Data);
+			console.log("GGGGGGGGGGGGGGGGGG", response.data.Data.attendee);
+			console.log("START TIME>>>>", moment.unix(response.data.Data.attendee[0].start_timestamp / 1000).format('LL HH:MM'));
+			console.log("END TIME>>>>", moment.unix(response.data.Data.attendee[0].end_timestamp / 1000).format('LL HH:MM'));
+			setSdate(response.data.Data.attendee.start_timestamp);
+			// console.log(">>>>>>>>>", sdate);
 		} catch (error) {
 			console.log(error);
 		}
 	}
 
+
 	useEffect(() => {
-		Calendar();
+		calendar();
 	}, [])
 
 
-	if (Array.isArray(calenderlist) && calenderlist.length) {
-		console.log("true");
-	} else {
-		console.log("False");
-	}
+	// if (Array.isArray(calenderlist) && calenderlist.length) {
+	// 	console.log("true");
+	// } else {
+	// 	console.log("False");
+	// }
 
 	const clickNextHandler = () => {
 		dispatch(reset());
@@ -123,13 +150,9 @@ function EventCalender() {
 								// ref={calendarRef}
 								plugins={[dayGridPlugin]}
 								initialView="dayGridMonth"
-								events={[
-									{ title: 'Event', start: new Date("january 1, 2023 15:20:00"), end: new Date("january 2, 2023 16:20:00"), color: generateRandomColor() },
-									{ title: 'Event2', start: new Date("january 20, 2023 15:20:00"), end: new Date("january 21, 2023 16:20:00"), color: generateRandomColor() },
-									{ title: 'Event3', start: new Date("january 18, 2023 15:20:00"), end: new Date("january 23, 2023 16:20:00"), color: generateRandomColor() },
-								]}
-							// events={[calenderlist]}
-							// events={}
+								// events={[title: 'Event 1',start: '2014-02-04T20:00:00',end: '2014-02-05T02:00:00']}
+							// events={[]}
+							// events={ }
 
 							/>
 						</div>
