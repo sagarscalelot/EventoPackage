@@ -756,3 +756,8 @@ i.icon-half-star:after {
 }
 .input-0.multiSelectContainer input.searchBox {width: 0;}
 .input-0.multiSelectContainer .search-wrapper.searchWrapper {border: 0;}
+img.fixed-images {
+	width: 150px;
+	height: 150px;
+	object-fit: contain;
+}
