@@ -44,10 +44,11 @@ function EventCalender() {
 			//  setStartDate(((new Date(response.data.Data.docs[0].start_date)).toDateString() + " "+ (response.data.Data.docs[0].start_time)+":00") )
 		// const a= new Date(response.data.Data.docs[0].start_date); 
 			// setcalenderlist( Object.entries( response.data.Data))
-			const ssdate = moment.unix(response.data.Data.docs[0].start_timestamp/1000).format('LLL').toString()
-			setStartDate(ssdate);
-			const enddate = moment.unix(response.data.Data.docs[0].end_timestamp/1000).format('LLL').toString()
-			setEndDate(enddate)
+			// const ssdate = moment.unix(response.data.Data.docs[0].start_timestamp/1000).format('LLL').toString()
+			// setStartDate(ssdate);
+			// const enddate = moment.unix(response.data.Data.docs[0].end_timestamp/1000).format('LLL').toString()
+			// setEndDate(enddate)
+			console.log("GGGGGGGGGGGGGGGGGG",response.data.Data);
 			console.log("START TIME>>>>", moment.unix(response.data.Data.docs[0].start_timestamp/1000).format('MM/DD/YYYY HH:mm'));
 			console.log("END TIME>>>>", moment.unix(response.data.Data.docs[0].end_timestamp/1000).format('LLL'));
 			

@@ -11,9 +11,9 @@ import { Autoplay, Navigation, Pagination } from 'swiper';
 import "owl.carousel/dist/assets/owl.carousel.min.css";
 import "owl.carousel/dist/assets/owl.theme.default.min.css";
 
-import fcoin from "../../assest/images/landing-page/F-coin.png";
+import fcoin from "../../assest/images/landing-page/festumcoin.png";
 import sfe from "../../assest/images/landing-page/FE.png";
-import ad from "../../assest/images/landing-page/AD.png";
+import ad from "../../assest/images/landing-page/festumadvertising.jpg";
 import ff from "../../assest/images/landing-page/FF.png";
 
 import Showcasebg from "../../assest/images/landing-page/Showcase-bg.png";
@@ -755,7 +755,7 @@ const subbb = () =>{
                 </SwiperSlide>
             </Swiper>
           </div>
-        </div >
+        </div>
       </section>
 
       {/* App Showcase */}
@@ -773,11 +773,11 @@ const subbb = () =>{
       </section >
 
       {/* f-coin */}
-      < section className="py-12 lg:pt-20 2xl:pt-24 lg:pb-40 bg-white" >
+      {/* <section className="py-12 lg:pt-20 2xl:pt-24 lg:pb-40 bg-white">
         <div className="wrapper">
           <h2 className="text-center pb-3 xl:pb-6 font-extrabold text-4xl md:text-40 xl:text-5xl">F - Coin</h2>
           <p className="lg:max-w-screen-lg lg:px-8 mx-auto font-bold text-center text-[#9BA0A8] text-base md:text-lg xl:text-xl">Refer a friend and get an additional 10 coins and your friend gets additional 10 point. So Refer away</p>
-          {/* <div className="flex flex-wrap items-center justify-center">
+          <div className="flex flex-wrap items-center justify-center">
             <div className="w-full bg-[#2E363F] py-10 pb-12 px-5 md:p-[50px]">
               <div className="flex flex-wrap">
                 <div className="pt-3 w-full md:w-2/12 mb-5 md:mb-0">
@@ -818,9 +818,9 @@ const subbb = () =>{
               <h2 className="text-5xl lg:text-7xl text-ev-dark font-bold"><span data-purecounter-start="0" data-purecounter-end="150" data-purecounter-duration="0" className="purecounter">5000+</span></h2>
               <p className="text-base font-bold lg:text-2xl text-ev-gray">Download</p>
             </div>
-          </div> */}
+          </div> 
         </div>
-      </section >
+      </section> */}
 
       {/* Who we are? */}
       <section id="about" className="bg-[#EEEEEE]">
@@ -838,7 +838,7 @@ const subbb = () =>{
       </section>
 
       {/* Ads Video Gallery */}
-      < section className="bg-white pt-20" >
+      <section className="bg-white pt-20">
         <div className="max-w-screen-2xl mx-auto px-4">
           <h2 className="text-center text-ev-dark pb-3 lg:pb-6 text-4xl md:text-40 xl:text-5xl">Ads Video Gallery</h2>
           <div className="flex flex-wrap items-center">
@@ -848,7 +848,7 @@ const subbb = () =>{
                   <img className="object-cover w-full h-56" src={AnniversaryEvent} alt="Mobile_Store_Offer.png" />
                   <button onClick={() => {
                     setIsVideoPlayerPopUpOpen(true)
-                    setVideoUrl("https://www.youtube.com/embed/9-x-dqX4yxo");
+                    setVideoUrl("https://eventopackage.s3.ap-south-1.amazonaws.com/global/artist2.mp4");
                   }} className="w-12 h-12 flex justify-center items-center bg-spiroDiscoBall anim absolute bottom-0 right-0 hover:opacity-75">
                     <svg width="17" height="20" viewBox="0 0 17 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M0 0L17 10L0 20V0Z" fill="white" />
@@ -867,7 +867,7 @@ const subbb = () =>{
                   <img className="object-cover w-full h-56" src={ChildrenPartyPlannersEvent} alt="Mobile_Store_Offer.png" />
                   <button onClick={() => {
                     setIsVideoPlayerPopUpOpen(true)
-                    setVideoUrl("https://www.youtube.com/embed/IC8rX1VcANI");
+                    setVideoUrl("https://eventopackage.s3.ap-south-1.amazonaws.com/global/music_event.mp4");
                   }} className="w-12 h-12 flex justify-center items-center bg-spiroDiscoBall anim absolute bottom-0 right-0 hover:opacity-75">
                     <svg width="17" height="20" viewBox="0 0 17 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M0 0L17 10L0 20V0Z" fill="white" />
@@ -886,7 +886,7 @@ const subbb = () =>{
                   <img className="object-cover w-full h-56" src={BirthdaypartyEvent} alt="Fruit_Market_Offers.png" />
                   <button onClick={() => {
                     setIsVideoPlayerPopUpOpen(true)
-                    setVideoUrl("https://www.youtube.com/embed/h-ve-ArQFck");
+                    setVideoUrl("https://eventopackage.s3.ap-south-1.amazonaws.com/global/vendors2.mp4");
                   }} className="w-12 h-12 flex justify-center items-center bg-spiroDiscoBall anim absolute bottom-0 right-0 hover:opacity-75">
                     <svg width="17" height="20" viewBox="0 0 17 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M0 0L17 10L0 20V0Z" fill="white" />
@@ -905,7 +905,7 @@ const subbb = () =>{
                   <img className="object-cover w-full h-56" src={SummerGardenPartyEvent} alt="Fashion_Store_Offers.png" />
                   <button onClick={() => {
                     setIsVideoPlayerPopUpOpen(true)
-                    setVideoUrl("https://www.youtube.com/embed/yiD2r64xMFc");
+                    setVideoUrl("https://eventopackage.s3.ap-south-1.amazonaws.com/global/venue_package2.mp4");
                   }} className="w-12 h-12 flex justify-center items-center bg-spiroDiscoBall anim absolute bottom-0 right-0 hover:opacity-75">
                     <svg width="17" height="20" viewBox="0 0 17 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M0 0L17 10L0 20V0Z" fill="white" />
@@ -920,7 +920,7 @@ const subbb = () =>{
             </div>
           </div>
         </div>
-      </section >
+      </section>
 
       {/* Our Company */}
       < div className="bg-white" >
@@ -945,7 +945,7 @@ const subbb = () =>{
           <div className="flex flex-wrap justify-between items-center p-8 md:p-10 xl:p-12 xl:px-16 bg-gradient-to-r from-[#83DCF2] to-[#23C1E8]">
             <div className="w-full md:w-7/12 space-y-2 lg:space-y-4">
               <span className="text-2xl lg:text-3xl font-bold text-white">Download our user app</span>
-              <p className="text-bold font-bold text-sm lg:text-base pr-5 text-white">Download the app and Register your account with. Discover the perfect planning package for any occasion. Find everything you need to create the most memorable moments.</p>
+              <p className="text-bold font-bold text-sm lg:text-base pr-5 text-white">Download the app and register your account with us. Discover the perfect planning package for any occasion. Find everything you need to create the most memorable moments.</p>
             </div>
             <div className="w-full md:w-5/12">              
                 <div className="flex space-x-3 mt-5 md:mt-0 md:justify-end">
@@ -982,7 +982,7 @@ const subbb = () =>{
               autoplay={{
                 delay: 2500,
                 disableOnInteraction: false,
-        }}
+              }}
               navigation={{
                 prevEl: navigationPrevRef.current,
                 nextEl: navigationNextRef.current,
@@ -1018,8 +1018,8 @@ const subbb = () =>{
               <SwiperSlide>
                 <div className="swiper-slide py-5">
                   <div className="px-5 py-6 bg-white drop-shadow-lg">
-                    <img src={fcoin} className="mx-auto" alt="" />
-                    <div className="text-center pt-8 w-full overflow-hidden">
+                    <img src={fcoin} className="mx-auto fixed-images" alt="" />
+                    <div className="text-center pt-7 w-full overflow-hidden">
                       <p className="text-xl font-bold text-ev-dark">F-Coin</p>
                       {/* <p className="text-spiroDiscoBall text-sm font-bold text-ellipsis">Coming Soon..</p> */}
                     </div>
@@ -1029,8 +1029,8 @@ const subbb = () =>{
               <SwiperSlide>
                 <div className="swiper-slide py-5">
                   <a href="https://www.festumevento.com" target="blank" className="px-5 py-6 bg-white drop-shadow-lg block">
-                    <img src={sfe} className="mx-auto" alt="" />
-                    <div className="text-center pt-8 w-full overflow-hidden">
+                    <img src={sfe} className="mx-auto fixed-images" alt="" />
+                    <div className="text-center pt-7 w-full overflow-hidden">
                       <p className="text-xl font-bold text-ev-dark">Festum Evento</p>
                       {/* <a href="" className="text-spiroDiscoBall text-sm font-bold text-ellipsis">https://www.festumevento.com</a> */}
                     </div>
@@ -1040,9 +1040,9 @@ const subbb = () =>{
               <SwiperSlide>
                 <div className="swiper-slide py-5">
                   <div className="px-5 py-6 bg-white drop-shadow-lg">
-                    <img src={ad} className="mx-auto" alt="" />
-                    <div className="text-center pt-8 w-full overflow-hidden">
-                      <p className="text-xl font-bold text-ev-dark">Ads Portal</p>
+                    <img src={ad} className="mx-auto fixed-images" alt="" />
+                    <div className="text-center pt-0 w-full overflow-hidden">
+                      <p className="text-xl font-bold text-ev-dark">Festum Advertising Media</p>
                       {/* <p className="text-spiroDiscoBall text-sm font-bold text-ellipsis">Coming Soon..</p> */}
                     </div>
                   </div>
@@ -1051,8 +1051,8 @@ const subbb = () =>{
               <SwiperSlide>
                 <div className="swiper-slide py-5">
                   <a href="https://friendsfield.in" target="blank" className="px-5 py-6 bg-white drop-shadow-lg block">
-                    <img src={ff} className="mx-auto" alt="" />
-                    <div className="text-center pt-8 w-full overflow-hidden">
+                    <img src={ff} className="mx-auto fixed-images" alt="" />
+                    <div className="text-center pt-7 w-full overflow-hidden">
                       <p className="text-xl font-bold text-ev-dark">Friends Fields</p>
                       {/* <a href="https://friendsfield.in" target="blank" className="text-spiroDiscoBall text-sm font-bold text-ellipsis">https://friendsfield.in</a> */}
                     </div>
