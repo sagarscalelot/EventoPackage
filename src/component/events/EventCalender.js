@@ -28,8 +28,7 @@ function EventCalender() {
 	const header = {
 		'Authorization': `Token ${token}`
 	}
-
-
+	
 
 	const setDate = (e) => {
 		const date = e.target.value.split("-");
@@ -38,7 +37,6 @@ function EventCalender() {
 
 	const Calendar = async () => {
 		try {
-
 			const response = await axios.get(`${baseUrl}/organizer/events/getone?eventid=${eventId}`, { headers: header });
 			setName(response.data.Data.attendee[0].name)
 
@@ -50,47 +48,42 @@ function EventCalender() {
 			setStartDate((moment.unix(response.data.Data.attendee[0].start_timestamp/1000)).toString());
 			setEndDate((moment.unix(response.data.Data.attendee[0].end_timestamp/1000)).toString());
 			
-
 		} catch (error) {
 			console.log(error);
 		}
 	}
-
   
 	// const leopard = ()=>{
 	// 		{ title: {name},  start: new Date({startDate}), end: new Date({endDate}), color: generateRandomColor() },
 	// }
-
 	useEffect(() => {
 		Calendar();
 	}, [])
 
 
-
 	const clickNextHandler = () => {
-		dispatch(reset());
+    	dispatch(reset());
 		navigate("/dashboard");
 	}
 
-	const clickBackHander = () => {
+  const clickBackHander = () => {
 		dispatch(decrement());
 		navigate(-1);
 	}
 
-	const generateRandomColor = () => {
+	const generateRandomColor = () =>{
 		let maxVal = 0xFFFFFF; // 16777215
-		let randomNumber = Math.random() * maxVal;
+		let randomNumber = Math.random() * maxVal; 
 		randomNumber = Math.floor(randomNumber);
 		randomNumber = randomNumber.toString(16);
-		let randColor = randomNumber.padStart(6, 0);
+		let randColor = randomNumber.padStart(6, 0);   
 		return `#${randColor.toUpperCase()}`
 	}
-
-
-	return (
-		// <!-- Content In -->
+	
+	
+  return (
+	    // <!-- Content In -->
 		<div>
-
 		<div className="wrapper">
 		  
 		  <div className="space-y-8">
@@ -145,10 +138,17 @@ function EventCalender() {
 						
 					/>
 				</div>
+			  {/* <!-- calendar end --> */}
+			  {/* <Advertisement /> */}
+			  <div className="prw-next-btn">
+				<button type="button" className="flex items-center" onClick={clickBackHander}><i className="icon-back-arrow mr-3"></i><h3>Back</h3></button>
+				<button className="btn-primary" onClick={clickNextHandler}>Done</button>
+			  </div>
 			</div>
 		</div>
-	)
-
+	  </div>
+	  </div>
+  )
 }
 
 export default EventCalender
