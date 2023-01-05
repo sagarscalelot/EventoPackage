@@ -11,18 +11,18 @@ import { Autoplay, Navigation, Pagination } from 'swiper';
 import "owl.carousel/dist/assets/owl.carousel.min.css";
 import "owl.carousel/dist/assets/owl.theme.default.min.css";
 
-import fcoin from "../../assest/images/landing-page/F-coin.png";
+import fcoin from "../../assest/images/landing-page/festumcoin.png";
 import sfe from "../../assest/images/landing-page/FE.png";
-import ad from "../../assest/images/landing-page/AD.png";
+import ad from "../../assest/images/landing-page/festumadvertising.jpg";
 import ff from "../../assest/images/landing-page/FF.png";
 
 import Showcasebg from "../../assest/images/landing-page/Showcase-bg.png";
 import ShowBACK from "../../assest/images/landing-page/BACK.jpg";
 import aboutg from "../../assest/images/landing-page/about-g.png";
-import AnniversaryEvent from "../../assest/images/landing-page/video-1.png";
-import ChildrenPartyPlannersEvent from "../../assest/images/landing-page/video-2.png";
-import BirthdaypartyEvent from "../../assest/images/landing-page/video-3.png";
-import SummerGardenPartyEvent from "../../assest/images/landing-page/video-4.png";
+import AnniversaryEvent from "../../assest/images/landing-page/video1.png";
+// import ChildrenPartyPlannersEvent from "../../assest/images/landing-page/video2.png";
+import BirthdaypartyEvent from "../../assest/images/landing-page/video2.png";
+import SummerGardenPartyEvent from "../../assest/images/landing-page/video3.png";
 // import video1 from "../../assest/images/landing-page/Anniversary-Event.mp4";
 // import video2 from "../../assest/images/landing-page/Children's-Party-Planners-Event.mp4";
 // import video3 from "../../assest/images/landing-page/Birthday-party-Event.mp4";
@@ -62,7 +62,15 @@ import Offer from "./Offer";
 import LiveStream from "./LiveStream";
 import Modal from "../modal/Modal";
 import VideoPlayer from "./popup/VideoPlayer";
-import { toast } from "react-toastify";
+
+import { baseUrl } from "../../config";
+import { toast } from 'react-toastify';
+import axios from 'axios';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
+import { useCallback } from 'react';
+import { useNavigate, useParams } from "react-router-dom";
+
 
 const changeLanguage = (ln) => {
   return () => {
@@ -111,34 +119,58 @@ const options2 = {
 
 
 function LandingPage() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [contact, setContact] = useState("");
-  const [message, setMessage] = useState("");
-  const [tab, setTab] = useState(1);
+  const navigate = useNavigate();
+  const validationSchema = Yup.object().shape({
+		name: Yup.string().required('Name is required'),
+		email: Yup.string().required('Email is required'),
+		company_name: Yup.string().required('Company name is required'),
+		description: Yup.string().required("Description is required.")
+	});
 
+	const initialState = {
+		name: "",
+		email: "",
+		company_name: "",
+		description: "",
+	};
+
+const subbb = () =>{
+  console.log("CLICKED");
+}
+
+
+	const clickNextHandler = async (values) => {
+		try {
+			const requestObj = { ...values };
+			const response = await axios.post(`${baseUrl}/landing/getintouch`, requestObj);
+      console.log("RESPONSE>>>>>>>>",response);
+			if (response.data.IsSuccess) {
+        toast.success(response.data?.Message);
+			} else {
+				toast.success(response.data?.Message);
+			}
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
+  const formik = useFormik({
+		initialValues: initialState,
+		validationSchema: validationSchema,
+		onSubmit: clickNextHandler,
+	});
+
+	const setInputValue = useCallback(
+		(key, value) =>
+			formik.setValues({
+				...formik.values,
+				[key]: value,
+			}),
+		[formik]
+	);
 
   const [isVideoPlayerPopUpOpen, setIsVideoPlayerPopUpOpen] = useState(false);
   const [videoUrl, setVideoUrl] = useState("");
-
-  function save() {
-    console.log({ name, email, contact, message });
-    let data = { name, email, contact, message };
-    fetch("http://143.244.137.15:8000/getintouch", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    }).then((result) => {
-      alert("You have successfully submited your query");
-      setName("");
-      setEmail("");
-      setContact("");
-      setMessage("");
-    });
-  }
 
   useEffect(() => {
     $(document).ready(function () {
@@ -260,7 +292,7 @@ function LandingPage() {
                         </a>
                         <div className="notification-holder w-full max-w-[510px] h-auto bg-[#eee] absolute py-[35px] px-6 sm:px-[40px] right-0 z-50 top-full hidden">
                           <div className="notif-title flex items-center content-between w-full h-auto relative mb-[30px]">
-                            <h2 className="text-3xl font-bold text-japaneseIndigo">Language</h2>
+                            <h2 className="text-3xl font-bold text-japaneseIndigo">{t('Language')}</h2>
                           </div>
                           <div className="notification-box notif-lag w-full h-auto relative">
                             <label className="notif-holder flex relative content-between items-center w-full max-w-full h-[60px] bg-white rounded-lg mb-2">
@@ -470,7 +502,7 @@ function LandingPage() {
                   </svg>
                 </div>
                 <div className="xl:space-y-2.5">
-                  <h2 className="text-xl xl:text-3xl text-ev-dark">Language</h2>
+                  <h2 className="text-xl xl:text-3xl text-ev-dark">{t("Language")}</h2>
                   <p className="text-sm xl:text-base text-[#9BA0A8]">Choose from multiple languages for your convenience.</p>
                 </div>
               </div>
@@ -728,7 +760,7 @@ function LandingPage() {
               </SwiperSlide>
             </Swiper>
           </div>
-        </div >
+        </div>
       </section>
 
       {/* App Showcase */}
@@ -746,11 +778,11 @@ function LandingPage() {
       </section >
 
       {/* f-coin */}
-      < section className="py-12 lg:pt-20 2xl:pt-24 lg:pb-40 bg-white" >
+      {/* <section className="py-12 lg:pt-20 2xl:pt-24 lg:pb-40 bg-white">
         <div className="wrapper">
           <h2 className="text-center pb-3 xl:pb-6 font-extrabold text-4xl md:text-40 xl:text-5xl">F - Coin</h2>
           <p className="lg:max-w-screen-lg lg:px-8 mx-auto font-bold text-center text-[#9BA0A8] text-base md:text-lg xl:text-xl">Refer a friend and get an additional 10 coins and your friend gets additional 10 point. So Refer away</p>
-          {/* <div className="flex flex-wrap items-center justify-center">
+          <div className="flex flex-wrap items-center justify-center">
             <div className="w-full bg-[#2E363F] py-10 pb-12 px-5 md:p-[50px]">
               <div className="flex flex-wrap">
                 <div className="pt-3 w-full md:w-2/12 mb-5 md:mb-0">
@@ -791,9 +823,9 @@ function LandingPage() {
               <h2 className="text-5xl lg:text-7xl text-ev-dark font-bold"><span data-purecounter-start="0" data-purecounter-end="150" data-purecounter-duration="0" className="purecounter">5000+</span></h2>
               <p className="text-base font-bold lg:text-2xl text-ev-gray">Download</p>
             </div>
-          </div> */}
+          </div> 
         </div>
-      </section >
+      </section> */}
 
       {/* Who we are? */}
       <section id="about" className="bg-[#EEEEEE]">
@@ -811,17 +843,17 @@ function LandingPage() {
       </section>
 
       {/* Ads Video Gallery */}
-      < section className="bg-white pt-20" >
+      <section className="bg-white pt-20">
         <div className="max-w-screen-2xl mx-auto px-4">
           <h2 className="text-center text-ev-dark pb-3 lg:pb-6 text-4xl md:text-40 xl:text-5xl">Ads Video Gallery</h2>
-          <div className="flex flex-wrap items-center">
+          <div className="flex flex-wrap items-center justify-center">
             <div className="w-full md:w-1/2 xl:w-1/4 p-2 lg:p-4">
               <div className="block shadow-xl">
                 <div className="relative">
                   <img className="object-cover w-full h-56" src={AnniversaryEvent} alt="Mobile_Store_Offer.png" />
                   <button onClick={() => {
                     setIsVideoPlayerPopUpOpen(true)
-                    setVideoUrl("https://www.youtube.com/embed/9-x-dqX4yxo");
+                    setVideoUrl("https://eventopackage.s3.ap-south-1.amazonaws.com/global/artist2.mp4");
                   }} className="w-12 h-12 flex justify-center items-center bg-spiroDiscoBall anim absolute bottom-0 right-0 hover:opacity-75">
                     <svg width="17" height="20" viewBox="0 0 17 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M0 0L17 10L0 20V0Z" fill="white" />
@@ -829,18 +861,18 @@ function LandingPage() {
                   </button>
                 </div>
                 <div className="p-4">
-                  <h5 className="text-xl font-bold text-ev-dark">Anniversary Event</h5>
+                  <h5 className="text-xl font-bold text-ev-dark">Artist</h5>
                   <p className="mt-2 text-sm font-bold text-[#9BA0A8]">250 Offer</p>
                 </div>
               </div>
             </div>
-            <div className="w-full md:w-1/2 xl:w-1/4 p-2 lg:p-4">
+            {/* <div className="w-full md:w-1/2 xl:w-1/4 p-2 lg:p-4">
               <div className="block shadow-xl">
                 <div className="relative">
                   <img className="object-cover w-full h-56" src={ChildrenPartyPlannersEvent} alt="Mobile_Store_Offer.png" />
                   <button onClick={() => {
                     setIsVideoPlayerPopUpOpen(true)
-                    setVideoUrl("https://www.youtube.com/embed/IC8rX1VcANI");
+                    setVideoUrl("https://eventopackage.s3.ap-south-1.amazonaws.com/global/music_event.mp4");
                   }} className="w-12 h-12 flex justify-center items-center bg-spiroDiscoBall anim absolute bottom-0 right-0 hover:opacity-75">
                     <svg width="17" height="20" viewBox="0 0 17 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M0 0L17 10L0 20V0Z" fill="white" />
@@ -852,14 +884,14 @@ function LandingPage() {
                   <p className="mt-2 text-sm font-bold text-[#9BA0A8]">250 Offer</p>
                 </div>
               </div>
-            </div>
+            </div> */}
             <div className="w-full md:w-1/2 xl:w-1/4 p-2 lg:p-4">
               <div className="block shadow-xl">
                 <div className="relative">
                   <img className="object-cover w-full h-56" src={BirthdaypartyEvent} alt="Fruit_Market_Offers.png" />
                   <button onClick={() => {
                     setIsVideoPlayerPopUpOpen(true)
-                    setVideoUrl("https://www.youtube.com/embed/h-ve-ArQFck");
+                    setVideoUrl("https://eventopackage.s3.ap-south-1.amazonaws.com/global/vendors2.mp4");
                   }} className="w-12 h-12 flex justify-center items-center bg-spiroDiscoBall anim absolute bottom-0 right-0 hover:opacity-75">
                     <svg width="17" height="20" viewBox="0 0 17 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M0 0L17 10L0 20V0Z" fill="white" />
@@ -867,7 +899,7 @@ function LandingPage() {
                   </button>
                 </div>
                 <div className="p-4">
-                  <h5 className="text-xl font-bold text-ev-dark">Birthday party Event</h5>
+                  <h5 className="text-xl font-bold text-ev-dark">Vendors</h5>
                   <p className="mt-2 text-sm font-bold text-[#9BA0A8]">250 Offer</p>
                 </div>
               </div>
@@ -878,7 +910,7 @@ function LandingPage() {
                   <img className="object-cover w-full h-56" src={SummerGardenPartyEvent} alt="Fashion_Store_Offers.png" />
                   <button onClick={() => {
                     setIsVideoPlayerPopUpOpen(true)
-                    setVideoUrl("https://www.youtube.com/embed/yiD2r64xMFc");
+                    setVideoUrl("https://eventopackage.s3.ap-south-1.amazonaws.com/global/venue_package2.mp4");
                   }} className="w-12 h-12 flex justify-center items-center bg-spiroDiscoBall anim absolute bottom-0 right-0 hover:opacity-75">
                     <svg width="17" height="20" viewBox="0 0 17 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M0 0L17 10L0 20V0Z" fill="white" />
@@ -886,14 +918,14 @@ function LandingPage() {
                   </button>
                 </div>
                 <div className="p-4">
-                  <h5 className="text-xl font-bold text-ev-dark">Summer Garden Party Event</h5>
+                  <h5 className="text-xl font-bold text-ev-dark">Venue</h5>
                   <p className="mt-2 text-sm font-bold text-[#9BA0A8]">250 Offer</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </section >
+      </section>
 
       {/* Our Company */}
       < div className="bg-white" >
@@ -905,7 +937,7 @@ function LandingPage() {
             <div className="w-full lg:w-6/12">
               <div className="pl-5 pr-3 lg:pl-14 lg:pr-10 py-10 xl:py-5">
                 <h2 className="text-ev-dark font-semibold pb-6 text-4xl md:text-40 xl:text-5xl">Our Company</h2>
-                <p className="font-semibold text-[#9BA0A8] pb-4 text-base md:text-lg xl:text-xl lowercase max-h-96 overflow-y-auto text-ellipsis pr-2 lg:pr-4">FESTUMEVENTO, ESTABLISHED IN 2019, BRINGS A UNIQUE BLEND OF THE ORGANIZATION THROUGH EMERGING IT SOLUTIONS SUCH AS ACCOUNTING SOFTWARE, ERP MANAGEMENT SYSTEM, AND MANY MORE. EARLIER, WE STARTED AS A PRODUCT-BASED ORGANIZATION. AFTER THE POSITIVE RESPONSE FROM OUR CLIENT AND THE SUCCESSFUL EVOLUTION OF OUR PRODUCT, WE DECIDED TO ESTABLISH THE ORGANIZATION BASED ON OUR PRODUCT. AFTER SUCCESSFULLY IMPLEMENTING OUR PRODUCTS, WE ARE EXPANDING OUR SERVICES WITH THE LATEST IT SOLUTIONS SUCH AS MOBILE APP DEVELOPMENT, WEB DEVELOPMENT, ETC. WE HAVE A STRONG MARKETING TEAM OF PROFESSIONALS AND EXPERTS WHO ACTIVELY WORK ON YOUR PROJECTS TO FULFIL YOUR REQUIREMENTS. WE HAVE INTELLIGENT TECHIES WHO ARE READY TO SOLVE ANY REAL-TIME PROBLEMS IN THE DIGITAL WORLD.</p>
+                <p className="font-semibold text-[#9BA0A8] pb-4 text-base md:text-lg xl:text-xl  max-h-96 overflow-y-auto text-ellipsis pr-2 lg:pr-4">Festumevento, established in 2019, brings a unique blend of the organization through emerging it solutions such as accounting software, erp management system, and many more. earlier, we started as a product-based organization. after the positive response from our client and the successful evolution of our product, we decided to establish the organization based on our product. after successfully implementing our products, we are expanding our services with the latest it solutions such as mobile app development, web development, etc. we have a strong marketing team of professionals and experts who actively work on your projects to fulfil your requirements. we have intelligent techies who are ready to solve any real-time problems in the digital world.</p>
               </div>
             </div>
           </div>
@@ -918,7 +950,7 @@ function LandingPage() {
           <div className="flex flex-wrap justify-between items-center p-8 md:p-10 xl:p-12 xl:px-16 bg-gradient-to-r from-[#83DCF2] to-[#23C1E8]">
             <div className="w-full md:w-7/12 space-y-2 lg:space-y-4">
               <span className="text-2xl lg:text-3xl font-bold text-white">Download our user app</span>
-              <p className="text-bold font-bold text-sm lg:text-base pr-5 text-white">Download the app and Register your account with. Discover the perfect planning package for any occasion. Find everything you need to create the most memorable moments.</p>
+              <p className="text-bold font-bold text-sm lg:text-base pr-5 text-white">Download the app and register your account with us. Discover the perfect planning package for any occasion. Find everything you need to create the most memorable moments.</p>
             </div>
             <div className="w-full md:w-5/12">
               <div className="flex space-x-3 mt-5 md:mt-0 md:justify-end">
@@ -991,8 +1023,8 @@ function LandingPage() {
               <SwiperSlide>
                 <div className="swiper-slide py-5">
                   <div className="px-5 py-6 bg-white drop-shadow-lg">
-                    <img src={fcoin} className="mx-auto" alt="" />
-                    <div className="text-center pt-8 w-full overflow-hidden">
+                    <img src={fcoin} className="mx-auto fixed-images" alt="" />
+                    <div className="text-center pt-7 w-full overflow-hidden">
                       <p className="text-xl font-bold text-ev-dark">F-Coin</p>
                       {/* <p className="text-spiroDiscoBall text-sm font-bold text-ellipsis">Coming Soon..</p> */}
                     </div>
@@ -1002,8 +1034,8 @@ function LandingPage() {
               <SwiperSlide>
                 <div className="swiper-slide py-5">
                   <a href="https://www.festumevento.com" target="blank" className="px-5 py-6 bg-white drop-shadow-lg block">
-                    <img src={sfe} className="mx-auto" alt="" />
-                    <div className="text-center pt-8 w-full overflow-hidden">
+                    <img src={sfe} className="mx-auto fixed-images" alt="" />
+                    <div className="text-center pt-7 w-full overflow-hidden">
                       <p className="text-xl font-bold text-ev-dark">Festum Evento</p>
                       {/* <a href="" className="text-spiroDiscoBall text-sm font-bold text-ellipsis">https://www.festumevento.com</a> */}
                     </div>
@@ -1013,9 +1045,9 @@ function LandingPage() {
               <SwiperSlide>
                 <div className="swiper-slide py-5">
                   <div className="px-5 py-6 bg-white drop-shadow-lg">
-                    <img src={ad} className="mx-auto" alt="" />
-                    <div className="text-center pt-8 w-full overflow-hidden">
-                      <p className="text-xl font-bold text-ev-dark">Ads Portal</p>
+                    <img src={ad} className="mx-auto fixed-images" alt="" />
+                    <div className="text-center pt-0 w-full overflow-hidden">
+                      <p className="text-xl font-bold text-ev-dark">Festum Advertising Media</p>
                       {/* <p className="text-spiroDiscoBall text-sm font-bold text-ellipsis">Coming Soon..</p> */}
                     </div>
                   </div>
@@ -1024,8 +1056,8 @@ function LandingPage() {
               <SwiperSlide>
                 <div className="swiper-slide py-5">
                   <a href="https://friendsfield.in" target="blank" className="px-5 py-6 bg-white drop-shadow-lg block">
-                    <img src={ff} className="mx-auto" alt="" />
-                    <div className="text-center pt-8 w-full overflow-hidden">
+                    <img src={ff} className="mx-auto fixed-images" alt="" />
+                    <div className="text-center pt-7 w-full overflow-hidden">
                       <p className="text-xl font-bold text-ev-dark">Friends Fields</p>
                       {/* <a href="https://friendsfield.in" target="blank" className="text-spiroDiscoBall text-sm font-bold text-ellipsis">https://friendsfield.in</a> */}
                     </div>
@@ -1048,34 +1080,46 @@ function LandingPage() {
             <p className="text-base md:text-lg xl:text-xl pt-4 md:pt-8">Feel free to contact us for any queries.</p>
           </div>
           <div className="w-full max-w-[1200px] mx-auto">
-            <form className="flex flex-wrap w-full bg-white shadow-lg p-8">
-              <div className="w-full p-1.5 px-0 sm:p-3.5 relative">
-                <label htmlFor="name" className="leading-7 text-sm font-medium">Your Name<span className="text-red-500">*</span></label>
-                <input type="text" id="name" name="name" className="htmlForm-control relative flex-auto min-w-0 block w-fulonChange={(e) =>  i18n.changeLanguage(e.target.value)}l px-3 py-1.5 text-base font-normal text-gray-700 bg-[#EEEEEE] bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0focus:border-gray-500 focus:ring-2 focus:ring-gray-300 outline-none" />
+            <form onSubmit={formik.handleSubmit} className="flex flex-wrap w-full bg-white shadow-lg p-8">
+              <div className="w-full p-1.5 px-0 sm:p-3.5">
+                <div className="relative">
+                  <label htmlFor="name" className="leading-7 text-sm font-medium">Your Name<span className="text-red-500">*</span></label>
+                  <input type="text" id="name" name="name" value={formik.values?.name} onChange={(e) => setInputValue("name", e.target.value)}  className="htmlForm-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-[#EEEEEE] bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0focus:border-gray-500 focus:ring-2 focus:ring-gray-300 outline-none" />
+                  <small className="absolute top-full left-0 text-red-500 text-xs">{formik.errors.name}</small>
+                </div>
               </div>
-              <div className="w-full md:w-1/2 p-1.5 px-0 sm:p-3.5 relative">
-                <label htmlFor="name" className="leading-7 text-sm font-medium">Company Name<span className="text-red-500">*</span></label>
-                <input type="text" id="company" name="company" className="htmlForm-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-[#EEEEEE] bg-clip-padding border border-solid border-gray-300  transition ease-in-out m-0focus:border-gray-500 focus:ring-2 focus:ring-gray-300 outline-none" />
+              <div className="w-full md:w-1/2 p-1.5 px-0 sm:p-3.5">
+                <div className="relative">
+                  <label htmlFor="name" className="leading-7 text-sm font-medium">Company Name<span className="text-red-500">*</span></label>
+                  <input type="text" id="company_name" name="company_name" value={formik.values?.company_name} onChange={(e) => setInputValue("company_name", e.target.value)} className="htmlForm-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-[#EEEEEE] bg-clip-padding border border-solid border-gray-300  transition ease-in-out m-0focus:border-gray-500 focus:ring-2 focus:ring-gray-300 outline-none" />
+                  <small className="absolute top-full left-0 text-red-500 text-xs">{formik.errors.company_name}</small>
+                </div>
               </div>
-              <div className="w-full md:w-1/2 p-1.5 px-0 sm:p-3.5 relative">
-                <label htmlFor="name" className="leading-7 text-sm font-medium">Email Address<span className="text-red-500">*</span></label>
-                <input type="email" id="email" name="email" className="htmlForm-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-[#EEEEEE] bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0focus:border-gray-500 focus:ring-2 focus:ring-gray-300 outline-none" />
-              </div >
-              <div className="w-full mb-7 p-1.5 px-0 sm:p-3.5 pb-0 relative">
-                <label htmlFor="message" className="leading-7 text-sm font-medium">Description<span className="text-red-500">*</span></label>
-                <textarea id="message" name="message" col="5" rows="3" className="htmlForm-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-[#EEEEEE] bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0focus:border-gray-500 focus:ring-2 focus:ring-gray-300 outline-none"></textarea>
-              </div >
+              <div className="w-full md:w-1/2 p-1.5 px-0 sm:p-3.5">
+                <div className="relative">
+                  <label htmlFor="name" className="leading-7 text-sm font-medium">Email Address<span className="text-red-500">*</span></label>
+                  <input type="text" id="email" name="email" value={formik.values?.email} onChange={(e) => setInputValue("email", e.target.value)}  className="htmlForm-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-[#EEEEEE] bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0focus:border-gray-500 focus:ring-2 focus:ring-gray-300 outline-none" />
+                  <small className="absolute top-full left-0 text-red-500 text-xs">{formik.errors.email}</small>
+                </div>
+              </div>
+              <div className="w-full mb-7 p-1.5 px-0 sm:p-3.5 pb-0">
+                <div className="relative">
+                  <label htmlFor="description" className="leading-7 text-sm font-medium">Description<span className="text-red-500">*</span></label>
+                  <textarea id="description" name="description" col="5" rows="3" value={formik.values?.description} onChange={(e) => setInputValue("description", e.target.value)}  className="htmlForm-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-[#EEEEEE] bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0focus:border-gray-500 focus:ring-2 focus:ring-gray-300 outline-none"></textarea>
+                  <small className="absolute top-full left-0 text-red-500 text-xs">{formik.errors.description}</small>
+                </div>
+              </div>
               <div className="relative w-full p-1.5 px-0 sm:p-3.5 pt-0">
-                <button className="w-full text-white text-lg font-semibold bg-spiroDiscoBall hover:bg-japaneseIndigo anim py-2 relative block">
+
+                <button className="w-full text-white text-lg font-semibold bg-spiroDiscoBall hover:bg-japaneseIndigo anim py-2 relative" type="submit"   >
                   Submit your query
-                </button >
-                <div className="absolute inset-0 text-white flex items-center" >
-                </div >
-              </div >
-            </form >
-          </div >
-        </div >
-      </div >
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
 
       {/* Get Our Brochure */}
       <div className="py-12 md:pb-14 bg-white">

@@ -80,8 +80,8 @@ function Booking() {
                 {booking.docs?.map((e) => (
 
                     <div key={e._id} className="w-full bg-white flex p-2.5 rounded-md">
-                        <div className="w-1/6">
-                            <img src={e && e.url && e.url !== '' ? (s3Url + "/" + e.url) : bookingImg} alt="sweet-love-catering-2" className="w-auto h-full object-cover" />
+                        <div className="w-1/6 relative">
+                            <img src={e && e.url && e.url !== '' ? (s3Url + "/" + e.url) : bookingImg} alt="sweet-love-catering-2" className="w-full h-full object-cover lg:absolute" />
                             {/* (s3Url + "/" + data.aboutplace.banner) */}
                         </div>
                         <div className="w-full px-3">
