@@ -71,6 +71,8 @@ const changeLanguage = (ln) => {
   };
 };
 
+
+
 const options = {
   responsiveClass: true,
   responsive: {
@@ -106,6 +108,7 @@ const options2 = {
     },
   },
 };
+
 
 function LandingPage() {
   const [name, setName] = useState("");
@@ -185,7 +188,7 @@ function LandingPage() {
 
   const navigationPrevRef = React.useRef(null)
   const navigationNextRef = React.useRef(null)
-
+    
   return (
 
     <>
@@ -271,7 +274,7 @@ function LandingPage() {
                                 </div>
                               </div>
                               <div className="radio-btn-icon ml-auto h-6">
-                                <input type="radio" id="United-States" name="state" value="en" />
+                                <input type="radio" id="United-States" name="state" value="en" onChange={(e) => i18n.changeLanguage(e.target.value)} />
                               </div>
                             </label>
                             <label className="notif-holder flex relative content-between items-center w-full max-w-full h-[60px] bg-white rounded-lg mb-2">
@@ -285,7 +288,7 @@ function LandingPage() {
                                 </div>
                               </div>
                               <div className="radio-btn-icon ml-auto h-6">
-                                <input type="radio" id="Europe-French" name="state" value="French" />
+                                <input type="radio" id="Europe-French" name="state" value="French" onChange={(e) => i18n.changeLanguage(e.target.value)} />
                               </div>
                             </label>
                             <label className="notif-holder flex relative content-between items-center w-full max-w-full h-[60px] bg-white rounded-lg mb-2">
@@ -299,7 +302,7 @@ function LandingPage() {
                                 </div>
                               </div>
                               <div className="radio-btn-icon ml-auto h-6">
-                                <input type="radio" id="India-Hindi" name="state" value="Hindi" />
+                                <input type="radio" id="India-Hindi" name="state" value="Hindi" onChange={(e) => i18n.changeLanguage(e.target.value)} />
                               </div>
                             </label>
                             <label className="notif-holder flex relative content-between items-center w-full max-w-full h-[60px] bg-white rounded-lg mb-2">
@@ -313,7 +316,7 @@ function LandingPage() {
                                 </div>
                               </div>
                               <div className="radio-btn-icon ml-auto h-6">
-                                <input type="radio" id="Germany-German" name="state" value="German" />
+                                <input type="radio" id="Germany-German" name="state" value="German" onChange={(e) => i18n.changeLanguage(e.target.value)} />
                               </div>
                             </label>
                             <label className="notif-holder flex relative content-between items-center w-full max-w-full h-[60px] bg-white rounded-lg mb-2">
@@ -327,7 +330,7 @@ function LandingPage() {
                                 </div>
                               </div>
                               <div className="radio-btn-icon ml-auto h-6">
-                                <input type="radio" id="China-Mandarin" name="state" value="Mandarin" />
+                                <input type="radio" id="China-Mandarin" name="state" value="Mandarin" onChange={(e) => i18n.changeLanguage(e.target.value)} />
                               </div>
                             </label>
                             <label className="notif-holder flex relative content-between items-center w-full max-w-full h-[60px] bg-white rounded-lg mb-2">
@@ -341,7 +344,7 @@ function LandingPage() {
                                 </div>
                               </div>
                               <div className="radio-btn-icon ml-auto h-6">
-                                <input type="radio" id="Thailand-Thai" name="state" value="Thai" />
+                                <input type="radio" id="Thailand-Thai" name="state" value="Thai" onChange={(e) => i18n.changeLanguage(e.target.value)} />
                               </div>
                             </label>
                           </div>
@@ -363,7 +366,7 @@ function LandingPage() {
                     <nav className="w-full lg:w-auto py-4 lg:py-0 lg:order-2 text-center hidden xl:block">
                       <ul className="flex flex-wrap space-y-2 lg:space-y-0 lg:space-x-8">
 
-                        <li className="w-full lg:w-auto"><a href="#" className="block hover:opacity-50">Home</a></li>
+                        <li className="w-full lg:w-auto"><a href="#" className="block hover:opacity-50">{t('Home')}</a></li>
                         <li className="w-full lg:w-auto"><a href="#about" className="block hover:opacity-50">About</a></li>
                         <li className="w-full lg:w-auto"><a href="#feature" className="block hover:opacity-50">Feature</a></li>
                         <li className="w-full lg:w-auto"><a href="#showcase" className="block hover:opacity-50">Showcase</a></li>
@@ -379,7 +382,7 @@ function LandingPage() {
               <div className="wrapper relative z-10 flex items-center h-full px-0">
                 <div className="landing-bg-img sm:max-w-[400px] md:max-w-[450px] lg:max-w-[550px] xl:max-w-[630px] ml-auto">
                   <img src={multidivice} alt="big-dish" className="max-w-[320px] inline-block sm:hidden mb-4" />
-                  <p className="text-base sm:text-lg leading-6 sm:leading-7 font-bold text-white uppercase tracking-wide mb-4 lg:mb-7">Are You Creater, Artist or your Field</p>
+                  <p className="text-base sm:text-lg leading-6 sm:leading-7 font-bold text-white uppercase tracking-wide mb-4 lg:mb-7">{t('Are You Creater, Artist or your Field')}</p>
                   <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-white max-w-full font-bold capitalize">Most <br /> Powerful platform for Creater, Artist & Field </h2>
                 </div>
               </div>
@@ -1048,7 +1051,7 @@ function LandingPage() {
             <form className="flex flex-wrap w-full bg-white shadow-lg p-8">
               <div className="w-full p-1.5 px-0 sm:p-3.5 relative">
                 <label htmlFor="name" className="leading-7 text-sm font-medium">Your Name<span className="text-red-500">*</span></label>
-                <input type="text" id="name" name="name" className="htmlForm-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-[#EEEEEE] bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0focus:border-gray-500 focus:ring-2 focus:ring-gray-300 outline-none" />
+                <input type="text" id="name" name="name" className="htmlForm-control relative flex-auto min-w-0 block w-fulonChange={(e) =>  i18n.changeLanguage(e.target.value)}l px-3 py-1.5 text-base font-normal text-gray-700 bg-[#EEEEEE] bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0focus:border-gray-500 focus:ring-2 focus:ring-gray-300 outline-none" />
               </div>
               <div className="w-full md:w-1/2 p-1.5 px-0 sm:p-3.5 relative">
                 <label htmlFor="name" className="leading-7 text-sm font-medium">Company Name<span className="text-red-500">*</span></label>
@@ -1141,7 +1144,7 @@ function LandingPage() {
                   <span className="ft-titel">Userfull Link</span>
                   <div className="flex flex-wrap f-manu">
 
-                    <a href="#" className="block opacity-50 mr-4 hover:text-white hover:opacity-100 anim">Home</a>
+                    <a href="#" className="block opacity-50 mr-4 hover:text-white hover:opacity-100 anim">{t('Home')}</a>
                     <a href="#" className="block opacity-50 mr-4 hover:text-white hover:opacity-100 anim">About</a>
                     <a href="#" className="block opacity-50 mr-4 hover:text-white hover:opacity-100 anim">Feature</a>
                     <a href="#" className="block opacity-50 mr-4 hover:text-white hover:opacity-100 anim">Upcoming</a>
