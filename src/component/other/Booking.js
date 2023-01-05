@@ -69,7 +69,6 @@ function Booking() {
             </div>
             {/* <!-- main-content  --> */}
             <div className="space-y-5 mt-6">
-
             <MoonLoader
 					cssOverride={{ margin: "100px auto" }}
 					color={"#20c0E8"}
@@ -79,7 +78,6 @@ function Booking() {
 					data-testid="loader"
 				/>
                 {booking.docs?.map((e) => (
-
 
                     <div key={e._id} className="w-full bg-white flex p-2.5 rounded-md">
                         <div className="w-1/6 relative">

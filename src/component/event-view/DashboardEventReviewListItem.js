@@ -49,7 +49,7 @@ console.log("Review Data list",data.userid.profile_pic);
                 <p className="text-japaneseIndigo text-sm font-normal leading-6 pt-2">{data?.review}</p>
 
             </div>
-        </div>
+          </div>
 
     )
 
