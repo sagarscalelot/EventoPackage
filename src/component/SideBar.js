@@ -113,79 +113,79 @@ function SideBar() {
           </Link>
         </div>
         <div className="nav">
-          <NavLink to="../dashboard" activeClassName="active" title="Dashboard" onClick={removeId} >
+          <NavLink to="../dashboard" activeclassname="active" title="Dashboard" onClick={removeId} >
             <span>
               <i className="w-6 block text-center text-lg icon-deshbord"></i>
             </span>
             <span>Dashboard</span>
           </NavLink>
-          {/* <NavLink to="/" activeClassName="active" title="Subscription">
+          {/* <NavLink to="/" activeclassname="active" title="Subscription">
             <span>
               <i className="w-6 block text-center text-lg icon-subsciption"></i>
             </span>
             <span>Subscription</span>
           </NavLink> */}
-          <NavLink to="refer-to-earn" activeClassName="active" title="Refer & Earn">
+          <NavLink to="refer-to-earn" activeclassname="active" title="Refer & Earn">
             <span>
               <i className="w-6 block text-center text-lg icon-refer"></i>
             </span>
             <span>Refer & Earn</span>
           </NavLink>
-          <NavLink to="redeem" activeClassName="active" title="Redeem">
+          <NavLink to="redeem" activeclassname="active" title="Redeem">
             <span>
               <i className="w-6 block text-center text-lg icon-redem"></i>
             </span>
             <span>Redeem</span>
           </NavLink>
-          <NavLink to="entertainment" activeClassName="active" title="Entertainment">
+          <NavLink to="entertainment" activeclassname="active" title="Entertainment">
             <span>
               <i className="w-6 block text-center text-lg icon-gallery"></i>
             </span>
             <span>Entertainment</span>
           </NavLink>
-          <a href="https://www.festumevento.com" target="_blank" activeClassName="active">
+          <a href="https://www.festumevento.com" target="_blank" activeclassname="active">
             <span>
               <i className="w-6 block text-center text-lg icon-f-evanto"></i>
             </span>
             <span>Festum Evento</span>
           </a>
-          <NavLink to="booking" activeClassName="active" title="Booking">
+          <NavLink to="booking" activeclassname="active" title="Booking">
             <span>
               <i className="w-6 block text-center text-lg icon-booking"></i>
             </span>
             <span>Booking</span>
           </NavLink>
-          <NavLink to="invoice" activeClassName="active" title="Invoice">
+          <NavLink to="invoice" activeclassname="active" title="Invoice">
             <span>
               <i className="w-6 block text-center text-lg icon-invoice"></i>
             </span>
             <span>Invoice</span>
           </NavLink>
-          {/* <NavLink to="/" activeClassName="active" title="Membership">
+          {/* <NavLink to="/" activeclassname="active" title="Membership">
             <span>
               <i className="w-6 block text-center text-lg icon-membership"></i>
             </span>
             <span>Membership</span>
           </NavLink> */}
-          <NavLink to="our-products" activeClassName="active" title="Our Products">
+          <NavLink to="our-products" activeclassname="active" title="Our Products">
             <span>
               <i className="w-6 block text-center text-lg icon-our-product"></i>
             </span>
             <span>Our Products</span>
           </NavLink>
-          {/* <NavLink to="gift" activeClassName="active" title="Gift">
+          {/* <NavLink to="gift" activeclassname="active" title="Gift">
             <span>
               <i className="w-6 block text-center text-lg icon-refer"></i>
             </span>
             <span>Gift</span>
           </NavLink> */}
-          <NavLink to="faq" activeClassName="active" title="Help & FAQ">
+          <NavLink to="faq" activeclassname="active" title="Help & FAQ">
             <span>
               <i className="w-6 block text-center text-lg icon-help"></i>
             </span>
             <span>FAQ</span>
           </NavLink>
-          <NavLink to="chatbot" activeClassName="active" title="Help & FAQ">
+          <NavLink to="chatbot" activeclassname="active" title="Help & FAQ">
             <span>
               <i className="w-6 block text-center text-lg icon-massage"></i>
             </span>

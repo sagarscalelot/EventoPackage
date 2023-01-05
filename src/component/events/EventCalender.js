@@ -24,6 +24,7 @@ function EventCalender() {
 	const eventType = params.eventType;
 	const [startDate, setStartDate] = useState("");
 	const [endDate, setEndDate] = useState("");
+	const [name, setName] = useState("")
 	const header = {
 		'Authorization': `Token ${token}`
 	}
@@ -35,28 +36,26 @@ function EventCalender() {
 	}
 
 	const Calendar = async () => {
-		const requestObj = {
-			page: pageNo,
-			limit: limit,
-		}
 		try {
 			const response = await axios.get(`${baseUrl}/organizer/events/getone?eventid=${eventId}`, { headers: header });
-			//  setStartDate(((new Date(response.data.Data.docs[0].start_date)).toDateString() + " "+ (response.data.Data.docs[0].start_time)+":00") )
-		// const a= new Date(response.data.Data.docs[0].start_date); 
-			// setcalenderlist( Object.entries( response.data.Data))
-			// const ssdate = moment.unix(response.data.Data.docs[0].start_timestamp/1000).format('LLL').toString()
-			// setStartDate(ssdate);
-			// const enddate = moment.unix(response.data.Data.docs[0].end_timestamp/1000).format('LLL').toString()
-			// setEndDate(enddate)
-			console.log("GGGGGGGGGGGGGGGGGG",response.data.Data.attendee);
-			console.log("START TIME>>>>", moment.unix(response.data.Data.attendee[0].start_timestamp/1000).format('MM/DD/YYYY HH:mm'));
-			console.log("END TIME>>>>", moment.unix(response.data.Data.attendee[0].end_timestamp/1000).format('LLL'));
+			setName(response.data.Data.attendee[0].name)
+
+			const zebra = moment.unix(response.data.Data.attendee[0].start_timestamp/1000).format('LL HH:mm');
+			console.log("TYTYTYTYTYTYTYTYTYTYTYTYTYTYTYY : ",typeof (zebra));
+			console.log("TYTYTYTYTYTYTYTYTYTYTYTYTYTYTYY : ",(moment.unix(response.data.Data.attendee[0].end_timestamp/1000).format('LL HH:mm')));
+
+
+			setStartDate((moment.unix(response.data.Data.attendee[0].start_timestamp/1000)).toString());
+			setEndDate((moment.unix(response.data.Data.attendee[0].end_timestamp/1000)).toString());
 			
 		} catch (error) {
 			console.log(error);
 		}
 	}
   
+	// const leopard = ()=>{
+	// 		{ title: {name},  start: new Date({startDate}), end: new Date({endDate}), color: generateRandomColor() },
+	// }
 	useEffect(() => {
 		Calendar();
 	}, [])
@@ -128,13 +127,13 @@ function EventCalender() {
 				  </select>
 				</div>
 			  </div>
+				<div>{startDate}</div>
 				<div className="calendar inline-block justify-center items-center rounded-md drop-shadow-one bg-white w-full px-12 py-7">
 					<FullCalendar
 						plugins={[dayGridPlugin]}
 						initialView="dayGridMonth"
 						events={[
-							{ title: 'event 1',  start:{startDate}, end: {endDate}, color: generateRandomColor() },
-							{ title: 'event 2',  start: new Date("January 11, 2023 5:20:00"), end: new Date("January 11, 2023 16:20:00"), color: generateRandomColor() }
+							{ title: name,  start: new Date(startDate), end: new Date(endDate), color: generateRandomColor() },
 						  ]}
 						
 					/>
