@@ -44,7 +44,7 @@ import india from "../../assest/images/landing-page/india.png";
 import germany from "../../assest/images/landing-page/germany.png";
 import china from "../../assest/images/landing-page/china.png";
 import thailand from "../../assest/images/landing-page/thailand.png";
-import iphone from "../../assest/images/landing-page/iphone.png";
+import iphone from "../../assest/images/landing-page/Place2.png";
 import siderevento from "../../assest/images/landing-page/sider-evento.png";
 import giftfcoin from "../../assest/images/landing-page/surprise 1.png";
 import Advertisement from "../Advertisement";
@@ -399,9 +399,9 @@ const subbb = () =>{
                         <li className="w-full lg:w-auto"><a href="#about" className="block hover:opacity-50">About</a></li>
                         <li className="w-full lg:w-auto"><a href="#feature" className="block hover:opacity-50">Feature</a></li>
                         <li className="w-full lg:w-auto"><a href="#showcase" className="block hover:opacity-50">Showcase</a></li>
-                        <li className="w-full lg:w-auto"><a href="#" className="block hover:opacity-50">F-coin</a></li>
-                        <li className="w-full lg:w-auto"><a href="#" className="block hover:opacity-50">About Us</a></li>
-                        <li className="w-full lg:w-auto"><a href="#" className="block hover:opacity-50">Contact us</a></li>
+                        <li className="w-full lg:w-auto"><a href="#otherproducts" className="block hover:opacity-50">F-coin</a></li>
+                        <li className="w-full lg:w-auto"><a href="#aboutus" className="block hover:opacity-50">About Us</a></li>
+                        <li className="w-full lg:w-auto"><a href="#contactus" className="block hover:opacity-50">Contact us</a></li>
 
                       </ul>
                     </nav>
@@ -761,7 +761,7 @@ const subbb = () =>{
       </section>
 
       {/* App Showcase */}
-      < section id="showcase" className="relative bg-white" >
+      <section id="showcase" className="relative bg-white">
         <div className="px-3.5 relative pt-16 lg:pt-24">
           <div className="w-full pt-4">
             <h1 className="w-full text-center sm:w-auto text-4xl lg:text-[50px] text-white font-bold mb-4 lg:mb-6 relative z-10">App Showcase</h1>
@@ -772,7 +772,7 @@ const subbb = () =>{
             <img src={Showcasebg} alt="Showcase-bg" />
           </div>
         </div>
-      </section >
+      </section>
 
       {/* f-coin */}
       {/* <section className="py-12 lg:pt-20 2xl:pt-24 lg:pb-40 bg-white">
@@ -925,7 +925,7 @@ const subbb = () =>{
       </section>
 
       {/* Our Company */}
-      < div className="bg-white" >
+      <div id="aboutus" className="bg-white">
         <div className="wrapper pt-14 md:pt-24">
           <div className="flex flex-wrap items-center bg-[#EEEEEE]">
             <div className="w-full lg:w-6/12">
@@ -939,7 +939,7 @@ const subbb = () =>{
             </div>
           </div>
         </div>
-      </div >
+      </div>
 
       {/* Advertisement rate for your website */}
       < div className="bg-white" >
@@ -971,7 +971,7 @@ const subbb = () =>{
       </div >
 
       {/* Other Products */}
-      <div className="bg-white swiper-main">
+      <div id="otherproducts" className="bg-white swiper-main">
         <div className="wrapper py-14 md:py-24">
           <h2 className="text-center text-ev-dark pb-3 lg:pb-6 text-4xl md:text-40 xl:text-5xl">Other Products</h2>
           <div className="swiper mySwiper px-5 responsive max-w-6xl">
@@ -1069,7 +1069,7 @@ const subbb = () =>{
       </div>
 
       {/* Get in touch with Us */}
-      <div className="md:py-10 relative bg-white">
+      <div id="contactus" className="md:py-10 relative bg-white">
         <span className="gradiyent-c inline-block absolute w-full h-full max-h-[550px]"></span>
         <div className="wrapper flex flex-wrap justify-center relative">
           <div className="text-center text-white pb-8 lg:pb-12 pt-12 mt:pt-14 xl:pt-24">
@@ -1182,7 +1182,7 @@ const subbb = () =>{
               </div>
               <div className="w-full md:w-6/12 space-y-5 lg:space-y-10">
                 <div className="space-y-4">
-                  <span className="ft-titel">Userfull Link</span>
+                  <span className="ft-titel">Userful Link</span>
                   <div className="flex flex-wrap f-manu">
 
                     <a href="#" className="block opacity-50 mr-4 hover:text-white hover:opacity-100 anim">Home</a>
@@ -1192,7 +1192,7 @@ const subbb = () =>{
                     <a href="#" className="block opacity-50 mr-4 hover:text-white hover:opacity-100 anim">Showcase</a>
                     <a href="#" className="block opacity-50 mr-4 hover:text-white hover:opacity-100 anim">Price</a>
                     <a href="#" className="block opacity-50 mr-4 hover:text-white hover:opacity-100 anim">About us</a>
-                    <a href="#" className="block opacity-50 mr-4 hover:text-white hover:opacity-100 anim">Become an Partner</a>
+                    <a href="#" className="block opacity-50 mr-4 hover:text-white hover:opacity-100 anim">Become a Partner</a>
                     <a href="#" className="block opacity-50 mr-4 hover:text-white hover:opacity-100 anim">Become an Agent</a>
                   </div>
                 </div>
@@ -1243,7 +1243,7 @@ const subbb = () =>{
         </div>
         <div className="wrapper py-3">
           <div className="flex flex-wrap justify-between text-xs md:text-sm">
-            <span>© 2020 Festum Evento - Devepoled By Company</span>
+            <span>© 2020 Festum Evento - Devepoled By Scalelot Technoligies</span>
             <ul className="flex items-center capitalize space-x-3">
               <li><a href="#">privacy policy</a></li>
               <li>|</li>

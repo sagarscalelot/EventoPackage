@@ -24,7 +24,8 @@ function EventCalender() {
 	const eventType = params.eventType;
 	const [startDate, setStartDate] = useState("");
 	const [endDate, setEndDate] = useState("");
-	const [name, setName] = useState("")
+	const [name, setName] = useState("");
+	const [data, setData] = useState([])
 	const header = {
 		'Authorization': `Token ${token}`
 	}
@@ -53,9 +54,7 @@ function EventCalender() {
 		}
 	}
   
-	// const leopard = ()=>{
-	// 		{ title: {name},  start: new Date({startDate}), end: new Date({endDate}), color: generateRandomColor() },
-	// }
+	
 	useEffect(() => {
 		Calendar();
 	}, [])
@@ -127,7 +126,7 @@ function EventCalender() {
 				  </select>
 				</div>
 			  </div>
-				<div>{startDate}</div>
+				
 				<div className="calendar inline-block justify-center items-center rounded-md drop-shadow-one bg-white w-full px-12 py-7">
 					<FullCalendar
 						plugins={[dayGridPlugin]}
