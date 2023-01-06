@@ -222,19 +222,19 @@ function EventPersonalDetails() {
 							<div className="w-full flex flex-wrap">
 								<div className="w-full md:w-1/3 px-2 inputHolder">
 									<label className="input-titel">City <span>*</span></label>
-									<input type="text" className="input" name='city' value={formik.values?.city} onChange={(e) => setInputValue("city", e.target.value)} required />
+									<input type="text" className="input" name='city' value={formik.values?.city} onChange={(e) => setInputValue("city", e.target.value)} />
 									<small className="text-red-500 text-xs">{formik.errors.city}</small>
 									<br />
 								</div>
 								<div className="w-full md:w-1/3 px-2 inputHolder">
 									<label className="input-titel">State <span>*</span></label>
-									<input type="text" className="input" name='state' value={formik.values?.state} onChange={(e) => setInputValue("state", e.target.value)} required />
+									<input type="text" className="input" name='state' value={formik.values?.state} onChange={(e) => setInputValue("state", e.target.value)}  />
 									<small className="text-red-500 text-xs">{formik.errors.state}</small>
 									<br />
 								</div>
 								<div className="w-full md:w-1/3 px-2 inputHolder">
 									<label className="input-titel">Pincode <span>*</span></label>
-									<input type="text" className="input" name='pincode' value={formik.values?.pincode} onChange={(e) => setInputValue("pincode", e.target.value)} required />
+									<input type="text" className="input" name='pincode' value={formik.values?.pincode} onChange={(e) => setInputValue("pincode", e.target.value)}  />
 									<small className="text-red-500 text-xs">{formik.errors.pincode}</small>
 									<br />
 								</div>

@@ -421,7 +421,7 @@ const subbb = () =>{
       </div>
 
       {/* eVANT bANNER */}
-      <div id="feature" className="bg-white">
+      <div  className="bg-white">
         {/* banner slider */}
         <div className="wrapper">
           <div className="w-full py-14">
@@ -466,7 +466,7 @@ const subbb = () =>{
       <div className="sm:pt-8 lg:pt-16ss xl:pt-28 bg-white"></div>
 
       {/* who are you app photo */}
-      <section className="w-full bg-[#EEEEEE]">
+      <section id="feature" className="w-full bg-[#EEEEEE]">
         <div className="wrapper relative">
           <div className="flex flex-wrap -mx-3.5">
             <div className="w-full md:w-6/12 lg:w-1/3 px-3.5 pt-16 py-5 md:py-24 space-y-10">
@@ -1188,9 +1188,9 @@ const subbb = () =>{
                     <a href="#" className="block opacity-50 mr-4 hover:text-white hover:opacity-100 anim">Home</a>
                     <a href="#" className="block opacity-50 mr-4 hover:text-white hover:opacity-100 anim">About</a>
                     <a href="#" className="block opacity-50 mr-4 hover:text-white hover:opacity-100 anim">Feature</a>
-                    <a href="#" className="block opacity-50 mr-4 hover:text-white hover:opacity-100 anim">Upcoming</a>
+                    {/* <a href="#" className="block opacity-50 mr-4 hover:text-white hover:opacity-100 anim">Upcoming</a> */}
                     <a href="#" className="block opacity-50 mr-4 hover:text-white hover:opacity-100 anim">Showcase</a>
-                    <a href="#" className="block opacity-50 mr-4 hover:text-white hover:opacity-100 anim">Price</a>
+                    <a href="#" className="block opacity-50 mr-4 hover:text-white hover:opacity-100 anim">F-Coin</a>
                     <a href="#" className="block opacity-50 mr-4 hover:text-white hover:opacity-100 anim">About us</a>
                     <a href="#" className="block opacity-50 mr-4 hover:text-white hover:opacity-100 anim">Become a Partner</a>
                     <a href="#" className="block opacity-50 mr-4 hover:text-white hover:opacity-100 anim">Become an Agent</a>
