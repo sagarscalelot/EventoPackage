@@ -30,8 +30,8 @@ function ReferToEarn() {
   }, []);
   // details.my_refer_code
   const copyCode = () => {
-    navigator.clipboard.writeText(`Give 10 Coin, Get 10 Coin
-    Refer Friends to allset and give them 10 coin with your referral code ${details.my_refer_code} once they order, you get 10 coin too. www.eventopackage.com`);
+    navigator.clipboard.writeText(`Give 20 Coin, Get 10 Coin
+    Refer Friends to allset and give them 10 coin with your referral code ${details?.my_refer_code} once they order, you get 20 coin too. www.eventopackage.com`);
     toast.success("Referral Code Copied");
   }
 
@@ -72,7 +72,7 @@ function ReferToEarn() {
               <path d="M43.138 38.8413V33.5815C44.5305 33.906 45.5495 34.9203 45.5495 36.1187C45.5495 36.6462 45.977 37.0738 46.5046 37.0738C47.0322 37.0738 47.4597 36.6462 47.4597 36.1187C47.4597 33.8878 45.593 32.0277 43.1378 31.6384V31.0766C43.1378 30.5492 42.7104 30.1216 42.1828 30.1216C41.6552 30.1216 41.2277 30.5492 41.2277 31.0766V31.6384C38.7725 32.0278 36.9058 33.888 36.9058 36.1187C36.9058 38.3495 38.7725 40.2098 41.2277 40.5991V45.8589C39.8351 45.5344 38.816 44.5201 38.816 43.3216C38.816 42.7941 38.3886 42.3666 37.8609 42.3666C37.3333 42.3666 36.9059 42.7941 36.9059 43.3216C36.9059 45.5525 38.7727 47.4127 41.2278 47.802V48.3637C41.2278 48.8912 41.6553 49.3188 42.1829 49.3188C42.7105 49.3188 43.138 48.8912 43.138 48.3637V47.802C45.5931 47.4127 47.4598 45.5524 47.4598 43.3216C47.4598 41.0908 45.5931 39.2307 43.138 38.8413ZM38.8161 36.1186C38.8161 34.9202 39.8351 33.9059 41.2278 33.5813V38.6559C39.8353 38.3315 38.8161 37.3171 38.8161 36.1186ZM43.138 45.8589V40.7844C44.5305 41.1089 45.5495 42.1232 45.5495 43.3216C45.5495 44.5201 44.5305 45.5344 43.138 45.8589Z" fill="#E0A33F" />
               <path d="M42.1828 54.6885C37.6819 54.6885 33.4617 52.6907 30.604 49.207C28.4183 46.5431 27.2144 43.1738 27.2144 39.72C27.2144 31.4663 33.9292 24.7515 42.1828 24.7515C45.6357 24.7515 49.0053 25.956 51.6709 28.1429C55.1538 30.9998 57.1512 35.2194 57.1512 39.7198C57.1511 47.9736 50.4365 54.6885 42.1828 54.6885ZM42.1828 26.6617C34.9825 26.6617 29.1246 32.5196 29.1246 39.72C29.1246 42.733 30.1745 45.6721 32.0809 47.9954C34.5742 51.0349 38.2561 52.7782 42.1828 52.7782C49.3831 52.7782 55.241 46.9203 55.241 39.72C55.241 35.7939 53.4981 32.1125 50.4592 29.6199C48.1345 27.7122 45.195 26.6617 42.1828 26.6617Z" fill="#E0A33F" />
             </svg>
-            <h1 className="text-white"><span className="font-normal">Total Rewards Earned :</span>  250 F-Coins</h1>
+            <h1 className="text-white"><span className="font-normal">Total Rewards Earned :</span> {details?.f_coin} F-Coins</h1>
             <svg width="62" height="62" viewBox="0 0 62 62" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M44.7295 16.7127V22.4561C44.7295 24.0224 43.4598 25.2921 41.8935 25.2921H7.92976C6.36342 25.2921 5.09375 24.0224 5.09375 22.4561V16.7127C5.09375 15.1476 6.36342 13.8779 7.92976 13.8779H41.8934C43.4598 13.8779 44.7295 15.1476 44.7295 16.7127Z" fill="#DD9F3A" />
               <path d="M39.6357 28.1278V33.8711C39.6357 35.4375 38.3661 36.7071 36.7997 36.7071H2.83601C1.26967 36.7071 0 35.4375 0 33.8711V28.1278C0 26.5626 1.26967 25.293 2.83601 25.293H36.7996C38.3661 25.293 39.6357 26.5626 39.6357 28.1278Z" fill="#DD9F3A" />
@@ -131,7 +131,7 @@ function ReferToEarn() {
             </svg>
             <p className="text-3xl xl:text-40 font-bold">Refer to your Friends and Earn</p>
             <h1 className="text-[#E58F0D]">Refer and Get 10 Coin</h1>
-            <p className="text-base font-normal">Refer a friend and get an additional 10 coins and your friend gets additional 10 point. So Refer away</p>
+            <p className="text-base font-normal">Refer a friend and get an additional 10 coins and your friend gets additional 20 point. So Refer away</p>
           </div>
           <div className="pt-10 space-y-5">
             <h3 className="text-lg">Share your refer code via</h3>
@@ -203,7 +203,7 @@ function ReferToEarn() {
         </div>
 
         {/* <!-- advisement --> */}
-       
+
       </div>
     </div>
   )
