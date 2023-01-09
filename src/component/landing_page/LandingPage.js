@@ -767,16 +767,14 @@ function LandingPage() {
       {/* App Showcase */}
       <section id="showcase" className="relative bg-white">
         <div className="px-3.5 relative pt-16 lg:pt-24">
-          <div className="w-full pt-4 text-black absolute top-7">
-            <h1 className="w-full text-center sm:w-auto text-4xl lg:text-[50px] text-black font-bold mb-4 lg:mb-6 relative z-10">App Showcase</h1>
-            <p className="max-w-5xl mx-auto text-black text-center relative z-10 text-base md:text-lg xl:text-xl">By connecting planners and organizers, this medium aims to ease the efforts of end users to find all event needs in one place.  The platform lets people from around the globe register, book, and make payments.</p>
-            {/* <img> className="absolute inset-0 w-full h-full z-0" alt="Showcase-bg" />  */}
-
+          <div className="w-full pt-4">
+            <h1 className="w-full text-center sm:w-auto text-4xl lg:text-[50px] text-white font-bold mb-4 lg:mb-6 relative z-10">App Showcase</h1>
+            <p className="max-w-5xl mx-auto text-white text-center relative z-10 text-base md:text-lg xl:text-xl">By connecting planners and organizers, this medium aims to ease the efforts of end users to find all event needs in one place.  The platform lets people from around the globe register, book, and make payments.</p>
+            <img src={ShowBACK} className="absolute inset-0 w-full h-full z-0" alt="Showcase-bg" />
           </div>
-          <img src={ShowBACK2} alt="Showcase-bg" className="relative" />
-          {/* <div className="flex items-center text-center -mx-3.5 pt-8 lg:pt-16 relative z-10">
-            <img src={ShowBACK2} alt="Showcase-bg" />
-          </div> */}
+          <div className="flex items-center text-center -mx-3.5 pt-8 lg:pt-16 relative z-10">
+            <img src={Showcasebg} className="w-full" alt="Showcase-bg" />
+          </div>
         </div>
       </section>
 
@@ -957,12 +955,12 @@ function LandingPage() {
             </div>
             <div className="w-full md:w-5/12">
               <div className="flex space-x-3 mt-5 md:mt-0 md:justify-end">
-                <button className="max-w-[125px]">
+                <a href="https://play.google.com/store/apps/details?id=com.eventopackage.evento_package" className="max-w-[125px]">
                   <img src={googleplay} alt="g-pay" />
-                </button>
-                <button className="max-w-[125px]">
+                </a>
+                <a href="https://testflight.apple.com/join/LZvR2BZj" className="max-w-[125px]">
                   <img src={appstore} alt="apple-btn" />
-                </button>
+                </a>
               </div>
             </div>
           </div>
@@ -1214,10 +1212,12 @@ function LandingPage() {
                       <div className="space-y-2 md:space-y-4">
                         <span className="ft-titel">For Users</span>
                         <div className="flex space-x-3">
-                          <button className="w-32 md:w-auto">
-                            <img src={googleplay} alt="g-pay" /></button>
-                          <button className="w-32 md:w-auto">
-                            <img src={appstore} alt="apple-btn" /></button>
+                          <a href="https://play.google.com/store/apps/details?id=com.eventopackage.evento_package" className="w-32 md:w-auto">
+                            <img src={googleplay} alt="g-pay" />
+                          </a>
+                          <a href="https://testflight.apple.com/join/LZvR2BZj" className="w-32 md:w-auto">
+                            <img src={appstore} alt="apple-btn" />
+                          </a>
                         </div>
                       </div>
                     </div>
@@ -1249,7 +1249,7 @@ function LandingPage() {
         </div>
         <div className="wrapper py-3">
           <div className="flex flex-wrap justify-between text-xs md:text-sm">
-            <span>© 2020 Festum Evento - Devepoled By Scalelot Technoligies</span>
+            <span>© {(new Date().getFullYear())} Festum Evento - Devepoled By Scalelot Technoligies</span>
             <ul className="flex items-center capitalize space-x-3">
               <li><a href="#">privacy policy</a></li>
               <li>|</li>
