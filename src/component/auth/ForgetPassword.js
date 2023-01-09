@@ -13,7 +13,7 @@ function ForgatePassword() {
         e.preventDefault();
         try {
             if(phoneNo.length > 0 && phoneNo.length < 11) {
-                const response = await axios.post(`${baseUrl}/organizer/register/forgotpassword`, {phone_no: phoneNo});
+                const response = await axios.post(`${baseUrl}/organizer/register/forgotpassword`, {mobile: phoneNo});
                 // console.log(response);
                 if(response.data?.IsSuccess) {
                     toast.success(response.data?.Message);

@@ -16,7 +16,7 @@ function Register() {
   const initialState = {
     name: "",
     email: "",
-    phone_no: "",
+    mobile: "",
     password: "",
     country_code: "+91",
     refer_code: ""
@@ -25,7 +25,7 @@ function Register() {
   const ValidationSchema = Yup.object().shape({
     name: Yup.string().min(2, 'Too Short!').max(40, 'Too Long!').required('Full name is required*'),
     email: Yup.string().email('Invalid email format').required('Email address is required*'),
-    phone_no: Yup.number().typeError('Phone no must be in digit').integer().positive("Phone no must be positive").required("Phone no is required"),
+    mobile: Yup.number().typeError('Phone no must be in digit').integer().positive("Phone no must be positive").required("Phone no is required"),
     password: Yup.string().min(6, 'Too Short!').required('Password is required*'),
     password2: Yup.string().min(6, 'Too Short!').required('Password is required*'),
   });
@@ -43,7 +43,7 @@ function Register() {
         localStorage.setItem("key", response.data?.Data.key)
         toast.success(response.data.IsSuccess?.Message);
         // true for navigating to login page
-        navigate(`../verify/${values.phone_no}/${true}`);
+        navigate(`../verify/${values.mobile}/${true}`);
       } else {
         toast.warn(response.data?.IsSuccess.Message);
       }
@@ -80,10 +80,10 @@ function Register() {
                     </div>
                     <div className="relative">
                       <label htmlFor="" className="input-titel">Phone Number</label>
-                      <Field type="text" name="phone_no" className="input_box" value={formik?.values.phone_no} />
+                      <Field type="text" name="mobile" className="input_box" value={formik?.values.mobile} />
                       {/* <span className="cursor-pointer text-[#E58F0D] text-sm font-semibold absolute right-4 top-10" >Verify</span> */}
                       {/* <span className="cursor-pointer text-caribbeanGreen text-sm font-semibold absolute right-4 bottom-4" >Verify</span> */}
-                      <ErrorMessage name='phone_no' component="span" className="text-red-500 text-xs" />
+                      <ErrorMessage name='mobile' component="span" className="text-red-500 text-xs" />
                     </div>
                     <div className="flex justify-between flex-wrap space-y-5 sm:space-y-0">
                       <div className="relative w-full sm:w-[48%]">

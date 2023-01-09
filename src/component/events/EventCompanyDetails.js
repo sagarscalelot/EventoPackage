@@ -39,7 +39,7 @@ function EventCompanyDetails() {
 
 	const validationSchema = Yup.object().shape({
 		name: Yup.string().required('Company name is required'),
-		contact_no: Yup.number().typeError('The value must be a digit').integer().positive("contact number must be positive").required('Contact No is required'),
+		mobile: Yup.number().typeError('The value must be a digit').integer().positive("contact number must be positive").required('Contact No is required'),
 		email: Yup.string().email('Invalid Email format').required('Email is required'),
 		about: Yup.string().required("About is required."),
 		flat_no: Yup.string(),
@@ -53,7 +53,7 @@ function EventCompanyDetails() {
 	const initialState = {
 		name: "",
 		country_code: "",
-		contact_no: "",
+		mobile: "",
 		email: "",
 		about: "",
 		flat_no: "",
@@ -109,7 +109,7 @@ function EventCompanyDetails() {
 			console.log("response.data.Data", response.data.Data.businessProfile);
 			formik.values.name = response.data.Data.businessProfile.name
 			formik.values.country_code = response.data.Data.businessProfile.country_code;
-			formik.values.contact_no = response.data.Data.businessProfile.phone_no;
+			formik.values.mobile = response.data.Data.businessProfile.mobile;
 			formik.values.email = response.data.Data.businessProfile.email;
 			formik.values.about = response.data.Data.businessProfile.about;
 			// setCode(code);
@@ -318,10 +318,10 @@ function EventCompanyDetails() {
 								<div className="flex">
 									<input type="text" className="input max-w-[80px] w-full mr-3" name="country_code" value={formik.values?.country_code} onChange={(e) => setInputValue("country_code", e.target.value)} required readOnly/>
 									{console.log(">>>>>>>>>>>", formik.values?.country_code)}
-									<input type="text" className="input" name="contact_no" value={formik.values?.contact_no} onChange={(e) => setInputValue("contact_no", e.target.value)} required readOnly/>
-									{console.log("<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>", formik.values?.contact_no)}
+									<input type="text" className="input" name="mobile" value={formik.values?.mobile} onChange={(e) => setInputValue("mobile", e.target.value)} required readOnly/>
+									{console.log("<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>", formik.values?.mobile)}
 								</div>
-								<small className="text-red-500 text-xs">{formik.errors.contact_no}</small>
+								<small className="text-red-500 text-xs">{formik.errors.mobile}</small>
 								<br />
 							</div>
 							<div className="w-full md:w-1/2 px-2 inputHolder">

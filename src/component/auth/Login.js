@@ -29,7 +29,7 @@ function Login() {
 		// console.log('userData', userData);
 
 		try {
-			const response = await axios.post(`${baseUrl}/organizer/login`, { phone_no: userData.emailOrPhone, password: userData.password });
+			const response = await axios.post(`${baseUrl}/organizer/login`, { mobile: userData.emailOrPhone, password: userData.password });
 			// console.log('response', response);
 			if (response.data?.IsSuccess) {
 				toast.success(response.data?.Message);
