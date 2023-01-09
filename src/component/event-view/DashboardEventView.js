@@ -51,8 +51,7 @@ function DashboardEventView() {
 
           <img src={(event && event?.aboutplace && event?.aboutplace?.banner && event?.aboutplace?.banner != '') ? (s3Url + "/" + event?.aboutplace?.banner) : (
             event && event?.personaldetail && event?.personaldetail?.banner && event?.personaldetail?.banner != '' ? (s3Url + "/" + event?.personaldetail?.banner) : bannerPreview
-          )} alt="dashboard-bg" className="w-full h-full object-cover" /> :
-
+          )} alt="dashboard-bg" className="w-full h-full object-cover" />
         </div>
       </div>
       <div className="wrapper min-h-full -mt-14 z-10">
