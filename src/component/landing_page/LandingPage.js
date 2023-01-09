@@ -16,7 +16,7 @@ import sfe from "../../assest/images/landing-page/FE.png";
 import ad from "../../assest/images/landing-page/festumadvertising.jpg";
 import ff from "../../assest/images/landing-page/FF.png";
 
-import Showcasebg from "../../assest/images/landing-page/Showcase-bg.png";
+import Showcasebg from "../../assest/images/landing-page/Showcase-bg22.jpg";
 import ShowBACK from "../../assest/images/landing-page/BACK.jpg";
 import aboutg from "../../assest/images/landing-page/about-g.png";
 import AnniversaryEvent from "../../assest/images/landing-page/video1.png";
