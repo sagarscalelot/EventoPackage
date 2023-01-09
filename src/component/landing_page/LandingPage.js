@@ -282,7 +282,7 @@ function LandingPage() {
                       </svg>
                     </div>
                     {/* <!-- Contact BTN --> */}
-                    <div className="flex flex-wrap items-center space-x-3 sm:space-x-4 lg:order-3">.
+                    <div className="flex flex-wrap items-center space-x-3 sm:space-x-4 lg:order-3">
                       <div className="language-selector ">
                         <a href="#" id="language-toggle" className="language-toggle">
                           <svg className="w-4 md:w-6" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

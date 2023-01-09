@@ -101,45 +101,50 @@ function EventTermsAndConditions() {
     }
   }
 
-  useEffect(() => {
+console.log("TERMS>>>>>>",terms);
+  useEffect(()=> {
     getTandC();
   }, []);
 
   return (
-    // <!-- Content In -->
-    <div>
-      <div className="wrapper min-h-full">
 
-        <div className="space-y-8 h-full">
-          {/* <!-- title-holder  --> */}
-          <div className="flex justify-between items-center">
-            <div className="flex items-center"><i className="icon-back-arrow mr-4 text-2xl" onClick={clickBackHandler}></i><h1>{displayName}</h1></div>
-          </div>
-          {/* <!-- step-progress-bar  --> */}
-          <StepProgressBar eventType={eventType} />
-          {/* <!-- main-content  --> */}
-          <div className="space-y-5">
-            <div className="w-full space-y-2.5">
-              <h3>Terms and Conditions</h3>
-              <CKEditor
-                editor={ClassicEditor}
-                onChange={(event, editor) => {
-                  setTerms((editor.getData()));
-                }}
-                data={terms}
-              />
-            </div>
-            <div className="w-full">
-              <h3>Social Media</h3>
-              <div className="-mx-2">
-                <div className="w-full flex flex-wrap">
-                  <div className="w-full md:w-1/2 p-2">
-                    <div className="w-full p-3.5 bg-white rounded flex items-center space-x-4">
-                      <div className="">
-                        <div className="text-center w-6">
-                          <svg className="mx-auto" width="12" height="23" viewBox="0 0 12 23" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M11.625 7.73633H7.5V4.98633C7.5 4.22733 8.116 3.61133 8.875 3.61133H10.25V0.173828H7.5C5.22163 0.173828 3.375 2.02045 3.375 4.29883V7.73633H0.625V11.1738H3.375V22.1738H7.5V11.1738H10.25L11.625 7.73633Z" fill="#1976D2" />
-                          </svg>
+		// <!-- Content In -->
+        <div>
+          <div className="wrapper min-h-full">
+            
+            <div className="space-y-8 h-full">
+              {/* <!-- title-holder  --> */}
+              <div className="flex justify-between items-center">
+                <div className="flex items-center"><i className="icon-back-arrow mr-4 text-2xl" onClick={clickBackHandler}></i><h1>{displayName}</h1></div>
+              </div>
+              {/* <!-- step-progress-bar  --> */}
+              <StepProgressBar eventType={eventType} />
+              {/* <!-- main-content  --> */}
+              <div className="space-y-5">
+                <div className="w-full space-y-2.5">
+                  <h3>Terms and Conditions</h3>
+                 <CKEditor 
+                    editor={ ClassicEditor }
+                    onChange={ ( event, editor ) => {
+                        setTerms((editor.getData()));
+                    } }
+                    data= {terms}
+                />
+                </div>
+                <div className="w-full">
+                  <h3>Social Media</h3>
+                  <div className="-mx-2">
+                    <div className="w-full flex flex-wrap">
+                      <div className="w-full md:w-1/2 p-2">
+                        <div className="w-full p-3.5 bg-white rounded flex items-center space-x-4">
+                          <div className="">
+                            <div className="text-center w-6">
+                              <svg className="mx-auto" width="12" height="23" viewBox="0 0 12 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M11.625 7.73633H7.5V4.98633C7.5 4.22733 8.116 3.61133 8.875 3.61133H10.25V0.173828H7.5C5.22163 0.173828 3.375 2.02045 3.375 4.29883V7.73633H0.625V11.1738H3.375V22.1738H7.5V11.1738H10.25L11.625 7.73633Z" fill="#1976D2"/>
+                              </svg>
+                            </div>
+                          </div>
+                          <input type="text" className="w-full outline-none" placeholder="Enter URL" name="facebook" value={values?.facebook} onChange={handleInputChange}/>
                         </div>
                       </div>
                       <input type="text" className="w-full outline-none" placeholder="Enter URL" name="facebook" value={values?.facebook} onChange={handleInputChange} />

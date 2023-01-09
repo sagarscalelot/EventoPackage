@@ -99,7 +99,9 @@ function DashboardEvent() {
 		console.log("e : ", e);
 		setSelectedCategory(e);
 	}
-	console.log("live list : ", activeList);
+
+// console.log("live list : ", activeList);
+
 	return (
 		<div className="wrapper">
 			<div className="flex flex-wrap items-center">
@@ -130,17 +132,29 @@ function DashboardEvent() {
 				/>
 				{allEvents.docs?.map(ele => (
 					<>
-						<div className="w-full flex items-center ">
-							<div>
-								<label className="checkbox w-16">
-									<input type="checkbox" className="bg-white"
-										// checked={ele.isAdded}
-										// checked={ele.is_live}
-										onChange={(e) => checkboxHandler(e, ele)} />
-									<i className="icon-right"></i>
-								</label>
-							</div>
-							<DashboardEventCategoryItem key={ele._id} data={ele} liveList={handleClick} />
+
+					<div className="w-full flex items-center ">
+					{ ele.is_approved == true ?
+						<div>
+							<label className="checkbox w-16">
+								<input type="checkbox" className="bg-white"
+									// checked={ele.isAdded}
+									// checked={ele.is_live}
+									onChange={(e) => checkboxHandler(e, ele)} />
+								<i className="icon-right"></i>
+							</label>
+						</div> : <div>
+							<label className="checkbox w-16">
+								<input type="checkbox" className="bg-white opacity-30"
+									disabled
+									 />
+							
+							</label>
+						</div>
+					}
+						
+						<DashboardEventCategoryItem key={ele._id} data={ele} liveList={handleClick} />
+
 						</div>
 					</>
 				))}

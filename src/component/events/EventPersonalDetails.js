@@ -25,6 +25,7 @@ function EventPersonalDetails() {
 	const ValidationSchema = Yup.object().shape({
 		professional_skill: Yup.string(),
 		full_name: Yup.string().min(2, 'Too Short!').max(40, 'Too Long!').required('Full name is required*'),
+		country_code: Yup.string().required('Country Code is required*'),
 		mobile_no: Yup.number().typeError('Contact number must be a digit').integer().positive("Contact number must be positive").required("Contact number is required"),
 		alt_mobile_no: Yup.number().typeError('Contact number must be a digit').integer().positive("Contact number must be positive"),
 		email: Yup.string().email('Invalid email format').required('Email address is required*'),
@@ -98,6 +99,7 @@ function EventPersonalDetails() {
 			formik.values.mobile_no = response.data.Data.phone_no;
 			formik.values.email = response.data.Data.email;
 			formik.values.country_code = response.data.Data.country_code;
+			console.log(">>>>>>>>>>>>>>>>>>>>>",response.data.Data.country_code);
 			// setCode(code);
 		} catch (error) {
 			console.log(error);
