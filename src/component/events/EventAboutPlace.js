@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 // import Advertisement from "../Advertisement";
 import { useDispatch } from 'react-redux';
@@ -7,6 +7,8 @@ import { baseUrl } from '../../config';
 import StepProgressBar from './StepProgressBar';
 import { decrement, increment } from '../../redux/stepProgressCount';
 import { toast } from 'react-toastify';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
 
 function EventAboutPlace() {
 	const displayName = localStorage.getItem("displayName");
@@ -14,7 +16,6 @@ function EventAboutPlace() {
 	const dispatch = useDispatch();
 	const params = useParams();
 	const [banner, setBanner] = useState("");
-	const [price, setPrice] = useState("");
 	const [priceType, setPriceType] = useState("per_hour");
 	const [about, setAbout] = useState("");
 	const eventId = localStorage.getItem("eventId");
@@ -28,32 +29,18 @@ function EventAboutPlace() {
 		'Content-Type': 'multipart/form-data'
 	}
 
-	const getAboutPlace = async () => {
-		try {
-			const response = await axios.get(`${baseUrl}/organizer/events/aboutplace?eventid=${eventId}`, { headers: header });
-			if (response.data.Data.aboutplace) {
-				setAbout(response.data.Data.aboutplace.details);
-				setPrice(response.data.Data.aboutplace.place_price);
-				setPriceType(response.data.Data.aboutplace.price_type);
-				setBanner(response.data.Data.aboutplace.banner);
-			}
-			if (!response.data.IsSuccess) {
-				toast.error("Error occured while fetching data.")
-			}
-			console.log(response);
-		} catch (error) {
-			console.log(error);
-		}
+	const ValidationSchema = Yup.object().shape({
+		place_price: Yup.number().typeError('Price must be a digit').integer().positive("Price must be positive").required("Price is required")
+	});
+
+	const initialState = {
+		place_price: "",
 	}
-	useEffect(() => {
-		getAboutPlace();
-	}, []);
-
-
-	const clickNextHandler = async () => {
+	
+	const clickNextHandler = async (values) => {
 		const requestObj = {
+			...values,
 			eventid: eventId,
-			place_price: price,
 			price_type: priceType,
 			details: about,
 			banner: banner
@@ -67,6 +54,8 @@ function EventAboutPlace() {
 			} else {
 				toast.error(response.data.Message);
 			}
+
+
 		} catch (error) {
 			console.log(error);
 			toast.error("Something Went Wrong.");
@@ -117,10 +106,45 @@ function EventAboutPlace() {
 		dispatch(decrement());
 		navigate(-1);
 	}
+	const formik = useFormik({
+		initialValues: initialState,
+		validationSchema: ValidationSchema,
+		onSubmit: clickNextHandler,
+	});
+
+	const getAboutPlace = async () => {
+		try {
+			const response = await axios.get(`${baseUrl}/organizer/events/aboutplace?eventid=${eventId}`, { headers: header });
+			if (response.data.Data.aboutplace) {
+				setAbout(response.data.Data.aboutplace.details);
+				formik.setValues(response.data.Data.aboutplace);
+				setPriceType(response.data.Data.aboutplace.price_type);
+				setBanner(response.data.Data.aboutplace.banner);
+			}
+			if (!response.data.IsSuccess) {
+				toast.error("Error occured while fetching data.")
+			}
+		} catch (error) {
+			console.log(error);
+		}
+	}
+
+	useEffect(() => {
+		getAboutPlace();
+	}, []);
+
+	const setInputValue = useCallback(
+		(key, value) =>
+			formik.setValues({
+				...formik.values,
+				[key]: value,
+			}),
+		[formik]
+	);
 
 	return (
 		//  <!-- Content In -->
-		<div>
+		<form onSubmit={formik.handleSubmit}>
 			<div className="wrapper min-h-full flex flex-col">
 				<div className="space-y-8 h-full">
 					{/* <!-- title-holder  -->/ */}
@@ -146,7 +170,7 @@ function EventAboutPlace() {
 							<label htmlFor="" className="flex items-center w-full bg-white p-2 px-3.5 rounded-md">
 								<div className="w-full px-3.5">
 									<input type="text" className="w-full outline-none text-spiroDiscoBall font-bold text-base"
-										value={price} onChange={(e) => setPrice(e.target.value)} />
+										value={formik.values?.place_price} name="place_price" onChange={(e) => setInputValue("place_price", e.target.value)} />
 								</div>
 								<div className="selectPrice flex items-center space-x-3">
 									<label className="block cursor-pointer">
@@ -173,6 +197,7 @@ function EventAboutPlace() {
 								</div>
 							</label>
 						</div>
+						<small className="text-red-500 text-xs">{formik.errors.place_price}</small>
 						<div className="w-full">
 							<span className="input-titel">About place</span>
 							<textarea name="" id="" cols="30" rows="5" value={about}
@@ -184,10 +209,10 @@ function EventAboutPlace() {
 				</div>
 				<div className="prw-next-btn mt-auto">
 					<button type="button" className="flex items-center" onClick={clickBackHander}><i className="icon-back-arrow mr-3"></i><h3>Back</h3></button>
-					<button type="button" className="flex items-center active" onClick={clickNextHandler}><h3>Next</h3><i className="icon-next-arrow ml-3"></i></button>
+					<button type="submit" className="flex items-center active" ><h3>Next</h3><i className="icon-next-arrow ml-3"></i></button>
 				</div>
 			</div>
-		</div>
+		</form>
 	)
 }
 

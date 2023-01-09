@@ -100,7 +100,7 @@ function EventPersonalDetails() {
 			formik.values.mobile = response.data.Data.mobile;
 			formik.values.email = response.data.Data.email;
 			formik.values.country_code = response.data.Data.country_code;
-			console.log(">>>>>>>>>>>>>>>>>>>>>",response.data.Data.country_code);
+			console.log(">>>>>>>>>>>>>>>>>>>>>", response.data.Data.country_code);
 			// setCode(code);
 		} catch (error) {
 			console.log(error);
@@ -168,8 +168,6 @@ function EventPersonalDetails() {
 							</div>
 						</div>
 						<div className="w-full flex items-end flex-wrap">
-
-
 							<div className="w-full md:w-1/3 px-2 inputHolder">
 								<div className="input-label-holder">
 									<label className="input-titel">Mobile Number <span>*</span></label>
@@ -183,8 +181,8 @@ function EventPersonalDetails() {
 							</div>
 							<div className="w-full md:w-1/3 px-2 inputHolder">
 								<label className="input-titel">Alternative Mobile Number <span></span></label>
-								<input type="text" className="input" name='alt_mobile_no' value={formik.values?.alt_mobile_no} onChange={(e) => setInputValue("alt_mobile_no", e.target.value)} />
-								<small className="text-red-500 text-xs">{formik.errors.alt_mobile_no}</small>
+								<input type="text" className="input" name='alt_mobile' value={formik.values?.alt_mobile} onChange={(e) => setInputValue("alt_mobile", e.target.value)} />
+								<small className="text-red-500 text-xs">{formik.errors.alt_mobile}</small>
 								<br />
 							</div>
 							<div className="w-full md:w-1/3 px-2 inputHolder">

@@ -222,8 +222,8 @@ function EventPersonalDetails() {
 							</div>
 							<div className="w-full md:w-1/3 px-2 inputHolder">
 								<label className="input-titel">Alternative Mobile Number <span></span></label>
-								<input type="text" className="input" name='alt_mobile_no' value={formik.values?.alt_mobile_no} onChange={(e) => setInputValue("alt_mobile_no", e.target.value)} />
-								<small className="text-red-500 text-xs">{formik.errors.alt_mobile_no}</small>
+								<input type="text" className="input" name='alt_mobile' value={formik.values?.alt_mobile} onChange={(e) => setInputValue("alt_mobile", e.target.value)} />
+								<small className="text-red-500 text-xs">{formik.errors.alt_mobile}</small>
 								<br />
 							</div>
 							<div className="w-full md:w-1/3 px-2 inputHolder">
