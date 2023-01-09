@@ -18,6 +18,7 @@ import ff from "../../assest/images/landing-page/FF.png";
 
 import Showcasebg from "../../assest/images/landing-page/Showcase-bg.png";
 import ShowBACK from "../../assest/images/landing-page/BACK.jpg";
+import ShowBACK2 from "../../assest/images/landing-page/final-2.png";
 import aboutg from "../../assest/images/landing-page/about-g.png";
 import AnniversaryEvent from "../../assest/images/landing-page/video1.png";
 // import ChildrenPartyPlannersEvent from "../../assest/images/landing-page/video2.png";
@@ -44,7 +45,7 @@ import india from "../../assest/images/landing-page/india.png";
 import germany from "../../assest/images/landing-page/germany.png";
 import china from "../../assest/images/landing-page/china.png";
 import thailand from "../../assest/images/landing-page/thailand.png";
-import iphone from "../../assest/images/landing-page/iphone.png";
+import iphone from "../../assest/images/landing-page/Place2.png";
 import siderevento from "../../assest/images/landing-page/sider-evento.png";
 import giftfcoin from "../../assest/images/landing-page/surprise 1.png";
 import Advertisement from "../Advertisement";
@@ -121,53 +122,53 @@ const options2 = {
 function LandingPage() {
   const navigate = useNavigate();
   const validationSchema = Yup.object().shape({
-		name: Yup.string().required('Name is required'),
-		email: Yup.string().required('Email is required'),
-		company_name: Yup.string().required('Company name is required'),
-		description: Yup.string().required("Description is required.")
-	});
+    name: Yup.string().required('Name is required'),
+    email: Yup.string().required('Email is required'),
+    company_name: Yup.string().required('Company name is required'),
+    description: Yup.string().required("Description is required.")
+  });
 
-	const initialState = {
-		name: "",
-		email: "",
-		company_name: "",
-		description: "",
-	};
+  const initialState = {
+    name: "",
+    email: "",
+    company_name: "",
+    description: "",
+  };
 
-const subbb = () =>{
-  console.log("CLICKED");
-}
+  const subbb = () => {
+    console.log("CLICKED");
+  }
 
 
-	const clickNextHandler = async (values) => {
-		try {
-			const requestObj = { ...values };
-			const response = await axios.post(`${baseUrl}/landing/getintouch`, requestObj);
-      console.log("RESPONSE>>>>>>>>",response);
-			if (response.data.IsSuccess) {
+  const clickNextHandler = async (values) => {
+    try {
+      const requestObj = { ...values };
+      const response = await axios.post(`${baseUrl}/landing/getintouch`, requestObj);
+      console.log("RESPONSE>>>>>>>>", response);
+      if (response.data.IsSuccess) {
         toast.success(response.data?.Message);
-			} else {
-				toast.success(response.data?.Message);
-			}
-		} catch (error) {
-			console.log(error);
-		}
-	};
+      } else {
+        toast.success(response.data?.Message);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const formik = useFormik({
-		initialValues: initialState,
-		validationSchema: validationSchema,
-		onSubmit: clickNextHandler,
-	});
+    initialValues: initialState,
+    validationSchema: validationSchema,
+    onSubmit: clickNextHandler,
+  });
 
-	const setInputValue = useCallback(
-		(key, value) =>
-			formik.setValues({
-				...formik.values,
-				[key]: value,
-			}),
-		[formik]
-	);
+  const setInputValue = useCallback(
+    (key, value) =>
+      formik.setValues({
+        ...formik.values,
+        [key]: value,
+      }),
+    [formik]
+  );
 
   const [isVideoPlayerPopUpOpen, setIsVideoPlayerPopUpOpen] = useState(false);
   const [videoUrl, setVideoUrl] = useState("");
@@ -220,7 +221,7 @@ const subbb = () =>{
 
   const navigationPrevRef = React.useRef(null)
   const navigationNextRef = React.useRef(null)
-    
+
   return (
 
     <>
@@ -402,9 +403,9 @@ const subbb = () =>{
                         <li className="w-full lg:w-auto"><a href="#about" className="block hover:opacity-50">About</a></li>
                         <li className="w-full lg:w-auto"><a href="#feature" className="block hover:opacity-50">Feature</a></li>
                         <li className="w-full lg:w-auto"><a href="#showcase" className="block hover:opacity-50">Showcase</a></li>
-                        <li className="w-full lg:w-auto"><a href="#" className="block hover:opacity-50">F-coin</a></li>
-                        <li className="w-full lg:w-auto"><a href="#" className="block hover:opacity-50">About Us</a></li>
-                        <li className="w-full lg:w-auto"><a href="#" className="block hover:opacity-50">Contact us</a></li>
+                        <li className="w-full lg:w-auto"><a href="#otherproducts" className="block hover:opacity-50">F-coin</a></li>
+                        <li className="w-full lg:w-auto"><a href="#aboutus" className="block hover:opacity-50">About Us</a></li>
+                        <li className="w-full lg:w-auto"><a href="#contactus" className="block hover:opacity-50">Contact us</a></li>
 
                       </ul>
                     </nav>
@@ -424,7 +425,7 @@ const subbb = () =>{
       </div>
 
       {/* eVANT bANNER */}
-      <div id="feature" className="bg-white">
+      <div className="bg-white">
         {/* banner slider */}
         <div className="wrapper">
           <div className="w-full py-14">
@@ -469,7 +470,7 @@ const subbb = () =>{
       <div className="sm:pt-8 lg:pt-16ss xl:pt-28 bg-white"></div>
 
       {/* who are you app photo */}
-      <section className="w-full bg-[#EEEEEE]">
+      <section id="feature" className="w-full bg-[#EEEEEE]">
         <div className="wrapper relative">
           <div className="flex flex-wrap -mx-3.5">
             <div className="w-full md:w-6/12 lg:w-1/3 px-3.5 pt-16 py-5 md:py-24 space-y-10">
@@ -764,18 +765,20 @@ const subbb = () =>{
       </section>
 
       {/* App Showcase */}
-      < section id="showcase" className="relative bg-white" >
+      <section id="showcase" className="relative bg-white">
         <div className="px-3.5 relative pt-16 lg:pt-24">
-          <div className="w-full pt-4">
-            <h1 className="w-full text-center sm:w-auto text-4xl lg:text-[50px] text-white font-bold mb-4 lg:mb-6 relative z-10">App Showcase</h1>
-            <p className="max-w-5xl mx-auto text-white text-center relative z-10 text-base md:text-lg xl:text-xl">By connecting planners and organizers, this medium aims to ease the efforts of end users to find all event needs in one place.  The platform lets people from around the globe register, book, and make payments.</p>
-            <img src={ShowBACK} className="absolute inset-0 w-full h-full z-0" alt="Showcase-bg" />
+          <div className="w-full pt-4 text-black absolute top-7">
+            <h1 className="w-full text-center sm:w-auto text-4xl lg:text-[50px] text-black font-bold mb-4 lg:mb-6 relative z-10">App Showcase</h1>
+            <p className="max-w-5xl mx-auto text-black text-center relative z-10 text-base md:text-lg xl:text-xl">By connecting planners and organizers, this medium aims to ease the efforts of end users to find all event needs in one place.  The platform lets people from around the globe register, book, and make payments.</p>
+            {/* <img> className="absolute inset-0 w-full h-full z-0" alt="Showcase-bg" />  */}
+
           </div>
-          <div className="flex items-center text-center -mx-3.5 pt-8 lg:pt-16 relative z-10">
-            <img src={Showcasebg} alt="Showcase-bg" />
-          </div>
+          <img src={ShowBACK2} alt="Showcase-bg" className="relative" />
+          {/* <div className="flex items-center text-center -mx-3.5 pt-8 lg:pt-16 relative z-10">
+            <img src={ShowBACK2} alt="Showcase-bg" />
+          </div> */}
         </div>
-      </section >
+      </section>
 
       {/* f-coin */}
       {/* <section className="py-12 lg:pt-20 2xl:pt-24 lg:pb-40 bg-white">
@@ -928,7 +931,7 @@ const subbb = () =>{
       </section>
 
       {/* Our Company */}
-      < div className="bg-white" >
+      <div id="aboutus" className="bg-white">
         <div className="wrapper pt-14 md:pt-24">
           <div className="flex flex-wrap items-center bg-[#EEEEEE]">
             <div className="w-full lg:w-6/12">
@@ -942,7 +945,7 @@ const subbb = () =>{
             </div>
           </div>
         </div>
-      </div >
+      </div>
 
       {/* Advertisement rate for your website */}
       < div className="bg-white" >
@@ -974,7 +977,7 @@ const subbb = () =>{
       </div >
 
       {/* Other Products */}
-      <div className="bg-white swiper-main">
+      <div id="otherproducts" className="bg-white swiper-main">
         <div className="wrapper py-14 md:py-24">
           <h2 className="text-center text-ev-dark pb-3 lg:pb-6 text-4xl md:text-40 xl:text-5xl">Other Products</h2>
           <div className="swiper mySwiper px-5 responsive max-w-6xl">
@@ -1072,7 +1075,7 @@ const subbb = () =>{
       </div>
 
       {/* Get in touch with Us */}
-      <div className="md:py-10 relative bg-white">
+      <div id="contactus" className="md:py-10 relative bg-white">
         <span className="gradiyent-c inline-block absolute w-full h-full max-h-[550px]"></span>
         <div className="wrapper flex flex-wrap justify-center relative">
           <div className="text-center text-white pb-8 lg:pb-12 pt-12 mt:pt-14 xl:pt-24">
@@ -1084,7 +1087,7 @@ const subbb = () =>{
               <div className="w-full p-1.5 px-0 sm:p-3.5">
                 <div className="relative">
                   <label htmlFor="name" className="leading-7 text-sm font-medium">Your Name<span className="text-red-500">*</span></label>
-                  <input type="text" id="name" name="name" value={formik.values?.name} onChange={(e) => setInputValue("name", e.target.value)}  className="htmlForm-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-[#EEEEEE] bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0focus:border-gray-500 focus:ring-2 focus:ring-gray-300 outline-none" />
+                  <input type="text" id="name" name="name" value={formik.values?.name} onChange={(e) => setInputValue("name", e.target.value)} className="htmlForm-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-[#EEEEEE] bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0focus:border-gray-500 focus:ring-2 focus:ring-gray-300 outline-none" />
                   <small className="absolute top-full left-0 text-red-500 text-xs">{formik.errors.name}</small>
                 </div>
               </div>
@@ -1098,14 +1101,14 @@ const subbb = () =>{
               <div className="w-full md:w-1/2 p-1.5 px-0 sm:p-3.5">
                 <div className="relative">
                   <label htmlFor="name" className="leading-7 text-sm font-medium">Email Address<span className="text-red-500">*</span></label>
-                  <input type="text" id="email" name="email" value={formik.values?.email} onChange={(e) => setInputValue("email", e.target.value)}  className="htmlForm-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-[#EEEEEE] bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0focus:border-gray-500 focus:ring-2 focus:ring-gray-300 outline-none" />
+                  <input type="text" id="email" name="email" value={formik.values?.email} onChange={(e) => setInputValue("email", e.target.value)} className="htmlForm-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-[#EEEEEE] bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0focus:border-gray-500 focus:ring-2 focus:ring-gray-300 outline-none" />
                   <small className="absolute top-full left-0 text-red-500 text-xs">{formik.errors.email}</small>
                 </div>
               </div>
               <div className="w-full mb-7 p-1.5 px-0 sm:p-3.5 pb-0">
                 <div className="relative">
                   <label htmlFor="description" className="leading-7 text-sm font-medium">Description<span className="text-red-500">*</span></label>
-                  <textarea id="description" name="description" col="5" rows="3" value={formik.values?.description} onChange={(e) => setInputValue("description", e.target.value)}  className="htmlForm-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-[#EEEEEE] bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0focus:border-gray-500 focus:ring-2 focus:ring-gray-300 outline-none"></textarea>
+                  <textarea id="description" name="description" col="5" rows="3" value={formik.values?.description} onChange={(e) => setInputValue("description", e.target.value)} className="htmlForm-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-[#EEEEEE] bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0focus:border-gray-500 focus:ring-2 focus:ring-gray-300 outline-none"></textarea>
                   <small className="absolute top-full left-0 text-red-500 text-xs">{formik.errors.description}</small>
                 </div>
               </div>
@@ -1185,17 +1188,17 @@ const subbb = () =>{
               </div>
               <div className="w-full md:w-6/12 space-y-5 lg:space-y-10">
                 <div className="space-y-4">
-                  <span className="ft-titel">Userfull Link</span>
+                  <span className="ft-titel">Userful Link</span>
                   <div className="flex flex-wrap f-manu">
 
                     <a href="#" className="block opacity-50 mr-4 hover:text-white hover:opacity-100 anim">{t('Home')}</a>
                     <a href="#" className="block opacity-50 mr-4 hover:text-white hover:opacity-100 anim">About</a>
                     <a href="#" className="block opacity-50 mr-4 hover:text-white hover:opacity-100 anim">Feature</a>
-                    <a href="#" className="block opacity-50 mr-4 hover:text-white hover:opacity-100 anim">Upcoming</a>
+                    {/* <a href="#" className="block opacity-50 mr-4 hover:text-white hover:opacity-100 anim">Upcoming</a> */}
                     <a href="#" className="block opacity-50 mr-4 hover:text-white hover:opacity-100 anim">Showcase</a>
-                    <a href="#" className="block opacity-50 mr-4 hover:text-white hover:opacity-100 anim">Price</a>
+                    <a href="#" className="block opacity-50 mr-4 hover:text-white hover:opacity-100 anim">F-Coin</a>
                     <a href="#" className="block opacity-50 mr-4 hover:text-white hover:opacity-100 anim">About us</a>
-                    <a href="#" className="block opacity-50 mr-4 hover:text-white hover:opacity-100 anim">Become an Partner</a>
+                    <a href="#" className="block opacity-50 mr-4 hover:text-white hover:opacity-100 anim">Become a Partner</a>
                     <a href="#" className="block opacity-50 mr-4 hover:text-white hover:opacity-100 anim">Become an Agent</a>
                   </div>
                 </div>
@@ -1246,7 +1249,7 @@ const subbb = () =>{
         </div>
         <div className="wrapper py-3">
           <div className="flex flex-wrap justify-between text-xs md:text-sm">
-            <span>© 2020 Festum Evento - Devepoled By Company</span>
+            <span>© 2020 Festum Evento - Devepoled By Scalelot Technoligies</span>
             <ul className="flex items-center capitalize space-x-3">
               <li><a href="#">privacy policy</a></li>
               <li>|</li>

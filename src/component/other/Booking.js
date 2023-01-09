@@ -22,11 +22,11 @@ function Booking() {
     }
     const BookingList = async () => {
         const requestObj = {
-			page: pageNo,
-			limit: limit,
-		}
+            page: pageNo,
+            limit: limit,
+        }
         try {
-            const response = await axios.post(`${baseUrl}/organizer/booking/list`,requestObj, { headers: header });
+            const response = await axios.post(`${baseUrl}/organizer/booking/list`, requestObj, { headers: header });
             setBooking(response.data.Data);
             setLoading(false);
         } catch (error) {
@@ -69,14 +69,14 @@ function Booking() {
             </div>
             {/* <!-- main-content  --> */}
             <div className="space-y-5 mt-6">
-            <MoonLoader
-					cssOverride={{ margin: "100px auto" }}
-					color={"#20c0E8"}
-					loading={loading}
-					size={50}
-					aria-label="Loading Spinner"
-					data-testid="loader"
-				/>
+                <MoonLoader
+                    cssOverride={{ margin: "100px auto" }}
+                    color={"#20c0E8"}
+                    loading={loading}
+                    size={50}
+                    aria-label="Loading Spinner"
+                    data-testid="loader"
+                />
                 {booking.docs?.map((e) => (
 
                     <div key={e._id} className="w-full bg-white flex p-2.5 rounded-md">
@@ -86,7 +86,7 @@ function Booking() {
                         </div>
                         <div className="w-full px-3">
                             <div className="flex justify-between items-center pb-2">
-                                <h2>{e?.category_name}</h2>
+                                <h2>{e?.name}</h2>
                                 <h2>{e?.totalPrice} INR</h2>
                             </div>
                             <div className="flex items-center space-x-2 pb-5 border-b">
