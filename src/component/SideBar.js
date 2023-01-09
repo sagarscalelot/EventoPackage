@@ -69,6 +69,7 @@ function SideBar() {
     }
   }
 
+
   useEffect(() => {
     getProfile();
   }, []);

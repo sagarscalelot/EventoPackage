@@ -1,11 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import $ from 'jquery';
 
 function FAQ() {
-    const [isopen, setIsOpen] = useState()
-
-
-
     useEffect(() => {
         var $titleTab = $('.title_tab');
         $('.title_tab.active').next('.inner_content').slideDown();

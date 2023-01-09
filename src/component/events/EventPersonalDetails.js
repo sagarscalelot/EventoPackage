@@ -175,11 +175,8 @@ function EventPersonalDetails() {
 									<div className="input-checkd"><input type="checkbox" className="mr-2" name="is_mobile_hidden" onChange={() => setMobileNoHidden(!mobileNoHidden)} />Hidden</div>
 								</div>
 								<div className="flex">
-
 									<input type="text" className="input max-w-[80px] w-full mr-3" name="country-code" value={formik.values?.country_code} onChange={(e) => setInputValue("country_code", e.target.value)} required readOnly />
-
-									<input type="text" className="input" name="mobile_no" value={formik.values?.mobile_no} onChange={(e) => setInputValue("mobile_no", e.target.value)} required readOnly />
-								</div>
+									<input type="text" className="input" name="mobile_no" value={formik.values?.mobile_no} onChange={(e) => setInputValue("mobile_no", e.target.value)} required readOnly /></div>
 								<small className="text-red-500 text-xs">{formik.errors.mobile_no}</small>
 								<br />
 							</div>
@@ -230,13 +227,13 @@ function EventPersonalDetails() {
 								</div>
 								<div className="w-full md:w-1/3 px-2 inputHolder">
 									<label className="input-titel">State <span>*</span></label>
-									<input type="text" className="input" name='state' value={formik.values?.state} onChange={(e) => setInputValue("state", e.target.value)}  />
+									<input type="text" className="input" name='state' value={formik.values?.state} onChange={(e) => setInputValue("state", e.target.value)} />
 									<small className="text-red-500 text-xs">{formik.errors.state}</small>
 									<br />
 								</div>
 								<div className="w-full md:w-1/3 px-2 inputHolder">
 									<label className="input-titel">Pincode <span>*</span></label>
-									<input type="text" className="input" name='pincode' value={formik.values?.pincode} onChange={(e) => setInputValue("pincode", e.target.value)}  />
+									<input type="text" className="input" name='pincode' value={formik.values?.pincode} onChange={(e) => setInputValue("pincode", e.target.value)} />
 									<small className="text-red-500 text-xs">{formik.errors.pincode}</small>
 									<br />
 								</div>

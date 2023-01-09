@@ -4,7 +4,7 @@ import EventPopUpCreateNew from './popups/EventPopUpCreateNew';
 import axios from 'axios';
 import { baseUrl } from '../../config';
 import DashboardEventCategoryItem from './DashboardEventCategoryItem';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 // import Advertisement from "../Advertisement";
 import { useDispatch } from 'react-redux';
 import { reset } from '../../redux/stepProgressCount';
@@ -26,7 +26,7 @@ function DashboardEvent() {
 	const [activeList, setActiveList] = useState([]);
 	const [selectedCategory, setSelectedCategory] = useState("");
 
-	const header = { 
+	const header = {
 		'Authorization': `Token ${token}`
 	}
 	const getAllEvents = async () => {
@@ -99,7 +99,9 @@ function DashboardEvent() {
 		console.log("e : ", e);
 		setSelectedCategory(e);
 	}
+
 // console.log("live list : ", activeList);
+
 	return (
 		<div className="wrapper">
 			<div className="flex flex-wrap items-center">
@@ -114,7 +116,7 @@ function DashboardEvent() {
 						))}
 					</select>
 					<button className="bg-white px-5 py-3 text-japaneseIndigo font-bold rounded-md tracking-wider"
-					
+
 						onClick={() => multipleEventlive()}>MultipleLive</button>
 					<button href="#" onClick={() => setIsCreateNewPopUpOpen(true)} className="btn-primary"><i className="icon-plus mr-3"></i>Create New</button>
 				</div>
@@ -130,6 +132,7 @@ function DashboardEvent() {
 				/>
 				{allEvents.docs?.map(ele => (
 					<>
+
 					<div className="w-full flex items-center ">
 					{ ele.is_approved == true ?
 						<div>
@@ -151,6 +154,7 @@ function DashboardEvent() {
 					}
 						
 						<DashboardEventCategoryItem key={ele._id} data={ele} liveList={handleClick} />
+
 						</div>
 					</>
 				))}

@@ -18,6 +18,7 @@ import ff from "../../assest/images/landing-page/FF.png";
 
 import Showcasebg from "../../assest/images/landing-page/Showcase-bg22.jpg";
 import ShowBACK from "../../assest/images/landing-page/BACK.jpg";
+import ShowBACK2 from "../../assest/images/landing-page/final-2.png";
 import aboutg from "../../assest/images/landing-page/about-g.png";
 import AnniversaryEvent from "../../assest/images/landing-page/video1.png";
 // import ChildrenPartyPlannersEvent from "../../assest/images/landing-page/video2.png";
@@ -79,6 +80,8 @@ const changeLanguage = (ln) => {
   };
 };
 
+
+
 const options = {
   responsiveClass: true,
   responsive: {
@@ -115,56 +118,57 @@ const options2 = {
   },
 };
 
+
 function LandingPage() {
   const navigate = useNavigate();
   const validationSchema = Yup.object().shape({
-		name: Yup.string().required('Name is required'),
-		email: Yup.string().required('Email is required'),
-		company_name: Yup.string().required('Company name is required'),
-		description: Yup.string().required("Description is required.")
-	});
+    name: Yup.string().required('Name is required'),
+    email: Yup.string().required('Email is required'),
+    company_name: Yup.string().required('Company name is required'),
+    description: Yup.string().required("Description is required.")
+  });
 
-	const initialState = {
-		name: "",
-		email: "",
-		company_name: "",
-		description: "",
-	};
+  const initialState = {
+    name: "",
+    email: "",
+    company_name: "",
+    description: "",
+  };
 
-const subbb = () =>{
-  console.log("CLICKED");
-}
+  const subbb = () => {
+    console.log("CLICKED");
+  }
 
 
-	const clickNextHandler = async (values) => {
-		try {
-			const requestObj = { ...values };
-			const response = await axios.post(`${baseUrl}/landing/getintouch`, requestObj);
-      console.log("RESPONSE>>>>>>>>",response);
-			if (response.data.IsSuccess) {
+  const clickNextHandler = async (values) => {
+    try {
+      const requestObj = { ...values };
+      const response = await axios.post(`${baseUrl}/landing/getintouch`, requestObj);
+      console.log("RESPONSE>>>>>>>>", response);
+      if (response.data.IsSuccess) {
         toast.success(response.data?.Message);
-			} else {
-				toast.success(response.data?.Message);
-			}
-		} catch (error) {
-			console.log(error);
-		}
-	};
+      } else {
+        toast.success(response.data?.Message);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const formik = useFormik({
-		initialValues: initialState,
-		validationSchema: validationSchema,
-		onSubmit: clickNextHandler,
-	});
+    initialValues: initialState,
+    validationSchema: validationSchema,
+    onSubmit: clickNextHandler,
+  });
 
-	const setInputValue = useCallback(
-		(key, value) =>
-			formik.setValues({
-				...formik.values,
-				[key]: value,
-			}),
-		[formik]
-	);
+  const setInputValue = useCallback(
+    (key, value) =>
+      formik.setValues({
+        ...formik.values,
+        [key]: value,
+      }),
+    [formik]
+  );
 
   const [isVideoPlayerPopUpOpen, setIsVideoPlayerPopUpOpen] = useState(false);
   const [videoUrl, setVideoUrl] = useState("");
@@ -303,7 +307,7 @@ const subbb = () =>{
                                 </div>
                               </div>
                               <div className="radio-btn-icon ml-auto h-6">
-                                <input type="radio" id="United-States" name="state" value="en" />
+                                <input type="radio" id="United-States" name="state" value="en" onChange={(e) => i18n.changeLanguage(e.target.value)} />
                               </div>
                             </label>
                             <label className="notif-holder flex relative content-between items-center w-full max-w-full h-[60px] bg-white rounded-lg mb-2">
@@ -317,7 +321,7 @@ const subbb = () =>{
                                 </div>
                               </div>
                               <div className="radio-btn-icon ml-auto h-6">
-                                <input type="radio" id="Europe-French" name="state" value="French" />
+                                <input type="radio" id="Europe-French" name="state" value="French" onChange={(e) => i18n.changeLanguage(e.target.value)} />
                               </div>
                             </label>
                             <label className="notif-holder flex relative content-between items-center w-full max-w-full h-[60px] bg-white rounded-lg mb-2">
@@ -331,7 +335,7 @@ const subbb = () =>{
                                 </div>
                               </div>
                               <div className="radio-btn-icon ml-auto h-6">
-                                <input type="radio" id="India-Hindi" name="state" value="Hindi" />
+                                <input type="radio" id="India-Hindi" name="state" value="Hindi" onChange={(e) => i18n.changeLanguage(e.target.value)} />
                               </div>
                             </label>
                             <label className="notif-holder flex relative content-between items-center w-full max-w-full h-[60px] bg-white rounded-lg mb-2">
@@ -345,7 +349,7 @@ const subbb = () =>{
                                 </div>
                               </div>
                               <div className="radio-btn-icon ml-auto h-6">
-                                <input type="radio" id="Germany-German" name="state" value="German" />
+                                <input type="radio" id="Germany-German" name="state" value="German" onChange={(e) => i18n.changeLanguage(e.target.value)} />
                               </div>
                             </label>
                             <label className="notif-holder flex relative content-between items-center w-full max-w-full h-[60px] bg-white rounded-lg mb-2">
@@ -359,7 +363,7 @@ const subbb = () =>{
                                 </div>
                               </div>
                               <div className="radio-btn-icon ml-auto h-6">
-                                <input type="radio" id="China-Mandarin" name="state" value="Mandarin" />
+                                <input type="radio" id="China-Mandarin" name="state" value="Mandarin" onChange={(e) => i18n.changeLanguage(e.target.value)} />
                               </div>
                             </label>
                             <label className="notif-holder flex relative content-between items-center w-full max-w-full h-[60px] bg-white rounded-lg mb-2">
@@ -373,7 +377,7 @@ const subbb = () =>{
                                 </div>
                               </div>
                               <div className="radio-btn-icon ml-auto h-6">
-                                <input type="radio" id="Thailand-Thai" name="state" value="Thai" />
+                                <input type="radio" id="Thailand-Thai" name="state" value="Thai" onChange={(e) => i18n.changeLanguage(e.target.value)} />
                               </div>
                             </label>
                           </div>
@@ -411,7 +415,7 @@ const subbb = () =>{
               <div className="wrapper relative z-10 flex items-center h-full px-0">
                 <div className="landing-bg-img sm:max-w-[400px] md:max-w-[450px] lg:max-w-[550px] xl:max-w-[630px] ml-auto">
                   <img src={multidivice} alt="big-dish" className="max-w-[320px] inline-block sm:hidden mb-4" />
-                  <p className="text-base sm:text-lg leading-6 sm:leading-7 font-bold text-white uppercase tracking-wide mb-4 lg:mb-7">Are You Creater, Artist or your Field</p>
+                  <p className="text-base sm:text-lg leading-6 sm:leading-7 font-bold text-white uppercase tracking-wide mb-4 lg:mb-7">{t('Are You Creater, Artist or your Field')}</p>
                   <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-white max-w-full font-bold capitalize">Most <br /> Powerful platform for Creater, Artist & Field </h2>
                 </div>
               </div>
@@ -421,7 +425,7 @@ const subbb = () =>{
       </div>
 
       {/* eVANT bANNER */}
-      <div  className="bg-white">
+      <div className="bg-white">
         {/* banner slider */}
         <div className="wrapper">
           <div className="w-full py-14">
@@ -951,12 +955,12 @@ const subbb = () =>{
             </div>
             <div className="w-full md:w-5/12">
               <div className="flex space-x-3 mt-5 md:mt-0 md:justify-end">
-                <button className="max-w-[125px]">
+                <a href="https://play.google.com/store/apps/details?id=com.eventopackage.evento_package" className="max-w-[125px]">
                   <img src={googleplay} alt="g-pay" />
-                </button>
-                <button className="max-w-[125px]">
+                </a>
+                <a href="https://testflight.apple.com/join/LZvR2BZj" className="max-w-[125px]">
                   <img src={appstore} alt="apple-btn" />
-                </button>
+                </a>
               </div>
             </div>
           </div>
@@ -1081,7 +1085,7 @@ const subbb = () =>{
               <div className="w-full p-1.5 px-0 sm:p-3.5">
                 <div className="relative">
                   <label htmlFor="name" className="leading-7 text-sm font-medium">Your Name<span className="text-red-500">*</span></label>
-                  <input type="text" id="name" name="name" value={formik.values?.name} onChange={(e) => setInputValue("name", e.target.value)}  className="htmlForm-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-[#EEEEEE] bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0focus:border-gray-500 focus:ring-2 focus:ring-gray-300 outline-none" />
+                  <input type="text" id="name" name="name" value={formik.values?.name} onChange={(e) => setInputValue("name", e.target.value)} className="htmlForm-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-[#EEEEEE] bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0focus:border-gray-500 focus:ring-2 focus:ring-gray-300 outline-none" />
                   <small className="absolute top-full left-0 text-red-500 text-xs">{formik.errors.name}</small>
                 </div>
               </div>
@@ -1095,14 +1099,14 @@ const subbb = () =>{
               <div className="w-full md:w-1/2 p-1.5 px-0 sm:p-3.5">
                 <div className="relative">
                   <label htmlFor="name" className="leading-7 text-sm font-medium">Email Address<span className="text-red-500">*</span></label>
-                  <input type="text" id="email" name="email" value={formik.values?.email} onChange={(e) => setInputValue("email", e.target.value)}  className="htmlForm-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-[#EEEEEE] bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0focus:border-gray-500 focus:ring-2 focus:ring-gray-300 outline-none" />
+                  <input type="text" id="email" name="email" value={formik.values?.email} onChange={(e) => setInputValue("email", e.target.value)} className="htmlForm-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-[#EEEEEE] bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0focus:border-gray-500 focus:ring-2 focus:ring-gray-300 outline-none" />
                   <small className="absolute top-full left-0 text-red-500 text-xs">{formik.errors.email}</small>
                 </div>
               </div>
               <div className="w-full mb-7 p-1.5 px-0 sm:p-3.5 pb-0">
                 <div className="relative">
                   <label htmlFor="description" className="leading-7 text-sm font-medium">Description<span className="text-red-500">*</span></label>
-                  <textarea id="description" name="description" col="5" rows="3" value={formik.values?.description} onChange={(e) => setInputValue("description", e.target.value)}  className="htmlForm-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-[#EEEEEE] bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0focus:border-gray-500 focus:ring-2 focus:ring-gray-300 outline-none"></textarea>
+                  <textarea id="description" name="description" col="5" rows="3" value={formik.values?.description} onChange={(e) => setInputValue("description", e.target.value)} className="htmlForm-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-[#EEEEEE] bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0focus:border-gray-500 focus:ring-2 focus:ring-gray-300 outline-none"></textarea>
                   <small className="absolute top-full left-0 text-red-500 text-xs">{formik.errors.description}</small>
                 </div>
               </div>
@@ -1185,7 +1189,7 @@ const subbb = () =>{
                   <span className="ft-titel">Userful Link</span>
                   <div className="flex flex-wrap f-manu">
 
-                    <a href="#" className="block opacity-50 mr-4 hover:text-white hover:opacity-100 anim">Home</a>
+                    <a href="#" className="block opacity-50 mr-4 hover:text-white hover:opacity-100 anim">{t('Home')}</a>
                     <a href="#" className="block opacity-50 mr-4 hover:text-white hover:opacity-100 anim">About</a>
                     <a href="#" className="block opacity-50 mr-4 hover:text-white hover:opacity-100 anim">Feature</a>
                     {/* <a href="#" className="block opacity-50 mr-4 hover:text-white hover:opacity-100 anim">Upcoming</a> */}
@@ -1208,10 +1212,12 @@ const subbb = () =>{
                       <div className="space-y-2 md:space-y-4">
                         <span className="ft-titel">For Users</span>
                         <div className="flex space-x-3">
-                          <button className="w-32 md:w-auto">
-                            <img src={googleplay} alt="g-pay" /></button>
-                          <button className="w-32 md:w-auto">
-                            <img src={appstore} alt="apple-btn" /></button>
+                          <a href="https://play.google.com/store/apps/details?id=com.eventopackage.evento_package" className="w-32 md:w-auto">
+                            <img src={googleplay} alt="g-pay" />
+                          </a>
+                          <a href="https://testflight.apple.com/join/LZvR2BZj" className="w-32 md:w-auto">
+                            <img src={appstore} alt="apple-btn" />
+                          </a>
                         </div>
                       </div>
                     </div>
@@ -1243,7 +1249,7 @@ const subbb = () =>{
         </div>
         <div className="wrapper py-3">
           <div className="flex flex-wrap justify-between text-xs md:text-sm">
-            <span>© 2020 Festum Evento - Devepoled By Scalelot Technoligies</span>
+            <span>© {(new Date().getFullYear())} Festum Evento - Devepoled By Scalelot Technoligies</span>
             <ul className="flex items-center capitalize space-x-3">
               <li><a href="#">privacy policy</a></li>
               <li>|</li>

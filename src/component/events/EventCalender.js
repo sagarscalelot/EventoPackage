@@ -39,11 +39,12 @@ function EventCalender() {
 	const Calendar = async () => {
 		try {
 			const response = await axios.get(`${baseUrl}/organizer/events/getone?eventid=${eventId}`, { headers: header });
-			setName(response.data.Data.attendee[0].name)
+			// setCal(response.data.Data.attendee)
+			// console.log(cal);
 
-			const zebra = moment.unix(response.data.Data.attendee[0].start_timestamp/1000).format('LL HH:mm');
-			console.log("TYTYTYTYTYTYTYTYTYTYTYTYTYTYTYY : ",typeof (zebra));
-			console.log("TYTYTYTYTYTYTYTYTYTYTYTYTYTYTYY : ",(moment.unix(response.data.Data.attendee[0].end_timestamp/1000).format('LL HH:mm')));
+			// const zebra = moment.unix(response.data.Data.attendee[setnamess].start_timestamp / 1000).format('LL HH:mm');
+			// setStartDate((moment.unix(response.data.Data.attendee[setnamess].start_timestamp / 1000)).toString());
+			// setEndDate((moment.unix(response.data.Data.attendee[setnamess].end_timestamp / 1000)).toString());
 
 
 			setStartDate((moment.unix(response.data.Data.attendee[0].start_timestamp/1000)).toString());

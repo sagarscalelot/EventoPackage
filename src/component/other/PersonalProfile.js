@@ -1,11 +1,11 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useState} from 'react';
 import { useEffect } from 'react';
 import { toast } from 'react-toastify';
 import previewImage from "../../assest/images/image-preview.png"
 import { baseUrl } from '../../config';
 
-function PersonalProfile({  details }) {
+function PersonalProfile({ details }) {
     const token = localStorage.getItem("Token");
     const header = {
         'Authorization': `Token ${token}`,
@@ -51,7 +51,7 @@ function PersonalProfile({  details }) {
             phone_no: details?.phone_no
         })
     }, [details])
-// console.log("personal details", details)
+    // console.log("personal details", details)
     let initialRender = true;
     useEffect(() => {
         if (initialRender) {
@@ -163,7 +163,7 @@ function PersonalProfile({  details }) {
                 <div className="flex justify-between space-x-5 pt-3 -mx-2">
                     <div className="w-1/2 px-2">
                         <span className="input-titel">Phone Number</span>
-                        <div className="flex items-center h-auto space-x-3 mt-1">
+                        <div className="flex items-center h-auto space-x-3 mt-1"> 
                             <div className="">
                                 {/* <select className="text-base text-japaneseIndigo bg-white rounded-md flex space-x-3 profile-arrow outline-0 whitespace-nowrap pl-5 pr-10 py-3.5 relative w-28">
                                         <option>+91</option>
@@ -185,7 +185,7 @@ function PersonalProfile({  details }) {
                 <div className="flex justify-between space-x-5 pt-3 -mx-2">
                     <div className="w-full md:w-1/2 px-2 inputHolder">
                         <span className="input-titel">Date Of Birth</span>
-                        <input type="text" className="input font-bold" name="dob" placeholder='dd-mm-yyyy' value={values?.dob ||""} onChange={changeHandler} disabled={isDisable} />
+                        <input type="text" className="input font-bold" name="dob" placeholder='dd-mm-yyyy' value={values?.dob || ""} onChange={changeHandler} disabled={isDisable} />
                     </div>
                     <div className="w-full md:w-1/2 px-2 inputHolder">
                         <span className="input-titel">Country</span>
