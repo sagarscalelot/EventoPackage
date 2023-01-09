@@ -2,7 +2,7 @@ import React from 'react'
 
 function Paggination({ allEvents, limit, setPageNo, pageNo }) {
 
-    console.log("page : ", allEvents);
+    // console.log("page : ", allEvents);
     const paginator = (totalPages, page, maxLength) => {
         if (maxLength < 3) throw "maxLength must be at least 2";
         function range(start, end) {
@@ -24,7 +24,7 @@ function Paggination({ allEvents, limit, setPageNo, pageNo }) {
     };
 
     const paginationList = paginator(Math.ceil(allEvents.totalPages), allEvents?.page, 7);
-    console.log("allEvents?.last_page>>>>>>>>>>>>>>>>>>> ",pageNo );
+    // console.log("allEvents?.last_page>>>>>>>>>>>>>>>>>>> ",pageNo );
 
     return (
         <div className="pagination-festum">

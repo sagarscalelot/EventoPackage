@@ -17,7 +17,7 @@ function DashboardEventCategoryItem({ data, handleClick }) {
 
 	const Star = ({ ratings }) => {
 		const numberRating = Number(ratings);
-		console.log("numberRating", numberRating);
+		// console.log("numberRating", numberRating);
 		const ratingStar = Array.from({ length: 5 }, (elem, index) => {
 			let number = index + 0.5;
 			return (
@@ -63,7 +63,7 @@ function DashboardEventCategoryItem({ data, handleClick }) {
 
 		try {
 			const response = await axios.post(`${baseUrl}/organizer/events/liveone`, { eventid: data._id }, { headers: header });
-			console.log("event active : ", response);
+			console.log("event active>>>>>>>>>>>>>>>>>>>>>>>>>>>>> : ", response);
 		} catch (error) {
 			console.log("Something went Wrong.");
 			console.log(error);
@@ -88,7 +88,7 @@ function DashboardEventCategoryItem({ data, handleClick }) {
 					<div className="flex justify-between border-b-2 pb-4">
 						<div className="capitalize">
 							<span className="text-sm text-white bg-spiroDiscoBall px-3 py-1">{data?.event_category?.category_name}</span>
-							<span className="text-sm text-white bg-spiroDiscoBall px-3 py-1 ml-2 capitalize">{data?.is_approved == true ? "verified" : "unverified"}</span>
+							<span className="text-sm text-white bg-verified px-3 py-1 ml-2 capitalize">{data?.is_approved == true ? "Verified" : "Unverified"}</span>
 							<h2 className="text-japaneseIndigo pt-5">{data?.display_name}</h2>
 							<div className="text-sm text-quicksilver pt-3"><i className="icon-fill-location mr-3"></i>
 								{/* {data?.capacity?.address}{data?.personaldetail?.area + "," + data?.personaldetail?.city + "," + data?.personaldetail?.state} */}
@@ -107,14 +107,20 @@ function DashboardEventCategoryItem({ data, handleClick }) {
 						<div className="">
 							<div className="flex items-center justify-end">
 								{/* {console.log("check : ", data?.display_name, data?.is_live)} */}
-
-								<input type="checkbox" className="switch mr-3"
+								{data?.is_approved == true ? 
+									<input type="checkbox" className="switch mr-3"
 									// defaultChecked={data?.is_live}
 									id="on"
 									defaultChecked={data?.is_live}
 									// onClick={() => singleEventlive(data?._id)}
 									onChange={() => toggleEvent(data)}
+								/> : <input type="checkbox"  className="switch mr-3 opacity-30 "
+									// defaultChecked={data?.is_live}
+									id="on"
+									disabled
 								/>
+								}
+								
 								<label htmlFor="">
 									<h3>Live</h3>
 								</label>

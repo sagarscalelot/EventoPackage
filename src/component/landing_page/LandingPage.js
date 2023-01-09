@@ -278,7 +278,7 @@ const subbb = () =>{
                       </svg>
                     </div>
                     {/* <!-- Contact BTN --> */}
-                    <div className="flex flex-wrap items-center space-x-3 sm:space-x-4 lg:order-3">.
+                    <div className="flex flex-wrap items-center space-x-3 sm:space-x-4 lg:order-3">
                       <div className="language-selector ">
                         <a href="#" id="language-toggle" className="language-toggle">
                           <svg className="w-4 md:w-6" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -769,7 +769,7 @@ const subbb = () =>{
             <img src={ShowBACK} className="absolute inset-0 w-full h-full z-0" alt="Showcase-bg" />
           </div>
           <div className="flex items-center text-center -mx-3.5 pt-8 lg:pt-16 relative z-10">
-            <img src={Showcasebg} alt="Showcase-bg" />
+            <img src={Showcasebg} className="w-full" alt="Showcase-bg" />
           </div>
         </div>
       </section>

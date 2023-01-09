@@ -28,7 +28,7 @@ function EventPopUpCategory({handleClose}) {
 
 		try {
 
-			const response = await axios.post(`${baseUrl}/organizer/events/addcategory`,{"category_name": catagoryInputName, "event_type":"personal_skills_business"},{headers: header});
+			const response = await axios.post(`${baseUrl}/organizer/events/addcategory`,{"category_name": catagoryInputName, "event_type":eventType},{headers: header});
 
 			console.log(response);
 			if(response.data.IsSuccess) {

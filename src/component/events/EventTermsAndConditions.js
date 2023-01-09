@@ -98,7 +98,7 @@ function EventTermsAndConditions() {
       console.log(error);
     }
   }
-
+console.log("TERMS>>>>>>",terms);
   useEffect(()=> {
     getTandC();
   },[]);
@@ -119,11 +119,12 @@ function EventTermsAndConditions() {
               <div className="space-y-5">
                 <div className="w-full space-y-2.5">
                   <h3>Terms and Conditions</h3>
-                 <CKEditor
+                 <CKEditor 
                     editor={ ClassicEditor }
                     onChange={ ( event, editor ) => {
                         setTerms((editor.getData()));
                     } }
+                    data= {terms}
                 />
                 </div>
                 <div className="w-full">
