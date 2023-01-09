@@ -37,7 +37,7 @@ function Otp() {
 
   const reSendOtp = async() => {
     try {
-      const response = await axios.post(`${baseUrl}/api/sendotp`, {phone_no: "+91"+username});
+      const response = await axios.post(`${baseUrl}/api/sendotp`, {mobile: "+91"+username});
       console.log(response);
       if(response.data.isSuccess) {
         toast.success(response.data.Message);
@@ -57,7 +57,7 @@ function Otp() {
     console.log(fullOtp);
 
     const reqobj = {
-      phone_no : username,
+      mobile : username,
       key : localStorage.getItem("key"),
       otp : fullOtp
     }

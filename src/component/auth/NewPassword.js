@@ -17,7 +17,7 @@ function NewPassword() {
 	const onSubmitHandler = async(e) => {
 		e.preventDefault();
 		const reqObj = {
-			phone_no: username,
+			mobile: username,
 			password: pass,
 		}
 		if (cpass!==pass) {

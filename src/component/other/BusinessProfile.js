@@ -25,7 +25,7 @@ function BusinessProfile({  business }) {
         country: "",
         about: "",
         country_code: "",
-        phone_no: "",
+        mobile: "",
         profile_pic:""
 
     }
@@ -49,7 +49,7 @@ function BusinessProfile({  business }) {
             country: business?.country,
             about: business?.about,
             country_code: business?.country_code,
-            phone_no: business?.phone_no,
+            mobile: business?.mobile,
             profile_pic:business?.profile_pic
         })
     }, [business])
@@ -176,7 +176,7 @@ function BusinessProfile({  business }) {
                                     className="text-base text-japaneseIndigo bg-white rounded-md flex space-x-3 profile-arrow outline-0 whitespace-nowrap pl-5 pr-10 py-3.5 relative w-28 font-bold" />
                             </div>
                             <div className="max-w-full w-full inputHolder">
-                            <input type="text" className="input font-bold" name='phone_no' value={values?.phone_no || ""} onChange={changeHandler} disabled={isDisable} />
+                            <input type="text" className="input font-bold" name='mobile' value={values?.mobile || ""} onChange={changeHandler} disabled={isDisable} />
                             </div>
                         </div>
                     </div>

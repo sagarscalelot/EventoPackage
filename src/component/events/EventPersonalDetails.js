@@ -26,7 +26,7 @@ function EventPersonalDetails() {
 		professional_skill: Yup.string(),
 		full_name: Yup.string().min(2, 'Too Short!').max(40, 'Too Long!').required('Full name is required*'),
 		country_code: Yup.string().required('Country Code is required*'),
-		mobile_no: Yup.number().typeError('Contact number must be a digit').integer().positive("Contact number must be positive").required("Contact number is required"),
+		mobile: Yup.number().typeError('Contact number must be a digit').integer().positive("Contact number must be positive").required("Contact number is required"),
 		alt_mobile_no: Yup.number().typeError('Contact number must be a digit').integer().positive("Contact number must be positive"),
 		email: Yup.string().email('Invalid email format').required('Email address is required*'),
 		flat_no: Yup.string(),
@@ -40,7 +40,7 @@ function EventPersonalDetails() {
 		professional_skill: "",
 		full_name: "",
 		country_code: "",
-		mobile_no: "",
+		mobile: "",
 		alt_mobile_no: "",
 		email: "",
 		flat_no: "",
@@ -66,6 +66,7 @@ function EventPersonalDetails() {
 		try {
 			const response = await axios.post(`${baseUrl}/organizer/events/personaldetail`, requestObj, { headers: header });
 			console.log("Personal details > ", response);
+			console.log("requestObj",  requestObj);
 			if (response.data.IsSuccess) {
 				toast.success(response.data.Message);
 				dispatch(increment());
@@ -94,9 +95,9 @@ function EventPersonalDetails() {
 
 		try {
 			const response = await axios.get(`${baseUrl}/organizer/profile`, { headers: header });
-			console.log("response.data.Data", response.data.Data.country_code);
+			console.log("Personal Default Data", response.data.Data.country_code);
 			formik.values.full_name = response.data.Data.name
-			formik.values.mobile_no = response.data.Data.phone_no;
+			formik.values.mobile = response.data.Data.mobile;
 			formik.values.email = response.data.Data.email;
 			formik.values.country_code = response.data.Data.country_code;
 			console.log(">>>>>>>>>>>>>>>>>>>>>",response.data.Data.country_code);
@@ -176,8 +177,8 @@ function EventPersonalDetails() {
 								</div>
 								<div className="flex">
 									<input type="text" className="input max-w-[80px] w-full mr-3" name="country-code" value={formik.values?.country_code} onChange={(e) => setInputValue("country_code", e.target.value)} required readOnly />
-									<input type="text" className="input" name="mobile_no" value={formik.values?.mobile_no} onChange={(e) => setInputValue("mobile_no", e.target.value)} required readOnly /></div>
-								<small className="text-red-500 text-xs">{formik.errors.mobile_no}</small>
+									<input type="text" className="input" name="mobile" value={formik.values?.mobile} onChange={(e) => setInputValue("mobile", e.target.value)} required readOnly /></div>
+								<small className="text-red-500 text-xs">{formik.errors.mobile}</small>
 								<br />
 							</div>
 							<div className="w-full md:w-1/3 px-2 inputHolder">

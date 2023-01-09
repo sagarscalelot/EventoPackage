@@ -39,7 +39,7 @@ function EventCompanyDetails() {
 
 	const validationSchema = Yup.object().shape({
 		name: Yup.string().required('Company name is required'),
-		contact_no: Yup.number().typeError('The value must be a digit').integer().positive("contact number must be positive").required('Contact No is required'),
+		mobile: Yup.number().typeError('The value must be a digit').integer().positive("contact number must be positive").required('Contact No is required'),
 		email: Yup.string().email('Invalid Email format').required('Email is required'),
 		about: Yup.string().required("About is required."),
 		flat_no: Yup.string(),
@@ -53,7 +53,7 @@ function EventCompanyDetails() {
 	const initialState = {
 		name: "",
 		country_code: "",
-		contact_no: "",
+		mobile: "",
 		email: "",
 		about: "",
 		flat_no: "",
@@ -106,10 +106,10 @@ function EventCompanyDetails() {
 
 		try {
 			const response = await axios.get(`${baseUrl}/organizer/profile`, { headers: header });
-			console.log("response.data.Data", response.data.Data.businessProfile);
+			console.log("response.data.Data>>>>>>>>>>>>>>>", response.data.Data);
 			formik.values.name = response.data.Data.businessProfile.name
 			formik.values.country_code = response.data.Data.businessProfile.country_code;
-			formik.values.contact_no = response.data.Data.businessProfile.phone_no;
+			formik.values.mobile = response.data.Data.businessProfile.mobile;
 			formik.values.email = response.data.Data.businessProfile.email;
 			formik.values.about = response.data.Data.businessProfile.about;
 			// setCode(code);
@@ -140,8 +140,13 @@ function EventCompanyDetails() {
 
 	useEffect(() => {
 		getProfile();
-		getCompanyDetail();
+		
 	}, []);
+
+	useEffect(() => {
+		getCompanyDetail();
+	}, [])
+	
 
 	const pdfUpload = async (e) => {
 		const size = 1;
@@ -300,7 +305,7 @@ function EventCompanyDetails() {
 							</div>
 							<div className="w-full md:w-1/2 px-2 inputHolder">
 								<span className="input-titel">Company GST (Optional)</span>
-								<label htmlfor="upload" className="upload upload-popup">
+								<label htmlFor="upload" className="upload upload-popup">
 									<input type="file" name="images" id="upload" className="appearance-none hidden" onChange={pdfUpload} />
 									<span className="input-titel mt-1"><i className="icon-pdf mr-2"></i>Upload PDF</span>
 								</label>
@@ -318,10 +323,10 @@ function EventCompanyDetails() {
 								<div className="flex">
 									<input type="text" className="input max-w-[80px] w-full mr-3" name="country_code" value={formik.values?.country_code} onChange={(e) => setInputValue("country_code", e.target.value)} required readOnly/>
 									{console.log(">>>>>>>>>>>", formik.values?.country_code)}
-									<input type="text" className="input" name="contact_no" value={formik.values?.contact_no} onChange={(e) => setInputValue("contact_no", e.target.value)} required readOnly/>
-									{console.log("<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>", formik.values?.contact_no)}
+									<input type="text" className="input" name="mobile" value={formik.values?.mobile} onChange={(e) => setInputValue("mobile", e.target.value)} required readOnly/>
+									{console.log("<<>>>>>>>>>>>>>>>>>>", formik.values?.mobile)}
 								</div>
-								<small className="text-red-500 text-xs">{formik.errors.contact_no}</small>
+								<small className="text-red-500 text-xs">{formik.errors.mobile}</small>
 								<br />
 							</div>
 							<div className="w-full md:w-1/2 px-2 inputHolder">
@@ -384,7 +389,7 @@ function EventCompanyDetails() {
 						</div>
 						<div className="upload-holder px-2">
 							<span className="input-titel ">Company Photos Max 5 images (up to 5MB/image)</span>
-							<label htmlfor="upload" className="upload" onChange={photoChangeHandler}>
+							<label htmlFor="upload" className="upload" onChange={photoChangeHandler}>
 								<input type="file" name="images" id="upload" className="appearance-none hidden" />
 								<span className="input-titel mt-1"><i className="icon-image mr-2"></i>Upload Images</span>
 							</label>
@@ -408,7 +413,7 @@ function EventCompanyDetails() {
 						</div>
 						<div className="upload-holder px-2">
 							<span className="input-titel ">Company Video Max 2 videos (up to 2GB/video)</span>
-							<label htmlfor="upload2" className="upload">
+							<label htmlFor="upload2" className="upload">
 								<input type="file" name="images" id="upload2" className="appearance-none hidden" onChange={videoChangeHandler} />
 								<div className="mt-1 flex items-baseline justify-center"><i className="icon-video-play text-base mr-2"></i> <span className="input-titel pt-1">Upload videos</span></div>
 							</label>

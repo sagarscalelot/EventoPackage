@@ -1,11 +1,11 @@
 import axios from 'axios';
-import React, { useState} from 'react';
+import React, { useState, forwardRef, useImperativeHandle} from 'react';
 import { useEffect } from 'react';
 import { toast } from 'react-toastify';
 import previewImage from "../../assest/images/image-preview.png"
 import { baseUrl } from '../../config';
 
-function PersonalProfile({ details }) {
+function PersonalProfile({ details },ref) {
     const token = localStorage.getItem("Token");
     const header = {
         'Authorization': `Token ${token}`,
@@ -25,7 +25,7 @@ function PersonalProfile({ details }) {
         country: "",
         about: "",
         country_code: "",
-        phone_no: ""
+        mobile: ""
 
     }
 
@@ -48,7 +48,7 @@ function PersonalProfile({ details }) {
             country: details?.country,
             about: details?.about,
             country_code: details?.country_code,
-            phone_no: details?.phone_no
+            mobile: details?.mobile
         })
     }, [details])
     // console.log("personal details", details)
@@ -173,7 +173,7 @@ function PersonalProfile({ details }) {
                                 <input type="text" className="text-base text-japaneseIndigo bg-white rounded-md flex space-x-3 profile-arrow outline-0 whitespace-nowrap pl-5 pr-10 py-3.5 relative w-28 font-bold" value={values?.country_code || ""} onChange={changeHandler} disabled={isDisable} />
                             </div>
                             <div className="max-w-full w-full inputHolder">
-                                <input type="text" className="input font-bold" value={values?.phone_no || ""} disonChange={changeHandler} disabled={isDisable} abled />
+                                <input type="text" className="input font-bold" value={values?.mobile || ""} disonChange={changeHandler} disabled={isDisable} abled />
                             </div>
                         </div>
                     </div>
