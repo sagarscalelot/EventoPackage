@@ -31,7 +31,7 @@ function EventPopUpDiscountOnTotalBill({ handleClose, eventId, setSelectedDiscou
     }
   }
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async () => {
     if (isValid) {
       console.log(discount);
       handleClose(false)
