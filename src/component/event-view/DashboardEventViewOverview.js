@@ -22,9 +22,13 @@ import dish4Video from "../../assest/images/dish-video-4.png";
 import dish5Video from "../../assest/images/dish-video-5.png";
 import GoogleMap from '../GoogleMap';
 import parse from 'html-react-parser';
+import axios from 'axios';
 
 
 import { baseUrl, s3Url } from '../../config';
+import FullCalendar from '@fullcalendar/react'
+import dayGridPlugin from '@fullcalendar/daygrid'
+import moment from 'moment/moment';
 
 import VideoPreview from './modal/VideoPreview';
 import ImagePreview from './modal/ImagePreview';
@@ -35,8 +39,14 @@ function DashboardEventViewOverview({ data, capacity, socials, company, service 
 	const [preview, setPreview] = useState(false);
 	const [previewPhoto, setPreviewPhoto] = useState(false);
 	const [previewVideo, setPreviewVideo] = useState(false);
+	const eventId = localStorage.getItem("eventId");
+	const token = localStorage.getItem("Token");
 	const [previewCompanyVideo, setPreviewCompanyVideo] = useState(false);
 	const [previewCompanyPhoto, setPreviewcompanyPhoto] = useState(false);
+	const [calendarEvents, setCalendarEvents] = useState([]);
+	const header = {
+		'Authorization': `Token ${token}`
+	}
 
 	const gradientStyle = (type) => {
 		if (type === "discount_on_total_bill") return " from-[#13e1b094] to-[#13E1B0] ";
@@ -56,6 +66,35 @@ function DashboardEventViewOverview({ data, capacity, socials, company, service 
 	//     const newString = s.replace(regex, "");
 	//     return newString;
 	// }
+	const Calendar = async () => {
+		try {
+			const response = await axios.get(`${baseUrl}/organizer/events/getone?eventid=${eventId}`, { headers: header });
+			const attendeeArr = response.data.Data.attendee;
+			const calendarEvents = [];
+			attendeeArr.forEach(attendee => {
+				calendarEvents.push({
+					title: attendee.name,
+					start: new Date((moment.unix(attendee.start_timestamp / 1000)).toString()),
+					end: new Date((moment.unix(attendee.end_timestamp / 1000)).toString()),
+					color: "#20C0E8"
+				});
+			});
+			setCalendarEvents(calendarEvents);
+		} catch (error) {
+			console.log(error);
+		}
+	}
+
+
+	useEffect(() => {
+		Calendar();
+	}, [])
+
+
+
+
+
+
 	const flat_no = data?.personaldetail?.flat_no + ", "
 	const street = data?.personaldetail?.street + ", "
 	const area = data?.personaldetail?.area + ", "
@@ -453,7 +492,7 @@ function DashboardEventViewOverview({ data, capacity, socials, company, service 
 							</>
 						}
 				
-						<div className="calendar inline-block justify-center items-center rounded-md drop-shadow-one bg-white w-full my-10 pb-5">
+						{/* <div className="calendar inline-block justify-center items-center rounded-md drop-shadow-one bg-white w-full my-10 pb-5">
 							<div className="month flex justify-center items-center text-lg lg:text-xl font-semibold py-4 px-10 border-b border-opacity-20">
 								<a href="#"><i className="icon-left-d-arrow"></i></a>
 								<div className="year px-8 xl:px-14 whitespace-nowrap">July 2021</div>
@@ -461,7 +500,16 @@ function DashboardEventViewOverview({ data, capacity, socials, company, service 
 							</div>
 							<div className="days grid grid-cols-7 justify-center items-center text-center py-4 font-semibold"><span>S</span><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span></div>
 							<div className="dates flex flex-wrap"><button><time></time></button><button><time></time></button><button><time>1</time></button><button><time>2</time></button><button><time>3</time></button><button><time>4</time></button><button><time>5</time></button><button><time>6</time></button><button className="active"><time>7</time></button><button><time>8</time></button><button><time>9</time></button><button><time>10</time></button><button><time>11</time></button><button><time>12</time></button><button><time>13</time></button><button><time>14</time></button><button><time>15</time></button><button className="active"><time>16</time></button><button><time className="selact">17</time></button><button className="today"><time>18</time></button><button><time>19</time></button><button><time className="selact">20</time></button><button><time>21</time></button><button><time>22</time></button><button><time>23</time></button><button><time>24</time></button><button><time>25</time></button><button><time>26</time></button><button><time>27</time></button><button><time>28</time></button><button><time>29</time></button><button><time>30</time></button><button><time>31</time></button></div>
+						</div> */}
+						<div className="calendar inline-block justify-center items-center rounded-md drop-shadow-one bg-white w-full px-12 py-7">
+							<FullCalendar
+								plugins={[dayGridPlugin]}
+								initialView="dayGridMonth"
+								events={calendarEvents}
+
+							/>
 						</div>
+
 					</div>
 				</div>
 			</div>

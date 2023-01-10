@@ -99,16 +99,15 @@ function EventPopUpDiscountOnEquipmentOrItem({ handleClose, eventId, setSelected
 		} else if ((e.target.value <= 100) && (e.target.value >= 0)) {
 			setDiscount(e.target.value);
 			console.log("D :", e.target.value);
-			selectedDiscount.discount = e.target.value + "%";
 			setError(null);
 			setIsValid(true)
 		} else {
 			handleClose(true)
 			setError("Enter Valid Discount value");
 		}
-
+		
 	}
-
+	
 	const handleSubmit = async () => {
 		if (isValid) {
 			setDiscount(discount);
@@ -119,9 +118,10 @@ function EventPopUpDiscountOnEquipmentOrItem({ handleClose, eventId, setSelected
 			list.map((e, i) => {
 				e.isAdded = true;
 				e.type === "service" ? (selectedDiscount.services).push(e._id) :
-					((e.type === "equipment" ? (selectedDiscount.equipments).push(e._id) :
-						(selectedDiscount.items).push(e._id)))
+				((e.type === "equipment" ? (selectedDiscount.equipments).push(e._id) :
+				(selectedDiscount.items).push(e._id)))
 			})
+			selectedDiscount.discount = discount + "%";
 			handleClose(false);
 		}
 	}

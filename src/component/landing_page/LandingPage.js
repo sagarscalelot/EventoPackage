@@ -418,8 +418,8 @@ function LandingPage() {
               <div className="wrapper relative z-10 flex items-center h-full px-0">
                 <div className="landing-bg-img sm:max-w-[400px] md:max-w-[450px] lg:max-w-[550px] xl:max-w-[630px] ml-auto">
                   <img src={multidivice} alt="big-dish" className="max-w-[320px] inline-block sm:hidden mb-4" />
-                  <p className="text-base sm:text-lg leading-6 sm:leading-7 font-bold text-white uppercase tracking-wide mb-4 lg:mb-7">{t('Are You Creater, Artist or your Field')}</p>
-                  <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-white max-w-full font-bold capitalize">Most <br /> Powerful platform for Creater, Artist & Field </h2>
+                  <p className="text-base sm:text-lg leading-6 sm:leading-7 font-bold text-white uppercase tracking-wide mb-4 lg:mb-7">{t('Exclusive Services, Priceless Memories')}</p>
+                  <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-white max-w-full font-bold capitalize">Why have just one service when you get the whole package </h2>
                 </div>
               </div>
             </div>
@@ -837,10 +837,10 @@ function LandingPage() {
           <img src={aboutg} alt="Our Company" className="w-full md:w-1/2 md:max-w-[650px] md:absolute right-0 top-1/2 md:-translate-y-1/2" />
           <div className="w-full md:w-1/2 max-w-xl md:pr-10 mt-6 md:mt-0">
             <h2 className="text-4xl md:text-40 xl:text-5xl mb-5">Who we are?</h2>
-            <p className="text-base md:text-lg xl:text-xl text-[#9BA0A8] font-semibold mb-3">Festumevento is a group of knowledgeable specialists and techies who are always improving the product thinking to provide the most recent marketing advantage. We have led the market in IT solution providers since 2019 and connect you to excellent business insights.</p><p className="text-base md:text-lg xl:text-xl text-[#9BA0A8] font-semibold mb-3">
+            <p className="text-base md:text-lg xl:text-xl text-[#9BA0A8] font-semibold mb-3 text-justify">Festumevento is a group of knowledgeable specialists and techies who are always improving the product thinking to provide the most recent marketing advantage. We have led the market in IT solution providers since 2019 and connect you to excellent business insights.</p><p className="text-base md:text-lg xl:text-xl text-[#9BA0A8] font-semibold mb-3 text-justify">
               Our mission is to achieve growth by making our clients grow with innovative ideas and solutions. We aim to enhance our customers business with the latest and creative digital solutions that create an impeccable reputation all over the globe.
               We love challenges and solving the complex problems that our clients bring to us.</p>
-            <p className="text-base md:text-lg xl:text-xl text-[#9BA0A8] font-semibold mb-3">
+            <p className="text-base md:text-lg xl:text-xl text-[#9BA0A8] font-semibold mb-3 text-justify">
               Our expert team has the potential to find out the possible way of the most complicated problems that the world needs. We believe in unique and user-friendly solutions that work efficiently no matter if its reinvented.</p>
           </div>
         </div>
@@ -1066,7 +1066,7 @@ function LandingPage() {
             <div className="w-full lg:w-6/12">
               <div className="pl-5 pr-3 lg:pl-14 lg:pr-10 py-10 xl:py-5">
                 <h2 className="text-ev-dark font-semibold pb-6 text-4xl md:text-40 xl:text-5xl">Our Company</h2>
-                <p className="font-semibold text-[#9BA0A8] pb-4 text-base md:text-lg xl:text-xl  max-h-96 overflow-y-auto text-ellipsis pr-2 lg:pr-4">Festumevento, established in 2019, brings a unique blend of the organization through emerging it solutions such as accounting software, erp management system, and many more. earlier, we started as a product-based organization. after the positive response from our client and the successful evolution of our product, we decided to establish the organization based on our product. after successfully implementing our products, we are expanding our services with the latest it solutions such as mobile app development, web development, etc. we have a strong marketing team of professionals and experts who actively work on your projects to fulfil your requirements. we have intelligent techies who are ready to solve any real-time problems in the digital world.</p>
+                <p className="font-semibold text-[#9BA0A8] pb-4 text-base md:text-lg xl:text-xl  max-h-96 overflow-y-auto text-ellipsis pr-2 lg:pr-4 text-justify">Festumevento, established in 2019, brings a unique blend of the organization through emerging it solutions such as accounting software, erp management system, and many more. earlier, we started as a product-based organization. after the positive response from our client and the successful evolution of our product, we decided to establish the organization based on our product. after successfully implementing our products, we are expanding our services with the latest it solutions such as mobile app development, web development, etc. we have a strong marketing team of professionals and experts who actively work on your projects to fulfil your requirements. we have intelligent techies who are ready to solve any real-time problems in the digital world.</p>
               </div>
             </div>
           </div>
@@ -1310,7 +1310,7 @@ function LandingPage() {
                     </clipPath>
                   </defs>
                 </svg>
-                <p className="max-w-sm text-base text-white opacity-60 font-normal">Evento Package is a platform that empowers event planners to connect and hire artists, performers, venues, decorators, security providers, caterers, designers, photographers, cake makers, and several more professionals in the event industry. </p>
+                <p className="max-w-sm text-base text-white opacity-60 font-normal text-justify">Evento allows organizers to advertise their works and portfolios providing them with extended online visibility. By connecting planners and organizers, this medium aims to ease the efforts of end users to find all event needs in one place.</p>
               </div>
               <div className="w-full md:w-6/12 space-y-5 lg:space-y-10">
                 <div className="space-y-4">
