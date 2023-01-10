@@ -17,6 +17,8 @@ function EventPopUpDiscountOnEquipmentOrItem({ handleClose, eventId, setSelected
 	const token = localStorage.getItem("Token");
 	const [selectList, setSelectList] = useState([]);
 	const [preSelectList, setPreSelectList] = useState([]);
+	const [isValid, setIsValid] = useState(false)
+
 	const header = {
 		'Authorization': `Token ${token}`
 	}
@@ -29,17 +31,13 @@ function EventPopUpDiscountOnEquipmentOrItem({ handleClose, eventId, setSelected
 	// console.log("list : ", activeList);
 
 	const getServiceList = async () => {
-
 		try {
 			const eventDetails = await axios.get(`${baseUrl}/organizer/events/discount/getselectservice?eventid=${eventId}`, { headers: header });
-
 			if (eventDetails?.data.IsSuccess) {
 				try {
 					const res = await axios.get(`${baseUrl}/organizer/events/discount?eventid=${eventId}`, { headers: header });
-
 					// get equipment or item part
 					res?.data?.Data?.discounts.filter(type => (type.discounttype === "discount_on_equipment_or_item")).map((e, i) => {
-
 						eventDetails?.data?.Data.map((m, i) => {
 							let isMatched = false;
 							e.services.map((o) => {
@@ -50,7 +48,6 @@ function EventPopUpDiscountOnEquipmentOrItem({ handleClose, eventId, setSelected
 									setPreSelectList(cuurent => [...cuurent, m])
 								}
 							})
-
 							e.equipments.map((o) => {
 								if (o === m._id) {
 									console.log("if");
@@ -59,7 +56,6 @@ function EventPopUpDiscountOnEquipmentOrItem({ handleClose, eventId, setSelected
 									setPreSelectList(cuurent => [...cuurent, m])
 								}
 							})
-
 							e.items.map((o) => {
 								if (o === m._id) {
 									console.log("if");
@@ -69,23 +65,18 @@ function EventPopUpDiscountOnEquipmentOrItem({ handleClose, eventId, setSelected
 								}
 							})
 						})
-
 						// if ((e.services.length === 0) && (e.equipments.length === 0) && (e.items.length === 0)) {
 						// 	console.log("all zero");
 						// }
 					})
-
 					setSelectList(eventDetails?.data?.Data);
-
 				} catch (error) {
 					console.log(error);
 				}
 			}
-
 		} catch (error) {
 			console.log(error);
 		}
-
 	}
 
 	useEffect(() => {
@@ -101,45 +92,48 @@ function EventPopUpDiscountOnEquipmentOrItem({ handleClose, eventId, setSelected
 	}
 
 	const validateDiscount = (e) => {
-		if ((e.target.value <= 100) && (e.target.value >= 0)) {
+		setIsValid(false)
+		if (!e.target.value || e.target.value == '') {
+			setError("Discount Is Required");
+			handleClose(true)
+		} else if ((e.target.value <= 100) && (e.target.value >= 0)) {
 			setDiscount(e.target.value);
 			console.log("D :", e.target.value);
 			selectedDiscount.discount = e.target.value + "%";
 			setError(null);
+			setIsValid(true)
 		} else {
+			handleClose(true)
 			setError("Enter Valid Discount value");
 		}
 
 	}
 
 	const handleSubmit = async () => {
-		setDiscount(discount);
-		// selectedDiscount.discount = discount + "%";
-
-		selectedDiscount.services = [];
-		selectedDiscount.equipments = [];
-		selectedDiscount.items = [];
-
-		console.log("list : ", list);
-		list.map((e, i) => {
-			e.isAdded = true;
-			e.type === "service" ? (selectedDiscount.services).push(e._id) :
-				((e.type === "equipment" ? (selectedDiscount.equipments).push(e._id) :
-					(selectedDiscount.items).push(e._id)))
+		if (isValid) {
+			setDiscount(discount);
+			selectedDiscount.services = [];
+			selectedDiscount.equipments = [];
+			selectedDiscount.items = [];
+			console.log("list : ", list);
+			list.map((e, i) => {
+				e.isAdded = true;
+				e.type === "service" ? (selectedDiscount.services).push(e._id) :
+					((e.type === "equipment" ? (selectedDiscount.equipments).push(e._id) :
+						(selectedDiscount.items).push(e._id)))
+			})
+			handleClose(false);
 		}
-		)
-
-		handleClose(false);
 	}
 
-	const val = [
-		{ name: "Option 1", cat: "Group 1" },
-		{ name: "Option 2", cat: "Group 1" }
-	]
+	// const val = [
+	// 	{ name: "Option 1", cat: "Group 1" },
+	// 	{ name: "Option 2", cat: "Group 1" }
+	// ]
 
 	return (
 		<>
-			
+
 			<div className="popup table fixed w-full inset-0 z-40 bg-black bg-opacity-75 h-screen">
 				<div className="table-cell align-middle">
 					<div className="popin max-w-2xl w-full mx-auto max-h-[calc(100vh-55px)] overflow-y-auto lg:px-9">

@@ -427,7 +427,7 @@ function LandingPage() {
         </div>
       </div>
 
-      {/* eVANT bANNER */}
+      {/* EVANT bANNER */}
       <div className="bg-white">
         {/* banner slider */}
         <div className="wrapper">
@@ -1074,7 +1074,7 @@ function LandingPage() {
       </div>
 
       {/* Advertisement rate for your website */}
-      < div className="bg-white" >
+      <div className="bg-white">
         <div className="wrapper pt-8 md:pt-12">
           <div className="flex flex-wrap justify-between items-center p-8 md:p-10 xl:p-12 xl:px-16 bg-gradient-to-r from-[#83DCF2] to-[#23C1E8]">
             <div className="w-full md:w-7/12 space-y-2 lg:space-y-4">
