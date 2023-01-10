@@ -14,7 +14,7 @@ function DashboardEventAtteneeListItem({ data }) {
             <div className="space-y-2">
                 <div className="flex items-center space-x-3">
                     <h3 className="text-base">{data?.userid?.name}</h3>
-                    <span className="input-titel font-bold text-ufoGreen" style={{ paddingBottom: 0 }}>#63548215</span>
+                    <span className="input-titel font-bold text-ufoGreen" style={{ paddingBottom: 0 }}>{data?.invoice_no}</span>
                 </div>
                 <div className="flex items-center space-x-3">
                     <p className="text-quicksilver text-xs font-bold flex items-center"><i className="icon-location mr-2 text-sm"></i>{data?.address}</p>

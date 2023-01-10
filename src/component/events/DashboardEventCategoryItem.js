@@ -66,6 +66,7 @@ function DashboardEventCategoryItem({ data, handleClick }) {
 			console.log("event active>>>>>>>>>>>>>>>>>>>>>>>>>>>>> : ", response);
 		} catch (error) {
 			console.log("Something went Wrong.");
+			
 			console.log(error);
 		}
 	}

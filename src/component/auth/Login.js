@@ -37,9 +37,9 @@ function Login() {
 				localStorage.clear();
 				localStorage.setItem("Token", response.data?.Data.token);
 				// console.log("Token", response.data.data.token);
-				setTimeout(() => {
+			
 					navigate("/dashboard")
-				}, 200);
+			
 			} else {
 				toast.error(response.data?.Message);
 			}

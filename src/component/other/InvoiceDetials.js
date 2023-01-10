@@ -56,7 +56,7 @@ export default function InvoiceDetials() {
                         </div>
                         <div className="text-left">
                             <span className="block text-base font-bold">invoice Number</span>
-                            <span className="block text-sm font-normal text-quicksilver pt-1">{invoiceData?.eventId}</span>
+                            <span className="block text-sm font-normal text-quicksilver pt-1">{invoiceData?.invoice_no}</span>
                         </div>
                         <div className="text-left">
                             <span className="block text-base font-bold">Transaction ID</span>
@@ -69,6 +69,6 @@ export default function InvoiceDetials() {
                     </div>
                 </div>
             </div>
-        </div >
+        </div>
     )
 }

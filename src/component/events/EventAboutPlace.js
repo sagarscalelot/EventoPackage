@@ -70,7 +70,7 @@ function EventAboutPlace() {
 			if (response.data.IsSuccess) {
 				setBanner(response.data.Data.url);
 				console.log(response)
-				toast.success(response.data.Message);
+				// toast.success(response.data.Message);
 			} else {
 				toast.error(response.data.Message);
 			}

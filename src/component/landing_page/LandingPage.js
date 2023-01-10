@@ -20,10 +20,13 @@ import Showcasebg from "../../assest/images/landing-page/Showcase-bg22.jpg";
 import ShowBACK from "../../assest/images/landing-page/BACK.jpg";
 import ShowBACK2 from "../../assest/images/landing-page/final-2.png";
 import aboutg from "../../assest/images/landing-page/about-g.png";
-import AnniversaryEvent from "../../assest/images/landing-page/video1.png";
-// import ChildrenPartyPlannersEvent from "../../assest/images/landing-page/video2.png";
-import BirthdaypartyEvent from "../../assest/images/landing-page/video2.png";
-import SummerGardenPartyEvent from "../../assest/images/landing-page/video3.png";
+import AnniversaryEvent from "../../assest/images/landing-page/video-1.png";
+import ChildrenPartyPlannersEvent from "../../assest/images/landing-page/video-2.png";
+import BirthdaypartyEvent from "../../assest/images/landing-page/video-3.png";
+import SummerGardenPartyEvent from "../../assest/images/landing-page/video-4.png";
+import ArtistVideo from "../../assest/images/landing-page/video1.png";
+import VendorVideo from "../../assest/images/landing-page/video2.png";
+import VenueVideo from "../../assest/images/landing-page/video3.png";
 // import video1 from "../../assest/images/landing-page/Anniversary-Event.mp4";
 // import video2 from "../../assest/images/landing-page/Children's-Party-Planners-Event.mp4";
 // import video3 from "../../assest/images/landing-page/Birthday-party-Event.mp4";
@@ -634,7 +637,7 @@ function LandingPage() {
                           <div className="flex space-x-3">
                             <p className="text-xs font-bold text-[#9BA0A8]">Vesu, Surat</p>
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                              <g clip-path="url(#clip0_2535_16260)">
+                              <g clipPath="url(#clip0_2535_16260)">
                                 <path d="M8 0C5.18859 0 2.84375 2.26469 2.84375 5.15625C2.84375 6.25631 3.17431 7.23725 3.80872 8.15644L7.60541 14.0808C7.78959 14.3688 8.21078 14.3683 8.39459 14.0808L12.2078 8.13628C12.8285 7.25875 13.1562 6.22834 13.1562 5.15625C13.1562 2.31309 10.8432 0 8 0ZM8 7.5C6.70772 7.5 5.65625 6.44853 5.65625 5.15625C5.65625 3.86397 6.70772 2.8125 8 2.8125C9.29228 2.8125 10.3438 3.86397 10.3438 5.15625C10.3438 6.44853 9.29228 7.5 8 7.5Z" fill="#9BA0A8" />
                                 <path d="M11.6645 10.7715L9.30416 14.4617C8.69319 15.4143 7.30341 15.4111 6.69537 14.4626L4.33119 10.7725C2.25106 11.2534 0.96875 12.1344 0.96875 13.1873C0.96875 15.0142 4.5915 15.9998 8 15.9998C11.4085 15.9998 15.0312 15.0142 15.0312 13.1873C15.0312 12.1337 13.7472 11.2522 11.6645 10.7715Z" fill="#9BA0A8" />
                               </g>
@@ -688,7 +691,7 @@ function LandingPage() {
                           <div className="flex space-x-3">
                             <p className="text-xs font-bold text-[#9BA0A8]">Vesu, Surat</p>
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                              <g clip-path="url(#clip0_2535_16260)">
+                              <g clipPath="url(#clip0_2535_16260)">
                                 <path d="M8 0C5.18859 0 2.84375 2.26469 2.84375 5.15625C2.84375 6.25631 3.17431 7.23725 3.80872 8.15644L7.60541 14.0808C7.78959 14.3688 8.21078 14.3683 8.39459 14.0808L12.2078 8.13628C12.8285 7.25875 13.1562 6.22834 13.1562 5.15625C13.1562 2.31309 10.8432 0 8 0ZM8 7.5C6.70772 7.5 5.65625 6.44853 5.65625 5.15625C5.65625 3.86397 6.70772 2.8125 8 2.8125C9.29228 2.8125 10.3438 3.86397 10.3438 5.15625C10.3438 6.44853 9.29228 7.5 8 7.5Z" fill="#9BA0A8" />
                                 <path d="M11.6645 10.7715L9.30416 14.4617C8.69319 15.4143 7.30341 15.4111 6.69537 14.4626L4.33119 10.7725C2.25106 11.2534 0.96875 12.1344 0.96875 13.1873C0.96875 15.0142 4.5915 15.9998 8 15.9998C11.4085 15.9998 15.0312 15.0142 15.0312 13.1873C15.0312 12.1337 13.7472 11.2522 11.6645 10.7715Z" fill="#9BA0A8" />
                               </g>
@@ -742,7 +745,7 @@ function LandingPage() {
                           <div className="flex space-x-3">
                             <p className="text-xs font-bold text-[#9BA0A8]">Vesu, Surat</p>
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                              <g clip-path="url(#clip0_2535_16260)">
+                              <g clipPath="url(#clip0_2535_16260)">
                                 <path d="M8 0C5.18859 0 2.84375 2.26469 2.84375 5.15625C2.84375 6.25631 3.17431 7.23725 3.80872 8.15644L7.60541 14.0808C7.78959 14.3688 8.21078 14.3683 8.39459 14.0808L12.2078 8.13628C12.8285 7.25875 13.1562 6.22834 13.1562 5.15625C13.1562 2.31309 10.8432 0 8 0ZM8 7.5C6.70772 7.5 5.65625 6.44853 5.65625 5.15625C5.65625 3.86397 6.70772 2.8125 8 2.8125C9.29228 2.8125 10.3438 3.86397 10.3438 5.15625C10.3438 6.44853 9.29228 7.5 8 7.5Z" fill="#9BA0A8" />
                                 <path d="M11.6645 10.7715L9.30416 14.4617C8.69319 15.4143 7.30341 15.4111 6.69537 14.4626L4.33119 10.7725C2.25106 11.2534 0.96875 12.1344 0.96875 13.1873C0.96875 15.0142 4.5915 15.9998 8 15.9998C11.4085 15.9998 15.0312 15.0142 15.0312 13.1873C15.0312 12.1337 13.7472 11.2522 11.6645 10.7715Z" fill="#9BA0A8" />
                               </g>
@@ -846,13 +849,142 @@ function LandingPage() {
       {/* Ads Video Gallery */}
       <section className="bg-white pt-20">
         <div className="max-w-screen-2xl mx-auto px-4">
-          <h2 className="text-center text-ev-dark pb-3 lg:pb-6 text-4xl md:text-40 xl:text-5xl">Ads Video Gallery</h2>
-          <div className="flex flex-wrap items-center justify-center">
-            <div className="w-full md:w-1/2 xl:w-1/4 p-2 lg:p-4">
-              <div className="block shadow-xl">
+          <h2 className="text-center text-ev-dark pb-3 lg:pb-6">Ads Video Gallery</h2>
+          <div className="flex flex-wrap ">
+
+          <div className="swiper mySwiper px-5 responsive">
+            <Swiper
+              modules={[Navigation, Autoplay]}
+              spaceBetween={25}
+              slidesPerView={4}
+              loop={true}
+              centeredSlides={false}
+              autoplay={{
+                delay: 2500,
+                disableOnInteraction: false,
+              }}
+              navigation={{
+                prevEl: navigationPrevRef.current,
+                nextEl: navigationNextRef.current,
+              }}
+              onBeforeInit={(swiper) => {
+                swiper.params.navigation.prevEl = navigationPrevRef.current;
+                swiper.params.navigation.nextEl = navigationNextRef.current;
+              }}
+              breakpoints={{
+                320: {
+                  slidesPerView: 1,
+                  spaceBetween: 15,
+                },
+                640: {
+                  slidesPerView: 2,
+                  spaceBetween: 20,
+                },
+                768: {
+                  slidesPerView: 3,
+                  spaceBetween: 25,
+                },
+                1024: {
+                  slidesPerView: 4,
+                  spaceBetween: 25,
+                },
+                1200: {
+                  slidesPerView: 4,
+                  spaceBetween: 30,
+                },
+              }}
+              onSlideChange={() => console.log('slide change')}
+              onSwiper={(swiper) => console.log(swiper)}>
+              <SwiperSlide>
+            <div className="w-full p-2">
+              <div className="block shadow">
                 <div className="relative">
                   <img className="object-cover w-full h-56" src={AnniversaryEvent} alt="Mobile_Store_Offer.png" />
-                  <button onClick={() => {
+                  <button onClick={()=> {
+                    setIsVideoPlayerPopUpOpen(true)
+                    setVideoUrl("https://www.youtube.com/embed/9-x-dqX4yxo");
+                  }} className="w-12 h-12 flex justify-center items-center bg-spiroDiscoBall anim absolute bottom-0 right-0 hover:opacity-75">
+                    <svg width="17" height="20" viewBox="0 0 17 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M0 0L17 10L0 20V0Z" fill="white" />
+                    </svg>
+                  </button>
+                </div>
+                <div className="p-4">
+                  <h5 className="text-xl font-bold text-ev-dark">Anniversary Event</h5>
+                  <p className="mt-2 text-sm font-bold text-[#9BA0A8]">250 Offer</p>
+                </div>
+              </div>
+            </div>
+            </SwiperSlide>
+            <SwiperSlide>
+            <div className="w-full p-2">
+              <div className="block shadow">
+                <div className="relative">
+                  <img className="object-cover w-full h-56" src={ChildrenPartyPlannersEvent} alt="Mobile_Store_Offer.png" />
+                  <button onClick={()=> {
+                    setIsVideoPlayerPopUpOpen(true)
+                    setVideoUrl("https://www.youtube.com/embed/IC8rX1VcANI");
+                  }}  className="w-12 h-12 flex justify-center items-center bg-spiroDiscoBall anim absolute bottom-0 right-0 hover:opacity-75">
+                    <svg width="17" height="20" viewBox="0 0 17 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M0 0L17 10L0 20V0Z" fill="white" />
+                    </svg>
+                  </button>
+                </div>
+                <div className="p-4">
+                  <h5 className="text-xl font-bold text-ev-dark">Children's Party Planners Event</h5>
+                  <p className="mt-2 text-sm font-bold text-[#9BA0A8]">250 Offer</p>
+                </div>
+              </div>
+            </div>
+            </SwiperSlide>
+            <SwiperSlide>
+            <div className="w-full p-2">
+              <div className="block shadow">
+                <div className="relative">
+                  <img className="object-cover w-full h-56" src={BirthdaypartyEvent} alt="Fruit_Market_Offers.png" />
+                  <button onClick={()=> {
+                    setIsVideoPlayerPopUpOpen(true)
+                    setVideoUrl("https://www.youtube.com/embed/h-ve-ArQFck");
+                  }}  className="w-12 h-12 flex justify-center items-center bg-spiroDiscoBall anim absolute bottom-0 right-0 hover:opacity-75">
+                    <svg width="17" height="20" viewBox="0 0 17 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M0 0L17 10L0 20V0Z" fill="white" />
+                    </svg>
+                  </button>
+                </div>
+                <div className="p-4">
+                  <h5 className="text-xl font-bold text-ev-dark">Birthday party Event</h5>
+                  <p className="mt-2 text-sm font-bold text-[#9BA0A8]">250 Offer</p>
+                </div>
+              </div>
+            </div>
+            </SwiperSlide>
+            <SwiperSlide>
+            <div className="w-full p-2">
+              <div className="block shadow">
+                <div className="relative">
+                  <img className="object-cover w-full h-56" src={SummerGardenPartyEvent} alt="Fashion_Store_Offers.png" />
+                  <button onClick={()=> {
+                    setIsVideoPlayerPopUpOpen(true)
+                    setVideoUrl("https://www.youtube.com/embed/yiD2r64xMFc");
+                  }}  className="w-12 h-12 flex justify-center items-center bg-spiroDiscoBall anim absolute bottom-0 right-0 hover:opacity-75">
+                    <svg width="17" height="20" viewBox="0 0 17 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M0 0L17 10L0 20V0Z" fill="white" />
+                    </svg>
+                  </button>
+                </div>
+                <div className="p-4">
+                  <h5 className="text-xl font-bold text-ev-dark">Summer Garden Party Event</h5>
+                  <p className="mt-2 text-sm font-bold text-[#9BA0A8]">250 Offer</p>
+                </div>
+              </div>
+            </div>
+            </SwiperSlide>
+            <SwiperSlide>
+            <div className="w-full p-2">
+              <div className="block shadow">
+                <div className="relative">
+                  <img className="object-cover w-full h-56" src={ArtistVideo} alt="Mobile_Store_Offer.png" />
+                  <button onClick={()=> {
                     setIsVideoPlayerPopUpOpen(true)
                     setVideoUrl("https://eventopackage.s3.ap-south-1.amazonaws.com/global/artist2.mp4");
                   }} className="w-12 h-12 flex justify-center items-center bg-spiroDiscoBall anim absolute bottom-0 right-0 hover:opacity-75">
@@ -867,30 +999,13 @@ function LandingPage() {
                 </div>
               </div>
             </div>
-            {/* <div className="w-full md:w-1/2 xl:w-1/4 p-2 lg:p-4">
-              <div className="block shadow-xl">
+            </SwiperSlide>
+            <SwiperSlide>
+            <div className="w-full p-2">
+              <div className="block shadow">
                 <div className="relative">
-                  <img className="object-cover w-full h-56" src={ChildrenPartyPlannersEvent} alt="Mobile_Store_Offer.png" />
-                  <button onClick={() => {
-                    setIsVideoPlayerPopUpOpen(true)
-                    setVideoUrl("https://eventopackage.s3.ap-south-1.amazonaws.com/global/music_event.mp4");
-                  }} className="w-12 h-12 flex justify-center items-center bg-spiroDiscoBall anim absolute bottom-0 right-0 hover:opacity-75">
-                    <svg width="17" height="20" viewBox="0 0 17 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M0 0L17 10L0 20V0Z" fill="white" />
-                    </svg>
-                  </button>
-                </div>
-                <div className="p-4">
-                  <h5 className="text-xl font-bold text-ev-dark">Children's Party Planners Event</h5>
-                  <p className="mt-2 text-sm font-bold text-[#9BA0A8]">250 Offer</p>
-                </div>
-              </div>
-            </div> */}
-            <div className="w-full md:w-1/2 xl:w-1/4 p-2 lg:p-4">
-              <div className="block shadow-xl">
-                <div className="relative">
-                  <img className="object-cover w-full h-56" src={BirthdaypartyEvent} alt="Fruit_Market_Offers.png" />
-                  <button onClick={() => {
+                  <img className="object-cover w-full h-56" src={VendorVideo} alt="Mobile_Store_Offer.png" />
+                  <button onClick={()=> {
                     setIsVideoPlayerPopUpOpen(true)
                     setVideoUrl("https://eventopackage.s3.ap-south-1.amazonaws.com/global/vendors2.mp4");
                   }} className="w-12 h-12 flex justify-center items-center bg-spiroDiscoBall anim absolute bottom-0 right-0 hover:opacity-75">
@@ -900,16 +1015,19 @@ function LandingPage() {
                   </button>
                 </div>
                 <div className="p-4">
-                  <h5 className="text-xl font-bold text-ev-dark">Vendors</h5>
+                  <h5 className="text-xl font-bold text-ev-dark">Vendors Event</h5>
                   <p className="mt-2 text-sm font-bold text-[#9BA0A8]">250 Offer</p>
                 </div>
               </div>
             </div>
-            <div className="w-full md:w-1/2 xl:w-1/4 p-2 lg:p-4">
-              <div className="block shadow-xl">
+            </SwiperSlide>
+            <SwiperSlide>
+              
+            <div className="w-full p-2">
+              <div className="block shadow">
                 <div className="relative">
-                  <img className="object-cover w-full h-56" src={SummerGardenPartyEvent} alt="Fashion_Store_Offers.png" />
-                  <button onClick={() => {
+                  <img className="object-cover w-full h-56" src={VenueVideo} alt="Mobile_Store_Offer.png" />
+                  <button onClick={()=> {
                     setIsVideoPlayerPopUpOpen(true)
                     setVideoUrl("https://eventopackage.s3.ap-south-1.amazonaws.com/global/venue_package2.mp4");
                   }} className="w-12 h-12 flex justify-center items-center bg-spiroDiscoBall anim absolute bottom-0 right-0 hover:opacity-75">
@@ -919,14 +1037,24 @@ function LandingPage() {
                   </button>
                 </div>
                 <div className="p-4">
-                  <h5 className="text-xl font-bold text-ev-dark">Venue</h5>
+                  <h5 className="text-xl font-bold text-ev-dark">Venue Event</h5>
                   <p className="mt-2 text-sm font-bold text-[#9BA0A8]">250 Offer</p>
                 </div>
               </div>
             </div>
+
+            </SwiperSlide>
+
+            {/* <div ref={navigationNextRef} className={"swiper-button-next text-3xl"} />
+              <div ref={navigationPrevRef} className={"swiper-button-prev"} /> */}
+            </Swiper>
+          </div>
+
+
           </div>
         </div>
       </section>
+      
 
       {/* Our Company */}
       <div id="aboutus" className="bg-white">

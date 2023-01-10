@@ -9,6 +9,7 @@ import LandingPage from "./component/landing_page/LandingPage";
 import Otp from "./component/auth/Otp";
 import ForgotPassword from "./component/auth/ForgetPassword";
 import NewPassword from "./component/auth/NewPassword";
+import RequireAuth from "./component/auth/RequiredAuth";
 
 function App() {
   return (
@@ -24,7 +25,9 @@ function App() {
             <Route path="forgot-password" element={<ForgotPassword />} />
             <Route path="new-password/:username" element={<NewPassword />} />
           </Route>
+          <Route element={<RequireAuth  />}>
           <Route path="/*" element={<SideBar />} />
+          </Route>
           {/* <Route path="dashboard/*" element={<SideBar />} /> */}
           <Route path="*" element={<h1 style={{ color: "red", margin: "50px" }}>404 | PAGE NOT FOUND</h1>} />
         </Route>

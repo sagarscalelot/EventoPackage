@@ -13,7 +13,7 @@ function EventPopUpDiscountOnTotalBill({handleClose, eventId, setSelectedDiscoun
   const [tandc, setTandc] = useState(selectedDiscount.tandc);
 
   const validateDiscount = (e) => {
-		if((e.target.value <= 100) && (e.target.value >= 0)) {
+		if((e.target.value <= 100) && (e.target.value >= 0)  && (e.target.value >= 0)) {
 			setValue(e.target.value);
       setDiscount(e.target.value);
       selectedDiscount.discount = e.target.value + "%";

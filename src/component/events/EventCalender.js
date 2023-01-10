@@ -22,7 +22,7 @@ function EventCalender() {
 	const dispatch = useDispatch();
 	const params = useParams();
 	const eventType = params.eventType;
-	const [startDate, setStartDate] = useState("");
+	const [eventList, setEventList] = useState([]);
 	const [endDate, setEndDate] = useState("");
 	const [name, setName] = useState("");
 	const [data, setData] = useState([])
@@ -39,16 +39,21 @@ function EventCalender() {
 	const Calendar = async () => {
 		try {
 			const response = await axios.get(`${baseUrl}/organizer/events/getone?eventid=${eventId}`, { headers: header });
-			// setCal(response.data.Data.attendee)
-			// console.log(cal);
+				const data = response.data.Data.attendee
 
-			// const zebra = moment.unix(response.data.Data.attendee[setnamess].start_timestamp / 1000).format('LL HH:mm');
-			// setStartDate((moment.unix(response.data.Data.attendee[setnamess].start_timestamp / 1000)).toString());
-			// setEndDate((moment.unix(response.data.Data.attendee[setnamess].end_timestamp / 1000)).toString());
+				console.log("Log",data);
 
+				const array = [];
 
-			setStartDate((moment.unix(response.data.Data.attendee[0].start_timestamp/1000)).toString());
-			setEndDate((moment.unix(response.data.Data.attendee[0].end_timestamp/1000)).toString());
+				data.forEach(element => {
+					array.push({
+						     title: element.name,
+							   start: new Date((moment.unix(element.start_timestamp / 1000)).toString()),
+						     end: new Date((moment.unix(element.end_timestamp / 1000)).toString()),
+						     color: "#20C0E8"
+					})
+				});
+				setEventList(array);
 			
 		} catch (error) {
 			console.log(error);
@@ -71,14 +76,7 @@ function EventCalender() {
 		navigate(-1);
 	}
 
-	const generateRandomColor = () =>{
-		let maxVal = 0xFFFFFF; // 16777215
-		let randomNumber = Math.random() * maxVal; 
-		randomNumber = Math.floor(randomNumber);
-		randomNumber = randomNumber.toString(16);
-		let randColor = randomNumber.padStart(6, 0);   
-		return `#${randColor.toUpperCase()}`
-	}
+	const generateRandomColor = "#20C0E8"
 	
 	
   return (
@@ -132,9 +130,7 @@ function EventCalender() {
 					<FullCalendar
 						plugins={[dayGridPlugin]}
 						initialView="dayGridMonth"
-						events={[
-							{ title: name,  start: new Date(startDate), end: new Date(endDate), color: generateRandomColor() },
-						  ]}
+						events={eventList}
 						
 					/>
 				</div>

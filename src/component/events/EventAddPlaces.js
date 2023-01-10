@@ -41,7 +41,7 @@ function EventAddPlaces() {
 	}, []);
 
 	const clickNextHandler = () => {
-		toast.success("Data Saved Successfully.");
+		// toast.success("Data Saved Successfully.");
 		dispatch(increment());
 		if (eventType === "hyp") navigate(`../aboutplace`);
 		else navigate(`../personalinfo`);

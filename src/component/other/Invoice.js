@@ -62,7 +62,7 @@ function Invoice() {
 						<>
 							<div key={e?._id} e={e} className="w-full bg-white flex justify-between p-6 rounded-lg cursor-pointer" onClick={() => { localStorage.setItem('invoiceId', e?._id); navigate("invoicedetials") }}>
 								<div className="flex items-center space-x-6">
-									<p className="h2"># 96935</p>
+									<p className="h2">{e.invoice_no}</p>
 									<p className="h2 font-medium text-quicksilver">{e?.name}</p>
 									<p className="h2 font-medium text-quicksilver">{e?.userid?.name}</p>
 								</div>
