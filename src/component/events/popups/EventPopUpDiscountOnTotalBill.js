@@ -15,10 +15,6 @@ function EventPopUpDiscountOnTotalBill({ handleClose, eventId, setSelectedDiscou
 
 
   const validateDiscount = (e) => {
-<<<<<<< HEAD
-		if((e.target.value <= 100) && (e.target.value >= 0)  && (e.target.value >= 0)) {
-			setValue(e.target.value);
-=======
     setIsValid(false)
     if (!e.target.value || e.target.value == '') {
       setError("Discount Is Required");
@@ -26,9 +22,7 @@ function EventPopUpDiscountOnTotalBill({ handleClose, eventId, setSelectedDiscou
     } else if ((e.target.value <= 100) && (e.target.value > 0)) {
       console.log(e.target.value);
       setValue(e.target.value);
->>>>>>> 7f9d8ab3b279607c992524092ed6be651e5c18f9
       setDiscount(e.target.value);
-      selectedDiscount.discount = e.target.value + "%";
       setError(null);
       setIsValid(true)
     } else {
@@ -37,11 +31,13 @@ function EventPopUpDiscountOnTotalBill({ handleClose, eventId, setSelectedDiscou
     }
   }
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
     if (isValid) {
       console.log(discount);
       handleClose(false)
       setDiscount(discount);
+      selectedDiscount.discount = discount + "%";
+
     }
   }
 

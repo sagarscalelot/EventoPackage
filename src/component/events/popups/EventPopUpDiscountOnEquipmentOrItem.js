@@ -99,7 +99,6 @@ function EventPopUpDiscountOnEquipmentOrItem({ handleClose, eventId, setSelected
 		} else if ((e.target.value <= 100) && (e.target.value >= 0)) {
 			setDiscount(e.target.value);
 			console.log("D :", e.target.value);
-			selectedDiscount.discount = e.target.value + "%";
 			setError(null);
 			setIsValid(true)
 		} else {
@@ -122,6 +121,7 @@ function EventPopUpDiscountOnEquipmentOrItem({ handleClose, eventId, setSelected
 					((e.type === "equipment" ? (selectedDiscount.equipments).push(e._id) :
 						(selectedDiscount.items).push(e._id)))
 			})
+			selectedDiscount.discount = discount + "%";
 			handleClose(false);
 		}
 	}

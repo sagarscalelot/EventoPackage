@@ -42,7 +42,7 @@ export default function InvoiceDetials() {
                 <div className="p-8 rounded-md bg-white">
                     <div className="w-full flex items-center pb-9 border-b border-brightGray">
                         <div className="w-14 h-14 rounded-full overflow-hidden">
-                            <img src={invoiceData?.userid && invoiceData?.userid?.profile_pic && invoiceData?.userid?.profile_pic !== '' ? (s3Url + "/" + invoiceData?.userid?.profile_pic) : DefaultProfileImg} className="w-full object-cover" alt="Invoice_Details_profile" />
+                            <img src={invoiceData?.userid && invoiceData?.userid?.profile_pic && invoiceData?.userid?.profile_pic !== '' ? (s3Url + "/" + invoiceData?.userid?.profile_pic) : DefaultProfileImg} className="w-full h-full object-cover" alt="Invoice_Details_profile" />
                         </div>
                         <div className="text-left pl-4">
                             <span className="block text-base font-bold">Name</span>
