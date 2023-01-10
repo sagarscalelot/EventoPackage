@@ -38,7 +38,6 @@ function EventDiscounts() {
 			if (response.data.IsSuccess) {
 				try {
 					const res = await axios.get(`${baseUrl}/organizer/events/discount?eventid=${eventId}`, { headers: header });
-					
 					response.data.Data.map((element) => {
 						let isMatched = false;
 						res.data.Data.discounts.map(selement => {
@@ -47,7 +46,6 @@ function EventDiscounts() {
 								isMatched = true;
 								setActiveList(current => [...current, selement]);
 							}
-							
 						});
 						if (!isMatched) {
 							displayDiscount.push(element);

@@ -30,7 +30,7 @@ function EventPopUpDiscountOnTotalBill({ handleClose, eventId, setSelectedDiscou
       setError("Enter Valid Discount value");
     }
   }
-  
+
   const handleSubmit = async () => {
     if (isValid) {
       console.log(discount);

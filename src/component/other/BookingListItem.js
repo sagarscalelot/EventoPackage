@@ -15,8 +15,8 @@ function BookingListItem(data) {
                     <h2>{data?.data?.name}</h2>
                     <h2>{data.data.totalPrice} INR</h2>
                 </div>
-                <div className="flex items-center space-x-2 pb-5 border-b">
-                    <img src={data?.data && data?.data?.userid && data?.data?.userid?.profile_pic && data?.data?.userid?.profile_pic !== '' ? (s3Url + "/" + data?.data?.userid?.profile_pic) : userImg} alt="user-3" className="w-9 h-9 object-cover" />
+                <div className="flex items-center space-x-2 pb-5 border-b w-9 h-9 over">
+                    <img src={data?.data && data?.data?.userid && data?.data?.userid?.profile_pic && data?.data?.userid?.profile_pic !== '' ? (s3Url + "/" + data?.data?.userid?.profile_pic) : userImg} alt="user-3" className="w-full h-full object-cover" />
                     <p className="text-base text-quicksilver font-normal">{data?.data?.userid?.name}</p>
                 </div>
                 <div className="flex items-center pt-5 space-x-7">

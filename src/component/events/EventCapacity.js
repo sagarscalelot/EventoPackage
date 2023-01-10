@@ -29,8 +29,6 @@ function EventCapacity() {
   const [coordinates, setCoordinates] = useState([]);
 
   const ValidationSchema = Yup.object().shape({
-    // person_capacity: Yup.string().required("Person Capacity is required"),
-    // parking_capacity: Yup.string().required("Parking Capacity is required")
     person_capacity: Yup.number().typeError('Person Capacity must be a digit').integer().positive("Person Capacity must be positive").required("Person Capacity is required"),
     parking_capacity: Yup.number().typeError('Parking Capacity must be a digit').integer().positive("Parking Capacity must be positive").required("Parking Capacity is required")
   });
@@ -205,7 +203,7 @@ function EventCapacity() {
             </div>
             <small className="text-red-500 text-xs">{formik.errors.parking_capacity}</small>
             <div className="w-full relative">
-              <button className='absolute bottom-3 right-3 bg-spiroDiscoBall text-base capitalize font-semibold text-white px-7 py-3 rounded-md z-40' onClick={getLiveLocation}>Get Live Location</button>
+              <button type='button' className='absolute bottom-3 right-3 bg-spiroDiscoBall text-base capitalize font-semibold text-white px-7 py-3 rounded-md z-40' onClick={getLiveLocation}>Get Live Location</button>
               <span className="input-titel">Address</span>
               <span className="input-titel">{values.address}</span>
               <div className="w-full flex flex-wrap bg-white p-2 rounded-md min-h-[300px] xl:min-h-[400px]">

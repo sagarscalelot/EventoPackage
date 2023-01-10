@@ -90,7 +90,7 @@ function Booking() {
                                 <h2>{e?.totalPrice} INR</h2>
                             </div>
                             <div className="flex items-center space-x-2 pb-5 border-b">
-                                <img src={e && e.userid && e.userid.profile_pic && e.userid.profile_pic !== '' ? (s3Url + "/" + e.userid.profile_pic) : userImg} alt="user-3" className="w-9 h-9 object-cover" />
+                                <img src={e && e.userid && e.userid.profile_pic && e.userid.profile_pic !== '' ? (s3Url + "/" + e.userid.profile_pic) : userImg} alt="user-3" className="w-9 h-9 rounded-full overflow-hidden object-cover" />
                                 <p className="text-base text-quicksilver font-normal">{e?.userid?.name}</p>
                             </div>
                             <div className="flex items-center justify-between py-5">
