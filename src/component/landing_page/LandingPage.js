@@ -424,7 +424,7 @@ function LandingPage() {
         </div>
       </div>
 
-      {/* eVANT bANNER */}
+      {/* EVANT bANNER */}
       <div className="bg-white">
         {/* banner slider */}
         <div className="wrapper">
