@@ -37,7 +37,6 @@ function EventPopUpDiscountOnTotalBill({ handleClose, eventId, setSelectedDiscou
       handleClose(false)
       setDiscount(discount);
       selectedDiscount.discount = discount + "%";
-
     }
   }
 
