@@ -16,7 +16,7 @@ function EventAboutPlace() {
 	const dispatch = useDispatch();
 	const params = useParams();
 	const [banner, setBanner] = useState("");
-	const [priceType, setPriceType] = useState("per_hour");
+	const [priceType, setPriceType] = useState("per_day");
 	const [about, setAbout] = useState("");
 	const eventId = localStorage.getItem("eventId");
 	const eventType = params.eventType;
@@ -36,7 +36,7 @@ function EventAboutPlace() {
 	const initialState = {
 		place_price: "",
 	}
-	
+
 	const clickNextHandler = async (values) => {
 		const requestObj = {
 			...values,
@@ -129,6 +129,12 @@ function EventAboutPlace() {
 		}
 	}
 
+	// const perDay = () => {
+	// 	if (priceType === "per_day" && true) {
+
+	// 	}
+	// }
+
 	useEffect(() => {
 		getAboutPlace();
 	}, []);
@@ -165,7 +171,7 @@ function EventAboutPlace() {
 							</label>
 							<span className="input-titel ml-2">{banner ? (banner.name || banner) : "Please select Images"}</span>
 						</div>
-						<div className="w-full">
+						{/* <div className="w-full">
 							<span className="input-titel">Price</span>
 							<label htmlFor="" className="flex items-center w-full bg-white p-2 px-3.5 rounded-md">
 								<div className="w-full px-3.5">
@@ -174,14 +180,14 @@ function EventAboutPlace() {
 								</div>
 								<div className="selectPrice flex items-center space-x-3">
 									<label className="block cursor-pointer">
-										<input type="radio" name="price" value="per_day" checked={priceType === "per_day" && true} className="hidden" onChange={(e) => setPriceType("per_day")} />
+										<input type="radio" name="price" value="per_day" defaultChecked className="hidden" onChange={(e) => setPriceType("per_day")} />
 										<span
 											className="text-sm text-quicksilver py-2 px-3 bg-white shadow-lg whitespace-nowrap font-bold rounded block">
 											Per / Day
 										</span>
 									</label>
 									<label className="block cursor-pointer">
-										<input type="radio" name="price" value="per_hour" className="hidden" defaultChecked onChange={(e) => setPriceType("per_hour")} />
+										<input type="radio" name="price" value="per_hour" className="hidden" checked={priceType === "per_hour" && true} onChange={(e) => setPriceType("per_hour")} />
 										<span
 											className="text-sm text-quicksilver py-2 px-3 bg-white shadow-lg whitespace-nowrap font-bold rounded block">
 											Per / Hour
@@ -196,7 +202,53 @@ function EventAboutPlace() {
 									</label>
 								</div>
 							</label>
+						</div> */}
+
+						{/* option 1 */}
+						<div className="flex items-center space-x-3">
+							<div className={"inputHolder " + (priceType === "per_day" && true ? 'w-8/12' : 'w-8/12')}>
+								<span className="input-titel">Price<span>*</span></span>
+								<label htmlFor="" className="flex items-center w-full bg-white p-2 px-3.5 rounded-md">
+									<div className="w-full inputHolder">
+										<input type="text" className="w-full outline-none text-spiroDiscoBall font-bold text-base"
+											value={formik.values?.place_price} name="place_price" onChange={(e) => setInputValue("place_price", e.target.value)} />
+									</div>
+									<div className="selectPrice flex items-center space-x-3">
+										<label className="block cursor-pointer">
+											<input type="radio" name="price" value="per_day" defaultChecked className="hidden" onChange={(e) => setPriceType("per_day")} />
+											<span
+												className="text-sm text-quicksilver py-2 px-3 bg-white shadow-lg whitespace-nowrap font-bold rounded block">
+												Per / Day
+											</span>
+										</label>
+										<label className="block cursor-pointer">
+											<input type="radio" name="price" value="per_hour" className="hidden" checked={priceType === "per_hour" && true} onChange={(e) => setPriceType("per_hour")} />
+											<span
+												className="text-sm text-quicksilver py-2 px-3 bg-white shadow-lg whitespace-nowrap font-bold rounded block">
+												Per / Hour
+											</span>
+										</label>
+										<label className="block cursor-pointer">
+											<input type="radio" name="price" value="per_event" className="hidden" checked={priceType === "per_event" && true} onChange={(e) => setPriceType("per_event")} />
+											<span
+												className="text-sm text-quicksilver py-2 px-3 bg-white shadow-lg whitespace-nowrap font-bold rounded block">
+												Per / Event
+											</span>
+										</label>
+									</div>
+								</label>
+							</div>
+
+							<div className={"inputHolder " + (priceType === "per_hour" ? 'w-4/12' : (priceType === "per_event" ? 'w-2/12' : (priceType === "per_day" ? 'w-4/12' : 'hidden')))}>
+								<label className="input-titel">Clearing Time <span>*</span></label>
+								<input type="time" className="input py-[14px]" name='clearning time' />
+							</div>
+							<div className={"inputHolder " + (priceType === "per_event" ? 'w-2/12' : 'hidden')}>
+								<label className="input-titel">Max Day<span>*</span></label>
+								<input type="number" className="input py-[14px]" name='max day price' />
+							</div>
 						</div>
+
 						<small className="text-red-500 text-xs">{formik.errors.place_price}</small>
 						<div className="w-full">
 							<span className="input-titel">About place</span>
