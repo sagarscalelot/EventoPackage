@@ -25,7 +25,7 @@ function App() {
             <Route path="forgot-password" element={<ForgotPassword />} />
             <Route path="new-password/:username" element={<NewPassword />} />
           </Route>
-          <Route element={<RequireAuth  />}>
+          <Route element={<RequireAuth />}>
           <Route path="/*" element={<SideBar />} />
           </Route>
           {/* <Route path="dashboard/*" element={<SideBar />} /> */}
