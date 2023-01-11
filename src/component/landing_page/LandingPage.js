@@ -53,7 +53,42 @@ import siderevento from "../../assest/images/landing-page/sider-evento.png";
 import giftfcoin from "../../assest/images/landing-page/surprise 1.png";
 import Advertisement from "../Advertisement";
 import multidivice from "../../assest/images/landing-page/Multi-Devices.png";
-import banner1 from "../../assest/images/landing-page/heroBanner1.png";
+import banner1 from "../../assest/images/landing-page/SevicesPhotos/ART GALLERIES.jpg";
+import banner2 from "../../assest/images/landing-page/SevicesPhotos/artist-3480274_1920.jpg";
+import banner3 from "../../assest/images/landing-page/SevicesPhotos/BALOON DECORATION.jpg";
+import banner4 from "../../assest/images/landing-page/SevicesPhotos/BARS1.jpg";
+import banner5 from "../../assest/images/landing-page/SevicesPhotos/CAKE MAKER1.jpg";
+import banner6 from "../../assest/images/landing-page/SevicesPhotos/CARICATURE ARTIST.jpg";
+import banner7 from "../../assest/images/landing-page/SevicesPhotos/CATERERS 1.jpg";
+import banner8 from "../../assest/images/landing-page/SevicesPhotos/chairs.jpg";
+import banner9 from "../../assest/images/landing-page/SevicesPhotos/Choreographer.jfif";
+import banner10 from "../../assest/images/landing-page/SevicesPhotos/CLOWN.jpg";
+import banner11 from "../../assest/images/landing-page/SevicesPhotos/WEDDING DECORATOR.jpeg";
+import banner12 from "../../assest/images/landing-page/SevicesPhotos/CLUBS.jpg";
+import banner13 from "../../assest/images/landing-page/SevicesPhotos/CONFERENCE CENTERS 1.jpg";
+import banner14 from "../../assest/images/landing-page/SevicesPhotos/DANCER.jpeg";
+import banner15 from "../../assest/images/landing-page/SevicesPhotos/DECORATION.jpg";
+import banner16 from "../../assest/images/landing-page/SevicesPhotos/farm house 1.jpg";
+import banner17 from "../../assest/images/landing-page/SevicesPhotos/FASHION DESIGNER2.jpg";
+import banner18 from "../../assest/images/landing-page/SevicesPhotos/GROUND2.jpg";
+import banner19 from "../../assest/images/landing-page/SevicesPhotos/HOTEL1.jpg";
+import banner20 from "../../assest/images/landing-page/SevicesPhotos/light& sound.jpg";
+import banner21 from "../../assest/images/landing-page/SevicesPhotos/LIGHT.jpg";
+import banner22 from "../../assest/images/landing-page/SevicesPhotos/MAGICIAN1.jpeg";
+import banner23 from "../../assest/images/landing-page/SevicesPhotos/MAKEUP ARTIST.jpg";
+import banner24 from "../../assest/images/landing-page/SevicesPhotos/MASCOTS.jpg";
+import banner25 from "../../assest/images/landing-page/SevicesPhotos/MOTIVATIONAL SPEAKER1.jpg";
+import banner26 from "../../assest/images/landing-page/SevicesPhotos/PHOTO STUDIO3.jpg";
+import banner27 from "../../assest/images/landing-page/SevicesPhotos/PHOTOGRAPHER3.jpg";
+import banner28 from "../../assest/images/landing-page/SevicesPhotos/PUPPETEERS.jpg";
+import banner29 from "../../assest/images/landing-page/SevicesPhotos/SECURITY PROVIDER1.jpg";
+import banner30 from "../../assest/images/landing-page/SevicesPhotos/SERVING STAFF.jpeg";
+import banner31 from "../../assest/images/landing-page/SevicesPhotos/SPEAKER – ANCHER.jpg";
+import banner32 from "../../assest/images/landing-page/SevicesPhotos/Suerte-Yacht-69M-Rear-View.webp";
+import banner33 from "../../assest/images/landing-page/SevicesPhotos/TATTOO ARTIST.jpg";
+import banner34 from "../../assest/images/landing-page/SevicesPhotos/THEME DECORATION1.jpg";
+
+
 import dj from "../../assest/images/landing-page/dj.png";
 import Speaker from "../../assest/images/landing-page/Speaker.png";
 import noiseporn from "../../assest/images/landing-page/noiseporn.jpg";
@@ -436,7 +471,7 @@ function LandingPage() {
               spaceBetween={30}
               centeredSlides={true}
               autoplay={{
-                delay: 2500,
+                delay: 2000,
                 disableOnInteraction: false,
               }}
               pagination={{
@@ -452,17 +487,167 @@ function LandingPage() {
               </SwiperSlide>
               <SwiperSlide>
                 <div className="w-full h-full min-h-[250px] md:min-h-[350px] xl:min-h-[450px] rounded-xl lg:rounded-2xl 2xl:rounded-3xl overflow-hidden relative">
-                  <img src={banner1} className="w-full h-full object-cover absolute inset-0" alt="Bannr1" />
+                  <img src={banner2} className="w-full h-full object-cover absolute inset-0" alt="Bannr1" />
                 </div>
               </SwiperSlide>
               <SwiperSlide>
                 <div className="w-full h-full min-h-[250px] md:min-h-[350px] xl:min-h-[450px] rounded-xl lg:rounded-2xl 2xl:rounded-3xl overflow-hidden relative">
-                  <img src={banner1} className="w-full h-full object-cover absolute inset-0" alt="Bannr1" />
+                  <img src={banner3} className="w-full h-full object-cover absolute inset-0" alt="Bannr1" />
                 </div>
               </SwiperSlide>
               <SwiperSlide>
                 <div className="w-full h-full min-h-[250px] md:min-h-[350px] xl:min-h-[450px] rounded-xl lg:rounded-2xl 2xl:rounded-3xl overflow-hidden relative">
-                  <img src={banner1} className="w-full h-full object-cover absolute inset-0" alt="Bannr1" />
+                  <img src={banner4} className="w-full h-full object-cover absolute inset-0" alt="Bannr1" />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide>
+                <div className="w-full h-full min-h-[250px] md:min-h-[350px] xl:min-h-[450px] rounded-xl lg:rounded-2xl 2xl:rounded-3xl overflow-hidden relative">
+                  <img src={banner5} className="w-full h-full object-cover absolute inset-0" alt="Bannr1" />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide>
+                <div className="w-full h-full min-h-[250px] md:min-h-[350px] xl:min-h-[450px] rounded-xl lg:rounded-2xl 2xl:rounded-3xl overflow-hidden relative">
+                  <img src={banner6} className="w-full h-full object-cover absolute inset-0" alt="Bannr1" />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide>
+                <div className="w-full h-full min-h-[250px] md:min-h-[350px] xl:min-h-[450px] rounded-xl lg:rounded-2xl 2xl:rounded-3xl overflow-hidden relative">
+                  <img src={banner7} className="w-full h-full object-cover absolute inset-0" alt="Bannr1" />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide>
+                <div className="w-full h-full min-h-[250px] md:min-h-[350px] xl:min-h-[450px] rounded-xl lg:rounded-2xl 2xl:rounded-3xl overflow-hidden relative">
+                  <img src={banner8} className="w-full h-full object-cover absolute inset-0" alt="Bannr1" />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide>
+                <div className="w-full h-full min-h-[250px] md:min-h-[350px] xl:min-h-[450px] rounded-xl lg:rounded-2xl 2xl:rounded-3xl overflow-hidden relative">
+                  <img src={banner9} className="w-full h-full object-cover absolute inset-0" alt="Bannr1" />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide>
+                <div className="w-full h-full min-h-[250px] md:min-h-[350px] xl:min-h-[450px] rounded-xl lg:rounded-2xl 2xl:rounded-3xl overflow-hidden relative">
+                  <img src={banner10} className="w-full h-full object-cover absolute inset-0" alt="Bannr1" />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide>
+                <div className="w-full h-full min-h-[250px] md:min-h-[350px] xl:min-h-[450px] rounded-xl lg:rounded-2xl 2xl:rounded-3xl overflow-hidden relative">
+                  <img src={banner11} className="w-full h-full object-cover absolute inset-0" alt="Bannr1" />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide>
+                <div className="w-full h-full min-h-[250px] md:min-h-[350px] xl:min-h-[450px] rounded-xl lg:rounded-2xl 2xl:rounded-3xl overflow-hidden relative">
+                  <img src={banner12} className="w-full h-full object-cover absolute inset-0" alt="Bannr1" />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide>
+                <div className="w-full h-full min-h-[250px] md:min-h-[350px] xl:min-h-[450px] rounded-xl lg:rounded-2xl 2xl:rounded-3xl overflow-hidden relative">
+                  <img src={banner13} className="w-full h-full object-cover absolute inset-0" alt="Bannr1" />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide>
+                <div className="w-full h-full min-h-[250px] md:min-h-[350px] xl:min-h-[450px] rounded-xl lg:rounded-2xl 2xl:rounded-3xl overflow-hidden relative">
+                  <img src={banner14} className="w-full h-full object-cover absolute inset-0" alt="Bannr1" />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide>
+                <div className="w-full h-full min-h-[250px] md:min-h-[350px] xl:min-h-[450px] rounded-xl lg:rounded-2xl 2xl:rounded-3xl overflow-hidden relative">
+                  <img src={banner15} className="w-full h-full object-cover absolute inset-0" alt="Bannr1" />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide>
+                <div className="w-full h-full min-h-[250px] md:min-h-[350px] xl:min-h-[450px] rounded-xl lg:rounded-2xl 2xl:rounded-3xl overflow-hidden relative">
+                  <img src={banner16} className="w-full h-full object-cover absolute inset-0" alt="Bannr1" />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide>
+                <div className="w-full h-full min-h-[250px] md:min-h-[350px] xl:min-h-[450px] rounded-xl lg:rounded-2xl 2xl:rounded-3xl overflow-hidden relative">
+                  <img src={banner17} className="w-full h-full object-cover absolute inset-0" alt="Bannr1" />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide>
+                <div className="w-full h-full min-h-[250px] md:min-h-[350px] xl:min-h-[450px] rounded-xl lg:rounded-2xl 2xl:rounded-3xl overflow-hidden relative">
+                  <img src={banner18} className="w-full h-full object-cover absolute inset-0" alt="Bannr1" />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide>
+                <div className="w-full h-full min-h-[250px] md:min-h-[350px] xl:min-h-[450px] rounded-xl lg:rounded-2xl 2xl:rounded-3xl overflow-hidden relative">
+                  <img src={banner19} className="w-full h-full object-cover absolute inset-0" alt="Bannr1" />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide>
+                <div className="w-full h-full min-h-[250px] md:min-h-[350px] xl:min-h-[450px] rounded-xl lg:rounded-2xl 2xl:rounded-3xl overflow-hidden relative">
+                  <img src={banner20} className="w-full h-full object-cover absolute inset-0" alt="Bannr1" />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide>
+                <div className="w-full h-full min-h-[250px] md:min-h-[350px] xl:min-h-[450px] rounded-xl lg:rounded-2xl 2xl:rounded-3xl overflow-hidden relative">
+                  <img src={banner21} className="w-full h-full object-cover absolute inset-0" alt="Bannr1" />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide>
+                <div className="w-full h-full min-h-[250px] md:min-h-[350px] xl:min-h-[450px] rounded-xl lg:rounded-2xl 2xl:rounded-3xl overflow-hidden relative">
+                  <img src={banner22} className="w-full h-full object-cover absolute inset-0" alt="Bannr1" />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide>
+                <div className="w-full h-full min-h-[250px] md:min-h-[350px] xl:min-h-[450px] rounded-xl lg:rounded-2xl 2xl:rounded-3xl overflow-hidden relative">
+                  <img src={banner23} className="w-full h-full object-cover absolute inset-0" alt="Bannr1" />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide>
+                <div className="w-full h-full min-h-[250px] md:min-h-[350px] xl:min-h-[450px] rounded-xl lg:rounded-2xl 2xl:rounded-3xl overflow-hidden relative">
+                  <img src={banner24} className="w-full h-full object-cover absolute inset-0" alt="Bannr1" />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide>
+                <div className="w-full h-full min-h-[250px] md:min-h-[350px] xl:min-h-[450px] rounded-xl lg:rounded-2xl 2xl:rounded-3xl overflow-hidden relative">
+                  <img src={banner25} className="w-full h-full object-cover absolute inset-0" alt="Bannr1" />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide>
+                <div className="w-full h-full min-h-[250px] md:min-h-[350px] xl:min-h-[450px] rounded-xl lg:rounded-2xl 2xl:rounded-3xl overflow-hidden relative">
+                  <img src={banner26} className="w-full h-full object-cover absolute inset-0" alt="Bannr1" />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide>
+                <div className="w-full h-full min-h-[250px] md:min-h-[350px] xl:min-h-[450px] rounded-xl lg:rounded-2xl 2xl:rounded-3xl overflow-hidden relative">
+                  <img src={banner27} className="w-full h-full object-cover absolute inset-0" alt="Bannr1" />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide>
+                <div className="w-full h-full min-h-[250px] md:min-h-[350px] xl:min-h-[450px] rounded-xl lg:rounded-2xl 2xl:rounded-3xl overflow-hidden relative">
+                  <img src={banner28} className="w-full h-full object-cover absolute inset-0" alt="Bannr1" />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide>
+                <div className="w-full h-full min-h-[250px] md:min-h-[350px] xl:min-h-[450px] rounded-xl lg:rounded-2xl 2xl:rounded-3xl overflow-hidden relative">
+                  <img src={banner29} className="w-full h-full object-cover absolute inset-0" alt="Bannr1" />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide>
+                <div className="w-full h-full min-h-[250px] md:min-h-[350px] xl:min-h-[450px] rounded-xl lg:rounded-2xl 2xl:rounded-3xl overflow-hidden relative">
+                  <img src={banner30} className="w-full h-full object-cover absolute inset-0" alt="Bannr1" />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide>
+                <div className="w-full h-full min-h-[250px] md:min-h-[350px] xl:min-h-[450px] rounded-xl lg:rounded-2xl 2xl:rounded-3xl overflow-hidden relative">
+                  <img src={banner31} className="w-full h-full object-cover absolute inset-0" alt="Bannr1" />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide>
+                <div className="w-full h-full min-h-[250px] md:min-h-[350px] xl:min-h-[450px] rounded-xl lg:rounded-2xl 2xl:rounded-3xl overflow-hidden relative">
+                  <img src={banner32} className="w-full h-full object-cover absolute inset-0" alt="Bannr1" />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide>
+                <div className="w-full h-full min-h-[250px] md:min-h-[350px] xl:min-h-[450px] rounded-xl lg:rounded-2xl 2xl:rounded-3xl overflow-hidden relative">
+                  <img src={banner33} className="w-full h-full object-cover absolute inset-0" alt="Bannr1" />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide>
+                <div className="w-full h-full min-h-[250px] md:min-h-[350px] xl:min-h-[450px] rounded-xl lg:rounded-2xl 2xl:rounded-3xl overflow-hidden relative">
+                  <img src={banner34} className="w-full h-full object-cover absolute inset-0" alt="Bannr1" />
                 </div>
               </SwiperSlide>
             </Swiper>

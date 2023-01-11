@@ -21,7 +21,7 @@ function DashboardEventAtteneeListItem({ data }) {
                     <p className="text-quicksilver text-xs font-bold flex items-center"><i className="icon-booking mr-2 text-sm"></i>{reviewTime}</p>
                 </div>
             </div>
-            <h3 className="text-lg">{data?.totalPrice}</h3>
+            <h3 className="text-lg">₹ {data?.totalPrice}</h3>
         </div>
     )
 } 

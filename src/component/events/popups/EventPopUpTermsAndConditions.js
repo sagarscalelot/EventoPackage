@@ -6,7 +6,7 @@ function EventPopUpTermsAndConditions({handleClose, terms, saveData}) {
 	
 	useEffect(() => {
 		const box = document.getElementById("termsBox");
-		box.innerHTML = terms;
+		box.innerHTML = "Evento Package is an online service offered by the Company. By accessing or using any website with an authorized link to the Website and/or the App, registering an account, or accessing or using any content, information, services, features, or resources available or enabled via the Website and/or the App, clicking on a button or taking another action to signify your acceptance of this Agreement, you:";
 	}, [terms]);
 	
   return (
