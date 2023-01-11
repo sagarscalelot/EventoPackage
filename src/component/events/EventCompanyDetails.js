@@ -140,13 +140,13 @@ function EventCompanyDetails() {
 
 	useEffect(() => {
 		getProfile();
-		
+
 	}, []);
 
 	useEffect(() => {
 		getCompanyDetail();
 	}, [])
-	
+
 
 	const pdfUpload = async (e) => {
 		const size = 1;
@@ -181,6 +181,7 @@ function EventCompanyDetails() {
 	}
 
 	const photoChangeHandler = async (event) => {
+		console.log("click");
 		const size = 5;
 		let selected = event.target.files[0];
 		if (imageList.length >= 5) {
@@ -321,9 +322,9 @@ function EventCompanyDetails() {
 								</div>
 								{/* {country_code} */}
 								<div className="flex">
-									<input type="text" className="input max-w-[80px] w-full mr-3" name="country_code" value={formik.values?.country_code} onChange={(e) => setInputValue("country_code", e.target.value)} required readOnly/>
+									<input type="text" className="input max-w-[80px] w-full mr-3" name="country_code" value={formik.values?.country_code} onChange={(e) => setInputValue("country_code", e.target.value)} required readOnly />
 									{console.log(">>>>>>>>>>>", formik.values?.country_code)}
-									<input type="text" className="input" name="mobile" value={formik.values?.mobile} onChange={(e) => setInputValue("mobile", e.target.value)} required readOnly/>
+									<input type="text" className="input" name="mobile" value={formik.values?.mobile} onChange={(e) => setInputValue("mobile", e.target.value)} required readOnly />
 									{console.log("<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>", formik.values?.mobile)}
 								</div>
 								<small className="text-red-500 text-xs">{formik.errors.mobile}</small>
@@ -389,8 +390,8 @@ function EventCompanyDetails() {
 						</div>
 						<div className="upload-holder px-2">
 							<span className="input-titel ">Company Photos Max 5 images (up to 5MB/image)</span>
-							<label htmlFor="upload" className="upload" onChange={photoChangeHandler}>
-								<input type="file" name="images" id="upload" className="appearance-none hidden" />
+							<label htmlFor="uploadimages" className="upload" >
+								<input type="file" name="images" id="uploadimages" className="appearance-none hidden" onChange={photoChangeHandler} />
 								<span className="input-titel mt-1"><i className="icon-image mr-2"></i>Upload Images</span>
 							</label>
 							{error && <small className="text-red-500 text-xs">{errorMessage} </small>}
