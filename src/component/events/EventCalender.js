@@ -78,6 +78,10 @@ function EventCalender() {
 	}
 
 
+const year = new Date().getFullYear();
+
+
+
 
 	return (
 		// <!-- Content In -->
@@ -111,17 +115,33 @@ function EventCalender() {
 							<div className="w-full lg:w-1/3 px-3.5">
 								<h3 className="pb-2">Months</h3>
 								<select className="bg-white rounded-md flex space-x-3 outline-0 px-6 py-4 relative arrow">
-									<option></option>
-									<option></option>
-									<option></option>
+									<option>January</option>
+									<option>February</option>
+									<option>March</option>
+									<option>April</option>
+									<option>May</option>
+									<option>June</option>
+									<option>July</option>
+									<option>August</option>
+									<option>September</option>
+									<option>October</option>
+									<option>November</option>
+									<option>December</option>
 								</select>
 							</div>
 							<div className="w-full lg:w-1/3 px-3.5">
 								<h3 className="pb-2">Years</h3>
 								<select className="bg-white rounded-md flex space-x-3 outline-0 px-6 py-4 relative arrow">
-									<option></option>
-									<option></option>
-									<option></option>
+									<option>{year}</option>
+									<option>{year+1}</option>
+									<option>{year+2}</option>
+									<option>{year+3}</option>
+									<option>{year+4}</option>
+									<option>{year+5}</option>
+									<option>{year+6}</option>
+									<option>{year+7}</option>
+									<option>{year+8}</option>
+									<option>{year+9}</option>
 								</select>
 							</div>
 						</div>

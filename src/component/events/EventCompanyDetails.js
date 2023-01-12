@@ -70,7 +70,7 @@ function EventCompanyDetails() {
 			const response = await axios.post(`${baseUrl}/organizer/events/companydetail`, requestObj, { headers: header });
 			console.log(response);
 			if (response.data.IsSuccess) {
-				toast.success(response.data.Message);
+				// toast.success(response.data.Message);
 				dispatch(increment());
 				navigate(`../termsandconditions`);
 
@@ -322,9 +322,9 @@ function EventCompanyDetails() {
 								</div>
 								{/* {country_code} */}
 								<div className="flex">
-									<input type="text" className="input max-w-[80px] w-full mr-3" name="country_code" value={formik.values?.country_code} onChange={(e) => setInputValue("country_code", e.target.value)} required readOnly />
+									<input type="text" className="input max-w-[80px] w-full mr-3" name="country_code" value={formik.values?.country_code} onChange={(e) => setInputValue("country_code", e.target.value)} readOnly />
 									{console.log(">>>>>>>>>>>", formik.values?.country_code)}
-									<input type="text" className="input" name="mobile" value={formik.values?.mobile} onChange={(e) => setInputValue("mobile", e.target.value)} required readOnly />
+									<input type="text" className="input" name="mobile" value={formik.values?.mobile} onChange={(e) => setInputValue("mobile", e.target.value)} readOnly />
 									{console.log("<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>", formik.values?.mobile)}
 								</div>
 								<small className="text-red-500 text-xs">{formik.errors.mobile}</small>

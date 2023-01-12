@@ -61,7 +61,7 @@ function EventPopUpCreateNew({ handleClose, selectedCategory, displayName, edit,
 			const response = await axios.post(`${baseUrl}/organizer/events/save`, requestObj, { headers: header });
 			// console.log("created event >> ", response);
 			if (response.data.IsSuccess) {
-				toast.success(response.data.Message);
+				// toast.success(response.data.Message);
 				handleClose(false);
 				if(!edit) {
 					dispatch(increment());

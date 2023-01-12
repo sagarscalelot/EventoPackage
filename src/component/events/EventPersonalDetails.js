@@ -66,7 +66,7 @@ function EventPersonalDetails() {
 			const response = await axios.post(`${baseUrl}/organizer/events/personaldetail`, requestObj, { headers: header });
 			console.log("Personal details > ", response);
 			if (response.data.IsSuccess) {
-				toast.success(response.data.Message);
+				// toast.success(response.data.Message);
 				dispatch(increment());
 				navigate(`../photosandvideos`);
 			} else {

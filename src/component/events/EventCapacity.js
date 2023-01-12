@@ -103,7 +103,7 @@ function EventCapacity() {
     try {
       const response = await axios.post(`${baseUrl}/organizer/events/capacity`, { ...values, facilities: type, eventid: eventId }, { headers: header });
       if (response.data.IsSuccess) {
-        toast.success(response.data.Message);
+        // toast.success(response.data.Message);
         dispatch(increment());
         navigate(`../companydetails`);
       } else {

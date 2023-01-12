@@ -100,7 +100,7 @@ function EventDiscounts() {
 		} catch (error) {
 			console.log("Error", error);
 		}
-		toast.success("Data saved Successfully.");
+		// toast.success("Data saved Successfully.");
 		dispatch(increment());
 		navigate(`../calender`);
 	}

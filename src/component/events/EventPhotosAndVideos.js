@@ -88,7 +88,7 @@ const removeVideoClick = async(index) => {
 }
 
 const clickNextHandler = () => {
-	toast.success("Data saved successfully.");
+	// toast.success("Data saved successfully.");
 	dispatch(increment());
 	if(eventType === "gsb") navigate(`../additem`);
 	else if(eventType === "psb") navigate(`../addequipments`);

@@ -37,8 +37,10 @@ function EventAboutPlace() {
 
 	const initialState = {
 		place_price: "",
+
 		clearing_time: "0",
 		max_day: "0",
+
 
 	}
 
@@ -52,9 +54,8 @@ function EventAboutPlace() {
 		}
 		try {
 			const response = await axios.post(`${baseUrl}/organizer/events/aboutplace`, requestObj, { headers: header });
-
 			if (response.data.IsSuccess) {
-				toast.success(response.data.Message);
+				// toast.success(response.data.Message);
 				dispatch(increment());
 				navigate("../personaldetails");
 			} else {
@@ -173,6 +174,7 @@ function EventAboutPlace() {
 							</label>
 							<span className="input-titel ml-2">{banner ? (banner.name || banner) : "Please select Images"}</span>
 						</div>
+
 						{/* option 1 */}
 						<div className="flex items-center space-x-3">
 							<div className={"inputHolder " + (priceType === "per_day" && true ? 'w-8/12' : (priceType === "per_event" ? 'w-7/12 2xl:w-8/12' : 'w-7/12 2xl:w-8/12') && (priceType === "per_hour" ? 'w-8/12' : 'w-8/12'))}>
