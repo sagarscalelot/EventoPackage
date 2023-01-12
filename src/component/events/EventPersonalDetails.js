@@ -59,14 +59,12 @@ function EventPersonalDetails() {
 	const [count, setCount] = useState(false);
 
 	const clickNextHandler = async (values) => {
-
+		console.log("ASASADjhbgfbk");
 		const requestObj = { ...values, is_mobile_no_hidden: mobileNoHidden, is_email_hidden: emailHidden, eventid: eventId };
-
 		console.log("values >> ", requestObj);
 		try {
 			const response = await axios.post(`${baseUrl}/organizer/events/personaldetail`, requestObj, { headers: header });
 			console.log("Personal details > ", response);
-			console.log("requestObj",  requestObj);
 			if (response.data.IsSuccess) {
 				toast.success(response.data.Message);
 				dispatch(increment());
@@ -164,7 +162,7 @@ function EventPersonalDetails() {
 							</div>
 							<div className="w-full md:w-1/2 px-2 inputHolder">
 								<span className="input-titel">Full Name (Mr / Mrs / Ms) <span>*</span></span>
-								<input type="text" className="input" name="full_name" value={formik.values?.full_name}   />
+								<input type="text" className="input" name="full_name" value={formik.values?.full_name} disabled />
 								<small className="text-red-500 text-xs">{formik.errors.full_name}</small>
 								<br />
 							</div>
@@ -176,15 +174,15 @@ function EventPersonalDetails() {
 									<div className="input-checkd"><input type="checkbox" className="mr-2" name="is_mobile_hidden" onChange={() => setMobileNoHidden(!mobileNoHidden)} />Hidden</div>
 								</div>
 								<div className="flex">
-									<input type="text" className="input max-w-[80px] w-full mr-3" name="country-code" value={formik.values?.country_code}/>
-									<input type="text" className="input" name="mobile" value={formik.values?.mobile} /></div>
+									<input type="text" className="input max-w-[80px] w-full mr-3" name="country-code" value={formik.values?.country_code} disabled />
+									<input type="text" className="input" name="mobile" value={formik.values?.mobile} disabled /></div>
 								<small className="text-red-500 text-xs">{formik.errors.mobile}</small>
 								<br />
 							</div>
 							<div className="w-full md:w-1/3 px-2 inputHolder">
 								<label className="input-titel">Alternative Mobile Number <span></span></label>
-								<input type="text" className="input" name='alt_mobile' value={formik.values?.alt_mobile} onChange={(e) => setInputValue("alt_mobile", e.target.value)} />
-								<small className="text-red-500 text-xs">{formik.errors.alt_mobile}</small>
+								<input type="text" className="input" name='alt_mobile' value={formik.values?.alt_mobile_no} onChange={(e) => setInputValue("alt_mobile", e.target.value)} />
+								<small className="text-red-500 text-xs">{formik.errors.alt_mobile_no}</small>
 								<br />
 							</div>
 							<div className="w-full md:w-1/3 px-2 inputHolder">
@@ -192,7 +190,7 @@ function EventPersonalDetails() {
 									<label className="input-titel">Email Address <span>*</span></label>
 									<div className="input-checkd"><input type="checkbox" className="mr-2" onChange={() => setEmailHidden(!emailHidden)} />Hidden</div>
 								</div>
-								<input type="text" className="input" name='email' value={formik.values?.email}  />
+								<input type="text" className="input" name='email' value={formik.values?.email} readOnly />
 								<small className="text-red-500 text-xs">{formik.errors.email}</small>
 								<br />
 							</div>

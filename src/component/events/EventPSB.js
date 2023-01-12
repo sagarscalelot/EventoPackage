@@ -16,8 +16,8 @@ function EventPersonalDetails() {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const eventType = params.eventType;
-	const [price, setPrice] = useState("");
-	const [priceType, setPriceType] = useState("per_hour");
+	// const [price, setPrice] = useState("");
+	const [priceType, setPriceType] = useState("per_day");
 	const eventId = localStorage.getItem("eventId");
 
 	const [banner, setBanner] = useState("");
@@ -41,13 +41,14 @@ function EventPersonalDetails() {
 		area: Yup.string(),
 		city: Yup.string().required('City name is required*'),
 		state: Yup.string().required('State name is required*'),
-		pincode: Yup.string().min(6, 'Too Short!').max(6, 'Too Long!').required('Pincode is required*')
+		pincode: Yup.string().min(6, 'Too Short!').max(6, 'Too Long!').required('Pincode is required*'),
+		price: Yup.number().typeError('Price must be a digit').integer().positive("Price must be positive").required("Price is required")
 	});
 	const initialState = {
 		professional_skill: "",
 		full_name: "",
 		mobile: "",
-		country_code:"",
+		country_code: "",
 		alt_mobile_no: "",
 		email: "",
 		flat_no: "",
@@ -56,13 +57,16 @@ function EventPersonalDetails() {
 		city: "",
 		state: "",
 		pincode: "",
+		price: "",
+		clearing_time: "0",
+		max_day: "0",
 	}
 	const [mobileNoHidden, setMobileNoHidden] = useState(false);
 	const [emailHidden, setEmailHidden] = useState(false);
 	const [count, setCount] = useState(false);
 
 	const clickNextHandler = async (values) => {
-		const requestObj = { ...values, is_mobile_no_hidden: mobileNoHidden, is_email_hidden: emailHidden, price: price, price_type: priceType, banner: banner, eventid: eventId };
+		const requestObj = { ...values, is_mobile_no_hidden: mobileNoHidden, is_email_hidden: emailHidden, price_type: priceType, banner: banner, eventid: eventId };
 		try {
 			const response = await axios.post(`${baseUrl}/organizer/events/personaldetail`, requestObj, { headers: header });
 			console.log("Personal details > ", response);
@@ -126,9 +130,6 @@ function EventPersonalDetails() {
 		}
 	}
 
-
-
-
 	const formik = useFormik({
 		initialValues: initialState,
 		validationSchema: ValidationSchema,
@@ -157,7 +158,7 @@ function EventPersonalDetails() {
 			if (response.data.Data.personaldetail) {
 				formik.setValues(response.data.Data.personaldetail);
 				setBanner(response.data.Data.personaldetail.banner);
-				setPrice(response.data.Data.personaldetail.price);
+				// setPrice(response.data.Data.personaldetail.price);
 				setPriceType(response.data.Data.personaldetail.price_type);
 			}
 			if (!response.data.IsSuccess) {
@@ -208,7 +209,7 @@ function EventPersonalDetails() {
 							</div>
 						</div>
 						<div className="w-full flex items-end flex-wrap">
-						<div className="w-full md:w-1/3 px-2 inputHolder">
+							<div className="w-full md:w-1/3 px-2 inputHolder">
 								<div className="input-label-holder">
 									<label className="input-titel">Mobile Number <span>*</span></label>
 									<div className="input-checkd"><input type="checkbox" className="mr-2" name="is_mobile_hidden" onChange={() => setMobileNoHidden(!mobileNoHidden)} />Hidden</div>
@@ -222,8 +223,8 @@ function EventPersonalDetails() {
 							</div>
 							<div className="w-full md:w-1/3 px-2 inputHolder">
 								<label className="input-titel">Alternative Mobile Number <span></span></label>
-								<input type="text" className="input" name='alt_mobile' value={formik.values?.alt_mobile} onChange={(e) => setInputValue("alt_mobile", e.target.value)} />
-								<small className="text-red-500 text-xs">{formik.errors.alt_mobile}</small>
+								<input type="text" className="input" name='alt_mobile' value={formik.values?.alt_mobile_no} onChange={(e) => setInputValue("alt_mobile", e.target.value)} />
+								<small className="text-red-500 text-xs">{formik.errors.alt_mobile_no}</small>
 								<br />
 							</div>
 							<div className="w-full md:w-1/3 px-2 inputHolder">
@@ -244,38 +245,50 @@ function EventPersonalDetails() {
 							</label>
 							<span className="input-titel ml-2">{banner ? (banner.name || banner) : "Please select Images"}</span>
 						</div>
-						<div className="w-full">
-							<span className="input-titel">Price</span>
-							<label htmlFor="" className="flex items-center w-full bg-white p-2 px-3.5 rounded-md">
-								<div className="w-full px-3.5">
-									<input type="text" className="w-full outline-none text-spiroDiscoBall font-bold text-base"
-										value={price} onChange={(e) => setPrice(e.target.value)} />
-								</div>
-								<div className="selectPrice flex items-center space-x-3">
-									<label className="block cursor-pointer">
-										<input type="radio" name="price" value="per_day" checked={priceType === "per_day" && true} className="hidden" onChange={(e) => setPriceType("per_day")} />
-										<span
-											className="text-sm text-quicksilver py-2 px-3 bg-white shadow-lg whitespace-nowrap font-bold rounded block">
-											Per / Day
-										</span>
-									</label>
-									<label className="block cursor-pointer">
-										<input type="radio" name="price" value="per_hour" className="hidden" defaultChecked onChange={(e) => setPriceType("per_hour")} />
-										<span
-											className="text-sm text-quicksilver py-2 px-3 bg-white shadow-lg whitespace-nowrap font-bold rounded block">
-											Per / Hour
-										</span>
-									</label>
-									<label className="block cursor-pointer">
-										<input type="radio" name="price" value="per_event" className="hidden" checked={priceType === "per_event" && true} onChange={(e) => setPriceType("per_event")} />
-										<span
-											className="text-sm text-quicksilver py-2 px-3 bg-white shadow-lg whitespace-nowrap font-bold rounded block">
-											Per / Event
-										</span>
-									</label>
-								</div>
-							</label>
+						{/* option 1 */}
+						<div className="flex items-center space-x-3">
+							<div className={"inputHolder " + (priceType === "per_day" && true ? 'w-8/12' : (priceType === "per_event" ? 'w-7/12 2xl:w-8/12' : 'w-7/12 2xl:w-8/12') && (priceType === "per_hour" ? 'w-8/12' : 'w-8/12'))}>
+								<span className="input-titel">Price<span>*</span></span>
+								<label htmlFor="" className="flex items-center w-full bg-white p-2 px-3.5 rounded-md">
+									<div className="w-full inputHolder">
+										<input type="text" className="w-full outline-none text-spiroDiscoBall font-bold text-base"
+											value={formik.values?.price} name="price" onChange={(e) => setInputValue("price", e.target.value)} />
+									</div>
+									<div className="selectPrice flex items-center space-x-3">
+										<label className="block cursor-pointer">
+											<input type="radio" name="price" value="per_day" className="hidden" checked={priceType === "per_day" && true} onChange={(e) => setPriceType("per_day")} />
+											<span
+												className="text-sm text-quicksilver py-2 px-3 bg-white shadow-lg whitespace-nowrap font-bold rounded block">
+												Per / Day
+											</span>
+										</label>
+										<label className="block cursor-pointer">
+											<input type="radio" name="price" value="per_hour" className="hidden" checked={priceType === "per_hour" && true} onChange={(e) => setPriceType("per_hour")} />
+											<span
+												className="text-sm text-quicksilver py-2 px-3 bg-white shadow-lg whitespace-nowrap font-bold rounded block">
+												Per / Hour
+											</span>
+										</label>
+										<label className="block cursor-pointer">
+											<input type="radio" name="price" value="per_event" className="hidden" checked={priceType === "per_event" && true} onChange={(e) => setPriceType("per_event")} />
+											<span
+												className="text-sm text-quicksilver py-2 px-3 bg-white shadow-lg whitespace-nowrap font-bold rounded block">
+												Per / Event
+											</span>
+										</label>
+									</div>
+								</label>
+							</div>
+							<div className={"inputHolder " + (priceType === "per_hour" ? 'w-4/12' : (priceType === "per_event" ? 'w-4/12 2xl:w-2/12' : (priceType === "per_day" ? 'w-4/12' : 'hidden')))}>
+								<label className="input-titel">Clearing Time (in Hours) <span>*</span></label>
+								<input type="number" className="input py-[14px]" name='clearning time' value={formik.values?.clearing_time} onChange={(e) => setInputValue("clearing_time", e.target.value)} />
+							</div>
+							<div className={"inputHolder " + (priceType === "per_event" ? 'w-2/12' : 'hidden')}>
+								<label className="input-titel">Max Day (in Days)<span>*</span></label>
+								<input type="number" className="input py-[14px]" name='max_day' value={formik.values?.max_day} onChange={(e) => setInputValue("max_day", e.target.value)} />
+							</div>
 						</div>
+						<small className="text-red-500 text-xs">{formik.errors.price}</small>
 						<div className="space-y-5">
 							<h3 className="px-2">Address</h3>
 							<div className="w-full flex flex-wrap">
