@@ -62,7 +62,7 @@ function EventAddServices() {
 	}, [isAddServicesPopUpOpen, reload]);
 
 	const clickNextHandler = () => {
-		toast.success("Services saved Successfully.");
+		// toast.success("Services saved Successfully.");
 		dispatch(increment());
 		if (eventType === "hyp") navigate(`../capacity`);
 		else if (eventType === "gsb") navigate(`../addequipments`)

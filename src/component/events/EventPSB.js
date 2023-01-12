@@ -202,7 +202,7 @@ function EventPersonalDetails() {
 							</div>
 							<div className="w-full md:w-1/2 px-2 inputHolder">
 								<span className="input-titel">Full Name (Mr / Mrs / Ms) <span>*</span></span>
-								<input type="text" className="input" name="full_name" value={formik.values?.full_name} onChange={(e) => setInputValue("full_name", e.target.value)} required readOnly />
+								<input type="text" className="input" name="full_name" value={formik.values?.full_name} onChange={(e) => setInputValue("full_name", e.target.value)}  readOnly />
 								<small className="text-red-500 text-xs">{formik.errors.full_name}</small>
 								<br />
 							</div>
@@ -214,8 +214,8 @@ function EventPersonalDetails() {
 									<div className="input-checkd"><input type="checkbox" className="mr-2" name="is_mobile_hidden" onChange={() => setMobileNoHidden(!mobileNoHidden)} />Hidden</div>
 								</div>
 								<div className="flex">
-									<input type="text" className="input max-w-[80px] w-full mr-3" name="country_code" value={formik.values?.country_code} onChange={(e) => setInputValue("country_code", e.target.value)} required readOnly />
-									<input type="text" className="input" name="mobile" value={formik.values?.mobile} onChange={(e) => setInputValue("mobile", e.target.value)} required readOnly />
+									<input type="text" className="input max-w-[80px] w-full mr-3" name="country_code" value={formik.values?.country_code} onChange={(e) => setInputValue("country_code", e.target.value)}  readOnly />
+									<input type="text" className="input" name="mobile" value={formik.values?.mobile} onChange={(e) => setInputValue("mobile", e.target.value)}  readOnly />
 								</div>
 								<small className="text-red-500 text-xs">{formik.errors.mobile}</small>
 								<br />
@@ -231,7 +231,7 @@ function EventPersonalDetails() {
 									<label className="input-titel">Email Address <span>*</span></label>
 									<div className="input-checkd"><input type="checkbox" className="mr-2" onChange={() => setEmailHidden(!emailHidden)} />Hidden</div>
 								</div>
-								<input type="text" className="input" name='email' value={formik.values?.email} onChange={(e) => setInputValue("email", e.target.value)} required readOnly />
+								<input type="text" className="input" name='email' value={formik.values?.email} onChange={(e) => setInputValue("email", e.target.value)}  readOnly />
 								<small className="text-red-500 text-xs">{formik.errors.email}</small>
 								<br />
 							</div>
@@ -301,19 +301,19 @@ function EventPersonalDetails() {
 							<div className="w-full flex flex-wrap">
 								<div className="w-full md:w-1/3 px-2 inputHolder">
 									<label className="input-titel">City <span>*</span></label>
-									<input type="text" className="input" name='city' value={formik.values?.city} onChange={(e) => setInputValue("city", e.target.value)} required />
+									<input type="text" className="input" name='city' value={formik.values?.city} onChange={(e) => setInputValue("city", e.target.value)} />
 									<small className="text-red-500 text-xs">{formik.errors.city}</small>
 									<br />
 								</div>
 								<div className="w-full md:w-1/3 px-2 inputHolder">
 									<label className="input-titel">State <span>*</span></label>
-									<input type="text" className="input" name='state' value={formik.values?.state} onChange={(e) => setInputValue("state", e.target.value)} required />
+									<input type="text" className="input" name='state' value={formik.values?.state} onChange={(e) => setInputValue("state", e.target.value)} />
 									<small className="text-red-500 text-xs">{formik.errors.state}</small>
 									<br />
 								</div>
 								<div className="w-full md:w-1/3 px-2 inputHolder">
 									<label className="input-titel">Pincode <span>*</span></label>
-									<input type="text" className="input" name='pincode' value={formik.values?.pincode} onChange={(e) => setInputValue("pincode", e.target.value)} required />
+									<input type="text" className="input" name='pincode' value={formik.values?.pincode} onChange={(e) => setInputValue("pincode", e.target.value)} />
 									<small className="text-red-500 text-xs">{formik.errors.pincode}</small>
 									<br />
 								</div>

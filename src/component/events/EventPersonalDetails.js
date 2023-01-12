@@ -68,7 +68,7 @@ function EventPersonalDetails() {
 			console.log("Personal details > ", response);
 			console.log("requestObj",  requestObj);
 			if (response.data.IsSuccess) {
-				toast.success(response.data.Message);
+				// toast.success(response.data.Message);
 				dispatch(increment());
 				navigate(`../photosandvideos`);
 			} else {

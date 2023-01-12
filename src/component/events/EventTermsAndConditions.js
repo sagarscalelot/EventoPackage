@@ -75,7 +75,7 @@ function EventTermsAndConditions() {
 
   const clickNextHandler = () => {
     dispatch(increment());
-    toast.success("Data saved Successfully.");
+    // toast.success("Data saved Successfully.");
 		navigate(`../discounts`);
 	}
 
